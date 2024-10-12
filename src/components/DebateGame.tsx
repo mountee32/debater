@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Clock, Send, Lightbulb, Flag, Loader } from 'lucide-react';
 import { startDebate, continueDebate, generateHint, endDebate, calculateProgressiveScore, calculateComboBonus } from '../api/openRouterApi';
 import { log } from '../utils/logger';
+import { AIPersonality, aiPersonalities } from '../data/aiPersonalities';
 
 interface DebateGameProps {
   topic: string;
   difficulty: 'easy' | 'medium' | 'hard';
   onEndGame: (result: { overallScore: number; rationale: string; recommendations: string }) => void;
+  aiPersonality: AIPersonality;
 }
 
 interface Message {
@@ -33,7 +35,7 @@ type Position = 'for' | 'against';
 const TIME_LIMIT = 60; // 60 seconds per argument
 const BONUS_THRESHOLD = 30; // Bonus points if answered within 30 seconds
 
-const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame }) => {
+const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, aiPersonality }) => {
   const [timeLeft, setTimeLeft] = useState(300);
   const [messages, setMessages] = useState<Message[]>([]);
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
@@ -72,7 +74,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame })
 
   useEffect(() => {
     if (topic && messages.length === 0 && !debateInitializedRef.current) {
-      log(`DebateGame: Initializing debate with topic: ${topic} and difficulty: ${difficulty}`);
+      log(`DebateGame: Initializing debate with topic: ${topic}, difficulty: ${difficulty}, and personality: ${aiPersonality.name}`);
       debateInitializedRef.current = true;
       setIsLoading(true);
       setIsAiThinking(true);
@@ -82,7 +84,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame })
       setUserPosition(userPos);
       setAiPosition(userPos === 'for' ? 'against' : 'for');
 
-      startDebate(topic, difficulty, userPos).then((response) => {
+      startDebate(topic, difficulty, userPos, aiPersonality).then((response) => {
         log(`DebateGame: Received initial AI response: ${response}`);
         addMessage('opponent', response);
         setIsLoading(false);
@@ -90,7 +92,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame })
         startArgumentTimer();
       });
     }
-  }, [topic, difficulty, messages.length]);
+  }, [topic, difficulty, messages.length, aiPersonality]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -144,7 +146,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame })
     removeHintMessages();
 
     try {
-      const { response, evaluation } = await continueDebate(topic, messages, currentArgument, difficulty, userPosition);
+      const { response, evaluation } = await continueDebate(topic, messages, currentArgument, difficulty, userPosition, aiPersonality);
       addMessage('opponent', response);
       
       const roundNumber = messages.filter(m => m.role === 'user').length + 1;
@@ -264,7 +266,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame })
             You: {userPosition === 'for' ? 'For' : 'Against'}
           </p>
           <p className={`text-lg font-semibold ${aiPosition === 'for' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-            AI: {aiPosition === 'for' ? 'For' : 'Against'}
+            AI ({aiPersonality.name}): {aiPosition === 'for' ? 'For' : 'Against'}
           </p>
         </div>
       </div>

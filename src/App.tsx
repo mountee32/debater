@@ -1,12 +1,13 @@
 // Force TypeScript recompilation
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun } from 'lucide-react';
+import { Moon, Sun, User } from 'lucide-react';
 import { DebateGame, CategorySelection, CompactLeaderboard, DifficultySlider } from './components';
 import { generateTopic, endDebate, submitScore, getLeaderboard } from './api/openRouterApi';
 import { log, clearLog } from './utils/logger';
+import { AIPersonality, aiPersonalities } from './data/aiPersonalities';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
-type GameState = 'start' | 'playing' | 'end' | 'leaderboard';
+type GameState = 'start' | 'select-personality' | 'playing' | 'end' | 'leaderboard';
 
 function App() {
   const [topic, setTopic] = useState('');
@@ -21,6 +22,7 @@ function App() {
   const [isHighScore, setIsHighScore] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isLeaderboardExpanded, setIsLeaderboardExpanded] = useState(false);
+  const [selectedPersonality, setSelectedPersonality] = useState<AIPersonality | null>(null);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -42,11 +44,16 @@ function App() {
     setCategory(selectedCategory);
     const newTopic = await generateTopic(selectedCategory, difficulty);
     setTopic(newTopic);
-    setGameState('playing');
+    setGameState('select-personality');
   };
 
   const handleDifficultyChange = (newDifficulty: Difficulty) => {
     setDifficulty(newDifficulty);
+  };
+
+  const handlePersonalitySelect = (personality: AIPersonality) => {
+    setSelectedPersonality(personality);
+    setGameState('playing');
   };
 
   const handleEndGame = async (result: { overallScore: number; rationale: string; recommendations: string }) => {
@@ -86,6 +93,45 @@ function App() {
     setIsLeaderboardExpanded(!isLeaderboardExpanded);
   };
 
+  const AIPersonalitySelection = () => (
+    <div className="text-gray-900 dark:text-gray-100">
+      <h2 className="text-2xl font-semibold mb-4">Select AI Opponent</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {aiPersonalities.map((personality) => (
+          <div
+            key={personality.id}
+            className="border rounded p-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 flex items-start"
+            onClick={() => handlePersonalitySelect(personality)}
+          >
+            <div className="w-16 h-16 rounded-full mr-4 overflow-hidden bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+              <img
+                src={personality.avatarUrl}
+                alt={`${personality.name} avatar`}
+                className="w-full h-full object-contain"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <User className="w-8 h-8 text-gray-400 hidden" />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-2">{personality.name}</h3>
+              <p className="mb-2">{personality.description}</p>
+              <ul className="list-disc list-inside">
+                <li>Argument Style: {personality.traits.argumentStyle}</li>
+                <li>Vocabulary: {personality.traits.vocabulary}</li>
+                <li>Example Types: {personality.traits.exampleTypes}</li>
+                <li>Debate Strategy: {personality.traits.debateStrategy}</li>
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
       <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
@@ -113,8 +159,17 @@ function App() {
             </div>
           )}
 
-          {gameState === 'playing' && (
-            <DebateGame topic={topic} difficulty={difficulty} onEndGame={handleEndGame} />
+          {gameState === 'select-personality' && (
+            <AIPersonalitySelection />
+          )}
+
+          {gameState === 'playing' && selectedPersonality && (
+            <DebateGame
+              topic={topic}
+              difficulty={difficulty}
+              onEndGame={handleEndGame}
+              aiPersonality={selectedPersonality}
+            />
           )}
 
           {gameState === 'end' && (
