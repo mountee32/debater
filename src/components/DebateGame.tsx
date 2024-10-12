@@ -88,7 +88,9 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
   }, [topic, difficulty, messages.length, aiPersonality, userPosition]);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (messagesEndRef.current && typeof messagesEndRef.current.scrollIntoView === 'function') {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [messages]);
 
   const startArgumentTimer = () => {
@@ -134,15 +136,16 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
     setIsAiThinking(true);
     const timeBonus = argumentTimer > BONUS_THRESHOLD ? 2 : 0;
     const userMessageId = lastMessageIdRef.current + 1;
+    const updatedMessages = [...messages, { id: userMessageId, role: 'user', content: currentArgument }];
     addMessage('user', currentArgument);
     setCurrentArgument('');
     removeHintMessages();
 
     try {
-      const { response, evaluation } = await continueDebate(topic, messages, currentArgument, difficulty, userPosition, aiPersonality);
+      const { response, evaluation } = await continueDebate(topic, updatedMessages, currentArgument, difficulty, userPosition, aiPersonality);
       addMessage('opponent', response);
       
-      const roundNumber = messages.filter(m => m.role === 'user').length + 1;
+      const roundNumber = updatedMessages.filter(m => m.role === 'user').length;
       const progressiveScore = calculateProgressiveScore(evaluation.score, roundNumber);
       const comboBonus = calculateComboBonus(consecutiveGoodArguments);
       const totalScore = progressiveScore + timeBonus + comboBonus;
