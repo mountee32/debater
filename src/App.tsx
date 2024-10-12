@@ -68,6 +68,10 @@ function App() {
   const handleCategorySelect = (selectedCategory: string) => {
     setCategory(selectedCategory);
     setGameState('select-personality');
+    // Pre-fetch the topic when the category is selected
+    generateTopic(selectedCategory, difficulty).then((newTopic) => {
+      setTopic(newTopic);
+    });
   };
 
   const handlePersonalitySelect = (personality: AIPersonality) => {
@@ -77,10 +81,7 @@ function App() {
 
   const handleDifficultyChange = (newDifficulty: Difficulty) => {
     setDifficulty(newDifficulty);
-    generateTopic(category, newDifficulty).then((newTopic) => {
-      setTopic(newTopic);
-      setGameState('select-position');
-    });
+    setGameState('select-position');
   };
 
   const handlePositionSelect = (position: Position) => {
