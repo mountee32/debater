@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Clock, Send, Lightbulb, Flag, Loader } from 'lucide-react';
+import { Clock, Send, Lightbulb, Flag, Loader, User } from 'lucide-react';
 import { startDebate, continueDebate, generateHint, endDebate, calculateProgressiveScore, calculateComboBonus } from '../api/openRouterApi';
 import { log } from '../utils/logger';
-import { AIPersonality, aiPersonalities } from '../data/aiPersonalities';
+import { AIPersonality } from '../data/aiPersonalities';
 
 interface DebateGameProps {
   topic: string;
@@ -278,14 +278,31 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
         {messages.map((message) => (
           <div
             key={message.id}
-            className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} mb-4`}
           >
+            {message.role === 'opponent' && (
+              <div className="w-10 h-10 rounded-full mr-3 overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
+                <img
+                  src={aiPersonality.avatarUrl}
+                  alt={`${aiPersonality.name} avatar`}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.parentElement?.classList.add('flex', 'items-center', 'justify-center');
+                    const userIcon = document.createElement('div');
+                    userIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>';
+                    e.currentTarget.parentElement?.appendChild(userIcon);
+                  }}
+                />
+              </div>
+            )}
             <div
               className={`message-bubble ${
                 message.role === 'user' ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-900 dark:text-indigo-100' : 
                 message.role === 'opponent' ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100' : 
                 'bg-yellow-100 dark:bg-yellow-900 text-yellow-900 dark:text-yellow-100'
-              } p-3 rounded-lg mb-2 max-w-3/4`}
+              } p-3 rounded-lg max-w-3/4`}
             >
               {message.role === 'hint' ? (
                 <div>
@@ -312,6 +329,11 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
                 </div>
               )}
             </div>
+            {message.role === 'user' && (
+              <div className="w-10 h-10 rounded-full ml-3 overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0 flex items-center justify-center">
+                <User className="w-6 h-6 text-gray-400" />
+              </div>
+            )}
           </div>
         ))}
         {isAiThinking && (

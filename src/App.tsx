@@ -1,6 +1,6 @@
 // Force TypeScript recompilation
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, User } from 'lucide-react';
+import { Moon, Sun, User, ArrowLeft } from 'lucide-react';
 import { DebateGame, CompactLeaderboard, DifficultySlider } from './components';
 import { generateTopic, endDebate, submitScore, getLeaderboard } from './api/openRouterApi';
 import { log, clearLog } from './utils/logger';
@@ -9,6 +9,8 @@ import { AIPersonality, aiPersonalities } from './data/aiPersonalities';
 type Difficulty = 'easy' | 'medium' | 'hard';
 type GameState = 'home' | 'select-category' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'end' | 'leaderboard';
 type Position = 'for' | 'against';
+
+const steps = ['Category', 'Opponent', 'Difficulty', 'Position'];
 
 function App() {
   const [gameState, setGameState] = useState<GameState>('home');
@@ -99,6 +101,51 @@ function App() {
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
     localStorage.setItem('darkMode', (!isDarkMode).toString());
+  };
+
+  const getCurrentStep = () => {
+    switch (gameState) {
+      case 'select-category': return 0;
+      case 'select-personality': return 1;
+      case 'select-difficulty': return 2;
+      case 'select-position': return 3;
+      default: return -1;
+    }
+  };
+
+  const goBack = () => {
+    switch (gameState) {
+      case 'select-personality': setGameState('select-category'); break;
+      case 'select-difficulty': setGameState('select-personality'); break;
+      case 'select-position': setGameState('select-difficulty'); break;
+      default: setGameState('home');
+    }
+  };
+
+  const WizardSteps = () => {
+    const currentStep = getCurrentStep();
+    if (currentStep === -1) return null;
+
+    return (
+      <div className="mb-6">
+        <div className="flex justify-between items-center mb-4">
+          {steps.map((step, index) => (
+            <div key={step} className={`flex flex-col items-center ${index <= currentStep ? 'text-blue-500' : 'text-gray-400'}`}>
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${index <= currentStep ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-600'}`}>
+                {index + 1}
+              </div>
+              <span className="mt-2">{step}</span>
+            </div>
+          ))}
+        </div>
+        {currentStep > 0 && (
+          <button onClick={goBack} className="flex items-center text-blue-500 hover:text-blue-700">
+            <ArrowLeft size={20} className="mr-2" />
+            Back
+          </button>
+        )}
+      </div>
+    );
   };
 
   const HomeScreen = () => (
@@ -195,6 +242,8 @@ function App() {
               {isDarkMode ? <Sun className="text-yellow-400" /> : <Moon className="text-gray-600" />}
             </button>
           </header>
+
+          <WizardSteps />
 
           {gameState === 'home' && <HomeScreen />}
           {gameState === 'select-category' && <CategorySelection />}
