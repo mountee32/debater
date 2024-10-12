@@ -109,31 +109,32 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
   const addMessage = useCallback((role: 'user' | 'opponent' | 'hint', content: string, score?: number) => {
     log(`DebateGame: Adding message: ${role} - ${content}`);
     
-    // Limit the content to 60 words
-    const truncatedContent = content.split(' ').slice(0, 60).join(' ');
+    // Limit the initial display to 60 words, but allow the full message to stream progressively
+    const words = content.split(' ');
+    const truncatedContent = words.slice(0, 60).join(' ');
+    const remainingContent = words.slice(60).join(' ');
 
-    // Simulate typing effect for streaming text
     let displayedContent = '';
     const newMessageId = lastMessageIdRef.current + 1;
     lastMessageIdRef.current = newMessageId;
 
     setMessages((prevMessages) => [
       ...prevMessages,
-      { id: newMessageId, role, content: '', score }
+      { id: newMessageId, role, content: truncatedContent, score }
     ]);
 
     const interval = setInterval(() => {
-      if (displayedContent.length < truncatedContent.length) {
-        displayedContent += truncatedContent[displayedContent.length];
+      if (displayedContent.length < remainingContent.length) {
+        displayedContent += remainingContent[displayedContent.length];
         setMessages((prevMessages) =>
           prevMessages.map((msg) =>
-            msg.id === newMessageId ? { ...msg, content: displayedContent } : msg
+            msg.id === newMessageId ? { ...msg, content: truncatedContent + displayedContent } : msg
           )
         );
       } else {
         clearInterval(interval);
       }
-    }, 50); // Adjust the speed of the typing effect
+    }, 25); // Speed up the typing effect by reducing the delay to 25ms
   }, []);
 
   const updateMessageScore = useCallback((messageId: number, score: number) => {
@@ -237,6 +238,13 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
 
   const removeHintMessages = () => {
     setMessages((prevMessages) => prevMessages.filter((message) => message.role !== 'hint'));
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendArgument();
+    }
   };
 
   if (isDebateEnded) {
@@ -368,6 +376,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
           className="input-field mb-2 p-2 border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           value={currentArgument}
           onChange={(e) => setCurrentArgument(e.target.value)}
+          onKeyPress={handleKeyPress}
           placeholder="Type your argument here..."
         />
         <div className="flex space-x-2">
