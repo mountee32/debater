@@ -1,0 +1,46 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --primary-color: #6C63FF;
+  --secondary-color: #FF6B6B;
+  --background-color: #F0F4FF;
+  --text-color: #333333;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.btn-primary {
+  @apply bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-indigo-600 transition-all duration-300 transform hover:scale-105;
+}
+
+.btn-secondary {
+  @apply bg-pink-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-pink-600 transition-all duration-300 transform hover:scale-105;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-xl p-6;
+}
+
+.input-field {
+  @apply w-full p-3 border-2 border-indigo-300 rounded-lg focus:outline-none focus:border-indigo-500 transition-colors duration-300;
+}
+
+.message-bubble {
+  @apply p-4 rounded-2xl mb-4 max-w-[75%];
+}
+
+.user-message {
+  @apply bg-indigo-100 text-right;
+}
+
+.marvin-message {
+  @apply bg-pink-100 text-left;
+}
