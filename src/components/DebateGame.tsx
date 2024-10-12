@@ -9,6 +9,7 @@ interface DebateGameProps {
   difficulty: 'easy' | 'medium' | 'hard';
   onEndGame: (result: { overallScore: number; rationale: string; recommendations: string }) => void;
   aiPersonality: AIPersonality;
+  userPosition: 'for' | 'against';
 }
 
 interface Message {
@@ -30,12 +31,10 @@ interface Feedback {
   comboBonus: number;
 }
 
-type Position = 'for' | 'against';
-
 const TIME_LIMIT = 60; // 60 seconds per argument
 const BONUS_THRESHOLD = 30; // Bonus points if answered within 30 seconds
 
-const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, aiPersonality }) => {
+const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, aiPersonality, userPosition }) => {
   const [timeLeft, setTimeLeft] = useState(300);
   const [messages, setMessages] = useState<Message[]>([]);
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
@@ -47,8 +46,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
   const [consecutiveGoodArguments, setConsecutiveGoodArguments] = useState(0);
   const [isDebateEnded, setIsDebateEnded] = useState(false);
   const [isAiThinking, setIsAiThinking] = useState(false);
-  const [userPosition, setUserPosition] = useState<Position>('for');
-  const [aiPosition, setAiPosition] = useState<Position>('against');
+  const aiPosition = userPosition === 'for' ? 'against' : 'for';
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const debateInitializedRef = useRef(false);
   const lastMessageIdRef = useRef(0);
@@ -78,13 +76,8 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
       debateInitializedRef.current = true;
       setIsLoading(true);
       setIsAiThinking(true);
-      
-      // Randomly assign positions
-      const userPos: Position = Math.random() < 0.5 ? 'for' : 'against';
-      setUserPosition(userPos);
-      setAiPosition(userPos === 'for' ? 'against' : 'for');
 
-      startDebate(topic, difficulty, userPos, aiPersonality).then((response) => {
+      startDebate(topic, difficulty, userPosition, aiPersonality).then((response) => {
         log(`DebateGame: Received initial AI response: ${response}`);
         addMessage('opponent', response);
         setIsLoading(false);
@@ -92,7 +85,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
         startArgumentTimer();
       });
     }
-  }, [topic, difficulty, messages.length, aiPersonality]);
+  }, [topic, difficulty, messages.length, aiPersonality, userPosition]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

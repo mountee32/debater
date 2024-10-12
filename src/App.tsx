@@ -1,28 +1,29 @@
 // Force TypeScript recompilation
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun, User } from 'lucide-react';
-import { DebateGame, CategorySelection, CompactLeaderboard, DifficultySlider } from './components';
+import { DebateGame, CompactLeaderboard, DifficultySlider } from './components';
 import { generateTopic, endDebate, submitScore, getLeaderboard } from './api/openRouterApi';
 import { log, clearLog } from './utils/logger';
 import { AIPersonality, aiPersonalities } from './data/aiPersonalities';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
-type GameState = 'start' | 'select-personality' | 'playing' | 'end' | 'leaderboard';
+type GameState = 'home' | 'select-category' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'end' | 'leaderboard';
+type Position = 'for' | 'against';
 
 function App() {
+  const [gameState, setGameState] = useState<GameState>('home');
   const [topic, setTopic] = useState('');
-  const [gameState, setGameState] = useState<GameState>('start');
+  const [category, setCategory] = useState<string>('');
+  const [selectedPersonality, setSelectedPersonality] = useState<AIPersonality | null>(null);
+  const [difficulty, setDifficulty] = useState<Difficulty>('medium');
+  const [userPosition, setUserPosition] = useState<Position>('for');
   const [score, setScore] = useState(0);
   const [rationale, setRationale] = useState('');
   const [recommendations, setRecommendations] = useState('');
-  const [difficulty, setDifficulty] = useState<Difficulty>('medium');
-  const [category, setCategory] = useState<string>('');
   const [username, setUsername] = useState('');
   const [showUsernamePrompt, setShowUsernamePrompt] = useState(false);
   const [isHighScore, setIsHighScore] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isLeaderboardExpanded, setIsLeaderboardExpanded] = useState(false);
-  const [selectedPersonality, setSelectedPersonality] = useState<AIPersonality | null>(null);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -40,19 +41,30 @@ function App() {
     document.body.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
 
-  const handleCategorySelect = async (selectedCategory: string) => {
-    setCategory(selectedCategory);
-    const newTopic = await generateTopic(selectedCategory, difficulty);
-    setTopic(newTopic);
-    setGameState('select-personality');
+  const handleStartGame = () => {
+    setGameState('select-category');
   };
 
-  const handleDifficultyChange = (newDifficulty: Difficulty) => {
-    setDifficulty(newDifficulty);
+  const handleCategorySelect = (selectedCategory: string) => {
+    setCategory(selectedCategory);
+    setGameState('select-personality');
   };
 
   const handlePersonalitySelect = (personality: AIPersonality) => {
     setSelectedPersonality(personality);
+    setGameState('select-difficulty');
+  };
+
+  const handleDifficultyChange = (newDifficulty: Difficulty) => {
+    setDifficulty(newDifficulty);
+    generateTopic(category, newDifficulty).then((newTopic) => {
+      setTopic(newTopic);
+      setGameState('select-position');
+    });
+  };
+
+  const handlePositionSelect = (position: Position) => {
+    setUserPosition(position);
     setGameState('playing');
   };
 
@@ -89,9 +101,35 @@ function App() {
     localStorage.setItem('darkMode', (!isDarkMode).toString());
   };
 
-  const toggleLeaderboard = () => {
-    setIsLeaderboardExpanded(!isLeaderboardExpanded);
-  };
+  const HomeScreen = () => (
+    <div className="text-center">
+      <h2 className="text-3xl font-semibold mb-6">Welcome to Debate Master</h2>
+      <CompactLeaderboard username={username} isExpanded={true} onToggle={() => {}} />
+      <button
+        onClick={handleStartGame}
+        className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 mt-6"
+      >
+        Start Discussion Game
+      </button>
+    </div>
+  );
+
+  const CategorySelection = () => (
+    <div className="text-center">
+      <h2 className="text-2xl font-semibold mb-4">Select Discussion Category</h2>
+      <div className="flex overflow-x-auto pb-4">
+        {['Christianity', 'Politics', 'Science', 'Philosophy', 'Random'].map((cat) => (
+          <button
+            key={cat}
+            onClick={() => handleCategorySelect(cat)}
+            className="flex-shrink-0 bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 
   const AIPersonalitySelection = () => (
     <div className="text-gray-900 dark:text-gray-100">
@@ -119,15 +157,30 @@ function App() {
             <div>
               <h3 className="text-xl font-semibold mb-2">{personality.name}</h3>
               <p className="mb-2">{personality.description}</p>
-              <ul className="list-disc list-inside">
-                <li>Argument Style: {personality.traits.argumentStyle}</li>
-                <li>Vocabulary: {personality.traits.vocabulary}</li>
-                <li>Example Types: {personality.traits.exampleTypes}</li>
-                <li>Debate Strategy: {personality.traits.debateStrategy}</li>
-              </ul>
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  );
+
+  const PositionSelection = () => (
+    <div className="text-center">
+      <h2 className="text-2xl font-semibold mb-4">Select Your Position</h2>
+      <p className="mb-4">Topic: {topic}</p>
+      <div className="flex justify-center space-x-4">
+        <button
+          onClick={() => handlePositionSelect('for')}
+          className="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600"
+        >
+          For
+        </button>
+        <button
+          onClick={() => handlePositionSelect('against')}
+          className="bg-red-500 text-white px-6 py-3 rounded hover:bg-red-600"
+        >
+          Against
+        </button>
       </div>
     </div>
   );
@@ -143,35 +196,22 @@ function App() {
             </button>
           </header>
 
-          {gameState === 'start' && (
-            <div className="flex flex-col md:flex-row">
-              <div className="w-full md:w-3/4 pr-0 md:pr-8 mb-8 md:mb-0">
-                <DifficultySlider difficulty={difficulty} onDifficultyChange={handleDifficultyChange} />
-                <CategorySelection onSelect={handleCategorySelect} />
-              </div>
-              <div className="w-full md:w-1/4">
-                <CompactLeaderboard
-                  username={username}
-                  isExpanded={isLeaderboardExpanded}
-                  onToggle={toggleLeaderboard}
-                />
-              </div>
-            </div>
+          {gameState === 'home' && <HomeScreen />}
+          {gameState === 'select-category' && <CategorySelection />}
+          {gameState === 'select-personality' && <AIPersonalitySelection />}
+          {gameState === 'select-difficulty' && (
+            <DifficultySlider difficulty={difficulty} onDifficultyChange={handleDifficultyChange} />
           )}
-
-          {gameState === 'select-personality' && (
-            <AIPersonalitySelection />
-          )}
-
+          {gameState === 'select-position' && <PositionSelection />}
           {gameState === 'playing' && selectedPersonality && (
             <DebateGame
               topic={topic}
               difficulty={difficulty}
               onEndGame={handleEndGame}
               aiPersonality={selectedPersonality}
+              userPosition={userPosition}
             />
           )}
-
           {gameState === 'end' && (
             <div className="text-center">
               <h2 className="text-3xl font-semibold mb-6">Game Over!</h2>
@@ -207,14 +247,13 @@ function App() {
                 </div>
               )}
               <button
-                onClick={() => setGameState('start')}
+                onClick={() => setGameState('home')}
                 className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700"
               >
                 Play Again
               </button>
             </div>
           )}
-
           {gameState === 'leaderboard' && (
             <div className="text-center">
               <h2 className="text-3xl font-semibold mb-6">Leaderboard</h2>
@@ -224,7 +263,7 @@ function App() {
                 onToggle={() => {}}
               />
               <button
-                onClick={() => setGameState('start')}
+                onClick={() => setGameState('home')}
                 className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 mt-6"
               >
                 Play Again
