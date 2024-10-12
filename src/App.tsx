@@ -1,7 +1,6 @@
-// Force TypeScript recompilation
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, User, ArrowLeft } from 'lucide-react';
-import { DebateGame, CompactLeaderboard, DifficultySlider } from './components';
+import { Moon, Sun, User, ArrowLeft, Book, Users, Sliders, Flag, Globe, Atom, LucideIcon, Lightbulb, HelpCircle, Feather, Zap, Dumbbell, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { DebateGame, CompactLeaderboard } from './components';
 import { generateTopic, endDebate, submitScore, getLeaderboard } from './api/openRouterApi';
 import { log, clearLog } from './utils/logger';
 import { AIPersonality, aiPersonalities } from './data/aiPersonalities';
@@ -11,6 +10,25 @@ type GameState = 'home' | 'select-category' | 'select-personality' | 'select-dif
 type Position = 'for' | 'against';
 
 const steps = ['Category', 'Opponent', 'Difficulty', 'Position'];
+
+const categories: { name: string; icon: LucideIcon }[] = [
+  { name: 'Christianity', icon: Book },
+  { name: 'Politics', icon: Globe },
+  { name: 'Science', icon: Atom },
+  { name: 'Philosophy', icon: Lightbulb },
+  { name: 'Random', icon: HelpCircle },
+];
+
+const difficulties: { name: Difficulty; icon: LucideIcon; description: string }[] = [
+  { name: 'easy', icon: Feather, description: 'Casual debate with simple arguments' },
+  { name: 'medium', icon: Zap, description: 'Balanced debate with moderate complexity' },
+  { name: 'hard', icon: Dumbbell, description: 'Intense debate with advanced arguments' },
+];
+
+const positions: { name: Position; icon: LucideIcon; description: string }[] = [
+  { name: 'for', icon: ThumbsUp, description: 'Argue in favor of the topic' },
+  { name: 'against', icon: ThumbsDown, description: 'Argue against the topic' },
+];
 
 function App() {
   const [gameState, setGameState] = useState<GameState>('home');
@@ -128,14 +146,30 @@ function App() {
 
     return (
       <div className="mb-6">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mb-4 relative">
+          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300 -translate-y-1/2"></div>
           {steps.map((step, index) => (
-            <div key={step} className={`flex flex-col items-center ${index <= currentStep ? 'text-blue-500' : 'text-gray-400'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${index <= currentStep ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-600'}`}>
-                {index + 1}
+            <React.Fragment key={step}>
+              <div className="flex flex-col items-center relative z-10">
+                <div 
+                  className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                    index <= currentStep ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-600'
+                  }`}
+                >
+                  {index + 1}
+                </div>
+                <span className={`mt-2 ${index <= currentStep ? 'text-blue-500' : 'text-gray-500'}`}>{step}</span>
               </div>
-              <span className="mt-2">{step}</span>
-            </div>
+              {index < steps.length - 1 && (
+                <div className="flex-grow relative">
+                  <div 
+                    className={`absolute top-1/2 left-0 right-0 h-0.5 -translate-y-1/2 ${
+                      index < currentStep ? 'bg-blue-500' : 'bg-gray-300'
+                    }`}
+                  ></div>
+                </div>
+              )}
+            </React.Fragment>
           ))}
         </div>
         {currentStep > 0 && (
@@ -147,6 +181,14 @@ function App() {
       </div>
     );
   };
+
+  const StepContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+    <div className="max-w-4xl mx-auto">
+      <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+        {children}
+      </div>
+    </div>
+  );
 
   const HomeScreen = () => (
     <div className="text-center">
@@ -162,74 +204,100 @@ function App() {
   );
 
   const CategorySelection = () => (
-    <div className="text-center">
-      <h2 className="text-2xl font-semibold mb-4">Select Discussion Category</h2>
-      <div className="flex overflow-x-auto pb-4">
-        {['Christianity', 'Politics', 'Science', 'Philosophy', 'Random'].map((cat) => (
+    <StepContainer>
+      <h2 className="text-2xl font-semibold mb-4 text-center">Select Discussion Category</h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {categories.map(({ name, icon: Icon }) => (
           <button
-            key={cat}
-            onClick={() => handleCategorySelect(cat)}
-            className="flex-shrink-0 bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600"
+            key={name}
+            onClick={() => handleCategorySelect(name)}
+            className="flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
           >
-            {cat}
+            <Icon className="w-8 h-8 mb-2 text-blue-500" />
+            <span>{name}</span>
           </button>
         ))}
       </div>
-    </div>
+    </StepContainer>
   );
 
   const AIPersonalitySelection = () => (
-    <div className="text-gray-900 dark:text-gray-100">
-      <h2 className="text-2xl font-semibold mb-4">Select AI Opponent</h2>
+    <StepContainer>
+      <h2 className="text-2xl font-semibold mb-4 text-center">Select AI Opponent</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {aiPersonalities.map((personality) => (
-          <div
+          <button
             key={personality.id}
-            className="border rounded p-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 flex items-start"
+            className="text-left bg-gray-100 dark:bg-gray-700 rounded-lg p-4 hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
             onClick={() => handlePersonalitySelect(personality)}
           >
-            <div className="w-16 h-16 rounded-full mr-4 overflow-hidden bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-              <img
-                src={personality.avatarUrl}
-                alt={`${personality.name} avatar`}
-                className="w-full h-full object-contain"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                }}
-              />
-              <User className="w-8 h-8 text-gray-400 hidden" />
+            <div className="flex items-start">
+              <div className="w-16 h-16 rounded-full mr-4 overflow-hidden bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
+                <img
+                  src={personality.avatarUrl}
+                  alt={`${personality.name} avatar`}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <User className="w-8 h-8 text-gray-400 hidden" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">{personality.name}</h3>
+                <p className="text-sm">{personality.description}</p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-2">{personality.name}</h3>
-              <p className="mb-2">{personality.description}</p>
-            </div>
-          </div>
+          </button>
         ))}
       </div>
-    </div>
+    </StepContainer>
+  );
+
+  const DifficultySelection = () => (
+    <StepContainer>
+      <h2 className="text-2xl font-semibold mb-4 text-center">Select Difficulty</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {difficulties.map(({ name, icon: Icon, description }) => (
+          <button
+            key={name}
+            onClick={() => handleDifficultyChange(name)}
+            className={`flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200 ${
+              difficulty === name ? 'ring-2 ring-blue-500' : ''
+            }`}
+          >
+            <Icon className="w-8 h-8 mb-2 text-blue-500" />
+            <span className="font-semibold">{name.charAt(0).toUpperCase() + name.slice(1)}</span>
+            <p className="text-sm text-center mt-2">{description}</p>
+          </button>
+        ))}
+      </div>
+    </StepContainer>
   );
 
   const PositionSelection = () => (
-    <div className="text-center">
-      <h2 className="text-2xl font-semibold mb-4">Select Your Position</h2>
-      <p className="mb-4">Topic: {topic}</p>
-      <div className="flex justify-center space-x-4">
-        <button
-          onClick={() => handlePositionSelect('for')}
-          className="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600"
-        >
-          For
-        </button>
-        <button
-          onClick={() => handlePositionSelect('against')}
-          className="bg-red-500 text-white px-6 py-3 rounded hover:bg-red-600"
-        >
-          Against
-        </button>
+    <StepContainer>
+      <h2 className="text-3xl font-bold mb-2 text-center">Topic:</h2>
+      <p className="text-2xl mb-6 text-center font-semibold text-blue-600 dark:text-blue-400">{topic}</p>
+      <h3 className="text-xl font-semibold mb-4 text-center">Select Your Position</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {positions.map(({ name, icon: Icon, description }) => (
+          <button
+            key={name}
+            onClick={() => handlePositionSelect(name)}
+            className={`flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200 ${
+              userPosition === name ? 'ring-2 ring-blue-500' : ''
+            }`}
+          >
+            <Icon className={`w-8 h-8 mb-2 ${name === 'for' ? 'text-green-500' : 'text-red-500'}`} />
+            <span className="font-semibold">{name.charAt(0).toUpperCase() + name.slice(1)}</span>
+            <p className="text-sm text-center mt-2">{description}</p>
+          </button>
+        ))}
       </div>
-    </div>
+    </StepContainer>
   );
 
   return (
@@ -248,9 +316,7 @@ function App() {
           {gameState === 'home' && <HomeScreen />}
           {gameState === 'select-category' && <CategorySelection />}
           {gameState === 'select-personality' && <AIPersonalitySelection />}
-          {gameState === 'select-difficulty' && (
-            <DifficultySlider difficulty={difficulty} onDifficultyChange={handleDifficultyChange} />
-          )}
+          {gameState === 'select-difficulty' && <DifficultySelection />}
           {gameState === 'select-position' && <PositionSelection />}
           {gameState === 'playing' && selectedPersonality && (
             <DebateGame
