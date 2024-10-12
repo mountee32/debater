@@ -108,17 +108,32 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
 
   const addMessage = useCallback((role: 'user' | 'opponent' | 'hint', content: string, score?: number) => {
     log(`DebateGame: Adding message: ${role} - ${content}`);
-    setMessages((prevMessages) => {
-      const newMessageId = lastMessageIdRef.current + 1;
-      lastMessageIdRef.current = newMessageId;
-      const newMessage = { id: newMessageId, role, content, score };
-      
-      // Check if the message already exists to prevent duplicates
-      if (!prevMessages.some(msg => msg.id === newMessage.id)) {
-        return [...prevMessages, newMessage];
+    
+    // Limit the content to 60 words
+    const truncatedContent = content.split(' ').slice(0, 60).join(' ');
+
+    // Simulate typing effect for streaming text
+    let displayedContent = '';
+    const newMessageId = lastMessageIdRef.current + 1;
+    lastMessageIdRef.current = newMessageId;
+
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { id: newMessageId, role, content: '', score }
+    ]);
+
+    const interval = setInterval(() => {
+      if (displayedContent.length < truncatedContent.length) {
+        displayedContent += truncatedContent[displayedContent.length];
+        setMessages((prevMessages) =>
+          prevMessages.map((msg) =>
+            msg.id === newMessageId ? { ...msg, content: displayedContent } : msg
+          )
+        );
+      } else {
+        clearInterval(interval);
       }
-      return prevMessages;
-    });
+    }, 50); // Adjust the speed of the typing effect
   }, []);
 
   const updateMessageScore = useCallback((messageId: number, score: number) => {
