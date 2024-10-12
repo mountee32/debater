@@ -147,7 +147,7 @@ function App() {
     return (
       <div className="mb-6">
         <div className="flex justify-between items-center mb-4 relative">
-          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300 -translate-y-1/2"></div>
+          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300"></div>
           {steps.map((step, index) => (
             <React.Fragment key={step}>
               <div className="flex flex-col items-center relative z-10">
@@ -163,7 +163,7 @@ function App() {
               {index < steps.length - 1 && (
                 <div className="flex-grow relative">
                   <div 
-                    className={`absolute top-1/2 left-0 right-0 h-0.5 -translate-y-1/2 ${
+                    className={`absolute top-0 left-0 right-0 h-0.5 ${
                       index < currentStep ? 'bg-blue-500' : 'bg-gray-300'
                     }`}
                   ></div>
