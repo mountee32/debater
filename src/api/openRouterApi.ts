@@ -259,6 +259,7 @@ type LeaderboardEntry = {
   score: number;
   difficulty: 'easy' | 'medium' | 'hard';
   category: string;
+  subject: string;
 };
 
 // Function to load leaderboard data from localStorage
@@ -279,7 +280,8 @@ export const submitScore = async (
   username: string,
   score: number,
   difficulty: 'easy' | 'medium' | 'hard',
-  category: string
+  category: string,
+  subject: string
 ): Promise<void> => {
   const newEntry: LeaderboardEntry = {
     id: leaderboardData.length + 1,
@@ -287,6 +289,7 @@ export const submitScore = async (
     score,
     difficulty,
     category,
+    subject,
   };
   leaderboardData.push(newEntry);
   leaderboardData.sort((a, b) => b.score - a.score);

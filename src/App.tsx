@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun, User, ArrowLeft, Book, Users, Sliders, Flag, Globe, Atom, LucideIcon, Lightbulb, HelpCircle, Feather, Zap, Dumbbell, ThumbsUp, ThumbsDown } from 'lucide-react';
-import { DebateGame, CompactLeaderboard } from './components';
+import { DebateGame, Leaderboard } from './components';
 import { generateTopic, endDebate, submitScore, getLeaderboard } from './api/openRouterApi';
 import { log, clearLog } from './utils/logger';
 import { AIPersonality, aiPersonalities } from './data/aiPersonalities';
@@ -139,7 +139,7 @@ function App() {
       setUsername(newUsername);
       localStorage.setItem('username', newUsername);
       if (isHighScore) {
-        await submitScore(newUsername, score, difficulty, category);
+        await submitScore(newUsername, score, difficulty, category, topic);
       }
       setShowUsernamePrompt(false);
       setGameState('leaderboard');
@@ -224,7 +224,7 @@ function App() {
   const HomeScreen = () => (
     <div className="text-center">
       <h2 className="text-3xl font-semibold mb-6">Welcome to Debate Master</h2>
-      <CompactLeaderboard username={username} isExpanded={true} onToggle={() => {}} />
+      <Leaderboard username={username} />
       <div className="flex justify-center space-x-4 mt-6">
         <button
           onClick={handleStartRandomGame}
@@ -429,11 +429,7 @@ function App() {
           {gameState === 'leaderboard' && (
             <div className="text-center">
               <h2 className="text-3xl font-semibold mb-6">Leaderboard</h2>
-              <CompactLeaderboard
-                username={username}
-                isExpanded={true}
-                onToggle={() => {}}
-              />
+              <Leaderboard username={username} />
               <button
                 onClick={() => setGameState('home')}
                 className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 mt-6"
