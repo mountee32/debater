@@ -38,8 +38,7 @@ interface GameContextType {
   setPregeneratedQuestions: React.Dispatch<React.SetStateAction<string[]>>;
   preCreatedSubjects: string[];
   setPreCreatedSubjects: React.Dispatch<React.SetStateAction<string[]>>;
-  handleStartRandomGame: () => void;
-  handleJoinExistingDiscussions: () => void;
+  handleStartChat: () => void;
   handleCategorySelect: (selectedCategory: string) => void;
   handleTopicSubmit: () => void;
   handlePersonalitySelect: (personality: AIPersonality) => void;
@@ -104,14 +103,9 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     document.body.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
 
-  const handleStartRandomGame = () => {
-    console.log('Starting random game');
+  const handleStartChat = () => {
+    console.log('Starting new chat');
     setGameState('select-category');
-  };
-
-  const handleJoinExistingDiscussions = () => {
-    console.log('Joining existing discussions');
-    setGameState('select-pregenerated');
   };
 
   const handleCategorySelect = (selectedCategory: string) => {
@@ -224,8 +218,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setPregeneratedQuestions,
     preCreatedSubjects,
     setPreCreatedSubjects,
-    handleStartRandomGame,
-    handleJoinExistingDiscussions,
+    handleStartChat,
     handleCategorySelect,
     handleTopicSubmit,
     handlePersonalitySelect,

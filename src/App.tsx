@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Moon, Sun, ArrowLeft, HelpCircle, Shuffle } from 'lucide-react';
+import { Moon, Sun, ArrowLeft, MessageSquare } from 'lucide-react';
 import { DebateGame, Leaderboard } from './components';
 import { GameProvider, useGameContext } from './GameContext';
 import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection, TopicSelection } from './GameSetup';
@@ -29,8 +29,7 @@ function AppContent() {
     username,
     showUsernamePrompt,
     isDarkMode,
-    handleStartRandomGame,
-    handleJoinExistingDiscussions,
+    handleStartChat,
     handleEndGame,
     handleUsernameSubmit,
     toggleDarkMode,
@@ -108,22 +107,14 @@ function AppContent() {
   const HomeScreen = () => (
     <div className="text-center">
       <Leaderboard username={username} onStartDebate={handleStartDebateFromLeaderboard} />
-      <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mt-4">
+      <div className="flex justify-center mt-4">
         <button
-          onClick={handleStartRandomGame}
-          className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-3 py-1.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center text-sm"
-          title="Start a new debate with a random topic"
+          onClick={handleStartChat}
+          className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-3 py-1.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center text-sm"
+          title="Start a new debate chat"
         >
-          Start Random Discussion
-          <Shuffle size={16} className="ml-2 inline-block" />
-        </button>
-        <button
-          onClick={handleJoinExistingDiscussions}
-          className="bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center text-sm"
-          title="Join an ongoing debate from the list"
-        >
-          Join Existing Discussions
-          <HelpCircle size={16} className="ml-2 inline-block" />
+          Start Chat
+          <MessageSquare size={16} className="ml-2 inline-block" />
         </button>
       </div>
     </div>
@@ -152,7 +143,6 @@ function AppContent() {
           {gameState === 'select-position' && <PositionSelection />}
           {gameState === 'select-personality' && <AIPersonalitySelection />}
           {gameState === 'select-difficulty' && <DifficultySelection />}
-          {gameState === 'select-pregenerated' && <PregeneratedQuestionSelection />}
           {gameState === 'playing' && selectedPersonality && (
             <DebateGame
               topic={topic}
