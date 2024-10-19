@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Moon, Sun, ArrowLeft, HelpCircle } from 'lucide-react';
+import { Moon, Sun, ArrowLeft, HelpCircle, Shuffle } from 'lucide-react';
 import { DebateGame, Leaderboard } from './components';
 import { GameProvider, useGameContext } from './GameContext';
 import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection } from './GameSetup';
@@ -113,7 +113,7 @@ function AppContent() {
           title="Start a new debate with a random topic"
         >
           Start Random Discussion
-          <HelpCircle size={14} className="ml-2" />
+          <Shuffle size={18} className="ml-2 inline-block" />
         </button>
         <button
           onClick={handleJoinExistingDiscussions}
@@ -121,7 +121,7 @@ function AppContent() {
           title="Join an ongoing debate from the list"
         >
           Join Existing Discussions
-          <HelpCircle size={14} className="ml-2" />
+          <HelpCircle size={18} className="ml-2 inline-block" />
         </button>
       </div>
     </div>
