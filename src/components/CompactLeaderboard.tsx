@@ -30,9 +30,9 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
     fetchLeaderboard();
   }, []);
 
-  const truncateSubject = (subject: string, maxLength: number) => {
-    if (subject.length <= maxLength) return subject;
-    return `${subject.substring(0, maxLength)}...`;
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return `${text.substring(0, maxLength)}...`;
   };
 
   const displayedEntries = isExpanded ? leaderboardData : leaderboardData.slice(0, 5);
@@ -49,17 +49,19 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
         </button>
       </div>
       <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96' : 'max-h-40'}`}>
-        <div className="grid grid-cols-10 gap-2 text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2">
-          <div className="col-span-2">Score</div>
-          <div className="col-span-3">Name</div>
-          <div className="col-span-5">Subject</div>
+        <div className="flex text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2">
+          <div className="w-16 text-center">Score</div>
+          <div className="w-32 px-2">Name</div>
+          <div className="flex-1 text-left">Subject</div>
         </div>
         {displayedEntries.map((entry) => (
-          <div key={entry.id} className={`grid grid-cols-10 gap-2 py-2 text-xs ${username === entry.username ? 'font-bold bg-indigo-100 dark:bg-indigo-900' : ''} hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-150`}>
-            <div className="col-span-2 text-gray-800 dark:text-gray-200">{entry.score}</div>
-            <div className="col-span-3 text-gray-800 dark:text-gray-200 truncate">{entry.username}</div>
-            <div className="col-span-5 text-gray-800 dark:text-gray-200 truncate" title={entry.subject}>
-              {truncateSubject(entry.subject, 30)}
+          <div key={entry.id} className={`flex py-2 text-xs ${username === entry.username ? 'font-bold bg-indigo-100 dark:bg-indigo-900' : ''} hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-150`}>
+            <div className="w-16 text-center text-gray-800 dark:text-gray-200">{entry.score}</div>
+            <div className="w-32 px-2 text-gray-800 dark:text-gray-200 truncate" title={entry.username}>
+              {truncateText(entry.username, 12)}
+            </div>
+            <div className="flex-1 text-gray-800 dark:text-gray-200 truncate text-left" title={entry.subject}>
+              {entry.subject}
             </div>
           </div>
         ))}
