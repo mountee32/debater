@@ -1,156 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { Moon, Sun, User, ArrowLeft, Book, Globe, Atom, LucideIcon, Lightbulb, HelpCircle, Feather, Zap, Dumbbell, ThumbsUp, ThumbsDown } from 'lucide-react';
+import React from 'react';
+import { Moon, Sun, ArrowLeft } from 'lucide-react';
 import { DebateGame, Leaderboard } from './components';
-import { generateTopic, submitScore, getLeaderboard } from './api/openRouterApi';
-import { AIPersonality, aiPersonalities } from './data/aiPersonalities';
-
-type Difficulty = 'easy' | 'medium' | 'hard';
-type GameState = 'home' | 'select-category' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'end' | 'leaderboard' | 'select-pregenerated';
-type Position = 'for' | 'against';
+import { GameProvider, useGameContext } from './GameContext';
+import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection } from './GameSetup';
 
 const steps = ['Category', 'Opponent', 'Difficulty', 'Position'];
 
-const categories: { name: string; icon: LucideIcon }[] = [
-  { name: 'Christianity', icon: Book },
-  { name: 'Politics', icon: Globe },
-  { name: 'Science', icon: Atom },
-  { name: 'Philosophy', icon: Lightbulb },
-  { name: 'Random', icon: HelpCircle },
-];
-
-const difficulties: { name: Difficulty; icon: LucideIcon; description: string; multiplier: number }[] = [
-  { name: 'easy', icon: Feather, description: 'Casual debate with simple arguments', multiplier: 1.0 },
-  { name: 'medium', icon: Zap, description: 'Balanced debate with moderate complexity', multiplier: 1.1 },
-  { name: 'hard', icon: Dumbbell, description: 'Intense debate with advanced arguments', multiplier: 1.2 },
-];
-
-const positions: { name: Position; icon: LucideIcon; description: string }[] = [
-  { name: 'for', icon: ThumbsUp, description: 'Argue in favor of the topic' },
-  { name: 'against', icon: ThumbsDown, description: 'Argue against the topic' },
-];
-
 function App() {
-  const [gameState, setGameState] = useState<GameState>('home');
-  const [topic, setTopic] = useState('');
-  const [category, setCategory] = useState<string>('');
-  const [selectedPersonality, setSelectedPersonality] = useState<AIPersonality | null>(null);
-  const [difficulty, setDifficulty] = useState<Difficulty>('medium');
-  const [userPosition, setUserPosition] = useState<Position>('for');
-  const [score, setScore] = useState(0);
-  const [rationale, setRationale] = useState('');
-  const [recommendations, setRecommendations] = useState('');
-  const [username, setUsername] = useState('');
-  const [showUsernamePrompt, setShowUsernamePrompt] = useState(false);
-  const [isHighScore, setIsHighScore] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [pregeneratedQuestions, setPregeneratedQuestions] = useState<string[]>([]);
+  return (
+    <GameProvider>
+      <AppContent />
+    </GameProvider>
+  );
+}
 
-  useEffect(() => {
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-
-    const storedDarkMode = localStorage.getItem('darkMode');
-    if (storedDarkMode) {
-      setIsDarkMode(storedDarkMode === 'true');
-    }
-
-    // Load pregenerated questions
-    fetch('/src/data/debateQuestions.json')
-      .then(response => response.json())
-      .then(data => {
-        console.log('Pregenerated questions loaded:', data.questions);
-        setPregeneratedQuestions(data.questions);
-      })
-      .catch(error => console.error('Error loading pregenerated questions:', error));
-  }, []);
-
-  useEffect(() => {
-    document.body.classList.toggle('dark', isDarkMode);
-  }, [isDarkMode]);
-
-  const handleStartRandomGame = () => {
-    console.log('Starting random game');
-    setGameState('select-category');
-  };
-
-  const handleJoinExistingDiscussions = () => {
-    console.log('Joining existing discussions');
-    setGameState('select-pregenerated');
-  };
-
-  const handleCategorySelect = (selectedCategory: string) => {
-    console.log('Selected category:', selectedCategory);
-    setCategory(selectedCategory);
-    setGameState('select-personality');
-    // Pre-fetch the topic when the category is selected
-    generateTopic(selectedCategory, difficulty).then((newTopic: string) => {
-      console.log('Generated topic:', newTopic);
-      setTopic(newTopic);
-    });
-  };
-
-  const handlePersonalitySelect = (personality: AIPersonality) => {
-    console.log('Selected personality:', personality.name);
-    setSelectedPersonality(personality);
-    setGameState('select-difficulty');
-  };
-
-  const handleDifficultyChange = (newDifficulty: Difficulty) => {
-    console.log('Selected difficulty:', newDifficulty);
-    setDifficulty(newDifficulty);
-    setGameState('select-position');
-  };
-
-  const handlePositionSelect = (position: Position) => {
-    console.log('Selected position:', position);
-    setUserPosition(position);
-    setGameState('playing');
-  };
-
-  const handlePregeneratedQuestionSelect = (question: string) => {
-    console.log('Selected pregenerated question:', question);
-    setTopic(question);
-    setGameState('select-personality');
-  };
-
-  const handleEndGame = async (result: { overallScore: number; rationale: string; recommendations: string }) => {
-    console.log('Game ended. Score:', result.overallScore);
-    const difficultyMultiplier = difficulties.find(d => d.name === difficulty)?.multiplier || 1.0;
-    const adjustedScore = Math.round(result.overallScore * difficultyMultiplier);
-    setScore(adjustedScore);
-    setRationale(result.rationale);
-    setRecommendations(result.recommendations);
-    
-    const leaderboard = await getLeaderboard(difficulty, category);
-    const highScore = leaderboard.length < 100 || adjustedScore > leaderboard[leaderboard.length - 1].score;
-
-    setIsHighScore(highScore);
-    setShowUsernamePrompt(highScore && !username);
-    setGameState('end');
-  };
-
-  const handleUsernameSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const newUsername = formData.get('username') as string;
-    if (newUsername) {
-      console.log('Submitting username:', newUsername);
-      setUsername(newUsername);
-      localStorage.setItem('username', newUsername);
-      if (isHighScore) {
-        await submitScore(newUsername, score, difficulty, category, topic);
-      }
-      setShowUsernamePrompt(false);
-      setGameState('leaderboard');
-    }
-  };
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem('darkMode', (!isDarkMode).toString());
-  };
+function AppContent() {
+  const {
+    gameState,
+    setGameState,
+    topic,
+    difficulty,
+    selectedPersonality,
+    userPosition,
+    score,
+    rationale,
+    recommendations,
+    username,
+    showUsernamePrompt,
+    isDarkMode,
+    handleStartRandomGame,
+    handleJoinExistingDiscussions,
+    handleEndGame,
+    handleUsernameSubmit,
+    toggleDarkMode,
+  } = useGameContext();
 
   const getCurrentStep = () => {
     switch (gameState) {
@@ -214,33 +97,10 @@ function App() {
     );
   };
 
-  const StepContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <div className="max-w-4xl mx-auto">
-      <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
-        {children}
-      </div>
-    </div>
-  );
-
   const HomeScreen = () => (
-    <StepContainer>
-      <h2 className="text-3xl font-semibold mb-6 text-center">Welcome to Debate Master</h2>
-      
-      <div className="mb-8">
-        <h3 className="text-2xl font-semibold mb-4 text-center">Categories</h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {categories.map(({ name, icon: Icon }) => (
-            <div
-              key={name}
-              className="flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg"
-            >
-              <Icon className="w-8 h-8 mb-2 text-blue-500" />
-              <span>{name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
+    <div className="text-center">
+      <h2 className="text-3xl font-semibold mb-6">Welcome to Debate Master</h2>
+      <Leaderboard username={username} />
       <div className="flex justify-center space-x-4 mt-6">
         <button
           onClick={handleStartRandomGame}
@@ -255,121 +115,7 @@ function App() {
           Join Existing Discussions
         </button>
       </div>
-    </StepContainer>
-  );
-
-  const CategorySelection = () => (
-    <StepContainer>
-      <h2 className="text-2xl font-semibold mb-4 text-center">Select Discussion Category</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {categories.map(({ name, icon: Icon }) => (
-          <button
-            key={name}
-            onClick={() => handleCategorySelect(name)}
-            className="flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
-          >
-            <Icon className="w-8 h-8 mb-2 text-blue-500" />
-            <span>{name}</span>
-          </button>
-        ))}
-      </div>
-    </StepContainer>
-  );
-
-  const AIPersonalitySelection = () => (
-    <StepContainer>
-      <h2 className="text-2xl font-semibold mb-4 text-center">Select AI Opponent</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {aiPersonalities.map((personality) => (
-          <button
-            key={personality.id}
-            className="text-left bg-gray-100 dark:bg-gray-700 rounded-lg p-4 hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
-            onClick={() => handlePersonalitySelect(personality)}
-          >
-            <div className="flex items-start">
-              <div className="w-16 h-16 rounded-full mr-4 overflow-hidden bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
-                <img
-                  src={personality.avatarUrl}
-                  alt={`${personality.name} avatar`}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                  }}
-                />
-                <User className="w-8 h-8 text-gray-400 hidden" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">{personality.name}</h3>
-                <p className="text-sm">{personality.description}</p>
-              </div>
-            </div>
-          </button>
-        ))}
-      </div>
-    </StepContainer>
-  );
-
-  const DifficultySelection = () => (
-    <StepContainer>
-      <h2 className="text-2xl font-semibold mb-4 text-center">Select Difficulty</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {difficulties.map(({ name, icon: Icon, description }) => (
-          <button
-            key={name}
-            onClick={() => handleDifficultyChange(name)}
-            className={`flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200 ${
-              difficulty === name ? 'ring-2 ring-blue-500' : ''
-            }`}
-          >
-            <Icon className="w-8 h-8 mb-2 text-blue-500" />
-            <span className="font-semibold">{name.charAt(0).toUpperCase() + name.slice(1)}</span>
-            <p className="text-sm text-center mt-2">{description}</p>
-          </button>
-        ))}
-      </div>
-    </StepContainer>
-  );
-
-  const PositionSelection = () => (
-    <StepContainer>
-      <h2 className="text-3xl font-bold mb-2 text-center">Topic:</h2>
-      <p className="text-2xl mb-6 text-center font-semibold text-blue-600 dark:text-blue-400">{topic}</p>
-      <h3 className="text-xl font-semibold mb-4 text-center">Select Your Position</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {positions.map(({ name, icon: Icon, description }) => (
-          <button
-            key={name}
-            onClick={() => handlePositionSelect(name)}
-            className={`flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200 ${
-              userPosition === name ? 'ring-2 ring-blue-500' : ''
-            }`}
-          >
-            <Icon className={`w-8 h-8 mb-2 ${name === 'for' ? 'text-green-500' : 'text-red-500'}`} />
-            <span className="font-semibold">{name.charAt(0).toUpperCase() + name.slice(1)}</span>
-            <p className="text-sm text-center mt-2">{description}</p>
-          </button>
-        ))}
-      </div>
-    </StepContainer>
-  );
-
-  const PregeneratedQuestionSelection = () => (
-    <StepContainer>
-      <h2 className="text-2xl font-semibold mb-4 text-center">Select a Pregenerated Question</h2>
-      <div className="space-y-4">
-        {pregeneratedQuestions.map((question, index) => (
-          <button
-            key={index}
-            onClick={() => handlePregeneratedQuestionSelect(question)}
-            className="w-full text-left p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
-          >
-            {question}
-          </button>
-        ))}
-      </div>
-    </StepContainer>
+    </div>
   );
 
   return (
@@ -408,7 +154,7 @@ function App() {
                 <p className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">{score}/10</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   (Difficulty: {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}, 
-                  Multiplier: x{difficulties.find(d => d.name === difficulty)?.multiplier.toFixed(1)})
+                  Multiplier: x{difficulty === 'easy' ? '1.0' : difficulty === 'medium' ? '1.1' : '1.2'})
                 </p>
               </div>
               <div className="mb-6 text-left">
