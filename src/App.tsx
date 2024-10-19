@@ -6,7 +6,7 @@ import { log, clearLog } from './utils/logger';
 import { AIPersonality, aiPersonalities } from './data/aiPersonalities';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
-type GameState = 'home' | 'select-category' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'end' | 'leaderboard';
+type GameState = 'home' | 'select-category' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'end' | 'leaderboard' | 'select-pregenerated';
 type Position = 'for' | 'against';
 
 const steps = ['Category', 'Opponent', 'Difficulty', 'Position'];
@@ -44,6 +44,7 @@ function App() {
   const [showUsernamePrompt, setShowUsernamePrompt] = useState(false);
   const [isHighScore, setIsHighScore] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [pregeneratedQuestions, setPregeneratedQuestions] = useState<string[]>([]);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -55,41 +56,68 @@ function App() {
     if (storedDarkMode) {
       setIsDarkMode(storedDarkMode === 'true');
     }
+
+    // Load pregenerated questions
+    fetch('/src/data/debateQuestions.json')
+      .then(response => response.json())
+      .then(data => {
+        console.log('Pregenerated questions loaded:', data.questions);
+        setPregeneratedQuestions(data.questions);
+      })
+      .catch(error => console.error('Error loading pregenerated questions:', error));
   }, []);
 
   useEffect(() => {
     document.body.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
 
-  const handleStartGame = () => {
+  const handleStartRandomGame = () => {
+    console.log('Starting random game');
     setGameState('select-category');
   };
 
+  const handleJoinExistingDiscussions = () => {
+    console.log('Joining existing discussions');
+    setGameState('select-pregenerated');
+  };
+
   const handleCategorySelect = (selectedCategory: string) => {
+    console.log('Selected category:', selectedCategory);
     setCategory(selectedCategory);
     setGameState('select-personality');
     // Pre-fetch the topic when the category is selected
     generateTopic(selectedCategory, difficulty).then((newTopic) => {
+      console.log('Generated topic:', newTopic);
       setTopic(newTopic);
     });
   };
 
   const handlePersonalitySelect = (personality: AIPersonality) => {
+    console.log('Selected personality:', personality.name);
     setSelectedPersonality(personality);
     setGameState('select-difficulty');
   };
 
   const handleDifficultyChange = (newDifficulty: Difficulty) => {
+    console.log('Selected difficulty:', newDifficulty);
     setDifficulty(newDifficulty);
     setGameState('select-position');
   };
 
   const handlePositionSelect = (position: Position) => {
+    console.log('Selected position:', position);
     setUserPosition(position);
     setGameState('playing');
   };
 
+  const handlePregeneratedQuestionSelect = (question: string) => {
+    console.log('Selected pregenerated question:', question);
+    setTopic(question);
+    setGameState('select-personality');
+  };
+
   const handleEndGame = async (result: { overallScore: number; rationale: string; recommendations: string }) => {
+    console.log('Game ended. Score:', result.overallScore);
     setScore(result.overallScore);
     setRationale(result.rationale);
     setRecommendations(result.recommendations);
@@ -107,6 +135,7 @@ function App() {
     const formData = new FormData(event.currentTarget);
     const newUsername = formData.get('username') as string;
     if (newUsername) {
+      console.log('Submitting username:', newUsername);
       setUsername(newUsername);
       localStorage.setItem('username', newUsername);
       if (isHighScore) {
@@ -133,6 +162,7 @@ function App() {
   };
 
   const goBack = () => {
+    console.log('Going back from:', gameState);
     switch (gameState) {
       case 'select-personality': setGameState('select-category'); break;
       case 'select-difficulty': setGameState('select-personality'); break;
@@ -195,12 +225,20 @@ function App() {
     <div className="text-center">
       <h2 className="text-3xl font-semibold mb-6">Welcome to Debate Master</h2>
       <CompactLeaderboard username={username} isExpanded={true} onToggle={() => {}} />
-      <button
-        onClick={handleStartGame}
-        className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 mt-6"
-      >
-        Start Discussion Game
-      </button>
+      <div className="flex justify-center space-x-4 mt-6">
+        <button
+          onClick={handleStartRandomGame}
+          className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700"
+        >
+          Start Random Discussion
+        </button>
+        <button
+          onClick={handleJoinExistingDiscussions}
+          className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700"
+        >
+          Join Existing Discussions
+        </button>
+      </div>
     </div>
   );
 
@@ -301,6 +339,23 @@ function App() {
     </StepContainer>
   );
 
+  const PregeneratedQuestionSelection = () => (
+    <StepContainer>
+      <h2 className="text-2xl font-semibold mb-4 text-center">Select a Pregenerated Question</h2>
+      <div className="space-y-4">
+        {pregeneratedQuestions.map((question, index) => (
+          <button
+            key={index}
+            onClick={() => handlePregeneratedQuestionSelect(question)}
+            className="w-full text-left p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
+          >
+            {question}
+          </button>
+        ))}
+      </div>
+    </StepContainer>
+  );
+
   return (
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
       <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
@@ -319,6 +374,7 @@ function App() {
           {gameState === 'select-personality' && <AIPersonalitySelection />}
           {gameState === 'select-difficulty' && <DifficultySelection />}
           {gameState === 'select-position' && <PositionSelection />}
+          {gameState === 'select-pregenerated' && <PregeneratedQuestionSelection />}
           {gameState === 'playing' && selectedPersonality && (
             <DebateGame
               topic={topic}
