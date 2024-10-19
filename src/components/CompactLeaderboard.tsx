@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, Book, Globe, Atom, Lightbulb, Shuffle, Cpu } from 'lucide-react';
 import { getLeaderboard } from '../api/openRouterApi';
 
 interface CompactLeaderboardProps {
@@ -24,6 +24,16 @@ const mockLeaderboardData: LeaderboardEntry[] = [
   { id: 4, username: "rationalThinker", score: 85, difficulty: "medium", category: "Philosophy", subject: "Does free will exist?" },
   { id: 5, username: "debateNewbie", score: 75, difficulty: "easy", category: "Technology", subject: "Is social media overall good for society?" },
 ];
+
+const categoryIcons: { [key: string]: React.ElementType } = {
+  Religion: Book,
+  Politics: Globe,
+  Science: Atom,
+  Philosophy: Lightbulb,
+  Ethics: Lightbulb,
+  Technology: Cpu,
+  Random: Shuffle,
+};
 
 const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExpanded, onToggle }) => {
   const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry[]>(mockLeaderboardData);
@@ -62,22 +72,32 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
               <th className="pb-2 w-1/12">Rank</th>
               <th className="pb-2 w-3/12">User</th>
               <th className="pb-2 w-2/12">Score</th>
-              <th className="pb-2 w-6/12">Subject</th>
+              <th className="pb-2 w-2/12">Category</th>
+              <th className="pb-2 w-4/12">Subject</th>
             </tr>
           </thead>
           <tbody>
-            {leaderboardData.map((entry, index) => (
-              <tr key={entry.id} className={username === entry.username ? 'font-bold' : ''}>
-                <td className="py-1">{index + 1}</td>
-                <td className="py-1">{entry.username}</td>
-                <td className="py-1">{entry.score}</td>
-                <td className="py-1">
-                  <span title={entry.subject} className="cursor-help">
-                    {truncateSubject(entry.subject, 30)}
-                  </span>
-                </td>
-              </tr>
-            ))}
+            {leaderboardData.map((entry, index) => {
+              const IconComponent = categoryIcons[entry.category] || Shuffle;
+              return (
+                <tr key={entry.id} className={username === entry.username ? 'font-bold' : ''}>
+                  <td className="py-1">{index + 1}</td>
+                  <td className="py-1">{entry.username}</td>
+                  <td className="py-1">{entry.score}</td>
+                  <td className="py-1">
+                    <div className="flex items-center">
+                      <IconComponent size={16} className="mr-1 text-indigo-600" />
+                      <span>{entry.category}</span>
+                    </div>
+                  </td>
+                  <td className="py-1">
+                    <span title={entry.subject} className="cursor-help">
+                      {truncateSubject(entry.subject, 20)}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
