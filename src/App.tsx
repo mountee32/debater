@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Moon, Sun, ArrowLeft, HelpCircle } from 'lucide-react';
-import { DebateGame, CompactLeaderboard } from './components';
+import { DebateGame, Leaderboard } from './components';
 import { GameProvider, useGameContext } from './GameContext';
 import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection } from './GameSetup';
 
@@ -19,6 +19,7 @@ function AppContent() {
     gameState,
     setGameState,
     topic,
+    setTopic,
     difficulty,
     selectedPersonality,
     userPosition,
@@ -35,10 +36,9 @@ function AppContent() {
     toggleDarkMode,
   } = useGameContext();
 
-  const [isLeaderboardExpanded, setIsLeaderboardExpanded] = useState(false);
-
-  const toggleLeaderboard = () => {
-    setIsLeaderboardExpanded(!isLeaderboardExpanded);
+  const handleStartDebateFromLeaderboard = (subject: string) => {
+    setTopic(subject);
+    setGameState('select-personality');
   };
 
   const getCurrentStep = () => {
@@ -105,7 +105,7 @@ function AppContent() {
 
   const HomeScreen = () => (
     <div className="text-center">
-      <CompactLeaderboard username={username} isExpanded={isLeaderboardExpanded} onToggle={toggleLeaderboard} />
+      <Leaderboard username={username} onStartDebate={handleStartDebateFromLeaderboard} />
       <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-6">
         <button
           onClick={handleStartRandomGame}
@@ -208,7 +208,7 @@ function AppContent() {
           {gameState === 'leaderboard' && (
             <div className="text-center">
               <h2 className="text-2xl sm:text-3xl font-semibold mb-6">Leaderboard</h2>
-              <CompactLeaderboard username={username} isExpanded={true} onToggle={toggleLeaderboard} />
+              <Leaderboard username={username} onStartDebate={handleStartDebateFromLeaderboard} />
               <button
                 onClick={() => setGameState('home')}
                 className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 mt-6 text-sm"
