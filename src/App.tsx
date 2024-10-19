@@ -99,7 +99,6 @@ function AppContent() {
 
   const HomeScreen = () => (
     <div className="text-center">
-      <h2 className="text-3xl font-semibold mb-6">Welcome to Debate Master</h2>
       <CompactLeaderboard username={username} isExpanded={false} onToggle={() => {}} />
       <div className="flex justify-center space-x-4 mt-6">
         <button

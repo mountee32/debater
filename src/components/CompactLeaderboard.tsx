@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, ChevronUp, Book, Globe, Atom, Lightbulb, Shuffle, Cpu } from 'lucide-react';
+import { Book, Globe, Atom, Lightbulb, Shuffle, Cpu } from 'lucide-react';
 import { getLeaderboard } from '../api/openRouterApi';
 
 interface CompactLeaderboardProps {
@@ -88,13 +88,7 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold">Leaderboard</h2>
-        <button
-          onClick={onToggle}
-          className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-        >
-          {isExpanded ? <ChevronUp /> : <ChevronDown />}
-        </button>
+        <h2 className="text-xl font-bold">Leaderboard</h2>
       </div>
       <CategoryButtons selectedCategory={selectedCategory} onCategorySelect={setSelectedCategory} />
       <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96' : 'max-h-40'}`}>
