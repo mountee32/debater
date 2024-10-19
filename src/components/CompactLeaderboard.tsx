@@ -35,8 +35,35 @@ const categoryIcons: { [key: string]: React.ElementType } = {
   Random: Shuffle,
 };
 
+interface CategoryButtonsProps {
+  selectedCategory: string | null;
+  onCategorySelect: (category: string | null) => void;
+}
+
+const CategoryButtons: React.FC<CategoryButtonsProps> = ({ selectedCategory, onCategorySelect }) => {
+  return (
+    <div className="flex flex-wrap justify-center mb-4">
+      {Object.entries(categoryIcons).map(([category, Icon]) => (
+        <button
+          key={category}
+          className={`flex items-center m-1 px-3 py-1 rounded-full text-sm ${
+            selectedCategory === category
+              ? 'bg-indigo-600 text-white'
+              : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+          }`}
+          onClick={() => onCategorySelect(selectedCategory === category ? null : category)}
+        >
+          <Icon size={16} className="mr-1" />
+          <span>{category}</span>
+        </button>
+      ))}
+    </div>
+  );
+};
+
 const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExpanded, onToggle }) => {
   const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry[]>(mockLeaderboardData);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -48,6 +75,10 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
 
     fetchLeaderboard();
   }, []);
+
+  const filteredLeaderboardData = selectedCategory
+    ? leaderboardData.filter(entry => entry.category === selectedCategory)
+    : leaderboardData;
 
   const truncateSubject = (subject: string, maxLength: number) => {
     if (subject.length <= maxLength) return subject;
@@ -65,6 +96,7 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
           {isExpanded ? <ChevronUp /> : <ChevronDown />}
         </button>
       </div>
+      <CategoryButtons selectedCategory={selectedCategory} onCategorySelect={setSelectedCategory} />
       <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96' : 'max-h-40'}`}>
         <table className="w-full">
           <thead>
@@ -72,32 +104,22 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
               <th className="pb-2 w-1/12">Rank</th>
               <th className="pb-2 w-3/12">User</th>
               <th className="pb-2 w-2/12">Score</th>
-              <th className="pb-2 w-2/12">Category</th>
-              <th className="pb-2 w-4/12">Subject</th>
+              <th className="pb-2 w-6/12">Subject</th>
             </tr>
           </thead>
           <tbody>
-            {leaderboardData.map((entry, index) => {
-              const IconComponent = categoryIcons[entry.category] || Shuffle;
-              return (
-                <tr key={entry.id} className={username === entry.username ? 'font-bold' : ''}>
-                  <td className="py-1">{index + 1}</td>
-                  <td className="py-1">{entry.username}</td>
-                  <td className="py-1">{entry.score}</td>
-                  <td className="py-1">
-                    <div className="flex items-center">
-                      <IconComponent size={16} className="mr-1 text-indigo-600" />
-                      <span>{entry.category}</span>
-                    </div>
-                  </td>
-                  <td className="py-1">
-                    <span title={entry.subject} className="cursor-help">
-                      {truncateSubject(entry.subject, 20)}
-                    </span>
-                  </td>
-                </tr>
-              );
-            })}
+            {filteredLeaderboardData.map((entry, index) => (
+              <tr key={entry.id} className={username === entry.username ? 'font-bold' : ''}>
+                <td className="py-1">{index + 1}</td>
+                <td className="py-1">{entry.username}</td>
+                <td className="py-1">{entry.score}</td>
+                <td className="py-1">
+                  <span title={entry.subject} className="cursor-help">
+                    {truncateSubject(entry.subject, 30)}
+                  </span>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

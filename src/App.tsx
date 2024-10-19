@@ -1,6 +1,6 @@
 import React from 'react';
 import { Moon, Sun, ArrowLeft } from 'lucide-react';
-import { DebateGame, Leaderboard } from './components';
+import { DebateGame, CompactLeaderboard } from './components';
 import { GameProvider, useGameContext } from './GameContext';
 import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection } from './GameSetup';
 
@@ -100,7 +100,7 @@ function AppContent() {
   const HomeScreen = () => (
     <div className="text-center">
       <h2 className="text-3xl font-semibold mb-6">Welcome to Debate Master</h2>
-      <Leaderboard username={username} />
+      <CompactLeaderboard username={username} isExpanded={false} onToggle={() => {}} />
       <div className="flex justify-center space-x-4 mt-6">
         <button
           onClick={handleStartRandomGame}
@@ -195,7 +195,7 @@ function AppContent() {
           {gameState === 'leaderboard' && (
             <div className="text-center">
               <h2 className="text-3xl font-semibold mb-6">Leaderboard</h2>
-              <Leaderboard username={username} />
+              <CompactLeaderboard username={username} isExpanded={true} onToggle={() => {}} />
               <button
                 onClick={() => setGameState('home')}
                 className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 mt-6"
