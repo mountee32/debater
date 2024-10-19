@@ -12,7 +12,7 @@
     "username": "logicMaster",
     "score": 92,
     "difficulty": "hard",
-    "category": "Ethics",
+    "category": "Philosophy",
     "subject": "Is euthanasia morally justifiable?"
   },
   {
@@ -36,7 +36,7 @@
     "username": "debateNewbie",
     "score": 75,
     "difficulty": "easy",
-    "category": "Technology",
+    "category": "Random",
     "subject": "Is social media overall good for society?"
   },
   {
@@ -52,7 +52,7 @@
     "username": "techGuru",
     "score": 82,
     "difficulty": "medium",
-    "category": "Technology",
+    "category": "Science",
     "subject": "Is artificial intelligence a threat to humanity?"
   },
   {
@@ -84,7 +84,7 @@
     "username": "moralCompass",
     "score": 90,
     "difficulty": "hard",
-    "category": "Ethics",
+    "category": "Philosophy",
     "subject": "Is it ethical to use animals for medical research?"
   },
   {
@@ -92,7 +92,7 @@
     "username": "ethicsExplorer",
     "score": 86,
     "difficulty": "medium",
-    "category": "Ethics",
+    "category": "Philosophy",
     "subject": "Should we have a universal basic income?"
   },
   {
@@ -100,7 +100,7 @@
     "username": "virtueSeeker",
     "score": 81,
     "difficulty": "easy",
-    "category": "Ethics",
+    "category": "Philosophy",
     "subject": "Is it ever morally acceptable to lie?"
   },
   {
@@ -108,7 +108,7 @@
     "username": "ethicalDilemma",
     "score": 88,
     "difficulty": "medium",
-    "category": "Ethics",
+    "category": "Philosophy",
     "subject": "Should organ donation be mandatory?"
   },
   {
@@ -161,42 +161,58 @@
   },
   {
     "id": 21,
-    "username": "logicLover",
+    "username": "faithSeeker",
     "score": 83,
     "difficulty": "easy",
-    "category": "Philosophy",
-    "subject": "Can we ever truly know anything?"
+    "category": "Religion",
+    "subject": "Does science disprove religion?"
   },
   {
     "id": 22,
     "username": "wisdomSeeker",
     "score": 89,
     "difficulty": "medium",
-    "category": "Philosophy",
-    "subject": "Is morality subjective or objective?"
+    "category": "Religion",
+    "subject": "Is morality dependent on religion?"
   },
   {
     "id": 23,
-    "username": "innovationGuru",
+    "username": "spiritualExplorer",
     "score": 94,
     "difficulty": "hard",
-    "category": "Technology",
-    "subject": "Will cryptocurrency replace traditional currency?"
+    "category": "Religion",
+    "subject": "Can different religions coexist peacefully?"
   },
   {
     "id": 24,
-    "username": "futurist101",
+    "username": "theologian101",
     "score": 90,
     "difficulty": "medium",
-    "category": "Technology",
-    "subject": "Should we implement a universal digital identity system?"
+    "category": "Religion",
+    "subject": "Should religious symbols be allowed in public schools?"
   },
   {
     "id": 25,
-    "username": "techEthicist",
+    "username": "randomDebater",
     "score": 86,
     "difficulty": "easy",
-    "category": "Technology",
-    "subject": "Should social media platforms be held responsible for user content?"
+    "category": "Random",
+    "subject": "Is pineapple an acceptable pizza topping?"
+  },
+  {
+    "id": 26,
+    "username": "wildCardArguer",
+    "score": 88,
+    "difficulty": "medium",
+    "category": "Random",
+    "subject": "Should daylight saving time be abolished?"
+  },
+  {
+    "id": 27,
+    "username": "surpriseLogician",
+    "score": 91,
+    "difficulty": "hard",
+    "category": "Random",
+    "subject": "Is cereal a soup?"
   }
 ]

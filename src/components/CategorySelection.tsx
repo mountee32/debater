@@ -1,5 +1,5 @@
 import React from 'react';
-import { Book, Heart, Globe, Shuffle } from 'lucide-react';
+import { Book, Globe, Atom, Lightbulb, Shuffle } from 'lucide-react';
 
 interface CategorySelectionProps {
   onSelect: (category: string) => void;
@@ -7,16 +7,17 @@ interface CategorySelectionProps {
 
 const CategorySelection: React.FC<CategorySelectionProps> = ({ onSelect }) => {
   const categories = [
-    { name: 'Christianity', icon: Book },
-    { name: 'Ethics', icon: Heart },
+    { name: 'Religion', icon: Book },
     { name: 'Politics', icon: Globe },
+    { name: 'Science', icon: Atom },
+    { name: 'Philosophy', icon: Lightbulb },
     { name: 'Random', icon: Shuffle },
   ];
 
   return (
     <div className="mt-8">
       <h2 className="text-2xl font-bold mb-4">Select Category</h2>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {categories.map((category) => (
           <button
             key={category.name}

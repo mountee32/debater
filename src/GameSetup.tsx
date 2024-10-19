@@ -4,7 +4,7 @@ import { useGameContext } from './GameContext';
 import { AIPersonality, aiPersonalities } from './data/aiPersonalities';
 
 const categories: { name: string; icon: LucideIcon }[] = [
-  { name: 'Christianity', icon: Book },
+  { name: 'Religion', icon: Book },
   { name: 'Politics', icon: Globe },
   { name: 'Science', icon: Atom },
   { name: 'Philosophy', icon: Lightbulb },
