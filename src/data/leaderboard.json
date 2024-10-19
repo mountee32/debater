@@ -3,140 +3,140 @@
     "id": 1,
     "username": "ScienceNovice1",
     "score": 15,
-    "subject": "Is climate change reversible?",
+    "subject": "Climate change is reversible.",
     "category": "Science"
   },
   {
     "id": 2,
     "username": "ScienceNovice2",
     "score": 12,
-    "subject": "Are GMOs safe for consumption?",
+    "subject": "GMOs are safe for consumption.",
     "category": "Science"
   },
   {
     "id": 3,
     "username": "ScienceNovice3",
     "score": 18,
-    "subject": "Should we prioritize space exploration?",
+    "subject": "Space exploration should be a priority.",
     "category": "Science"
   },
   {
     "id": 4,
     "username": "ScienceNovice4",
     "score": 10,
-    "subject": "Is nuclear energy the future?",
+    "subject": "Nuclear energy is the future of power generation.",
     "category": "Science"
   },
   {
     "id": 5,
     "username": "ScienceNovice5",
     "score": 14,
-    "subject": "Can we achieve immortality through science?",
+    "subject": "Immortality can be achieved through science.",
     "category": "Science"
   },
   {
     "id": 6,
     "username": "PoliticsNovice1",
     "score": 16,
-    "subject": "Should voting be mandatory?",
+    "subject": "Voting should be mandatory.",
     "category": "Politics"
   },
   {
     "id": 7,
     "username": "PoliticsNovice2",
     "score": 13,
-    "subject": "Is democracy the best form of government?",
+    "subject": "Democracy is the best form of government.",
     "category": "Politics"
   },
   {
     "id": 8,
     "username": "PoliticsNovice3",
     "score": 19,
-    "subject": "Should there be term limits for elected officials?",
+    "subject": "There should be term limits for elected officials.",
     "category": "Politics"
   },
   {
     "id": 9,
     "username": "PoliticsNovice4",
     "score": 11,
-    "subject": "Is capitalism sustainable in the long term?",
+    "subject": "Capitalism is sustainable in the long term.",
     "category": "Politics"
   },
   {
     "id": 10,
     "username": "PoliticsNovice5",
     "score": 17,
-    "subject": "Should we have a global government?",
+    "subject": "A global government should be established.",
     "category": "Politics"
   },
   {
     "id": 11,
     "username": "ReligionNovice1",
     "score": 14,
-    "subject": "Does science disprove religion?",
+    "subject": "Science disproves religion.",
     "category": "Religion"
   },
   {
     "id": 12,
     "username": "ReligionNovice2",
     "score": 11,
-    "subject": "Should religious symbols be allowed in public schools?",
+    "subject": "Religious symbols should be allowed in public schools.",
     "category": "Religion"
   },
   {
     "id": 13,
     "username": "ReligionNovice3",
     "score": 18,
-    "subject": "Is morality dependent on religion?",
+    "subject": "Morality is dependent on religion.",
     "category": "Religion"
   },
   {
     "id": 14,
     "username": "ReligionNovice4",
     "score": 13,
-    "subject": "Can different religions coexist peacefully?",
+    "subject": "Different religions can coexist peacefully.",
     "category": "Religion"
   },
   {
     "id": 15,
     "username": "ReligionNovice5",
     "score": 16,
-    "subject": "Should religious institutions be taxed?",
+    "subject": "Religious institutions should be taxed.",
     "category": "Religion"
   },
   {
     "id": 16,
     "username": "PhilosophyNovice1",
     "score": 15,
-    "subject": "Does free will exist?",
+    "subject": "Free will exists.",
     "category": "Philosophy"
   },
   {
     "id": 17,
     "username": "PhilosophyNovice2",
     "score": 12,
-    "subject": "What is the meaning of life?",
+    "subject": "Life has inherent meaning.",
     "category": "Philosophy"
   },
   {
     "id": 18,
     "username": "PhilosophyNovice3",
     "score": 19,
-    "subject": "Is it ever morally acceptable to lie?",
+    "subject": "Lying can be morally acceptable.",
     "category": "Philosophy"
   },
   {
     "id": 19,
     "username": "PhilosophyNovice4",
     "score": 10,
-    "subject": "Do we live in a simulation?",
+    "subject": "We live in a simulation.",
     "category": "Philosophy"
   },
   {
     "id": 20,
     "username": "PhilosophyNovice5",
     "score": 17,
-    "subject": "Is human nature inherently good or evil?",
+    "subject": "Human nature is inherently good.",
     "category": "Philosophy"
   }
 ]
