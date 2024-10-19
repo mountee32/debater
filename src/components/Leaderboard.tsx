@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Book, Globe, Atom, Lightbulb, Shuffle } from 'lucide-react';
+import { Book, Globe, Atom, Lightbulb } from 'lucide-react';
 import leaderboardData from '../data/leaderboard.json';
 
 interface LeaderboardProps {
@@ -16,7 +16,6 @@ interface LeaderboardEntry {
 }
 
 const categoryIcons: { [key: string]: React.ReactNode } = {
-  'All': <Shuffle size={24} />,
   'Science': <Atom size={24} />,
   'Politics': <Globe size={24} />,
   'Religion': <Book size={24} />,
@@ -27,14 +26,16 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
   const [leaderboardEntries, setLeaderboardEntries] = useState<LeaderboardEntry[]>([]);
   const [selectedEntry, setSelectedEntry] = useState<LeaderboardEntry | null>(null);
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('Politics');
 
   useEffect(() => {
     fetchLeaderboard();
   }, []);
 
   const fetchLeaderboard = () => {
-    const sortedEntries = (leaderboardData as LeaderboardEntry[]).sort((a, b) => b.score - a.score);
+    const sortedEntries = (leaderboardData as LeaderboardEntry[])
+      .filter(entry => entry.category !== 'Random')
+      .sort((a, b) => b.score - a.score);
     setLeaderboardEntries(sortedEntries);
   };
 
@@ -55,15 +56,13 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
     setShowPopup(false);
   };
 
-  const handleCategoryFilter = (category: string | null) => {
+  const handleCategoryFilter = (category: string) => {
     setSelectedCategory(category);
   };
 
-  const filteredEntries = selectedCategory
-    ? leaderboardEntries.filter(entry => entry.category === selectedCategory)
-    : leaderboardEntries;
+  const filteredEntries = leaderboardEntries.filter(entry => entry.category === selectedCategory);
 
-  const categories = ['All', ...Array.from(new Set(leaderboardEntries.map(entry => entry.category)))];
+  const categories = [...new Set(leaderboardEntries.map(entry => entry.category))];
 
   return (
     <div className="mt-8 relative">
@@ -73,11 +72,11 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
           <button
             key={category}
             className={`mr-2 mb-2 p-2 rounded flex flex-col items-center justify-center ${
-              selectedCategory === category || (category === 'All' && selectedCategory === null)
+              selectedCategory === category
                 ? 'bg-indigo-600 text-white'
                 : 'bg-white dark:bg-gray-800'
             } shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
-            onClick={() => handleCategoryFilter(category === 'All' ? null : category)}
+            onClick={() => handleCategoryFilter(category)}
           >
             {categoryIcons[category]}
             <span className="mt-1 text-sm">{category}</span>
