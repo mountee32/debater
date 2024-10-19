@@ -3,162 +3,189 @@
     "id": 1,
     "username": "debateChamp",
     "score": 95,
-    "subject": "Should voting be mandatory?"
+    "subject": "Should voting be mandatory?",
+    "category": "Politics"
   },
   {
     "id": 2,
     "username": "logicMaster",
     "score": 92,
-    "subject": "Is euthanasia morally justifiable?"
+    "subject": "Is euthanasia morally justifiable?",
+    "category": "Philosophy"
   },
   {
     "id": 3,
     "username": "persuader101",
     "score": 88,
-    "subject": "Are GMOs beneficial for society?"
+    "subject": "Are GMOs beneficial for society?",
+    "category": "Science"
   },
   {
     "id": 4,
     "username": "rationalThinker",
     "score": 85,
-    "subject": "Does free will exist?"
+    "subject": "Does free will exist?",
+    "category": "Philosophy"
   },
   {
     "id": 5,
     "username": "debateNewbie",
     "score": 75,
-    "subject": "Is social media overall good for society?"
+    "subject": "Is social media overall good for society?",
+    "category": "Random"
   },
   {
     "id": 6,
     "username": "policyWonk",
     "score": 89,
-    "subject": "Should there be term limits for elected officials?"
+    "subject": "Should there be term limits for elected officials?",
+    "category": "Politics"
   },
   {
     "id": 7,
     "username": "techGuru",
     "score": 82,
-    "subject": "Is artificial intelligence a threat to humanity?"
+    "subject": "Is artificial intelligence a threat to humanity?",
+    "category": "Science"
   },
   {
     "id": 8,
     "username": "politicalSage",
     "score": 91,
-    "subject": "Should the electoral college be abolished?"
+    "subject": "Should the electoral college be abolished?",
+    "category": "Politics"
   },
   {
     "id": 9,
     "username": "diplomacyPro",
     "score": 87,
-    "subject": "Is the United Nations effective in maintaining global peace?"
+    "subject": "Is the United Nations effective in maintaining global peace?",
+    "category": "Politics"
   },
   {
     "id": 10,
     "username": "constitutionDefender",
     "score": 83,
-    "subject": "Should the Supreme Court have term limits?"
+    "subject": "Should the Supreme Court have term limits?",
+    "category": "Politics"
   },
   {
     "id": 11,
     "username": "moralCompass",
     "score": 90,
-    "subject": "Is it ethical to use animals for medical research?"
+    "subject": "Is it ethical to use animals for medical research?",
+    "category": "Philosophy"
   },
   {
     "id": 12,
     "username": "ethicsExplorer",
     "score": 86,
-    "subject": "Should we have a universal basic income?"
+    "subject": "Should we have a universal basic income?",
+    "category": "Politics"
   },
   {
     "id": 13,
     "username": "virtueSeeker",
     "score": 81,
-    "subject": "Is it ever morally acceptable to lie?"
+    "subject": "Is it ever morally acceptable to lie?",
+    "category": "Philosophy"
   },
   {
     "id": 14,
     "username": "ethicalDilemma",
     "score": 88,
-    "subject": "Should organ donation be mandatory?"
+    "subject": "Should organ donation be mandatory?",
+    "category": "Philosophy"
   },
   {
     "id": 15,
     "username": "scienceAdvocate",
     "score": 93,
-    "subject": "Should we prioritize space exploration over ocean exploration?"
+    "subject": "Should we prioritize space exploration over ocean exploration?",
+    "category": "Science"
   },
   {
     "id": 16,
     "username": "researchPioneer",
     "score": 89,
-    "subject": "Is nuclear energy the solution to climate change?"
+    "subject": "Is nuclear energy the solution to climate change?",
+    "category": "Science"
   },
   {
     "id": 17,
     "username": "dataDriven",
     "score": 85,
-    "subject": "Should vaccination be mandatory?"
+    "subject": "Should vaccination be mandatory?",
+    "category": "Science"
   },
   {
     "id": 18,
     "username": "hypothesisTester",
     "score": 91,
-    "subject": "Is there intelligent life elsewhere in the universe?"
+    "subject": "Is there intelligent life elsewhere in the universe?",
+    "category": "Science"
   },
   {
     "id": 19,
     "username": "mindExplorer",
     "score": 87,
-    "subject": "Is consciousness purely a product of the brain?"
+    "subject": "Is consciousness purely a product of the brain?",
+    "category": "Philosophy"
   },
   {
     "id": 20,
     "username": "existentialThinker",
     "score": 92,
-    "subject": "What is the meaning of life?"
+    "subject": "What is the meaning of life?",
+    "category": "Philosophy"
   },
   {
     "id": 21,
     "username": "faithSeeker",
     "score": 83,
-    "subject": "Does science disprove religion?"
+    "subject": "Does science disprove religion?",
+    "category": "Religion"
   },
   {
     "id": 22,
     "username": "wisdomSeeker",
     "score": 89,
-    "subject": "Is morality dependent on religion?"
+    "subject": "Is morality dependent on religion?",
+    "category": "Religion"
   },
   {
     "id": 23,
     "username": "spiritualExplorer",
     "score": 94,
-    "subject": "Can different religions coexist peacefully?"
+    "subject": "Can different religions coexist peacefully?",
+    "category": "Religion"
   },
   {
     "id": 24,
     "username": "theologian101",
     "score": 90,
-    "subject": "Should religious symbols be allowed in public schools?"
+    "subject": "Should religious symbols be allowed in public schools?",
+    "category": "Religion"
   },
   {
     "id": 25,
     "username": "randomDebater",
     "score": 86,
-    "subject": "Is pineapple an acceptable pizza topping?"
+    "subject": "Is pineapple an acceptable pizza topping?",
+    "category": "Random"
   },
   {
     "id": 26,
     "username": "wildCardArguer",
     "score": 88,
-    "subject": "Should daylight saving time be abolished?"
+    "subject": "Should daylight saving time be abolished?",
+    "category": "Random"
   },
   {
     "id": 27,
     "username": "surpriseLogician",
     "score": 91,
-    "subject": "Is cereal a soup?"
+    "subject": "Is cereal a soup?",
+    "category": "Random"
   }
 ]
