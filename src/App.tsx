@@ -1,5 +1,5 @@
 import React from 'react';
-import { Moon, Sun, ArrowLeft } from 'lucide-react';
+import { Moon, Sun, ArrowLeft, HelpCircle } from 'lucide-react';
 import { DebateGame, CompactLeaderboard } from './components';
 import { GameProvider, useGameContext } from './GameContext';
 import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection } from './GameSetup';
@@ -60,26 +60,26 @@ function AppContent() {
     if (currentStep === -1) return null;
 
     return (
-      <div className="mb-6">
-        <div className="flex justify-between items-center mb-4 relative">
+      <div className="mb-8">
+        <div className="flex justify-between items-center mb-6 relative">
           <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300"></div>
           {steps.map((step, index) => (
             <React.Fragment key={step}>
               <div className="flex flex-col items-center relative z-10">
                 <div 
-                  className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                    index <= currentStep ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-600'
+                  className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                    index <= currentStep ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white' : 'bg-gray-300 text-gray-600'
                   }`}
                 >
                   {index + 1}
                 </div>
-                <span className={`mt-2 ${index <= currentStep ? 'text-blue-500' : 'text-gray-500'}`}>{step}</span>
+                <span className={`mt-2 ${index <= currentStep ? 'text-blue-500 font-semibold' : 'text-gray-500'}`}>{step}</span>
               </div>
               {index < steps.length - 1 && (
                 <div className="flex-grow relative">
                   <div 
                     className={`absolute top-0 left-0 right-0 h-0.5 ${
-                      index < currentStep ? 'bg-blue-500' : 'bg-gray-300'
+                      index < currentStep ? 'bg-gradient-to-r from-blue-500 to-indigo-600' : 'bg-gray-300'
                     }`}
                   ></div>
                 </div>
@@ -88,7 +88,7 @@ function AppContent() {
           ))}
         </div>
         {currentStep > 0 && (
-          <button onClick={goBack} className="flex items-center text-blue-500 hover:text-blue-700">
+          <button onClick={goBack} className="flex items-center text-blue-500 hover:text-blue-700 transition-colors duration-300">
             <ArrowLeft size={20} className="mr-2" />
             Back
           </button>
@@ -100,18 +100,22 @@ function AppContent() {
   const HomeScreen = () => (
     <div className="text-center">
       <CompactLeaderboard username={username} isExpanded={false} onToggle={() => {}} />
-      <div className="flex justify-center space-x-4 mt-6">
+      <div className="flex justify-center space-x-6 mt-8">
         <button
           onClick={handleStartRandomGame}
-          className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700"
+          className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-8 py-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center"
+          title="Start a new debate with a random topic"
         >
           Start Random Discussion
+          <HelpCircle size={18} className="ml-2" />
         </button>
         <button
           onClick={handleJoinExistingDiscussions}
-          className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700"
+          className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center"
+          title="Join an ongoing debate from the list"
         >
           Join Existing Discussions
+          <HelpCircle size={18} className="ml-2" />
         </button>
       </div>
     </div>
@@ -119,12 +123,16 @@ function AppContent() {
 
   return (
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
-      <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
-        <div className="container mx-auto px-4 py-8">
-          <header className="flex justify-between items-center mb-8">
-            <h1 className="text-4xl font-bold">Debate Master</h1>
-            <button onClick={toggleDarkMode} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-              {isDarkMode ? <Sun className="text-yellow-400" /> : <Moon className="text-gray-600" />}
+      <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300 bg-opacity-50 dark:bg-opacity-50" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'4\' height=\'4\' viewBox=\'0 0 4 4\'%3E%3Cpath fill=\'%239C92AC\' fill-opacity=\'0.4\' d=\'M1 3h1v1H1V3zm2-2h1v1H3V1z\'%3E%3C/path%3E%3C/svg%3E")'}}>
+        <div className="container mx-auto px-6 py-10">
+          <header className="flex justify-between items-center mb-10">
+            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">Debate Master</h1>
+            <button 
+              onClick={toggleDarkMode} 
+              className="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+              title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDarkMode ? <Sun className="text-yellow-400" size={24} /> : <Moon className="text-gray-600" size={24} />}
             </button>
           </header>
 
@@ -147,45 +155,45 @@ function AppContent() {
           )}
           {gameState === 'end' && (
             <div className="text-center">
-              <h2 className="text-3xl font-semibold mb-6">Game Over!</h2>
-              <div className="mb-6">
-                <p className="text-xl mb-2">Your debate score:</p>
-                <p className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">{score}/10</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+              <h2 className="text-4xl font-semibold mb-8">Game Over!</h2>
+              <div className="mb-8">
+                <p className="text-2xl mb-3">Your debate score:</p>
+                <p className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">{score}/10</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
                   (Difficulty: {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}, 
                   Multiplier: x{difficulty === 'easy' ? '1.0' : difficulty === 'medium' ? '1.1' : '1.2'})
                 </p>
               </div>
-              <div className="mb-6 text-left">
-                <h3 className="text-2xl font-semibold mb-2">Feedback:</h3>
-                <p className="bg-white dark:bg-gray-800 p-4 rounded-lg">{rationale}</p>
+              <div className="mb-8 text-left">
+                <h3 className="text-3xl font-semibold mb-3">Feedback:</h3>
+                <p className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">{rationale}</p>
               </div>
-              <div className="mb-6 text-left">
-                <h3 className="text-2xl font-semibold mb-2">Level Up Tips:</h3>
-                <ul className="list-disc list-inside bg-white dark:bg-gray-800 p-4 rounded-lg">
+              <div className="mb-8 text-left">
+                <h3 className="text-3xl font-semibold mb-3">Level Up Tips:</h3>
+                <ul className="list-disc list-inside bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                   {recommendations.split('\n').map((rec: string, index: number) => (
-                    <li key={index} className="mb-2">{rec}</li>
+                    <li key={index} className="mb-3">{rec}</li>
                   ))}
                 </ul>
               </div>
               {showUsernamePrompt && (
-                <div className="mb-6">
-                  <h3 className="text-2xl font-semibold mb-2">New High Score!</h3>
+                <div className="mb-8">
+                  <h3 className="text-3xl font-semibold mb-3">New High Score!</h3>
                   <form onSubmit={handleUsernameSubmit} className="flex flex-col items-center">
                     <input
                       type="text"
                       name="username"
                       placeholder="Enter your username"
-                      className="border p-2 mb-2 rounded dark:bg-gray-700 dark:border-gray-600"
+                      className="border p-3 mb-3 rounded-lg w-64 dark:bg-gray-700 dark:border-gray-600"
                       required
                     />
-                    <button type="submit" className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Submit Score</button>
+                    <button type="submit" className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300">Submit Score</button>
                   </form>
                 </div>
               )}
               <button
                 onClick={() => setGameState('home')}
-                className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700"
+                className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-8 py-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
               >
                 Play Again
               </button>
@@ -193,11 +201,11 @@ function AppContent() {
           )}
           {gameState === 'leaderboard' && (
             <div className="text-center">
-              <h2 className="text-3xl font-semibold mb-6">Leaderboard</h2>
+              <h2 className="text-4xl font-semibold mb-8">Leaderboard</h2>
               <CompactLeaderboard username={username} isExpanded={true} onToggle={() => {}} />
               <button
                 onClick={() => setGameState('home')}
-                className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 mt-6"
+                className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-8 py-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 mt-8"
               >
                 Play Again
               </button>

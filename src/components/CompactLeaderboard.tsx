@@ -15,14 +15,15 @@ interface LeaderboardEntry {
   difficulty: 'easy' | 'medium' | 'hard';
   category: string;
   subject: string;
+  avatar: string;
 }
 
 const mockLeaderboardData: LeaderboardEntry[] = [
-  { id: 1, username: "debateChamp", score: 95, difficulty: "hard", category: "Politics", subject: "Should voting be mandatory?" },
-  { id: 2, username: "logicMaster", score: 92, difficulty: "hard", category: "Ethics", subject: "Is euthanasia morally justifiable?" },
-  { id: 3, username: "persuader101", score: 88, difficulty: "medium", category: "Science", subject: "Are GMOs beneficial for society?" },
-  { id: 4, username: "rationalThinker", score: 85, difficulty: "medium", category: "Philosophy", subject: "Does free will exist?" },
-  { id: 5, username: "debateNewbie", score: 75, difficulty: "easy", category: "Technology", subject: "Is social media overall good for society?" },
+  { id: 1, username: "debateChamp", score: 95, difficulty: "hard", category: "Politics", subject: "Should voting be mandatory?", avatar: "/assets/user_afro_male.svg" },
+  { id: 2, username: "logicMaster", score: 92, difficulty: "hard", category: "Ethics", subject: "Is euthanasia morally justifiable?", avatar: "/assets/woman1.svg" },
+  { id: 3, username: "persuader101", score: 88, difficulty: "medium", category: "Science", subject: "Are GMOs beneficial for society?", avatar: "/assets/man2.svg" },
+  { id: 4, username: "rationalThinker", score: 85, difficulty: "medium", category: "Philosophy", subject: "Does free will exist?", avatar: "/assets/woman_young.svg" },
+  { id: 5, username: "debateNewbie", score: 75, difficulty: "easy", category: "Technology", subject: "Is social media overall good for society?", avatar: "/assets/boy_young.svg" },
 ];
 
 const categoryIcons: { [key: string]: React.ElementType } = {
@@ -42,18 +43,18 @@ interface CategoryButtonsProps {
 
 const CategoryButtons: React.FC<CategoryButtonsProps> = ({ selectedCategory, onCategorySelect }) => {
   return (
-    <div className="flex flex-wrap justify-center mb-4">
+    <div className="flex flex-wrap justify-center mb-6">
       {Object.entries(categoryIcons).map(([category, Icon]) => (
         <button
           key={category}
-          className={`flex items-center m-1 px-3 py-1 rounded-full text-sm ${
+          className={`flex items-center m-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 transform hover:scale-105 ${
             selectedCategory === category
-              ? 'bg-indigo-600 text-white'
-              : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
+              ? 'bg-indigo-600 text-white shadow-md'
+              : 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-900 dark:text-indigo-200 dark:hover:bg-indigo-800'
           }`}
           onClick={() => onCategorySelect(selectedCategory === category ? null : category)}
         >
-          <Icon size={16} className="mr-1" />
+          <Icon size={20} className="mr-2" />
           <span>{category}</span>
         </button>
       ))}
@@ -86,28 +87,33 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold">Leaderboard</h2>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Leaderboard</h2>
       </div>
       <CategoryButtons selectedCategory={selectedCategory} onCategorySelect={setSelectedCategory} />
       <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96' : 'max-h-40'}`}>
         <table className="w-full">
           <thead>
-            <tr className="text-left">
-              <th className="pb-2 w-1/12">Rank</th>
-              <th className="pb-2 w-3/12">User</th>
-              <th className="pb-2 w-2/12">Score</th>
-              <th className="pb-2 w-6/12">Subject</th>
+            <tr className="text-left text-gray-600 dark:text-gray-300">
+              <th className="pb-3 w-1/12 font-semibold">Rank</th>
+              <th className="pb-3 w-4/12 font-semibold">User</th>
+              <th className="pb-3 w-2/12 font-semibold">Score</th>
+              <th className="pb-3 w-5/12 font-semibold">Subject</th>
             </tr>
           </thead>
           <tbody>
             {filteredLeaderboardData.map((entry, index) => (
-              <tr key={entry.id} className={username === entry.username ? 'font-bold' : ''}>
-                <td className="py-1">{index + 1}</td>
-                <td className="py-1">{entry.username}</td>
-                <td className="py-1">{entry.score}</td>
-                <td className="py-1">
+              <tr key={entry.id} className={`${username === entry.username ? 'font-bold bg-indigo-100 dark:bg-indigo-900' : ''} hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-150`}>
+                <td className="py-3 text-gray-800 dark:text-gray-200">{index + 1}</td>
+                <td className="py-3 text-gray-800 dark:text-gray-200">
+                  <div className="flex items-center">
+                    <img src={entry.avatar} alt={entry.username} className="w-8 h-8 rounded-full mr-3" />
+                    {entry.username}
+                  </div>
+                </td>
+                <td className="py-3 text-gray-800 dark:text-gray-200">{entry.score}</td>
+                <td className="py-3 text-gray-600 dark:text-gray-300">
                   <span title={entry.subject} className="cursor-help">
                     {truncateSubject(entry.subject, 30)}
                   </span>
