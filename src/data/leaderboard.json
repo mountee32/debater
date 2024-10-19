@@ -54,5 +54,149 @@
     "difficulty": "medium",
     "category": "Technology",
     "subject": "Is artificial intelligence a threat to humanity?"
+  },
+  {
+    "id": 8,
+    "username": "politicalSage",
+    "score": 91,
+    "difficulty": "hard",
+    "category": "Politics",
+    "subject": "Should the electoral college be abolished?"
+  },
+  {
+    "id": 9,
+    "username": "diplomacyPro",
+    "score": 87,
+    "difficulty": "medium",
+    "category": "Politics",
+    "subject": "Is the United Nations effective in maintaining global peace?"
+  },
+  {
+    "id": 10,
+    "username": "constitutionDefender",
+    "score": 83,
+    "difficulty": "hard",
+    "category": "Politics",
+    "subject": "Should the Supreme Court have term limits?"
+  },
+  {
+    "id": 11,
+    "username": "moralCompass",
+    "score": 90,
+    "difficulty": "hard",
+    "category": "Ethics",
+    "subject": "Is it ethical to use animals for medical research?"
+  },
+  {
+    "id": 12,
+    "username": "ethicsExplorer",
+    "score": 86,
+    "difficulty": "medium",
+    "category": "Ethics",
+    "subject": "Should we have a universal basic income?"
+  },
+  {
+    "id": 13,
+    "username": "virtueSeeker",
+    "score": 81,
+    "difficulty": "easy",
+    "category": "Ethics",
+    "subject": "Is it ever morally acceptable to lie?"
+  },
+  {
+    "id": 14,
+    "username": "ethicalDilemma",
+    "score": 88,
+    "difficulty": "medium",
+    "category": "Ethics",
+    "subject": "Should organ donation be mandatory?"
+  },
+  {
+    "id": 15,
+    "username": "scienceAdvocate",
+    "score": 93,
+    "difficulty": "hard",
+    "category": "Science",
+    "subject": "Should we prioritize space exploration over ocean exploration?"
+  },
+  {
+    "id": 16,
+    "username": "researchPioneer",
+    "score": 89,
+    "difficulty": "medium",
+    "category": "Science",
+    "subject": "Is nuclear energy the solution to climate change?"
+  },
+  {
+    "id": 17,
+    "username": "dataDriven",
+    "score": 85,
+    "difficulty": "easy",
+    "category": "Science",
+    "subject": "Should vaccination be mandatory?"
+  },
+  {
+    "id": 18,
+    "username": "hypothesisTester",
+    "score": 91,
+    "difficulty": "hard",
+    "category": "Science",
+    "subject": "Is there intelligent life elsewhere in the universe?"
+  },
+  {
+    "id": 19,
+    "username": "mindExplorer",
+    "score": 87,
+    "difficulty": "medium",
+    "category": "Philosophy",
+    "subject": "Is consciousness purely a product of the brain?"
+  },
+  {
+    "id": 20,
+    "username": "existentialThinker",
+    "score": 92,
+    "difficulty": "hard",
+    "category": "Philosophy",
+    "subject": "What is the meaning of life?"
+  },
+  {
+    "id": 21,
+    "username": "logicLover",
+    "score": 83,
+    "difficulty": "easy",
+    "category": "Philosophy",
+    "subject": "Can we ever truly know anything?"
+  },
+  {
+    "id": 22,
+    "username": "wisdomSeeker",
+    "score": 89,
+    "difficulty": "medium",
+    "category": "Philosophy",
+    "subject": "Is morality subjective or objective?"
+  },
+  {
+    "id": 23,
+    "username": "innovationGuru",
+    "score": 94,
+    "difficulty": "hard",
+    "category": "Technology",
+    "subject": "Will cryptocurrency replace traditional currency?"
+  },
+  {
+    "id": 24,
+    "username": "futurist101",
+    "score": 90,
+    "difficulty": "medium",
+    "category": "Technology",
+    "subject": "Should we implement a universal digital identity system?"
+  },
+  {
+    "id": 25,
+    "username": "techEthicist",
+    "score": 86,
+    "difficulty": "easy",
+    "category": "Technology",
+    "subject": "Should social media platforms be held responsible for user content?"
   }
 ]

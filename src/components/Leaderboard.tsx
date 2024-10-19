@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getLeaderboard } from '../api/openRouterApi';
+import leaderboardData from '../data/leaderboard.json';
 
 interface LeaderboardProps {
   username: string;
@@ -14,40 +14,16 @@ interface LeaderboardEntry {
   subject: string;
 }
 
-const mockLeaderboardData: LeaderboardEntry[] = [
-  { id: 1, username: "debateChamp", score: 95, difficulty: "hard", category: "Politics", subject: "Should voting be mandatory?" },
-  { id: 2, username: "logicMaster", score: 92, difficulty: "hard", category: "Ethics", subject: "Is euthanasia morally justifiable?" },
-  { id: 3, username: "persuader101", score: 88, difficulty: "medium", category: "Science", subject: "Are GMOs beneficial for society?" },
-  { id: 4, username: "rationalThinker", score: 85, difficulty: "medium", category: "Philosophy", subject: "Does free will exist?" },
-  { id: 5, username: "debateNewbie", score: 75, difficulty: "easy", category: "Technology", subject: "Is social media overall good for society?" },
-  { id: 6, username: "policyWonk", score: 89, difficulty: "hard", category: "Politics", subject: "Should there be term limits for elected officials?" },
-  { id: 7, username: "techGuru", score: 82, difficulty: "medium", category: "Technology", subject: "Is artificial intelligence a threat to humanity?" },
-];
-
 const Leaderboard: React.FC<LeaderboardProps> = ({ username }) => {
-  const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry[]>(mockLeaderboardData);
-  const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard' | undefined>(undefined);
+  const [leaderboardEntries, setLeaderboardEntries] = useState<LeaderboardEntry[]>([]);
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     fetchLeaderboard();
-  }, [difficulty]);
+  }, []);
 
-  const fetchLeaderboard = async () => {
-    try {
-      // Commented out the API call and using mock data instead
-      // const data = await getLeaderboard(difficulty);
-      // setLeaderboardData(data);
-      
-      // Filter mock data based on difficulty
-      let filteredData = mockLeaderboardData;
-      if (difficulty) {
-        filteredData = filteredData.filter(entry => entry.difficulty === difficulty);
-      }
-      setLeaderboardData(filteredData);
-    } catch (error) {
-      console.error('Error fetching leaderboard:', error);
-    }
+  const fetchLeaderboard = () => {
+    setLeaderboardEntries(leaderboardData as LeaderboardEntry[]);
   };
 
   const truncateSubject = (subject: string, maxLength: number) => {
@@ -55,7 +31,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username }) => {
     return `${subject.substring(0, maxLength)}...`;
   };
 
-  const groupedData = leaderboardData.reduce((acc, entry) => {
+  const groupedData = leaderboardEntries.reduce((acc, entry) => {
     if (!acc[entry.category]) {
       acc[entry.category] = [];
     }
@@ -70,18 +46,6 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username }) => {
   return (
     <div className="mt-8">
       <h2 className="text-2xl font-bold mb-4">Global Leaderboard</h2>
-      <div className="mb-4">
-        <select
-          className="mr-2 p-2 border rounded"
-          value={difficulty || ''}
-          onChange={(e) => setDifficulty(e.target.value as 'easy' | 'medium' | 'hard' | undefined)}
-        >
-          <option value="">All Difficulties</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-      </div>
       <div className="space-y-4">
         {Object.entries(groupedData).map(([category, entries]) => (
           <div key={category} className="border rounded-lg overflow-hidden">
