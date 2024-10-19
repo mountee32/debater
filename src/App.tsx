@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Moon, Sun, ArrowLeft, HelpCircle, Shuffle } from 'lucide-react';
 import { DebateGame, Leaderboard } from './components';
 import { GameProvider, useGameContext } from './GameContext';
-import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection } from './GameSetup';
+import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection, TopicSelection } from './GameSetup';
 
-const steps = ['Category', 'Opponent', 'Difficulty', 'Position'];
+const steps = ['Category', 'Topic', 'Position', 'Opponent', 'Difficulty'];
 
 function App() {
   return (
@@ -38,15 +38,16 @@ function AppContent() {
 
   const handleStartDebateFromLeaderboard = (subject: string) => {
     setTopic(subject);
-    setGameState('select-personality');
+    setGameState('select-position');
   };
 
   const getCurrentStep = () => {
     switch (gameState) {
       case 'select-category': return 0;
-      case 'select-personality': return 1;
-      case 'select-difficulty': return 2;
-      case 'select-position': return 3;
+      case 'select-topic': return 1;
+      case 'select-position': return 2;
+      case 'select-personality': return 3;
+      case 'select-difficulty': return 4;
       default: return -1;
     }
   };
@@ -54,9 +55,10 @@ function AppContent() {
   const goBack = () => {
     console.log('Going back from:', gameState);
     switch (gameState) {
-      case 'select-personality': setGameState('select-category'); break;
+      case 'select-topic': setGameState('select-category'); break;
+      case 'select-position': setGameState('select-topic'); break;
+      case 'select-personality': setGameState('select-position'); break;
       case 'select-difficulty': setGameState('select-personality'); break;
-      case 'select-position': setGameState('select-difficulty'); break;
       default: setGameState('home');
     }
   };
@@ -146,9 +148,10 @@ function AppContent() {
 
           {gameState === 'home' && <HomeScreen />}
           {gameState === 'select-category' && <CategorySelection />}
+          {gameState === 'select-topic' && <TopicSelection />}
+          {gameState === 'select-position' && <PositionSelection />}
           {gameState === 'select-personality' && <AIPersonalitySelection />}
           {gameState === 'select-difficulty' && <DifficultySelection />}
-          {gameState === 'select-position' && <PositionSelection />}
           {gameState === 'select-pregenerated' && <PregeneratedQuestionSelection />}
           {gameState === 'playing' && selectedPersonality && (
             <DebateGame

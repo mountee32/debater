@@ -52,6 +52,42 @@ export const CategorySelection: React.FC = () => {
   );
 };
 
+export const TopicSelection: React.FC = () => {
+  const { topic, setTopic, preCreatedSubjects, handlePreCreatedSubjectSelect, handleTopicSubmit } = useGameContext();
+
+  return (
+    <StepContainer>
+      <h2 className="text-2xl font-semibold mb-4 text-center">Select or Enter Debate Topic</h2>
+      <div className="space-y-4 mb-6">
+        {preCreatedSubjects.map((subject, index) => (
+          <button
+            key={index}
+            onClick={() => handlePreCreatedSubjectSelect(subject)}
+            className="w-full text-left p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
+          >
+            {subject}
+          </button>
+        ))}
+      </div>
+      <form onSubmit={handleTopicSubmit} className="space-y-4">
+        <input
+          type="text"
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
+          className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+          placeholder="Or enter your own debate topic here"
+        />
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors duration-200"
+        >
+          Continue with Custom Topic
+        </button>
+      </form>
+    </StepContainer>
+  );
+};
+
 export const AIPersonalitySelection: React.FC = () => {
   const { handlePersonalitySelect } = useGameContext();
 

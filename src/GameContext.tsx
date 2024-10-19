@@ -1,9 +1,10 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { generateTopic, submitScore, getLeaderboard } from './api/openRouterApi';
 import { AIPersonality } from './data/aiPersonalities';
+import preCreatedSubjectsData from './data/preCreatedSubjects.json';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
-type GameState = 'home' | 'select-category' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'end' | 'leaderboard' | 'select-pregenerated';
+type GameState = 'home' | 'select-category' | 'select-topic' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'end' | 'leaderboard' | 'select-pregenerated';
 type Position = 'for' | 'against';
 
 interface GameContextType {
@@ -35,13 +36,17 @@ interface GameContextType {
   setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
   pregeneratedQuestions: string[];
   setPregeneratedQuestions: React.Dispatch<React.SetStateAction<string[]>>;
+  preCreatedSubjects: string[];
+  setPreCreatedSubjects: React.Dispatch<React.SetStateAction<string[]>>;
   handleStartRandomGame: () => void;
   handleJoinExistingDiscussions: () => void;
   handleCategorySelect: (selectedCategory: string) => void;
+  handleTopicSubmit: () => void;
   handlePersonalitySelect: (personality: AIPersonality) => void;
   handleDifficultyChange: (newDifficulty: Difficulty) => void;
   handlePositionSelect: (position: Position) => void;
   handlePregeneratedQuestionSelect: (question: string) => void;
+  handlePreCreatedSubjectSelect: (subject: string) => void;
   handleEndGame: (result: { overallScore: number; rationale: string; recommendations: string }) => Promise<void>;
   handleUsernameSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
   toggleDarkMode: () => void;
@@ -72,6 +77,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isHighScore, setIsHighScore] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [pregeneratedQuestions, setPregeneratedQuestions] = useState<string[]>([]);
+  const [preCreatedSubjects, setPreCreatedSubjects] = useState<string[]>([]);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -111,12 +117,13 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const handleCategorySelect = (selectedCategory: string) => {
     console.log('Selected category:', selectedCategory);
     setCategory(selectedCategory);
-    setGameState('select-personality');
-    // Pre-fetch the topic when the category is selected
-    generateTopic(selectedCategory, difficulty).then((newTopic: string) => {
-      console.log('Generated topic:', newTopic);
-      setTopic(newTopic);
-    });
+    setPreCreatedSubjects(preCreatedSubjectsData[selectedCategory as keyof typeof preCreatedSubjectsData]);
+    setGameState('select-topic');
+  };
+
+  const handleTopicSubmit = () => {
+    console.log('Topic submitted:', topic);
+    setGameState('select-position');
   };
 
   const handlePersonalitySelect = (personality: AIPersonality) => {
@@ -128,19 +135,25 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const handleDifficultyChange = (newDifficulty: Difficulty) => {
     console.log('Selected difficulty:', newDifficulty);
     setDifficulty(newDifficulty);
-    setGameState('select-position');
+    setGameState('playing');
   };
 
   const handlePositionSelect = (position: Position) => {
     console.log('Selected position:', position);
     setUserPosition(position);
-    setGameState('playing');
+    setGameState('select-personality');
   };
 
   const handlePregeneratedQuestionSelect = (question: string) => {
     console.log('Selected pregenerated question:', question);
     setTopic(question);
-    setGameState('select-personality');
+    setGameState('select-position');
+  };
+
+  const handlePreCreatedSubjectSelect = (subject: string) => {
+    console.log('Selected pre-created subject:', subject);
+    setTopic(subject);
+    setGameState('select-position');
   };
 
   const handleEndGame = async (result: { overallScore: number; rationale: string; recommendations: string }) => {
@@ -209,13 +222,17 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsDarkMode,
     pregeneratedQuestions,
     setPregeneratedQuestions,
+    preCreatedSubjects,
+    setPreCreatedSubjects,
     handleStartRandomGame,
     handleJoinExistingDiscussions,
     handleCategorySelect,
+    handleTopicSubmit,
     handlePersonalitySelect,
     handleDifficultyChange,
     handlePositionSelect,
     handlePregeneratedQuestionSelect,
+    handlePreCreatedSubjectSelect,
     handleEndGame,
     handleUsernameSubmit,
     toggleDarkMode,

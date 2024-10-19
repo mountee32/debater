@@ -1,0 +1,37 @@
+{
+  "Religion": [
+    "The role of religion in modern society",
+    "Separation of church and state",
+    "Religious freedom vs. secular laws",
+    "Impact of religious education on youth",
+    "Interfaith dialogue and cooperation"
+  ],
+  "Politics": [
+    "Universal basic income",
+    "Electoral college vs. popular vote",
+    "Term limits for elected officials",
+    "Campaign finance reform",
+    "Mandatory voting laws"
+  ],
+  "Science": [
+    "Ethics of genetic engineering",
+    "Climate change mitigation strategies",
+    "Space exploration funding",
+    "Artificial intelligence regulation",
+    "Vaccine mandates"
+  ],
+  "Philosophy": [
+    "Free will vs. determinism",
+    "The nature of consciousness",
+    "Ethical implications of AI",
+    "The meaning of life",
+    "Moral relativism vs. moral absolutism"
+  ],
+  "Random": [
+    "Social media's impact on society",
+    "The future of work in the age of automation",
+    "Universal healthcare systems",
+    "The role of art in society",
+    "Privacy in the digital age"
+  ]
+}
