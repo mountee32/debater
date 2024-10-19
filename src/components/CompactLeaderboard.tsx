@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Book, Globe, Atom, Lightbulb, Shuffle, Cpu } from 'lucide-react';
-import { getLeaderboard } from '../api/openRouterApi';
 
 interface CompactLeaderboardProps {
   username: string;
@@ -15,16 +14,7 @@ interface LeaderboardEntry {
   difficulty: 'easy' | 'medium' | 'hard';
   category: string;
   subject: string;
-  avatar: string;
 }
-
-const mockLeaderboardData: LeaderboardEntry[] = [
-  { id: 1, username: "debateChamp", score: 95, difficulty: "hard", category: "Politics", subject: "Should voting be mandatory?", avatar: "/assets/user_afro_male.svg" },
-  { id: 2, username: "logicMaster", score: 92, difficulty: "hard", category: "Ethics", subject: "Is euthanasia morally justifiable?", avatar: "/assets/woman1.svg" },
-  { id: 3, username: "persuader101", score: 88, difficulty: "medium", category: "Science", subject: "Are GMOs beneficial for society?", avatar: "/assets/man2.svg" },
-  { id: 4, username: "rationalThinker", score: 85, difficulty: "medium", category: "Philosophy", subject: "Does free will exist?", avatar: "/assets/woman_young.svg" },
-  { id: 5, username: "debateNewbie", score: 75, difficulty: "easy", category: "Technology", subject: "Is social media overall good for society?", avatar: "/assets/boy_young.svg" },
-];
 
 const categoryIcons: { [key: string]: React.ElementType } = {
   Religion: Book,
@@ -63,15 +53,18 @@ const CategoryButtons: React.FC<CategoryButtonsProps> = ({ selectedCategory, onC
 };
 
 const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExpanded, onToggle }) => {
-  const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry[]>(mockLeaderboardData);
+  const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
-      // Commented out the API call and using mock data instead
-      // const data = await getLeaderboard();
-      // setLeaderboardData(data.slice(0, 10)); // Get top 10 entries
-      setLeaderboardData(mockLeaderboardData);
+      try {
+        const response = await fetch('/src/data/leaderboard.json');
+        const data = await response.json();
+        setLeaderboardData(data);
+      } catch (error) {
+        console.error('Error fetching leaderboard data:', error);
+      }
     };
 
     fetchLeaderboard();
@@ -108,7 +101,6 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
                 <td className="py-3 text-gray-800 dark:text-gray-200">{index + 1}</td>
                 <td className="py-3 text-gray-800 dark:text-gray-200">
                   <div className="flex items-center">
-                    <img src={entry.avatar} alt={entry.username} className="w-8 h-8 rounded-full mr-3" />
                     {entry.username}
                   </div>
                 </td>
