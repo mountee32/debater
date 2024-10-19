@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import leaderboardData from '../data/leaderboard.json';
-import { Book, Globe, Atom, Lightbulb, Shuffle } from 'lucide-react';
 
 interface LeaderboardProps {
   username: string;
@@ -10,29 +9,20 @@ interface LeaderboardEntry {
   id: number;
   username: string;
   score: number;
-  difficulty: string;
-  category: string;
   subject: string;
+  stance: string;
 }
-
-const categoryIcons: { [key: string]: React.ElementType } = {
-  Religion: Book,
-  Politics: Globe,
-  Science: Atom,
-  Philosophy: Lightbulb,
-  Random: Shuffle,
-};
 
 const Leaderboard: React.FC<LeaderboardProps> = ({ username }) => {
   const [leaderboardEntries, setLeaderboardEntries] = useState<LeaderboardEntry[]>([]);
-  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     fetchLeaderboard();
   }, []);
 
   const fetchLeaderboard = () => {
-    setLeaderboardEntries(leaderboardData as LeaderboardEntry[]);
+    const sortedEntries = (leaderboardData as LeaderboardEntry[]).sort((a, b) => b.score - a.score);
+    setLeaderboardEntries(sortedEntries);
   };
 
   const truncateSubject = (subject: string, maxLength: number) => {
@@ -40,68 +30,34 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username }) => {
     return `${subject.substring(0, maxLength)}...`;
   };
 
-  const groupedData = leaderboardEntries.reduce((acc, entry) => {
-    if (!acc[entry.category]) {
-      acc[entry.category] = [];
-    }
-    acc[entry.category].push(entry);
-    return acc;
-  }, {} as Record<string, LeaderboardEntry[]>);
-
-  const toggleCategory = (category: string) => {
-    setExpandedCategory(expandedCategory === category ? null : category);
-  };
-
   return (
     <div className="mt-8">
       <h2 className="text-2xl font-bold mb-4">Global Leaderboard</h2>
-      <div className="space-y-4">
-        {Object.entries(groupedData).map(([category, entries]) => {
-          const IconComponent = categoryIcons[category] || Shuffle;
-          return (
-            <div key={category} className="border rounded-lg overflow-hidden">
-              <button
-                className="w-full p-4 text-left font-semibold bg-gray-100 hover:bg-gray-200 focus:outline-none flex items-center"
-                onClick={() => toggleCategory(category)}
-              >
-                <IconComponent size={24} className="mr-2 text-indigo-600" />
-                <span>{category} ({entries.length})</span>
-              </button>
-              <div
-                className={`transition-all duration-300 ease-in-out ${
-                  expandedCategory === category ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-                }`}
-              >
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="bg-gray-50">
-                      <th className="p-2 text-left">Rank</th>
-                      <th className="p-2 text-left">Username</th>
-                      <th className="p-2 text-left">Score</th>
-                      <th className="p-2 text-left">Difficulty</th>
-                      <th className="p-2 text-left">Debate Subject</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {entries.map((entry, index) => (
-                      <tr key={entry.id} className={username === entry.username ? 'bg-yellow-100' : ''}>
-                        <td className="p-2">{index + 1}</td>
-                        <td className="p-2">{entry.username}</td>
-                        <td className="p-2">{entry.score}</td>
-                        <td className="p-2">{entry.difficulty}</td>
-                        <td className="p-2">
-                          <span title={entry.subject} className="cursor-help">
-                            {truncateSubject(entry.subject, 50)}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          );
-        })}
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="bg-gray-50">
+              <th className="p-2 text-left">Score</th>
+              <th className="p-2 text-left">Name</th>
+              <th className="p-2 text-left">Subject</th>
+              <th className="p-2 text-left">Stance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leaderboardEntries.map((entry, index) => (
+              <tr key={entry.id} className={username === entry.username ? 'bg-yellow-100' : ''}>
+                <td className="p-2">{entry.score}</td>
+                <td className="p-2">{entry.username}</td>
+                <td className="p-2">
+                  <span title={entry.subject} className="cursor-help">
+                    {truncateSubject(entry.subject, 50)}
+                  </span>
+                </td>
+                <td className="p-2 capitalize">{entry.stance}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
