@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "username": "debateChamp",
+    "score": 95,
+    "difficulty": "hard",
+    "category": "Politics",
+    "subject": "Should voting be mandatory?"
+  },
+  {
+    "id": 2,
+    "username": "logicMaster",
+    "score": 92,
+    "difficulty": "hard",
+    "category": "Ethics",
+    "subject": "Is euthanasia morally justifiable?"
+  },
+  {
+    "id": 3,
+    "username": "persuader101",
+    "score": 88,
+    "difficulty": "medium",
+    "category": "Science",
+    "subject": "Are GMOs beneficial for society?"
+  },
+  {
+    "id": 4,
+    "username": "rationalThinker",
+    "score": 85,
+    "difficulty": "medium",
+    "category": "Philosophy",
+    "subject": "Does free will exist?"
+  },
+  {
+    "id": 5,
+    "username": "debateNewbie",
+    "score": 75,
+    "difficulty": "easy",
+    "category": "Technology",
+    "subject": "Is social media overall good for society?"
+  },
+  {
+    "id": 6,
+    "username": "policyWonk",
+    "score": 89,
+    "difficulty": "hard",
+    "category": "Politics",
+    "subject": "Should there be term limits for elected officials?"
+  },
+  {
+    "id": 7,
+    "username": "techGuru",
+    "score": 82,
+    "difficulty": "medium",
+    "category": "Technology",
+    "subject": "Is artificial intelligence a threat to humanity?"
+  }
+]

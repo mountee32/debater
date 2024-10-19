@@ -86,7 +86,7 @@ function App() {
     setCategory(selectedCategory);
     setGameState('select-personality');
     // Pre-fetch the topic when the category is selected
-    generateTopic(selectedCategory, difficulty).then((newTopic) => {
+    generateTopic(selectedCategory, difficulty).then((newTopic: string) => {
       console.log('Generated topic:', newTopic);
       setTopic(newTopic);
     });

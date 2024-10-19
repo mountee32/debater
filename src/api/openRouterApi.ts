@@ -262,19 +262,27 @@ type LeaderboardEntry = {
   subject: string;
 };
 
-// Function to load leaderboard data from localStorage
-const loadLeaderboardData = (): LeaderboardEntry[] => {
-  const storedData = localStorage.getItem('leaderboardData');
-  return storedData ? JSON.parse(storedData) : [];
+// In-memory leaderboard data
+let leaderboardData: LeaderboardEntry[] = [];
+
+// Function to load leaderboard data from JSON file
+const loadLeaderboardData = async (): Promise<LeaderboardEntry[]> => {
+  try {
+    const response = await fetch('/src/data/leaderboard.json');
+    if (!response.ok) {
+      throw new Error('Failed to fetch leaderboard data');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error loading leaderboard data:', error);
+    return [];
+  }
 };
 
-// Function to save leaderboard data to localStorage
-const saveLeaderboardData = (data: LeaderboardEntry[]) => {
-  localStorage.setItem('leaderboardData', JSON.stringify(data));
+// Initialize leaderboard data
+export const initializeLeaderboard = async (): Promise<void> => {
+  leaderboardData = await loadLeaderboardData();
 };
-
-// Initialize leaderboard data from localStorage
-let leaderboardData = loadLeaderboardData();
 
 export const submitScore = async (
   username: string,
@@ -294,7 +302,6 @@ export const submitScore = async (
   leaderboardData.push(newEntry);
   leaderboardData.sort((a, b) => b.score - a.score);
   leaderboardData = leaderboardData.slice(0, 100); // Keep only top 100 scores
-  saveLeaderboardData(leaderboardData);
 };
 
 export const getLeaderboard = async (
