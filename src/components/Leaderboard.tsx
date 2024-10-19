@@ -65,13 +65,13 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
   const categories = [...new Set(leaderboardEntries.map(entry => entry.category))];
 
   return (
-    <div className="mt-8 relative">
-      <h2 className="text-2xl font-bold mb-4">Global Leaderboard</h2>
-      <div className="flex flex-wrap justify-start mb-4">
+    <div className="mt-8 relative flex flex-col items-center">
+      <h2 className="text-2xl font-bold mb-4 text-center">Global Leaderboard</h2>
+      <div className="flex flex-wrap justify-center mb-4">
         {categories.map(category => (
           <button
             key={category}
-            className={`mr-2 mb-2 p-2 rounded flex flex-col items-center justify-center ${
+            className={`mx-1 mb-2 p-2 rounded flex flex-col items-center justify-center ${
               selectedCategory === category
                 ? 'bg-indigo-600 text-white'
                 : 'bg-white dark:bg-gray-800'
@@ -83,7 +83,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
           </button>
         ))}
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto w-full">
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-gray-50">
