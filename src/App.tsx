@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, User, ArrowLeft, Book, Users, Sliders, Flag, Globe, Atom, LucideIcon, Lightbulb, HelpCircle, Feather, Zap, Dumbbell, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { Moon, Sun, User, ArrowLeft, Book, Globe, Atom, LucideIcon, Lightbulb, HelpCircle, Feather, Zap, Dumbbell, ThumbsUp, ThumbsDown } from 'lucide-react';
 import { DebateGame, Leaderboard } from './components';
-import { generateTopic, endDebate, submitScore, getLeaderboard } from './api/openRouterApi';
-import { log, clearLog } from './utils/logger';
+import { generateTopic, submitScore, getLeaderboard } from './api/openRouterApi';
 import { AIPersonality, aiPersonalities } from './data/aiPersonalities';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
@@ -19,10 +18,10 @@ const categories: { name: string; icon: LucideIcon }[] = [
   { name: 'Random', icon: HelpCircle },
 ];
 
-const difficulties: { name: Difficulty; icon: LucideIcon; description: string }[] = [
-  { name: 'easy', icon: Feather, description: 'Casual debate with simple arguments' },
-  { name: 'medium', icon: Zap, description: 'Balanced debate with moderate complexity' },
-  { name: 'hard', icon: Dumbbell, description: 'Intense debate with advanced arguments' },
+const difficulties: { name: Difficulty; icon: LucideIcon; description: string; multiplier: number }[] = [
+  { name: 'easy', icon: Feather, description: 'Casual debate with simple arguments', multiplier: 1.0 },
+  { name: 'medium', icon: Zap, description: 'Balanced debate with moderate complexity', multiplier: 1.1 },
+  { name: 'hard', icon: Dumbbell, description: 'Intense debate with advanced arguments', multiplier: 1.2 },
 ];
 
 const positions: { name: Position; icon: LucideIcon; description: string }[] = [
@@ -118,12 +117,14 @@ function App() {
 
   const handleEndGame = async (result: { overallScore: number; rationale: string; recommendations: string }) => {
     console.log('Game ended. Score:', result.overallScore);
-    setScore(result.overallScore);
+    const difficultyMultiplier = difficulties.find(d => d.name === difficulty)?.multiplier || 1.0;
+    const adjustedScore = Math.round(result.overallScore * difficultyMultiplier);
+    setScore(adjustedScore);
     setRationale(result.rationale);
     setRecommendations(result.recommendations);
     
     const leaderboard = await getLeaderboard(difficulty, category);
-    const highScore = leaderboard.length < 100 || result.overallScore > leaderboard[leaderboard.length - 1].score;
+    const highScore = leaderboard.length < 100 || adjustedScore > leaderboard[leaderboard.length - 1].score;
 
     setIsHighScore(highScore);
     setShowUsernamePrompt(highScore && !username);
@@ -222,9 +223,24 @@ function App() {
   );
 
   const HomeScreen = () => (
-    <div className="text-center">
-      <h2 className="text-3xl font-semibold mb-6">Welcome to Debate Master</h2>
-      <Leaderboard username={username} />
+    <StepContainer>
+      <h2 className="text-3xl font-semibold mb-6 text-center">Welcome to Debate Master</h2>
+      
+      <div className="mb-8">
+        <h3 className="text-2xl font-semibold mb-4 text-center">Categories</h3>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {categories.map(({ name, icon: Icon }) => (
+            <div
+              key={name}
+              className="flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg"
+            >
+              <Icon className="w-8 h-8 mb-2 text-blue-500" />
+              <span>{name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="flex justify-center space-x-4 mt-6">
         <button
           onClick={handleStartRandomGame}
@@ -239,7 +255,7 @@ function App() {
           Join Existing Discussions
         </button>
       </div>
-    </div>
+    </StepContainer>
   );
 
   const CategorySelection = () => (
@@ -390,6 +406,10 @@ function App() {
               <div className="mb-6">
                 <p className="text-xl mb-2">Your debate score:</p>
                 <p className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">{score}/10</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  (Difficulty: {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}, 
+                  Multiplier: x{difficulties.find(d => d.name === difficulty)?.multiplier.toFixed(1)})
+                </p>
               </div>
               <div className="mb-6 text-left">
                 <h3 className="text-2xl font-semibold mb-2">Feedback:</h3>
@@ -398,7 +418,7 @@ function App() {
               <div className="mb-6 text-left">
                 <h3 className="text-2xl font-semibold mb-2">Level Up Tips:</h3>
                 <ul className="list-disc list-inside bg-white dark:bg-gray-800 p-4 rounded-lg">
-                  {recommendations.split('\n').map((rec, index) => (
+                  {recommendations.split('\n').map((rec: string, index: number) => (
                     <li key={index} className="mb-2">{rec}</li>
                   ))}
                 </ul>
