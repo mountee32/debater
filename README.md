@@ -1,15 +1,29 @@
 # Debater Project
 
-This project is a web application for an AI-powered debate game, built with Vite, React, TypeScript, and Tailwind CSS.
+An interactive AI-powered debate game where users can engage in structured debates with AI opponents. The game features multiple AI personalities, each with unique debate styles and perspectives, allowing players to practice their argumentation skills in a gamified environment.
+
+## Game Overview
+
+Players can:
+- Choose debate topics from various categories or create custom topics
+- Select AI opponents with different personalities and debate styles
+- Engage in turn-based debates with structured arguments and rebuttals
+- Adjust difficulty levels to match their skill level
+- Track their performance on the leaderboard
+- View their debate history and progress
 
 ## Features
 
-- AI-powered debate game (DebateGame component)
-- Difficulty slider for adjusting game complexity
-- Category selection for diverse debate topics
-- Leaderboard to track top debaters
-- AI personalities for varied opponent styles
-- Compact leaderboard view
+- **Dynamic AI Opponents**: Multiple AI personalities powered by OpenRouter API, each with unique characteristics and debate styles
+- **Customizable Difficulty**: Adjustable difficulty slider that affects AI response complexity and argumentation depth
+- **Rich Topic Selection**: Pre-created debate subjects across various categories including politics, philosophy, technology, and more
+- **Custom Topics**: Ability to create and debate custom topics
+- **Avatar System**: Diverse collection of avatars representing different AI personalities
+- **Performance Tracking**: 
+  - Real-time scoring system
+  - Global leaderboard showing top debaters
+  - Compact leaderboard view for quick rankings
+- **Responsive Design**: Built with Tailwind CSS for a seamless experience across devices
 
 ## Prerequisites
 
@@ -49,14 +63,30 @@ To run the project, follow these steps:
 
 4. Once the development server starts, it will display a local URL (usually http://localhost:5173). Open this URL in your web browser to view the application.
 
+## Game Mechanics
+
+1. **Topic Selection**: Choose from pre-defined categories or create a custom topic
+2. **Opponent Selection**: Pick an AI personality to debate against
+3. **Difficulty Setting**: Adjust the debate difficulty using the slider
+4. **Debate Flow**:
+   - Take turns presenting arguments
+   - Respond to opponent's points
+   - Provide evidence and reasoning
+   - Conclude with final statements
+5. **Scoring**: Performance is evaluated based on:
+   - Argument coherence
+   - Response relevance
+   - Overall debate structure
+   - Difficulty level
+
 ## Available Scripts
 
 In the project directory, you can run:
 
-- `npm run dev`: Runs the app in development mode.
-- `npm run build`: Builds the app for production to the `dist` folder.
-- `npm run preview`: Locally preview the production build.
-- `npm test`: Runs the test suite using Jest.
+- `npm run dev`: Runs the app in development mode
+- `npm run build`: Builds the app for production to the `dist` folder
+- `npm run preview`: Locally preview the production build
+- `npm test`: Runs the test suite using Jest
 
 ## Project Structure
 
@@ -65,7 +95,6 @@ In the project directory, you can run:
   - `components/`: React components (e.g., DebateGame.tsx, DifficultySlider.tsx)
   - `data/`: Data files (e.g., debateQuestions.json, aiPersonalities.ts)
   - `utils/`: Utility functions
-- `public/`: Contains static assets that will be served directly
 - `assets/`: SVG images for AI avatars
 - `index.html`: The main HTML file
 - `vite.config.ts`: Vite configuration file
@@ -77,13 +106,33 @@ In the project directory, you can run:
 
 ## Testing
 
-The project uses Jest for testing. You can find test files with the `.test.tsx` extension, such as `DebateGame.test.tsx`.
+The project uses Jest for testing. Test files use the `.test.tsx` extension and are located alongside their corresponding components. Run tests using `npm test`.
 
-## Additional Information
+## Leaderboard System
 
-For more detailed information about the technologies used:
-- Vite: [Vite documentation](https://vitejs.dev/)
-- React: [React documentation](https://reactjs.org/docs/getting-started.html)
-- TypeScript: [TypeScript documentation](https://www.typescriptlang.org/docs/)
-- Tailwind CSS: [Tailwind CSS documentation](https://tailwindcss.com/docs)
-- Jest: [Jest documentation](https://jestjs.io/docs/getting-started)
+The leaderboard tracks:
+- Player rankings
+- Total debates participated
+- Win/loss ratio
+- Average difficulty level
+- Best debate topics
+- Recent activity
+
+Players can view their standings in both detailed and compact views, with regular updates to reflect recent debate performances.
+
+## Technologies Used
+
+- **Frontend**: React with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Testing**: Jest
+- **AI Integration**: OpenRouter API
+- **State Management**: React Context
+
+## Additional Resources
+
+- Vite: [Documentation](https://vitejs.dev/)
+- React: [Documentation](https://reactjs.org/docs/getting-started.html)
+- TypeScript: [Documentation](https://www.typescriptlang.org/docs/)
+- Tailwind CSS: [Documentation](https://tailwindcss.com/docs)
+- Jest: [Documentation](https://jestjs.io/docs/getting-started)

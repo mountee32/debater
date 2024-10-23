@@ -9,9 +9,7 @@ const headers = {
   'Authorization': `Bearer ${API_KEY}`,
 };
 
-const MAX_TOKENS = 150;
-
-type Position = 'for' | 'against';
+const MAX_TOKENS = 75; // Reduced from 150 to encourage shorter responses
 
 const ensureCompleteSentences = (text: string): string => {
   const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
@@ -46,9 +44,9 @@ export const generateTopic = async (category: string, difficulty: 'easy' | 'medi
 export const startDebate = async (topic: string, difficulty: 'easy' | 'medium' | 'hard', userPosition: Position, aiPersonality: AIPersonality): Promise<string> => {
   try {
     const difficultyInstructions = {
-      easy: "Provide simple arguments in a casual, friendly tone.",
-      medium: "Provide moderately complex arguments in a conversational tone.",
-      hard: "Provide nuanced arguments in a concise, direct tone."
+      easy: "Keep responses casual and brief, like chatting with a friend.",
+      medium: "Use a conversational tone with short, clear points.",
+      hard: "Be concise but precise, avoiding long explanations."
     };
 
     const aiPosition = userPosition === 'for' ? 'against' : 'for';
@@ -56,13 +54,8 @@ export const startDebate = async (topic: string, difficulty: 'easy' | 'medium' |
     const response = await axios.post(API_URL, {
       model: 'openai/gpt-4o-mini',
       messages: [
-        { role: 'system', content: `You are ${aiPersonality.name}, an AI debate opponent with the following traits:
-          - Argument style: ${aiPersonality.traits.argumentStyle}
-          - Vocabulary: ${aiPersonality.traits.vocabulary}
-          - Example types: ${aiPersonality.traits.exampleTypes}
-          - Debate strategy: ${aiPersonality.traits.debateStrategy}
-          Keep your responses short and conversational. ${difficultyInstructions[difficulty]} You are arguing ${aiPosition} the topic.` },
-        { role: 'user', content: `The topic is: "${topic}". Start the debate with a brief, engaging opening argument ${aiPosition} the topic.` }
+        { role: 'system', content: `You are ${aiPersonality.name}, debating ${aiPosition} the topic. Keep responses under 3 sentences. Be engaging but brief. ${difficultyInstructions[difficulty]}` },
+        { role: 'user', content: `The topic is: "${topic}". Start with a quick opening argument ${aiPosition} the topic.` }
       ],
       max_tokens: MAX_TOKENS,
     }, { headers });
@@ -101,9 +94,9 @@ export const continueDebate = async (
     debateHistory.push({ role: 'user', content: userArgument });
 
     const difficultyInstructions = {
-      easy: "Provide simple counter-arguments in a casual, friendly tone.",
-      medium: "Provide moderately complex counter-arguments in a conversational tone.",
-      hard: "Provide nuanced counter-arguments in a concise, direct tone."
+      easy: "Reply casually in 1-2 sentences.",
+      medium: "Give a quick, focused response.",
+      hard: "Make one strong counter-point briefly."
     };
 
     const aiPosition = userPosition === 'for' ? 'against' : 'for';
@@ -111,12 +104,7 @@ export const continueDebate = async (
     const response = await axios.post(API_URL, {
       model: 'openai/gpt-4o-mini',
       messages: [
-        { role: 'system', content: `You are ${aiPersonality.name}, an AI debate opponent with the following traits:
-          - Argument style: ${aiPersonality.traits.argumentStyle}
-          - Vocabulary: ${aiPersonality.traits.vocabulary}
-          - Example types: ${aiPersonality.traits.exampleTypes}
-          - Debate strategy: ${aiPersonality.traits.debateStrategy}
-          Keep your responses short and conversational. The topic is: "${topic}". ${difficultyInstructions[difficulty]} You are arguing ${aiPosition} the topic.` },
+        { role: 'system', content: `You are ${aiPersonality.name}, debating ${aiPosition} the topic. Keep responses under 3 sentences and conversational. ${difficultyInstructions[difficulty]}` },
         ...debateHistory
       ],
       max_tokens: MAX_TOKENS,
@@ -139,16 +127,10 @@ export const generateHint = async (topic: string, messages: { role: string; cont
       content: msg.content
     }));
 
-    const difficultyInstructions = {
-      easy: "Provide a simple, straightforward argument suggestion.",
-      medium: "Provide a moderately complex argument suggestion.",
-      hard: "Provide a complex, nuanced argument suggestion."
-    };
-
     const response = await axios.post(API_URL, {
       model: 'openai/gpt-4o-mini',
       messages: [
-        { role: 'system', content: `You are an AI debate assistant. The topic is: "${topic}". ${difficultyInstructions[difficulty]} Respond with a brief, single suggestion that argues ${userPosition} the topic.` },
+        { role: 'system', content: `You are a debate coach. Provide a single short suggestion for arguing ${userPosition} the topic.` },
         ...debateHistory
       ],
       max_tokens: MAX_TOKENS,
@@ -161,6 +143,7 @@ export const generateHint = async (topic: string, messages: { role: string; cont
   }
 };
 
+// Rest of the file remains unchanged
 export const evaluateArgument = async (
   topic: string,
   argument: string,
@@ -251,6 +234,8 @@ export const endDebate = async (
     throw new Error('Failed to end the debate. Please try again.');
   }
 };
+
+type Position = 'for' | 'against';
 
 // Leaderboard data type
 type LeaderboardEntry = {
