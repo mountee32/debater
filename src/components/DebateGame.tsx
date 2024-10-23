@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Clock, Send, Lightbulb, Flag, Loader, User } from 'lucide-react';
+import { Clock, Send, Lightbulb, Flag, Loader, User, Sun, Moon } from 'lucide-react';
 import { startDebate, continueDebate, generateHint, endDebate } from '../api/openRouterApi';
 import { log } from '../utils/logger';
 import { AIPersonality } from '../data/aiPersonalities';
@@ -12,9 +12,19 @@ interface DebateGameProps {
   onEndGame: (result: { overallScore: number; rationale: string; recommendations: string }) => void;
   aiPersonality: AIPersonality;
   userPosition: 'for' | 'against';
+  isDarkMode: boolean;
+  onToggleDarkMode: () => void;
 }
 
-const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, aiPersonality, userPosition }) => {
+const DebateGame: React.FC<DebateGameProps> = ({ 
+  topic, 
+  difficulty, 
+  onEndGame, 
+  aiPersonality, 
+  userPosition,
+  isDarkMode,
+  onToggleDarkMode
+}) => {
   const { messages, addMessage, updateMessageScore, removeHintMessages } = useMessageHandler();
   const [currentArgument, setCurrentArgument] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -202,16 +212,29 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
 
   return (
     <div className="text-gray-900 dark:text-gray-100 flex flex-col h-full">
-      <div className="bg-indigo-100 dark:bg-indigo-900 p-3 border-b-2 border-indigo-200 dark:border-indigo-800">
-        <div className="flex flex-col items-center space-y-2">
-          <h1 className="text-xl font-bold text-indigo-900 dark:text-indigo-100 text-center px-4 py-2 bg-indigo-200 dark:bg-indigo-800 rounded-lg shadow-sm">
-            {topic}
-          </h1>
+      <div className="bg-indigo-100 dark:bg-indigo-900 p-2 border-b-2 border-indigo-200 dark:border-indigo-800">
+        <div className="flex items-center justify-between">
           <div className="flex items-center space-x-1 bg-indigo-200 dark:bg-indigo-800 px-3 py-1 rounded-full text-sm">
             <Clock size={14} className="text-indigo-600 dark:text-indigo-400" />
             <span className="font-medium text-indigo-600 dark:text-indigo-400">
               {formatTime(timeLeft)}
             </span>
+          </div>
+          <div className="flex items-center flex-grow justify-center mx-2">
+            <h1 className="text-xl font-bold text-indigo-900 dark:text-indigo-100 text-center px-4 py-1 bg-indigo-200 dark:bg-indigo-800 rounded-lg shadow-sm">
+              {topic}
+            </h1>
+            <button
+              onClick={onToggleDarkMode}
+              className="ml-2 p-2 rounded-full hover:bg-indigo-200 dark:hover:bg-indigo-800"
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDarkMode ? (
+                <Sun size={20} className="text-indigo-600 dark:text-indigo-400" />
+              ) : (
+                <Moon size={20} className="text-indigo-600 dark:text-indigo-400" />
+              )}
+            </button>
           </div>
         </div>
       </div>

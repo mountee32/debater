@@ -1,5 +1,5 @@
 import React from 'react';
-import { Moon, Sun, ArrowLeft, MessageSquare } from 'lucide-react';
+import { MessageSquare, ArrowLeft } from 'lucide-react';
 import { DebateGame, Leaderboard } from './components';
 import { GameProvider } from './contexts/GameContext';
 import { useGameContext } from './hooks/useGameContext';
@@ -125,16 +125,6 @@ function AppContent() {
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
       <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300 bg-opacity-50 dark:bg-opacity-50" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'4\' height=\'4\' viewBox=\'0 0 4 4\'%3E%3Cpath fill=\'%239C92AC\' fill-opacity=\'0.4\' d=\'M1 3h1v1H1V3zm2-2h1v1H3V1z\'%3E%3C/path%3E%3C/svg%3E")'}}>
         <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6">
-          <header className="flex justify-end mb-4 sm:mb-6">
-            <button 
-              onClick={toggleDarkMode} 
-              className="p-1.5 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
-              title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {isDarkMode ? <Sun className="text-yellow-400" size={16} /> : <Moon className="text-gray-600" size={16} />}
-            </button>
-          </header>
-
           <WizardSteps />
 
           {gameState === 'home' && <HomeScreen />}
@@ -150,6 +140,8 @@ function AppContent() {
               onEndGame={handleEndGame}
               aiPersonality={selectedPersonality}
               userPosition={userPosition}
+              isDarkMode={isDarkMode}
+              onToggleDarkMode={toggleDarkMode}
             />
           )}
           {gameState === 'end' && (
