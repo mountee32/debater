@@ -202,13 +202,13 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
 
   return (
     <div className="text-gray-900 dark:text-gray-100 flex flex-col h-full">
-      <div className="bg-indigo-100 dark:bg-indigo-900 px-2 py-1">
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-indigo-900 dark:text-indigo-100 truncate flex-1 mr-2">
+      <div className="bg-indigo-100 dark:bg-indigo-900 p-3 border-b-2 border-indigo-200 dark:border-indigo-800">
+        <div className="flex flex-col items-center space-y-2">
+          <h1 className="text-xl font-bold text-indigo-900 dark:text-indigo-100 text-center px-4 py-2 bg-indigo-200 dark:bg-indigo-800 rounded-lg shadow-sm">
             {topic}
-          </span>
-          <div className="flex items-center space-x-1 bg-indigo-200 dark:bg-indigo-800 px-2 py-0.5 rounded-full text-xs whitespace-nowrap">
-            <Clock size={12} className="text-indigo-600 dark:text-indigo-400" />
+          </h1>
+          <div className="flex items-center space-x-1 bg-indigo-200 dark:bg-indigo-800 px-3 py-1 rounded-full text-sm">
+            <Clock size={14} className="text-indigo-600 dark:text-indigo-400" />
             <span className="font-medium text-indigo-600 dark:text-indigo-400">
               {formatTime(timeLeft)}
             </span>
