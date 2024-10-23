@@ -199,10 +199,12 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
         {messages.map((message) => (
           <div
             key={message.id}
-            className={`mb-2 ${message.role === 'user' ? 'text-right' : 'text-left'}`}
+            className={`flex items-start space-x-2 mb-2 ${
+              message.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''
+            }`}
           >
-            {message.role === 'opponent' && (
-              <div className="w-8 h-8 rounded-full mr-2 overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0 inline-block align-bottom">
+            <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
+              {message.role === 'opponent' ? (
                 <img
                   src={aiPersonality.avatarUrl}
                   alt={`${aiPersonality.name} avatar`}
@@ -216,10 +218,12 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
                     e.currentTarget.parentElement?.appendChild(userIcon);
                   }}
                 />
-              </div>
-            )}
+              ) : (
+                <User className="w-4 h-4 text-gray-400 m-2" />
+              )}
+            </div>
             <div
-              className={`inline-block p-2 rounded-lg ${
+              className={`flex-1 p-2 rounded-lg ${
                 message.role === 'user'
                   ? 'bg-blue-100 dark:bg-blue-900'
                   : message.role === 'opponent'
@@ -240,15 +244,17 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
                 </button>
               )}
             </div>
-            {message.role === 'user' && (
-              <div className="w-8 h-8 rounded-full ml-2 overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0 inline-block align-bottom">
-                <User className="w-4 h-4 text-gray-400 m-2" />
-              </div>
-            )}
           </div>
         ))}
         {isAiThinking && (
-          <div className="text-left mb-2">
+          <div className="flex items-start space-x-2 mb-2">
+            <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
+              <img
+                src={aiPersonality.avatarUrl}
+                alt={`${aiPersonality.name} avatar`}
+                className="w-full h-full object-cover"
+              />
+            </div>
             <div className="inline-block p-2 rounded-lg bg-gray-100 dark:bg-gray-700">
               <Loader className="animate-spin" size={16} />
             </div>
