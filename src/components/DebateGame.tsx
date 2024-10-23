@@ -29,6 +29,32 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const debateInitializedRef = useRef(false);
 
+  const handleEndGame = async () => {
+    const userArguments = messages
+      .filter((message) => message.role === 'user')
+      .map((message) => message.content);
+    const scores = messages
+      .filter((message) => message.role === 'user' && message.score !== undefined)
+      .map((message) => message.score as number);
+    
+    try {
+      const result = await endDebate(topic, userArguments, scores, difficulty, userPosition);
+      setIsDebateEnded(true);
+      onEndGame(result);
+    } catch (error) {
+      log(`DebateGame: Error ending debate: ${error}`);
+      setError('Failed to end debate. Please try again.');
+    }
+  };
+
+  const timeLeft = useTimer(300, handleEndGame);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
   const getScoreColor = (score: number) => {
     if (score <= 40) return 'bg-gradient-to-r from-red-600 to-red-400';
     if (score <= 60) return 'bg-gradient-to-r from-yellow-500 to-yellow-400';
@@ -52,24 +78,6 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
         };
       }
     });
-  };
-
-  const handleEndGame = async () => {
-    const userArguments = messages
-      .filter((message) => message.role === 'user')
-      .map((message) => message.content);
-    const scores = messages
-      .filter((message) => message.role === 'user' && message.score !== undefined)
-      .map((message) => message.score as number);
-    
-    try {
-      const result = await endDebate(topic, userArguments, scores, difficulty, userPosition);
-      setIsDebateEnded(true);
-      onEndGame(result);
-    } catch (error) {
-      log(`DebateGame: Error ending debate: ${error}`);
-      setError('Failed to end debate. Please try again.');
-    }
   };
 
   useEffect(() => {
@@ -233,6 +241,12 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
 
       <div className="flex-grow overflow-hidden flex flex-col mt-2">
         <div className="flex-grow overflow-y-auto border rounded bg-white dark:bg-gray-800">
+          <div className="sticky top-0 z-10 bg-gray-50 dark:bg-gray-900 p-2 border-b flex justify-center items-center space-x-2">
+            <Clock size={16} className="text-indigo-600 dark:text-indigo-400" />
+            <span className="font-medium text-lg text-indigo-600 dark:text-indigo-400">
+              {formatTime(timeLeft)}
+            </span>
+          </div>
           {messages.map((message) => (
             <div
               key={message.id}
