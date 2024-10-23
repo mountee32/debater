@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Clock, Send, Lightbulb, Flag, Loader, User } from 'lucide-react';
 import { startDebate, continueDebate, generateHint, endDebate, calculateProgressiveScore, calculateComboBonus } from '../api/openRouterApi';
 import { log } from '../utils/logger';
 import { AIPersonality } from '../data/aiPersonalities';
+import { useMessageHandler } from '../hooks/useMessageHandler';
+import { useTimer } from '../hooks/useTimer';
 
 interface DebateGameProps {
   topic: string;
@@ -10,13 +12,6 @@ interface DebateGameProps {
   onEndGame: (result: { overallScore: number; rationale: string; recommendations: string }) => void;
   aiPersonality: AIPersonality;
   userPosition: 'for' | 'against';
-}
-
-interface Message {
-  id: number;
-  role: 'user' | 'opponent' | 'hint';
-  content: string;
-  score?: number;
 }
 
 interface Feedback {
@@ -35,40 +30,42 @@ const TIME_LIMIT = 60; // 60 seconds per argument
 const BONUS_THRESHOLD = 30; // Bonus points if answered within 30 seconds
 
 const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, aiPersonality, userPosition }) => {
-  const [timeLeft, setTimeLeft] = useState(300);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const { messages, addMessage, updateMessageScore, removeHintMessages } = useMessageHandler();
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
   const [currentArgument, setCurrentArgument] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isGeneratingHint, setIsGeneratingHint] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
-  const [argumentTimer, setArgumentTimer] = useState(TIME_LIMIT);
   const [consecutiveGoodArguments, setConsecutiveGoodArguments] = useState(0);
   const [isDebateEnded, setIsDebateEnded] = useState(false);
   const [isAiThinking, setIsAiThinking] = useState(false);
   const aiPosition = userPosition === 'for' ? 'against' : 'for';
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const debateInitializedRef = useRef(false);
-  const lastMessageIdRef = useRef(0);
+
+  const handleEndGame = async () => {
+    const userArguments = messages
+      .filter((message) => message.role === 'user')
+      .map((message) => message.content);
+    const scores = messages
+      .filter((message) => message.role === 'user' && message.score !== undefined)
+      .map((message) => message.score as number);
+    
+    try {
+      const result = await endDebate(topic, userArguments, scores, difficulty, userPosition);
+      setIsDebateEnded(true);
+      onEndGame(result);
+    } catch (error) {
+      log(`DebateGame: Error ending debate: ${error}`);
+    }
+  };
+
+  const timeLeft = useTimer(300, handleEndGame);
+  const argumentTimer = useTimer(TIME_LIMIT, () => {});
 
   useEffect(() => {
     log(`DebateGame: Component mounted or updated. Topic: ${topic}, Messages count: ${messages.length}, Difficulty: ${difficulty}`);
   });
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => {
-        if (prevTime <= 1) {
-          clearInterval(timer);
-          handleEndGame();
-          return 0;
-        }
-        return prevTime - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
 
   useEffect(() => {
     if (topic && messages.length === 0 && !debateInitializedRef.current) {
@@ -82,7 +79,6 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
         addMessage('opponent', response);
         setIsLoading(false);
         setIsAiThinking(false);
-        startArgumentTimer();
       });
     }
   }, [topic, difficulty, messages.length, aiPersonality, userPosition]);
@@ -93,64 +89,13 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
     }
   }, [messages]);
 
-  const startArgumentTimer = () => {
-    setArgumentTimer(TIME_LIMIT);
-    const timer = setInterval(() => {
-      setArgumentTimer((prevTime) => {
-        if (prevTime <= 1) {
-          clearInterval(timer);
-          return 0;
-        }
-        return prevTime - 1;
-      });
-    }, 1000);
-  };
-
-  const addMessage = useCallback((role: 'user' | 'opponent' | 'hint', content: string, score?: number) => {
-    log(`DebateGame: Adding message: ${role} - ${content}`);
-    
-    const words = content.split(' ');
-    const truncatedContent = words.slice(0, 60).join(' ');
-    const remainingContent = words.slice(60).join(' ');
-
-    let displayedContent = '';
-    const newMessageId = lastMessageIdRef.current + 1;
-    lastMessageIdRef.current = newMessageId;
-
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { id: newMessageId, role, content: truncatedContent, score }
-    ]);
-
-    const interval = setInterval(() => {
-      if (displayedContent.length < remainingContent.length) {
-        displayedContent += remainingContent[displayedContent.length];
-        setMessages((prevMessages) =>
-          prevMessages.map((msg) =>
-            msg.id === newMessageId ? { ...msg, content: truncatedContent + displayedContent } : msg
-          )
-        );
-      } else {
-        clearInterval(interval);
-      }
-    }, 25);
-  }, []);
-
-  const updateMessageScore = useCallback((messageId: number, score: number) => {
-    setMessages((prevMessages) =>
-      prevMessages.map((msg) =>
-        msg.id === messageId ? { ...msg, score } : msg
-      )
-    );
-  }, []);
-
   const handleSendArgument = async () => {
     if (currentArgument.trim() === '' || isLoading) return;
 
     setIsLoading(true);
     setIsAiThinking(true);
     const timeBonus = argumentTimer > BONUS_THRESHOLD ? 2 : 0;
-    const userMessageId = lastMessageIdRef.current + 1;
+    const userMessageId = messages.length + 1;
     const updatedMessages = [...messages, { id: userMessageId, role: 'user', content: currentArgument }];
     addMessage('user', currentArgument);
     setCurrentArgument('');
@@ -176,7 +121,6 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
       }]);
 
       setCurrentScore((prevScore) => prevScore + totalScore);
-      startArgumentTimer();
 
       if (evaluation.score >= 7) {
         setConsecutiveGoodArguments(prev => prev + 1);
@@ -189,23 +133,6 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
 
     setIsLoading(false);
     setIsAiThinking(false);
-  };
-
-  const handleEndGame = async () => {
-    const userArguments = messages
-      .filter((message) => message.role === 'user')
-      .map((message) => message.content);
-    const scores = messages
-      .filter((message) => message.role === 'user' && message.score !== undefined)
-      .map((message) => message.score as number);
-    
-    try {
-      const result = await endDebate(topic, userArguments, scores, difficulty, userPosition);
-      setIsDebateEnded(true);
-      onEndGame(result);
-    } catch (error) {
-      log(`DebateGame: Error ending debate: ${error}`);
-    }
   };
 
   const formatTime = (seconds: number) => {
@@ -233,10 +160,6 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
   const handleHintSelection = (hint: string) => {
     setCurrentArgument(hint);
     removeHintMessages();
-  };
-
-  const removeHintMessages = () => {
-    setMessages((prevMessages) => prevMessages.filter((message) => message.role !== 'hint'));
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
