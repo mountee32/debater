@@ -29,6 +29,12 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const debateInitializedRef = useRef(false);
 
+  const getScoreColor = (score: number) => {
+    if (score <= 40) return 'bg-gradient-to-r from-red-600 to-red-400';
+    if (score <= 60) return 'bg-gradient-to-r from-yellow-500 to-yellow-400';
+    return 'bg-gradient-to-r from-green-600 to-green-400';
+  };
+
   const updateAudienceScore = (messageScore: number, isUserMessage: boolean) => {
     setAudienceScore(prev => {
       const scoreDelta = (messageScore - 5) * 2; // Convert 0-10 score to percentage change
@@ -225,13 +231,17 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
         <div className="text-center mb-2 font-semibold">Audience Score</div>
         <div className="relative h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
           <div 
-            className="absolute left-0 top-0 h-full bg-blue-500 transition-all duration-500"
+            className={`absolute left-0 top-0 h-full transition-all duration-500 ${getScoreColor(audienceScore.user)}`}
             style={{ width: `${audienceScore.user}%` }}
           />
         </div>
         <div className="flex justify-between mt-1 text-sm">
-          <span>You: {Math.round(audienceScore.user)}%</span>
-          <span>AI: {Math.round(audienceScore.opponent)}%</span>
+          <span className={audienceScore.user > audienceScore.opponent ? 'font-bold' : ''}>
+            You: {Math.round(audienceScore.user)}%
+          </span>
+          <span className={audienceScore.opponent > audienceScore.user ? 'font-bold' : ''}>
+            AI: {Math.round(audienceScore.opponent)}%
+          </span>
         </div>
       </div>
 
