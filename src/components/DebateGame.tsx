@@ -37,7 +37,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
 
   const updateAudienceScore = (messageScore: number, isUserMessage: boolean) => {
     setAudienceScore(prev => {
-      const scoreDelta = (messageScore - 5) * 2; // Convert 0-10 score to percentage change
+      const scoreDelta = (messageScore - 5) * 2;
       if (isUserMessage) {
         const userNew = Math.min(Math.max(prev.user + scoreDelta, 0), 100);
         return {
@@ -115,10 +115,8 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
     setError(null);
 
     try {
-      // Add user's message first
       addMessage('user', currentArgument);
 
-      // Get AI's response
       const { response, evaluation } = await continueDebate(
         topic,
         messages,
@@ -129,24 +127,20 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
       );
 
       if (response) {
-        // Add AI's response
         addMessage('opponent', response);
 
-        // Update scores
         const totalScore = evaluation.score;
         updateMessageScore(messages.length + 1, totalScore);
         setCurrentScore(prev => prev + totalScore);
         updateAudienceScore(totalScore, true);
 
-        // Update combo
         if (evaluation.score >= 7) {
           setConsecutiveGoodArguments(prev => prev + 1);
         } else {
           setConsecutiveGoodArguments(0);
         }
 
-        // Update AI's score after response
-        const aiScore = 5 + (Math.random() * 2 - 1); // Random score between 4-6 for AI
+        const aiScore = 5 + (Math.random() * 2 - 1);
         updateAudienceScore(aiScore, false);
       }
     } catch (error) {
@@ -195,47 +189,39 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
   };
 
   return (
-    <div className="text-gray-900 dark:text-gray-100">
-      <div className="bg-indigo-100 dark:bg-indigo-900 p-4 rounded-lg mb-4">
-        <h2 className="text-xl font-semibold text-center text-indigo-900 dark:text-indigo-100 mb-3">
-          {topic}
-        </h2>
-        <div className="flex justify-center space-x-6">
-          <div className="text-center">
-            <div className="text-sm mb-1">Your Position</div>
-            <div className={`inline-flex items-center px-3 py-1 rounded-full ${
+    <div className="text-gray-900 dark:text-gray-100 flex flex-col h-full">
+      <div className="bg-indigo-100 dark:bg-indigo-900 p-2 rounded-lg">
+        <div className="flex items-center justify-between mb-1">
+          <h2 className="text-lg font-semibold text-indigo-900 dark:text-indigo-100">
+            {topic}
+          </h2>
+          <div className="flex space-x-2 text-sm">
+            <div className={`inline-flex items-center px-2 py-0.5 rounded-full ${
               userPosition === 'for' 
                 ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' 
                 : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
             }`}>
-              {userPosition === 'for' ? <ThumbsUp size={16} className="mr-1" /> : <ThumbsDown size={16} className="mr-1" />}
-              <span className="font-semibold capitalize">{userPosition}</span>
+              {userPosition === 'for' ? <ThumbsUp size={14} className="mr-1" /> : <ThumbsDown size={14} className="mr-1" />}
+              <span className="capitalize">{userPosition}</span>
             </div>
-          </div>
-          <div className="text-center">
-            <div className="text-sm mb-1">AI Position</div>
-            <div className={`inline-flex items-center px-3 py-1 rounded-full ${
+            <div className={`inline-flex items-center px-2 py-0.5 rounded-full ${
               aiPosition === 'for' 
                 ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200' 
                 : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
             }`}>
-              {aiPosition === 'for' ? <ThumbsUp size={16} className="mr-1" /> : <ThumbsDown size={16} className="mr-1" />}
-              <span className="font-semibold capitalize">{aiPosition}</span>
+              {aiPosition === 'for' ? <ThumbsUp size={14} className="mr-1" /> : <ThumbsDown size={14} className="mr-1" />}
+              <span className="capitalize">{aiPosition}</span>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Audience Score Display */}
-      <div className="mb-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
-        <div className="text-center mb-2 font-semibold">Audience Score</div>
-        <div className="relative h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+        <div className="relative h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
           <div 
             className={`absolute left-0 top-0 h-full transition-all duration-500 ${getScoreColor(audienceScore.user)}`}
             style={{ width: `${audienceScore.user}%` }}
           />
         </div>
-        <div className="flex justify-between mt-1 text-sm">
+        <div className="flex justify-between mt-0.5 text-xs">
           <span className={audienceScore.user > audienceScore.opponent ? 'font-bold' : ''}>
             You: {Math.round(audienceScore.user)}%
           </span>
@@ -245,109 +231,111 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
         </div>
       </div>
 
-      <div className="mb-2 h-96 overflow-y-auto border rounded p-2 bg-white dark:bg-gray-800">
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`flex items-start space-x-2 mb-2 ${
-              message.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''
-            }`}
-          >
-            <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
-              {message.role === 'opponent' ? (
+      <div className="flex-grow overflow-hidden flex flex-col mt-2">
+        <div className="flex-grow overflow-y-auto border rounded bg-white dark:bg-gray-800">
+          {messages.map((message) => (
+            <div
+              key={message.id}
+              className={`flex items-start space-x-2 p-1.5 ${
+                message.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''
+              }`}
+            >
+              <div className="w-6 h-6 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
+                {message.role === 'opponent' ? (
+                  <img
+                    src={aiPersonality.avatarUrl}
+                    alt={`${aiPersonality.name} avatar`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement?.classList.add('flex', 'items-center', 'justify-center');
+                      const userIcon = document.createElement('div');
+                      userIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>';
+                      e.currentTarget.parentElement?.appendChild(userIcon);
+                    }}
+                  />
+                ) : (
+                  <User className="w-3 h-3 text-gray-400 m-1.5" />
+                )}
+              </div>
+              <div
+                className={`flex-1 p-2 rounded-lg ${
+                  message.role === 'user'
+                    ? 'bg-blue-100 dark:bg-blue-900'
+                    : message.role === 'opponent'
+                    ? 'bg-gray-100 dark:bg-gray-700'
+                    : 'bg-yellow-100 dark:bg-yellow-900'
+                }`}
+              >
+                <p className="text-sm">{message.content}</p>
+                {message.score !== undefined && (
+                  <p className="text-xs mt-0.5">Score: {message.score}</p>
+                )}
+                {message.role === 'hint' && (
+                  <button
+                    onClick={() => handleHintSelection(message.content)}
+                    className="mt-0.5 text-xs text-blue-600 dark:text-blue-400"
+                  >
+                    Use Hint
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+          {isAiThinking && (
+            <div className="flex items-start space-x-2 p-1.5">
+              <div className="w-6 h-6 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
                 <img
                   src={aiPersonality.avatarUrl}
                   alt={`${aiPersonality.name} avatar`}
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement?.classList.add('flex', 'items-center', 'justify-center');
-                    const userIcon = document.createElement('div');
-                    userIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>';
-                    e.currentTarget.parentElement?.appendChild(userIcon);
-                  }}
                 />
-              ) : (
-                <User className="w-4 h-4 text-gray-400 m-2" />
-              )}
+              </div>
+              <div className="inline-block p-2 rounded-lg bg-gray-100 dark:bg-gray-700">
+                <Loader className="animate-spin" size={14} />
+              </div>
             </div>
-            <div
-              className={`flex-1 p-2 rounded-lg ${
-                message.role === 'user'
-                  ? 'bg-blue-100 dark:bg-blue-900'
-                  : message.role === 'opponent'
-                  ? 'bg-gray-100 dark:bg-gray-700'
-                  : 'bg-yellow-100 dark:bg-yellow-900'
-              }`}
-            >
-              <p>{message.content}</p>
-              {message.score !== undefined && (
-                <p className="text-xs mt-1">Score: {message.score}</p>
-              )}
-              {message.role === 'hint' && (
-                <button
-                  onClick={() => handleHintSelection(message.content)}
-                  className="mt-1 text-xs text-blue-600 dark:text-blue-400"
-                >
-                  Use Hint
-                </button>
-              )}
+          )}
+          {error && (
+            <div className="text-red-500 text-xs p-1.5 bg-red-100 dark:bg-red-900 rounded mx-1.5 my-1">
+              {error}
             </div>
-          </div>
-        ))}
-        {isAiThinking && (
-          <div className="flex items-start space-x-2 mb-2">
-            <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
-              <img
-                src={aiPersonality.avatarUrl}
-                alt={`${aiPersonality.name} avatar`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="inline-block p-2 rounded-lg bg-gray-100 dark:bg-gray-700">
-              <Loader className="animate-spin" size={16} />
-            </div>
-          </div>
-        )}
-        {error && (
-          <div className="text-red-500 text-sm mb-2 p-2 bg-red-100 dark:bg-red-900 rounded">
-            {error}
-          </div>
-        )}
-        <div ref={messagesEndRef} />
-      </div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
 
-      <div className="mb-2 flex flex-col">
-        <textarea
-          className="mb-1 p-2 border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-          value={currentArgument}
-          onChange={(e) => setCurrentArgument(e.target.value)}
-          onKeyPress={handleKeyPress}
-          placeholder="Type your argument here..."
-          rows={3}
-        />
-        <div className="flex space-x-2">
-          <button
-            onClick={handleSendArgument}
-            disabled={isLoading || currentArgument.trim() === ''}
-            className="flex-1 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
-          >
-            Send
-          </button>
-          <button
-            onClick={handleHintRequest}
-            disabled={isGeneratingHint}
-            className="flex-1 py-2 px-4 bg-yellow-600 text-white rounded hover:bg-yellow-700 disabled:opacity-50"
-          >
-            {isGeneratingHint ? 'Thinking...' : 'Hint'}
-          </button>
-          <button
-            onClick={handleEndGame}
-            className="flex-1 py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700"
-          >
-            End
-          </button>
+        <div className="mt-1.5">
+          <textarea
+            className="w-full p-1.5 border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm"
+            value={currentArgument}
+            onChange={(e) => setCurrentArgument(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Type your argument here..."
+            rows={2}
+          />
+          <div className="flex space-x-1 mt-1">
+            <button
+              onClick={handleSendArgument}
+              disabled={isLoading || currentArgument.trim() === ''}
+              className="flex-1 py-1 px-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 text-sm"
+            >
+              Send
+            </button>
+            <button
+              onClick={handleHintRequest}
+              disabled={isGeneratingHint}
+              className="flex-1 py-1 px-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 disabled:opacity-50 text-sm"
+            >
+              {isGeneratingHint ? 'Thinking...' : 'Hint'}
+            </button>
+            <button
+              onClick={handleEndGame}
+              className="flex-1 py-1 px-2 bg-red-600 text-white rounded hover:bg-red-700 text-sm"
+            >
+              End
+            </button>
+          </div>
         </div>
       </div>
     </div>
