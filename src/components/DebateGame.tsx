@@ -20,6 +20,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
   const [isLoading, setIsLoading] = useState(false);
   const [isGeneratingHint, setIsGeneratingHint] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
+  const [audienceScore, setAudienceScore] = useState({ user: 50, opponent: 50 });
   const [consecutiveGoodArguments, setConsecutiveGoodArguments] = useState(0);
   const [isDebateEnded, setIsDebateEnded] = useState(false);
   const [isAiThinking, setIsAiThinking] = useState(false);
@@ -27,6 +28,25 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
   const aiPosition = userPosition === 'for' ? 'against' : 'for';
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const debateInitializedRef = useRef(false);
+
+  const updateAudienceScore = (messageScore: number, isUserMessage: boolean) => {
+    setAudienceScore(prev => {
+      const scoreDelta = (messageScore - 5) * 2; // Convert 0-10 score to percentage change
+      if (isUserMessage) {
+        const userNew = Math.min(Math.max(prev.user + scoreDelta, 0), 100);
+        return {
+          user: userNew,
+          opponent: 100 - userNew
+        };
+      } else {
+        const opponentNew = Math.min(Math.max(prev.opponent + scoreDelta, 0), 100);
+        return {
+          user: 100 - opponentNew,
+          opponent: opponentNew
+        };
+      }
+    });
+  };
 
   const handleEndGame = async () => {
     const userArguments = messages
@@ -106,10 +126,11 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
         // Add AI's response
         addMessage('opponent', response);
 
-        // Update score
+        // Update scores
         const totalScore = evaluation.score;
         updateMessageScore(messages.length + 1, totalScore);
         setCurrentScore(prev => prev + totalScore);
+        updateAudienceScore(totalScore, true);
 
         // Update combo
         if (evaluation.score >= 7) {
@@ -117,6 +138,10 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
         } else {
           setConsecutiveGoodArguments(0);
         }
+
+        // Update AI's score after response
+        const aiScore = 5 + (Math.random() * 2 - 1); // Random score between 4-6 for AI
+        updateAudienceScore(aiScore, false);
       }
     } catch (error) {
       log(`DebateGame: Error in debate continuation: ${error}`);
@@ -192,6 +217,21 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
               <span className="font-semibold capitalize">{aiPosition}</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Audience Score Display */}
+      <div className="mb-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+        <div className="text-center mb-2 font-semibold">Audience Score</div>
+        <div className="relative h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+          <div 
+            className="absolute left-0 top-0 h-full bg-blue-500 transition-all duration-500"
+            style={{ width: `${audienceScore.user}%` }}
+          />
+        </div>
+        <div className="flex justify-between mt-1 text-sm">
+          <span>You: {Math.round(audienceScore.user)}%</span>
+          <span>AI: {Math.round(audienceScore.opponent)}%</span>
         </div>
       </div>
 
