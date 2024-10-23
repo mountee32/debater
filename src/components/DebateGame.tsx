@@ -229,10 +229,16 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
             style={{ width: `${audienceScore.user}%` }}
           />
         </div>
-        <div className="flex justify-between mt-0.5 text-xs">
+        <div className="flex justify-between items-center mt-0.5 text-xs">
           <span className={audienceScore.user > audienceScore.opponent ? 'font-bold' : ''}>
             You: {Math.round(audienceScore.user)}%
           </span>
+          <div className="flex items-center space-x-1 bg-indigo-200 dark:bg-indigo-800 px-2 py-0.5 rounded-full">
+            <Clock size={12} className="text-indigo-600 dark:text-indigo-400" />
+            <span className="font-medium text-indigo-600 dark:text-indigo-400">
+              {formatTime(timeLeft)}
+            </span>
+          </div>
           <span className={audienceScore.opponent > audienceScore.user ? 'font-bold' : ''}>
             AI: {Math.round(audienceScore.opponent)}%
           </span>
@@ -241,12 +247,6 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
 
       <div className="flex-grow overflow-hidden flex flex-col mt-2">
         <div className="flex-grow overflow-y-auto border rounded bg-white dark:bg-gray-800">
-          <div className="sticky top-0 z-10 bg-gray-50 dark:bg-gray-900 p-2 border-b flex justify-center items-center space-x-2">
-            <Clock size={16} className="text-indigo-600 dark:text-indigo-400" />
-            <span className="font-medium text-lg text-indigo-600 dark:text-indigo-400">
-              {formatTime(timeLeft)}
-            </span>
-          </div>
           {messages.map((message) => (
             <div
               key={message.id}
