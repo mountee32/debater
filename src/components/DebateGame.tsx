@@ -61,6 +61,10 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
     return 'bg-gradient-to-r from-green-600 to-green-400';
   };
 
+  const getPositionColor = (position: 'for' | 'against') => {
+    return position === 'for' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400';
+  };
+
   const updateAudienceScore = (messageScore: number, isUserMessage: boolean) => {
     setAudienceScore(prev => {
       const scoreDelta = (messageScore - 5) * 2;
@@ -220,11 +224,11 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
           />
         </div>
         <div className="flex justify-between text-xs mt-0.5">
-          <span className={audienceScore.user > audienceScore.opponent ? 'font-bold' : ''}>
-            {Math.round(audienceScore.user)}%
+          <span className={`${getPositionColor(userPosition)} ${audienceScore.user > audienceScore.opponent ? 'font-bold' : ''}`}>
+            You ({userPosition}) - {Math.round(audienceScore.user)}%
           </span>
-          <span className={audienceScore.opponent > audienceScore.user ? 'font-bold' : ''}>
-            {Math.round(audienceScore.opponent)}%
+          <span className={`${getPositionColor(aiPosition)} ${audienceScore.opponent > audienceScore.user ? 'font-bold' : ''}`}>
+            {aiPersonality.name} ({aiPosition}) - {Math.round(audienceScore.opponent)}%
           </span>
         </div>
       </div>
@@ -259,16 +263,37 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
             <div
               className={`flex-1 p-2 rounded-lg ${
                 message.role === 'user'
-                  ? 'bg-blue-100 dark:bg-blue-900'
+                  ? userPosition === 'for' 
+                    ? 'bg-green-100 dark:bg-green-900/30' 
+                    : 'bg-red-100 dark:bg-red-900/30'
                   : message.role === 'opponent'
-                  ? 'bg-gray-100 dark:bg-gray-700'
-                  : 'bg-yellow-100 dark:bg-yellow-900'
+                  ? aiPosition === 'for'
+                    ? 'bg-green-100 dark:bg-green-900/30'
+                    : 'bg-red-100 dark:bg-red-900/30'
+                  : 'bg-yellow-100 dark:bg-yellow-900/30'
               }`}
             >
+              <div className="flex justify-between items-center mb-1">
+                <span className={`text-xs font-medium ${
+                  message.role === 'user' 
+                    ? getPositionColor(userPosition)
+                    : message.role === 'opponent'
+                    ? getPositionColor(aiPosition)
+                    : 'text-yellow-600 dark:text-yellow-400'
+                }`}>
+                  {message.role === 'user' 
+                    ? `You (${userPosition})`
+                    : message.role === 'opponent'
+                    ? `${aiPersonality.name} (${aiPosition})`
+                    : 'Hint'}
+                </span>
+                {message.score !== undefined && (
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    Score: {message.score}
+                  </span>
+                )}
+              </div>
               <p className="text-sm">{message.content}</p>
-              {message.score !== undefined && (
-                <p className="text-xs mt-0.5">Score: {message.score}</p>
-              )}
               {message.role === 'hint' && (
                 <button
                   onClick={() => handleHintSelection(message.content)}
@@ -308,7 +333,7 @@ const DebateGame: React.FC<DebateGameProps> = ({ topic, difficulty, onEndGame, a
           value={currentArgument}
           onChange={(e) => setCurrentArgument(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="Type your argument here..."
+          placeholder={`Type your argument here... (You are ${userPosition} this topic)`}
           rows={2}
         />
         <div className="flex space-x-1 mt-1">
