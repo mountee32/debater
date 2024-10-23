@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Moon, Sun, ArrowLeft, MessageSquare } from 'lucide-react';
 import { DebateGame, Leaderboard } from './components';
-import { GameProvider, useGameContext } from './GameContext';
+import { GameProvider } from './contexts/GameContext';
+import { useGameContext } from './hooks/useGameContext';
 import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection, TopicSelection } from './GameSetup';
 
 const steps = ['Category', 'Topic', 'Position', 'Opponent', 'Difficulty'];
@@ -69,7 +70,7 @@ function AppContent() {
     return (
       <div className="mb-3 sm:mb-4">
         <div className="flex justify-between items-center mb-3 sm:mb-4 relative">
-          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300"></div>
+          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300" />
           {steps.map((step, index) => (
             <React.Fragment key={step}>
               <div className="flex flex-col items-center relative z-10">
@@ -88,7 +89,7 @@ function AppContent() {
                     className={`absolute top-0 left-0 right-0 h-0.5 ${
                       index < currentStep ? 'bg-gradient-to-r from-blue-500 to-indigo-600' : 'bg-gray-300'
                     }`}
-                  ></div>
+                  />
                 </div>
               )}
             </React.Fragment>
@@ -113,7 +114,7 @@ function AppContent() {
           className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-3 py-1.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center text-sm"
           title="Start a new debate chat"
         >
-          Start Chat
+          <span>Start Chat</span>
           <MessageSquare size={16} className="ml-2 inline-block" />
         </button>
       </div>
@@ -186,7 +187,9 @@ function AppContent() {
                       className="border p-2 mb-2 rounded-lg w-64 dark:bg-gray-700 dark:border-gray-600 text-sm"
                       required
                     />
-                    <button type="submit" className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-3 py-1.5 rounded-lg hover:shadow-lg transition-all duration-300 text-sm">Submit Score</button>
+                    <button type="submit" className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-3 py-1.5 rounded-lg hover:shadow-lg transition-all duration-300 text-sm">
+                      Submit Score
+                    </button>
                   </form>
                 </div>
               )}

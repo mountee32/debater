@@ -1,6 +1,6 @@
 import React from 'react';
 import { User, Book, Globe, Atom, LucideIcon, Lightbulb, HelpCircle, Feather, Zap, Dumbbell, ThumbsUp, ThumbsDown } from 'lucide-react';
-import { useGameContext } from './GameContext';
+import { useGameContext } from './hooks/useGameContext';
 import { AIPersonality, aiPersonalities } from './data/aiPersonalities';
 
 const categories: { name: string; icon: LucideIcon }[] = [
@@ -59,7 +59,7 @@ export const TopicSelection: React.FC = () => {
     <StepContainer>
       <h2 className="text-2xl font-semibold mb-4 text-center">Select or Enter Debate Topic</h2>
       <div className="space-y-4 mb-6">
-        {preCreatedSubjects.map((subject, index) => (
+        {preCreatedSubjects.map((subject: string, index: number) => (
           <button
             key={index}
             onClick={() => handlePreCreatedSubjectSelect(subject)}
@@ -186,7 +186,7 @@ export const PregeneratedQuestionSelection: React.FC = () => {
     <StepContainer>
       <h2 className="text-2xl font-semibold mb-4 text-center">Select a Pregenerated Question</h2>
       <div className="space-y-4">
-        {pregeneratedQuestions.map((question, index) => (
+        {pregeneratedQuestions.map((question: string, index: number) => (
           <button
             key={index}
             onClick={() => handlePregeneratedQuestionSelect(question)}

@@ -7,60 +7,76 @@ const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 const headers = {
   'Content-Type': 'application/json',
   'Authorization': `Bearer ${API_KEY}`,
+  'HTTP-Referer': 'http://localhost:5174',
+  'X-Title': 'Debate Master'
 };
 
-const MAX_TOKENS = 75; // Reduced from 150 to encourage shorter responses
+type Position = 'for' | 'against';
 
-const ensureCompleteSentences = (text: string): string => {
-  const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
-  return sentences.join(' ').trim();
-};
+interface LeaderboardEntry {
+  id: number;
+  username: string;
+  score: number;
+  difficulty: 'easy' | 'medium' | 'hard';
+  category: string;
+  subject: string;
+}
+
+let leaderboardData: LeaderboardEntry[] = [];
 
 export const generateTopic = async (category: string, difficulty: 'easy' | 'medium' | 'hard'): Promise<string> => {
   try {
-    const difficultyInstructions = {
-      easy: "Generate a simple, concise debate topic suitable for beginners. The topic should be straightforward and relatable.",
-      medium: "Generate a brief, moderately complex debate topic. The topic should be thought-provoking but concise.",
-      hard: "Generate a short, complex debate topic suitable for advanced debaters. The topic should be nuanced but concise."
-    };
-
     const response = await axios.post(API_URL, {
-      model: 'openai/gpt-4o-mini',
+      model: 'openai/gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: `You are an AI designed to generate concise debate topics. ${difficultyInstructions[difficulty]} Provide a complete topic in a single sentence, ideally between 10 to 15 words.` },
-        { role: 'user', content: `Generate a brief, controversial debate topic related to ${category} that is appropriate for ${difficulty} difficulty.` }
-      ],
-      max_tokens: 50,
+        {
+          role: 'system',
+          content: `Generate a debate topic related to ${category}. For ${difficulty} difficulty level.`
+        },
+        {
+          role: 'user',
+          content: 'Generate a concise, controversial debate topic.'
+        }
+      ]
     }, { headers });
 
-    const generatedTopic = response.data.choices[0].message.content.trim();
-    return ensureCompleteSentences(generatedTopic);
+    if (!response.data?.choices?.[0]?.message?.content) {
+      throw new Error('Invalid response format');
+    }
+
+    return response.data.choices[0].message.content;
   } catch (error) {
     console.error('Error generating topic:', error);
-    throw new Error('Failed to generate a debate topic. Please try again.');
+    throw new Error('Failed to generate a topic. Please try again.');
   }
 };
 
-export const startDebate = async (topic: string, difficulty: 'easy' | 'medium' | 'hard', userPosition: Position, aiPersonality: AIPersonality): Promise<string> => {
+export const startDebate = async (
+  topic: string,
+  difficulty: 'easy' | 'medium' | 'hard',
+  userPosition: Position,
+  aiPersonality: AIPersonality
+): Promise<string> => {
   try {
-    const difficultyInstructions = {
-      easy: "Keep responses casual and brief, like chatting with a friend.",
-      medium: "Use a conversational tone with short, clear points.",
-      hard: "Be concise but precise, avoiding long explanations."
-    };
-
     const aiPosition = userPosition === 'for' ? 'against' : 'for';
-
     const response = await axios.post(API_URL, {
-      model: 'openai/gpt-4o-mini',
+      model: 'openai/gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: `You are ${aiPersonality.name}, debating ${aiPosition} the topic. Keep responses under 3 sentences. Be engaging but brief. ${difficultyInstructions[difficulty]}` },
-        { role: 'user', content: `The topic is: "${topic}". Start with a quick opening argument ${aiPosition} the topic.` }
-      ],
-      max_tokens: MAX_TOKENS,
+        { 
+          role: 'system', 
+          content: `You are ${aiPersonality.name}, debating ${aiPosition} the topic. Keep responses under 3 sentences.`
+        },
+        { 
+          role: 'user', 
+          content: `The topic is: "${topic}". Start with a quick opening argument ${aiPosition} the topic.`
+        }
+      ]
     }, { headers });
 
-    return ensureCompleteSentences(response.data.choices[0].message.content);
+    if (response.data?.choices?.[0]?.message?.content) {
+      return response.data.choices[0].message.content;
+    }
+    throw new Error('Invalid response format');
   } catch (error) {
     console.error('Error starting debate:', error);
     throw new Error('Failed to start the debate. Please try again.');
@@ -86,117 +102,99 @@ export const continueDebate = async (
   };
 }> => {
   try {
-    const debateHistory = messages.map(msg => ({
+    const aiPosition = userPosition === 'for' ? 'against' : 'for';
+    const formattedMessages = messages.map(msg => ({
       role: msg.role === 'user' ? 'user' : 'assistant',
       content: msg.content
     }));
 
-    debateHistory.push({ role: 'user', content: userArgument });
-
-    const difficultyInstructions = {
-      easy: "Reply casually in 1-2 sentences.",
-      medium: "Give a quick, focused response.",
-      hard: "Make one strong counter-point briefly."
-    };
-
-    const aiPosition = userPosition === 'for' ? 'against' : 'for';
-
-    const response = await axios.post(API_URL, {
-      model: 'openai/gpt-4o-mini',
+    // Get AI's response
+    const responseResult = await axios.post(API_URL, {
+      model: 'openai/gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: `You are ${aiPersonality.name}, debating ${aiPosition} the topic. Keep responses under 3 sentences and conversational. ${difficultyInstructions[difficulty]}` },
-        ...debateHistory
-      ],
-      max_tokens: MAX_TOKENS,
+        { 
+          role: 'system', 
+          content: `You are ${aiPersonality.name}, debating ${aiPosition} the topic "${topic}". Keep responses under 3 sentences.`
+        },
+        ...formattedMessages
+      ]
     }, { headers });
 
-    const aiResponse = ensureCompleteSentences(response.data.choices[0].message.content);
-    const evaluation = await evaluateArgument(topic, userArgument, difficulty, messages.filter(msg => msg.role === 'user').map(msg => msg.content), userPosition);
+    if (!responseResult.data?.choices?.[0]?.message?.content) {
+      throw new Error('Invalid response format');
+    }
 
-    return { response: aiResponse, evaluation };
+    const aiResponse = responseResult.data.choices[0].message.content;
+
+    // Evaluate the user's argument
+    const evaluationResult = await axios.post(API_URL, {
+      model: 'openai/gpt-3.5-turbo',
+      messages: [
+        {
+          role: 'system',
+          content: 'Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback'
+        },
+        {
+          role: 'user',
+          content: `Topic: "${topic}"\nPosition: ${userPosition}\nArgument: ${userArgument}`
+        }
+      ]
+    }, { headers });
+
+    if (!evaluationResult.data?.choices?.[0]?.message?.content) {
+      throw new Error('Invalid evaluation format');
+    }
+
+    const evaluationText = evaluationResult.data.choices[0].message.content;
+    const [score, consistencyScore, factScore, styleScore, audienceReaction, ...feedbackParts] = evaluationText.split(',');
+
+    return {
+      response: aiResponse,
+      evaluation: {
+        score: parseInt(score) || 5,
+        consistencyScore: parseInt(consistencyScore) || 5,
+        factScore: parseInt(factScore) || 5,
+        styleScore: parseInt(styleScore) || 5,
+        audienceReaction: parseInt(audienceReaction) || 5,
+        feedback: feedbackParts.join(',').trim() || 'No feedback provided'
+      }
+    };
   } catch (error) {
     console.error('Error continuing debate:', error);
     throw new Error('Failed to continue the debate. Please try again.');
   }
 };
 
-export const generateHint = async (topic: string, messages: { role: string; content: string }[], difficulty: 'easy' | 'medium' | 'hard', userPosition: Position): Promise<string> => {
+export const generateHint = async (
+  topic: string,
+  messages: { role: string; content: string }[],
+  difficulty: 'easy' | 'medium' | 'hard',
+  userPosition: Position
+): Promise<string> => {
   try {
-    const debateHistory = messages.map(msg => ({
-      role: msg.role === 'user' ? 'user' : 'assistant',
-      content: msg.content
-    }));
-
     const response = await axios.post(API_URL, {
-      model: 'openai/gpt-4o-mini',
+      model: 'openai/gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: `You are a debate coach. Provide a single short suggestion for arguing ${userPosition} the topic.` },
-        ...debateHistory
-      ],
-      max_tokens: MAX_TOKENS,
+        { 
+          role: 'system', 
+          content: `You are a debate coach. Provide a single short suggestion for arguing ${userPosition} the topic "${topic}".`
+        },
+        {
+          role: 'user',
+          content: 'Give me a hint for my next argument.'
+        }
+      ]
     }, { headers });
 
-    return ensureCompleteSentences(response.data.choices[0].message.content);
+    if (!response.data?.choices?.[0]?.message?.content) {
+      throw new Error('Invalid response format');
+    }
+
+    return response.data.choices[0].message.content;
   } catch (error) {
     console.error('Error generating hint:', error);
     throw new Error('Failed to generate a hint. Please try again.');
   }
-};
-
-// Rest of the file remains unchanged
-export const evaluateArgument = async (
-  topic: string,
-  argument: string,
-  difficulty: 'easy' | 'medium' | 'hard',
-  previousArguments: string[],
-  userPosition: Position
-): Promise<{
-  score: number;
-  feedback: string;
-  consistencyScore: number;
-  factScore: number;
-  styleScore: number;
-  audienceReaction: number;
-}> => {
-  try {
-    const response = await axios.post(API_URL, {
-      model: 'openai/gpt-4o-mini',
-      messages: [
-        { role: 'system', content: `You are an AI debate judge. Evaluate the following argument on the topic: "${topic}". The user is arguing ${userPosition} the topic. Provide scores from 1 to 10 for overall quality, consistency with previous arguments, factual accuracy, debate style, and audience reaction. Also provide brief feedback.` },
-        { role: 'user', content: `Previous arguments:\n${previousArguments.join('\n')}\n\nCurrent argument:\n${argument}` }
-      ],
-      max_tokens: MAX_TOKENS,
-    }, { headers });
-
-    const content = ensureCompleteSentences(response.data.choices[0].message.content);
-    const [scoreStr, consistencyStr, factStr, styleStr, audienceStr, ...feedbackParts] = content.split('\n');
-    
-    const parseScore = (str: string) => {
-      const score = parseInt(str.match(/\d+/)?.[0] ?? '5', 10);
-      return isNaN(score) ? 5 : Math.min(Math.max(score, 1), 10);
-    };
-
-    return {
-      score: parseScore(scoreStr),
-      consistencyScore: parseScore(consistencyStr),
-      factScore: parseScore(factStr),
-      styleScore: parseScore(styleStr),
-      audienceReaction: parseScore(audienceStr),
-      feedback: feedbackParts.join('\n').trim()
-    };
-  } catch (error) {
-    console.error('Error evaluating argument:', error);
-    throw new Error('Failed to evaluate the argument. Please try again.');
-  }
-};
-
-export const calculateProgressiveScore = (baseScore: number, roundNumber: number): number => {
-  const progressiveFactor = 1 + (roundNumber - 1) * 0.1; // 10% increase per round
-  return Math.round(baseScore * progressiveFactor);
-};
-
-export const calculateComboBonus = (consecutiveGoodArguments: number): number => {
-  return Math.min(consecutiveGoodArguments, 5); // Max 5 points bonus
 };
 
 export const endDebate = async (
@@ -207,25 +205,29 @@ export const endDebate = async (
   userPosition: Position
 ): Promise<{ overallScore: number; rationale: string; recommendations: string }> => {
   try {
-    const averageScore = argumentScores.reduce((a, b) => a + b, 0) / argumentScores.length;
-    const difficultyMultiplier = { easy: 1, medium: 1.5, hard: 2 }[difficulty];
-    const finalScore = Math.round(averageScore * difficultyMultiplier);
-    
     const response = await axios.post(API_URL, {
-      model: 'openai/gpt-4o-mini',
+      model: 'openai/gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: `You are an AI debate judge. The topic was: "${topic}". The user was arguing ${userPosition} the topic. Evaluate the user's overall performance, provide a final score out of 10, a brief rationale for the score, and concise recommendations for improvement. The user's average argument score was ${averageScore.toFixed(2)}, and the final score after applying the difficulty multiplier (${difficultyMultiplier}x) is ${finalScore}.` },
-        { role: 'user', content: `Here are the user's arguments:\n${userArguments.join('\n')}` }
-      ],
-      max_tokens: MAX_TOKENS,
+        {
+          role: 'system',
+          content: 'Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations'
+        },
+        {
+          role: 'user',
+          content: `Topic: "${topic}"\nPosition: ${userPosition}\nArguments:\n${userArguments.join('\n')}`
+        }
+      ]
     }, { headers });
 
-    const content = ensureCompleteSentences(response.data.choices[0].message.content);
-    const [scoreStr, rationale, recommendations] = content.split('\n\n');
-    const overallScore = parseInt(scoreStr.match(/\d+/)?.[0] ?? '5', 10);
+    if (!response.data?.choices?.[0]?.message?.content) {
+      throw new Error('Invalid response format');
+    }
 
-    return { 
-      overallScore: isNaN(overallScore) ? finalScore : Math.min(Math.max(overallScore, 1), 10),
+    const [score, rationale, recommendations] = response.data.choices[0].message.content.split(',');
+    const overallScore = parseInt(score) || 5;
+
+    return {
+      overallScore: Math.min(Math.max(overallScore, 1), 10),
       rationale: rationale || 'No rationale provided.',
       recommendations: recommendations || 'No recommendations provided.'
     };
@@ -235,38 +237,26 @@ export const endDebate = async (
   }
 };
 
-type Position = 'for' | 'against';
-
-// Leaderboard data type
-type LeaderboardEntry = {
-  id: number;
-  username: string;
-  score: number;
-  difficulty: 'easy' | 'medium' | 'hard';
-  category: string;
-  subject: string;
-};
-
-// In-memory leaderboard data
-let leaderboardData: LeaderboardEntry[] = [];
-
-// Function to load leaderboard data from JSON file
-const loadLeaderboardData = async (): Promise<LeaderboardEntry[]> => {
+export const getLeaderboard = async (
+  difficulty?: 'easy' | 'medium' | 'hard',
+  category?: string
+): Promise<LeaderboardEntry[]> => {
   try {
     const response = await fetch('/src/data/leaderboard.json');
     if (!response.ok) {
       throw new Error('Failed to fetch leaderboard data');
     }
-    return await response.json();
+    const data = await response.json();
+    leaderboardData = data;
+
+    return leaderboardData.filter(entry => 
+      (!difficulty || entry.difficulty === difficulty) &&
+      (!category || entry.category === category)
+    );
   } catch (error) {
-    console.error('Error loading leaderboard data:', error);
+    console.error('Error loading leaderboard:', error);
     return [];
   }
-};
-
-// Initialize leaderboard data
-export const initializeLeaderboard = async (): Promise<void> => {
-  leaderboardData = await loadLeaderboardData();
 };
 
 export const submitScore = async (
@@ -287,14 +277,4 @@ export const submitScore = async (
   leaderboardData.push(newEntry);
   leaderboardData.sort((a, b) => b.score - a.score);
   leaderboardData = leaderboardData.slice(0, 100); // Keep only top 100 scores
-};
-
-export const getLeaderboard = async (
-  difficulty?: 'easy' | 'medium' | 'hard',
-  category?: string
-): Promise<LeaderboardEntry[]> => {
-  return leaderboardData.filter(entry => 
-    (!difficulty || entry.difficulty === difficulty) &&
-    (!category || entry.category === category)
-  );
 };

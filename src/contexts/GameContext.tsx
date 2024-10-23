@@ -1,13 +1,13 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { generateTopic, submitScore, getLeaderboard } from './api/openRouterApi';
-import { AIPersonality } from './data/aiPersonalities';
-import preCreatedSubjectsData from './data/preCreatedSubjects.json';
+import React, { createContext, useState, useEffect } from 'react';
+import { generateTopic, submitScore, getLeaderboard } from '../api/openRouterApi';
+import { AIPersonality } from '../data/aiPersonalities';
+import preCreatedSubjectsData from '../data/preCreatedSubjects.json';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
 type GameState = 'home' | 'select-category' | 'select-topic' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'end' | 'leaderboard' | 'select-pregenerated';
 type Position = 'for' | 'against';
 
-interface GameContextType {
+export interface GameContextType {
   gameState: GameState;
   setGameState: React.Dispatch<React.SetStateAction<GameState>>;
   topic: string;
@@ -51,17 +51,9 @@ interface GameContextType {
   toggleDarkMode: () => void;
 }
 
-const GameContext = createContext<GameContextType | undefined>(undefined);
+export const GameContext = createContext<GameContextType | undefined>(undefined);
 
-function useGameContext() {
-  const context = useContext(GameContext);
-  if (!context) {
-    throw new Error('useGameContext must be used within a GameProvider');
-  }
-  return context;
-}
-
-function GameProvider({ children }: { children: React.ReactNode }) {
+export function GameProvider({ children }: { children: React.ReactNode }) {
   const [gameState, setGameState] = useState<GameState>('home');
   const [topic, setTopic] = useState('');
   const [category, setCategory] = useState<string>('');
@@ -233,5 +225,3 @@ function GameProvider({ children }: { children: React.ReactNode }) {
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 }
-
-export { GameProvider, useGameContext };

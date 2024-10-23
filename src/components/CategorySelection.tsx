@@ -1,11 +1,10 @@
 import React from 'react';
 import { Book, Globe, Atom, Lightbulb, Shuffle } from 'lucide-react';
+import { useGameContext } from '../hooks/useGameContext';
 
-interface CategorySelectionProps {
-  onSelect: (category: string) => void;
-}
+const CategorySelection: React.FC = () => {
+  const { handleCategorySelect } = useGameContext();
 
-const CategorySelection: React.FC<CategorySelectionProps> = ({ onSelect }) => {
   const categories = [
     { name: 'Religion', icon: Book },
     { name: 'Politics', icon: Globe },
@@ -21,7 +20,7 @@ const CategorySelection: React.FC<CategorySelectionProps> = ({ onSelect }) => {
         {categories.map((category) => (
           <button
             key={category.name}
-            onClick={() => onSelect(category.name)}
+            onClick={() => handleCategorySelect(category.name)}
             className="flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
           >
             <category.icon size={48} className="mb-4 text-indigo-600 dark:text-indigo-400" />
