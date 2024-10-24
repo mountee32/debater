@@ -215,28 +215,28 @@ const DebateGame: React.FC<DebateGameProps> = ({
       <div className="fixed top-0 left-0 right-0 z-10 shadow-lg">
         <div className="bg-indigo-100/95 dark:bg-indigo-900/95 backdrop-blur-sm p-4 border-b border-indigo-200 dark:border-indigo-800">
           <div className="flex items-center justify-between max-w-4xl mx-auto">
-            <div className="flex items-center space-x-2">
-              <div className="flex items-center space-x-2 bg-white/90 dark:bg-indigo-800/90 px-4 py-2 rounded-full text-sm shadow-sm">
-                <Clock size={16} className="text-indigo-600 dark:text-indigo-300" />
+            <div className="flex items-center mr-8">
+              <div className="flex items-center bg-white/90 dark:bg-indigo-800/90 px-4 py-2 rounded-full text-sm shadow-sm w-[72px]">
+                <Clock size={16} className="text-indigo-600 dark:text-indigo-300 mr-2" />
                 <span className="font-semibold text-indigo-600 dark:text-indigo-300">
                   {formatTime(timeLeft)}
                 </span>
               </div>
-              <button
-                onClick={onToggleDarkMode}
-                className="p-2 rounded-full hover:bg-white/80 dark:hover:bg-indigo-800/80 transition-colors duration-200"
-                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-              >
-                {isDarkMode ? (
-                  <Sun size={20} className="text-indigo-600 dark:text-indigo-300" />
-                ) : (
-                  <Moon size={20} className="text-indigo-600 dark:text-indigo-300" />
-                )}
-              </button>
             </div>
             <h1 className="text-xl font-bold text-indigo-900 dark:text-indigo-100 text-center px-6 py-2 bg-white/90 dark:bg-indigo-800/90 rounded-xl shadow-sm">
               {topic}
             </h1>
+            <button
+              onClick={onToggleDarkMode}
+              className="p-2 rounded-full hover:bg-white/80 dark:hover:bg-indigo-800/80 transition-colors duration-200 ml-8"
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDarkMode ? (
+                <Sun size={20} className="text-indigo-600 dark:text-indigo-300" />
+              ) : (
+                <Moon size={20} className="text-indigo-600 dark:text-indigo-300" />
+              )}
+            </button>
           </div>
         </div>
 
