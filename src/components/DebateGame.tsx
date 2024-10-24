@@ -211,10 +211,11 @@ const DebateGame: React.FC<DebateGameProps> = ({
   };
 
   return (
-    <div className="text-gray-900 dark:text-gray-100 flex flex-col h-full relative">
-      <div className="fixed top-0 left-0 right-0 z-10 shadow-lg">
-        <div className="bg-indigo-100/95 dark:bg-indigo-900/95 backdrop-blur-sm p-4 border-b border-indigo-200 dark:border-indigo-800">
-          <div className="flex items-center justify-between max-w-4xl mx-auto">
+    <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-800">
+      {/* Fixed Header */}
+      <header className="fixed top-0 left-0 right-0 z-50">
+        <div className="bg-indigo-100/95 dark:bg-indigo-900/95 backdrop-blur-sm border-b border-indigo-200 dark:border-indigo-800">
+          <div className="flex items-center justify-between max-w-4xl mx-auto p-4">
             <div className="flex items-center mr-8">
               <div className="flex items-center bg-white/90 dark:bg-indigo-800/90 px-4 py-2 rounded-full text-sm shadow-sm w-[72px]">
                 <Clock size={16} className="text-indigo-600 dark:text-indigo-300 mr-2" />
@@ -240,7 +241,7 @@ const DebateGame: React.FC<DebateGameProps> = ({
           </div>
         </div>
 
-        <div className="px-4 py-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+        <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 px-4 py-2">
           <div className="max-w-4xl mx-auto">
             <div className="relative h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
               <div 
@@ -258,10 +259,11 @@ const DebateGame: React.FC<DebateGameProps> = ({
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      <div className="flex-grow overflow-y-auto bg-gray-50 dark:bg-gray-800 mt-32 pb-4">
-        <div className="max-w-4xl mx-auto">
+      {/* Scrollable Chat Area */}
+      <main className="flex-1 overflow-y-auto pt-32 pb-36">
+        <div className="max-w-4xl mx-auto px-4">
           {messages.map((message) => (
             <div
               key={message.id}
@@ -354,9 +356,10 @@ const DebateGame: React.FC<DebateGameProps> = ({
           )}
           <div ref={messagesEndRef} />
         </div>
-      </div>
+      </main>
 
-      <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
+      {/* Fixed Footer */}
+      <footer className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 p-4">
         <div className="max-w-4xl mx-auto">
           <textarea
             className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-base shadow-sm focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-shadow duration-200"
@@ -398,7 +401,7 @@ const DebateGame: React.FC<DebateGameProps> = ({
             </button>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
   );
 };
