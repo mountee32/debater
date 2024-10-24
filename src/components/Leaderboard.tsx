@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Book, Globe, Atom, Lightbulb } from 'lucide-react';
+import { Book, Globe, Atom, Lightbulb, Trophy, Medal } from 'lucide-react';
 import leaderboardData from '../data/leaderboard.json';
 
 interface LeaderboardProps {
@@ -16,10 +16,10 @@ interface LeaderboardEntry {
 }
 
 const categoryIcons: { [key: string]: React.ReactNode } = {
-  'Science': <Atom size={24} />,
-  'Politics': <Globe size={24} />,
-  'Religion': <Book size={24} />,
-  'Philosophy': <Lightbulb size={24} />,
+  'Science': <Atom size={24} className="text-blue-500" />,
+  'Politics': <Globe size={24} className="text-green-500" />,
+  'Religion': <Book size={24} className="text-purple-500" />,
+  'Philosophy': <Lightbulb size={24} className="text-yellow-500" />,
 };
 
 const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) => {
@@ -64,72 +64,107 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
 
   const categories = [...new Set(leaderboardEntries.map(entry => entry.category))];
 
+  const getRankIcon = (index: number) => {
+    switch (index) {
+      case 0:
+        return <Trophy className="text-yellow-500 w-5 h-5" />;
+      case 1:
+        return <Medal className="text-gray-400 w-5 h-5" />;
+      case 2:
+        return <Medal className="text-amber-600 w-5 h-5" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="mt-8 relative flex flex-col items-center">
-      <h2 className="text-2xl font-bold mb-4 text-center">Global Leaderboard</h2>
-      <div className="flex flex-wrap justify-center mb-4">
-        {categories.map(category => (
-          <button
-            key={category}
-            className={`mx-1 mb-2 p-2 rounded flex flex-col items-center justify-center ${
-              selectedCategory === category
-                ? 'bg-indigo-600 text-white'
-                : 'bg-white dark:bg-gray-800'
-            } shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
-            onClick={() => handleCategoryFilter(category)}
-          >
-            {categoryIcons[category]}
-            <span className="mt-1 text-sm">{category}</span>
-          </button>
-        ))}
-      </div>
-      <div className="overflow-x-auto w-full">
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="bg-gray-50">
-              <th className="p-2 text-left">Score</th>
-              <th className="p-2 text-left">Name</th>
-              <th className="p-2 text-left">Subject</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredEntries.map((entry, index) => (
-              <tr
-                key={entry.id}
-                className={`${username === entry.username ? 'bg-yellow-100' : ''} hover:bg-gray-100 cursor-pointer`}
-                onClick={() => handleEntryClick(entry)}
-              >
-                <td className="p-2">{entry.score}</td>
-                <td className="p-2 text-left">{entry.username}</td>
-                <td className="p-2 text-left">
-                  <span title={entry.subject} className="cursor-help">
-                    {truncateSubject(entry.subject, 50)}
-                  </span>
-                </td>
+      <div className="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="p-6 bg-gradient-to-r from-indigo-600 to-purple-600">
+          <h2 className="text-3xl font-bold text-white text-center mb-2">Global Leaderboard</h2>
+          <p className="text-indigo-100 text-center text-sm">Compete with the best debaters worldwide</p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4 p-4 bg-gray-50 dark:bg-gray-700">
+          {categories.map(category => (
+            <button
+              key={category}
+              className={`
+                px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 transform hover:scale-105
+                ${selectedCategory === category
+                  ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:shadow-md'
+                }
+              `}
+              onClick={() => handleCategoryFilter(category)}
+            >
+              {categoryIcons[category]}
+              <span className="font-medium">{category}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="overflow-x-auto w-full">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-gray-50 dark:bg-gray-700">
+                <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Rank</th>
+                <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Score</th>
+                <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Name</th>
+                <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Subject</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredEntries.map((entry, index) => (
+                <tr
+                  key={entry.id}
+                  className={`
+                    border-b border-gray-100 dark:border-gray-700 transition-colors duration-200
+                    ${username === entry.username ? 'bg-indigo-50 dark:bg-indigo-900/20' : 'hover:bg-gray-50 dark:hover:bg-gray-700/50'}
+                    cursor-pointer
+                  `}
+                  onClick={() => handleEntryClick(entry)}
+                >
+                  <td className="p-4 flex items-center gap-2">
+                    {getRankIcon(index)}
+                    <span className="text-gray-600 dark:text-gray-300">{index + 1}</span>
+                  </td>
+                  <td className="p-4">
+                    <span className="font-semibold text-indigo-600 dark:text-indigo-400">{entry.score}</span>
+                  </td>
+                  <td className="p-4 font-medium text-gray-700 dark:text-gray-200">{entry.username}</td>
+                  <td className="p-4 text-gray-600 dark:text-gray-300">
+                    <span title={entry.subject} className="cursor-help">
+                      {truncateSubject(entry.subject, 50)}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {showPopup && selectedEntry && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-4">Want to debate this topic?</h3>
-            <p className="mb-4">Subject: {selectedEntry.subject}</p>
-            <div className="flex justify-end">
-              <button
-                className="px-4 py-2 bg-gray-200 rounded mr-2"
-                onClick={() => setShowPopup(false)}
-              >
-                Cancel
-              </button>
-              <button
-                className="px-4 py-2 bg-blue-500 text-white rounded"
-                onClick={handleStartDebate}
-              >
-                Start Debate
-              </button>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-100">
+            <div className="p-6">
+              <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Ready to Debate?</h3>
+              <p className="mb-6 text-gray-600 dark:text-gray-300">{selectedEntry.subject}</p>
+              <div className="flex justify-end gap-3">
+                <button
+                  className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+                  onClick={() => setShowPopup(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 transition-all duration-200 transform hover:-translate-y-0.5"
+                  onClick={handleStartDebate}
+                >
+                  Start Debate
+                </button>
+              </div>
             </div>
           </div>
         </div>
