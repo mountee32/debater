@@ -25,7 +25,7 @@ const DebateGame: React.FC<DebateGameProps> = ({
   isDarkMode,
   onToggleDarkMode
 }) => {
-  const { messages, addMessage, updateMessageScore, removeHintMessages } = useMessageHandler();
+  const { messages, addMessage, updateMessageScore } = useMessageHandler();
   const [currentArgument, setCurrentArgument] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isGeneratingHint, setIsGeneratingHint] = useState(false);
@@ -170,7 +170,6 @@ const DebateGame: React.FC<DebateGameProps> = ({
       setError('Failed to get AI response. Please try again.');
     } finally {
       setCurrentArgument('');
-      removeHintMessages();
       setIsLoading(false);
       setIsAiThinking(false);
     }
@@ -193,8 +192,7 @@ const DebateGame: React.FC<DebateGameProps> = ({
     try {
       const hint = await generateHint(topic, messages, difficulty, userPosition);
       if (hint) {
-        removeHintMessages();
-        addMessage('hint', hint);
+        setCurrentArgument(hint);
       }
     } catch (error) {
       log(`DebateGame: Error generating hint: ${error}`);
@@ -203,11 +201,6 @@ const DebateGame: React.FC<DebateGameProps> = ({
       setIsGeneratingHint(false);
       setIsAiThinking(false);
     }
-  };
-
-  const handleHintSelection = (hint: string) => {
-    setCurrentArgument(hint);
-    removeHintMessages();
   };
 
   return (
@@ -296,26 +289,20 @@ const DebateGame: React.FC<DebateGameProps> = ({
                     ? userPosition === 'for' 
                       ? 'bg-green-50 dark:bg-green-900/30' 
                       : 'bg-red-50 dark:bg-red-900/30'
-                    : message.role === 'opponent'
-                    ? aiPosition === 'for'
+                    : aiPosition === 'for'
                       ? 'bg-green-50 dark:bg-green-900/30'
                       : 'bg-red-50 dark:bg-red-900/30'
-                    : 'bg-yellow-50 dark:bg-yellow-900/30'
                 } max-w-[80%]`}
               >
                 <div className="flex justify-between items-center mb-2">
                   <span className={`text-sm font-semibold ${
                     message.role === 'user' 
                       ? getPositionColor(userPosition)
-                      : message.role === 'opponent'
-                      ? getPositionColor(aiPosition)
-                      : 'text-yellow-600 dark:text-yellow-400'
+                      : getPositionColor(aiPosition)
                   }`}>
                     {message.role === 'user' 
                       ? `You (${userPosition})`
-                      : message.role === 'opponent'
-                      ? `${aiPersonality.name} (${aiPosition})`
-                      : 'Hint'}
+                      : `${aiPersonality.name} (${aiPosition})`}
                   </span>
                   {message.score !== undefined && (
                     <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
@@ -324,14 +311,6 @@ const DebateGame: React.FC<DebateGameProps> = ({
                   )}
                 </div>
                 <p className="text-base leading-relaxed">{message.content}</p>
-                {message.role === 'hint' && (
-                  <button
-                    onClick={() => handleHintSelection(message.content)}
-                    className="mt-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    Use Hint
-                  </button>
-                )}
               </div>
             </div>
           ))}
