@@ -1,140 +1,140 @@
 [
   {
     "id": 1,
-    "username": "ReligionDebater1",
+    "username": "PrayerWarrior420",
     "score": 15,
     "subject": "Religion should play a significant role in modern society.",
     "category": "Religion"
   },
   {
     "id": 2,
-    "username": "ReligionDebater2",
+    "username": "BuddhaBeGaming",
     "score": 12,
     "subject": "There should be a complete separation of church and state.",
     "category": "Religion"
   },
   {
     "id": 3,
-    "username": "ReligionDebater3",
+    "username": "ZenMasterFlex",
     "score": 18,
     "subject": "Religious freedom should take precedence over secular laws.",
     "category": "Religion"
   },
   {
     "id": 4,
-    "username": "ReligionDebater4",
+    "username": "HolyMolyGuacamole",
     "score": 10,
     "subject": "Religious education has a positive impact on youth development.",
     "category": "Religion"
   },
   {
     "id": 5,
-    "username": "PoliticsDebater1",
+    "username": "FilibusterBob",
     "score": 14,
     "subject": "Governments should implement universal basic income.",
     "category": "Politics"
   },
   {
     "id": 6,
-    "username": "PoliticsDebater2",
+    "username": "VoteyMcVoteFace",
     "score": 16,
     "subject": "The electoral college is better than a popular vote system.",
     "category": "Politics"
   },
   {
     "id": 7,
-    "username": "PoliticsDebater3",
+    "username": "SenatorSassypants",
     "score": 13,
     "subject": "There should be term limits for all elected officials.",
     "category": "Politics"
   },
   {
     "id": 8,
-    "username": "PoliticsDebater4",
+    "username": "DemocracyDude99",
     "score": 19,
     "subject": "Campaign finance reform is necessary for a fair democratic process.",
     "category": "Politics"
   },
   {
     "id": 9,
-    "username": "ScienceDebater1",
+    "username": "LabCoatLarry",
     "score": 11,
     "subject": "Genetic engineering is ethically justifiable.",
     "category": "Science"
   },
   {
     "id": 10,
-    "username": "ScienceDebater2",
+    "username": "BillNyeTheReplyGuy",
     "score": 17,
     "subject": "Climate change can be effectively mitigated through human intervention.",
     "category": "Science"
   },
   {
     "id": 11,
-    "username": "ScienceDebater3",
+    "username": "RocketManRandy",
     "score": 14,
     "subject": "Space exploration funding should be increased.",
     "category": "Science"
   },
   {
     "id": 12,
-    "username": "ScienceDebater4",
+    "username": "BeakerBreaker",
     "score": 11,
     "subject": "Artificial intelligence should be strictly regulated.",
     "category": "Science"
   },
   {
     "id": 13,
-    "username": "PhilosophyDebater1",
+    "username": "SocratesInSneakers",
     "score": 18,
     "subject": "Free will exists and is not predetermined.",
     "category": "Philosophy"
   },
   {
     "id": 14,
-    "username": "PhilosophyDebater2",
+    "username": "PlatonicPete",
     "score": 13,
     "subject": "Consciousness is a fundamental aspect of reality.",
     "category": "Philosophy"
   },
   {
     "id": 15,
-    "username": "PhilosophyDebater3",
+    "username": "ExistentialElvis",
     "score": 16,
     "subject": "Advanced AI poses significant ethical challenges to society.",
     "category": "Philosophy"
   },
   {
     "id": 16,
-    "username": "PhilosophyDebater4",
+    "username": "NietzschesPizza",
     "score": 15,
     "subject": "Life has an inherent, objective meaning.",
     "category": "Philosophy"
   },
   {
     "id": 17,
-    "username": "RandomDebater1",
+    "username": "WildCardWanda",
     "score": 12,
     "subject": "Social media has a net positive impact on society.",
     "category": "Random"
   },
   {
     "id": 18,
-    "username": "RandomDebater2",
+    "username": "ChaoticDebater",
     "score": 19,
     "subject": "Automation will lead to more job creation than job loss.",
     "category": "Random"
   },
   {
     "id": 19,
-    "username": "RandomDebater3",
+    "username": "RandomRebel",
     "score": 10,
     "subject": "All countries should adopt universal healthcare systems.",
     "category": "Random"
   },
   {
     "id": 20,
-    "username": "RandomDebater4",
+    "username": "DebateMaster3000",
     "score": 17,
     "subject": "Art plays a crucial role in societal development and well-being.",
     "category": "Random"
