@@ -3,7 +3,12 @@ import { AIPersonality } from '../data/aiPersonalities';
 
 const API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY;
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const DEFAULT_MODEL = import.meta.env.VITE_DEFAULT_MODEL || 'openai/gpt-3.5-turbo';
+
+// Define specific models for different purposes
+const OPPONENT_MODEL = import.meta.env.VITE_OPPONENT_MODEL || 'anthropic/claude-2';
+const HINT_MODEL = import.meta.env.VITE_HINT_MODEL || 'openai/gpt-4';
+const TURN_SCORING_MODEL = import.meta.env.VITE_TURN_SCORING_MODEL || 'openai/gpt-3.5-turbo';
+const FINAL_SCORING_MODEL = import.meta.env.VITE_FINAL_SCORING_MODEL || 'anthropic/claude-2';
 
 const headers = {
   'Content-Type': 'application/json',
@@ -28,7 +33,7 @@ let leaderboardData: LeaderboardEntry[] = [];
 export const generateTopic = async (category: string, difficulty: 'easy' | 'medium' | 'hard'): Promise<string> => {
   try {
     const response = await axios.post(API_URL, {
-      model: DEFAULT_MODEL,
+      model: OPPONENT_MODEL,
       messages: [
         {
           role: 'system',
@@ -61,7 +66,7 @@ export const startDebate = async (
   try {
     const aiPosition = userPosition === 'for' ? 'against' : 'for';
     const response = await axios.post(API_URL, {
-      model: DEFAULT_MODEL,
+      model: OPPONENT_MODEL,
       messages: [
         { 
           role: 'system', 
@@ -109,9 +114,9 @@ export const continueDebate = async (
       content: msg.content
     }));
 
-    // Get AI's response
+    // Get AI's response using the opponent model
     const responseResult = await axios.post(API_URL, {
-      model: DEFAULT_MODEL,
+      model: OPPONENT_MODEL,
       messages: [
         { 
           role: 'system', 
@@ -127,9 +132,9 @@ export const continueDebate = async (
 
     const aiResponse = responseResult.data.choices[0].message.content;
 
-    // Evaluate the user's argument
+    // Evaluate the user's argument using the turn scoring model
     const evaluationResult = await axios.post(API_URL, {
-      model: DEFAULT_MODEL,
+      model: TURN_SCORING_MODEL,
       messages: [
         {
           role: 'system',
@@ -174,7 +179,7 @@ export const generateHint = async (
 ): Promise<string> => {
   try {
     const response = await axios.post(API_URL, {
-      model: DEFAULT_MODEL,
+      model: HINT_MODEL,
       messages: [
         { 
           role: 'system', 
@@ -207,7 +212,7 @@ export const endDebate = async (
 ): Promise<{ overallScore: number; rationale: string; recommendations: string }> => {
   try {
     const response = await axios.post(API_URL, {
-      model: DEFAULT_MODEL,
+      model: FINAL_SCORING_MODEL,
       messages: [
         {
           role: 'system',
