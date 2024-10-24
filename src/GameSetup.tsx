@@ -24,7 +24,7 @@ const positions: { name: 'for' | 'against'; icon: LucideIcon; description: strin
 
 const StepContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="max-w-4xl mx-auto">
-    <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+    <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transition-colors duration-300">
       {children}
     </div>
   </div>
@@ -35,16 +35,16 @@ export const CategorySelection: React.FC = () => {
 
   return (
     <StepContainer>
-      <h2 className="text-2xl font-semibold mb-4 text-center">Select Discussion Category</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">Select Discussion Category</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {categories.map(({ name, icon: Icon }) => (
           <button
             key={name}
             onClick={() => handleCategorySelect(name)}
-            className="flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
+            className="flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
           >
             <Icon className="w-8 h-8 mb-2 text-blue-500" />
-            <span>{name}</span>
+            <span className="font-medium">{name}</span>
           </button>
         ))}
       </div>
@@ -57,13 +57,13 @@ export const TopicSelection: React.FC = () => {
 
   return (
     <StepContainer>
-      <h2 className="text-2xl font-semibold mb-4 text-center">Select or Enter Debate Topic</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">Select or Enter Debate Topic</h2>
       <div className="space-y-4 mb-6">
         {preCreatedSubjects.map((subject: string, index: number) => (
           <button
             key={index}
             onClick={() => handlePreCreatedSubjectSelect(subject)}
-            className="w-full text-left p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
+            className="w-full text-left p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
           >
             {subject}
           </button>
@@ -74,12 +74,12 @@ export const TopicSelection: React.FC = () => {
           type="text"
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
-          className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+          className="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
           placeholder="Or enter your own debate topic here"
         />
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors duration-200"
+          className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
         >
           Continue with Custom Topic
         </button>
@@ -93,12 +93,12 @@ export const AIPersonalitySelection: React.FC = () => {
 
   return (
     <StepContainer>
-      <h2 className="text-2xl font-semibold mb-4 text-center">Select AI Opponent</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">Select AI Opponent</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {aiPersonalities.map((personality) => (
           <button
             key={personality.id}
-            className="text-left bg-gray-100 dark:bg-gray-700 rounded-lg p-4 hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
+            className="text-left bg-gray-100 dark:bg-gray-700 rounded-lg p-4 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
             onClick={() => handlePersonalitySelect(personality)}
           >
             <div className="flex items-start">
@@ -116,8 +116,8 @@ export const AIPersonalitySelection: React.FC = () => {
                 <User className="w-8 h-8 text-gray-400 hidden" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">{personality.name}</h3>
-                <p className="text-sm">{personality.description}</p>
+                <h3 className="text-lg font-semibold mb-2">{personality.name}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{personality.description}</p>
               </div>
             </div>
           </button>
@@ -132,19 +132,19 @@ export const DifficultySelection: React.FC = () => {
 
   return (
     <StepContainer>
-      <h2 className="text-2xl font-semibold mb-4 text-center">Select Difficulty</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">Select Difficulty</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {difficulties.map(({ name, icon: Icon, description }) => (
           <button
             key={name}
             onClick={() => handleDifficultyChange(name)}
-            className={`flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200 ${
+            className={`flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ${
               difficulty === name ? 'ring-2 ring-blue-500' : ''
             }`}
           >
             <Icon className="w-8 h-8 mb-2 text-blue-500" />
             <span className="font-semibold">{name.charAt(0).toUpperCase() + name.slice(1)}</span>
-            <p className="text-sm text-center mt-2">{description}</p>
+            <p className="text-sm text-center mt-2 text-gray-600 dark:text-gray-400">{description}</p>
           </button>
         ))}
       </div>
@@ -158,20 +158,20 @@ export const PositionSelection: React.FC = () => {
   return (
     <StepContainer>
       <h2 className="text-3xl font-bold mb-2 text-center">Topic:</h2>
-      <p className="text-2xl mb-6 text-center font-semibold text-blue-600 dark:text-blue-400">{topic}</p>
+      <p className="text-2xl mb-6 text-center font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">{topic}</p>
       <h3 className="text-xl font-semibold mb-4 text-center">Select Your Position</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {positions.map(({ name, icon: Icon, description }) => (
           <button
             key={name}
             onClick={() => handlePositionSelect(name)}
-            className={`flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200 ${
+            className={`flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ${
               userPosition === name ? 'ring-2 ring-blue-500' : ''
             }`}
           >
             <Icon className={`w-8 h-8 mb-2 ${name === 'for' ? 'text-green-500' : 'text-red-500'}`} />
             <span className="font-semibold">{name.charAt(0).toUpperCase() + name.slice(1)}</span>
-            <p className="text-sm text-center mt-2">{description}</p>
+            <p className="text-sm text-center mt-2 text-gray-600 dark:text-gray-400">{description}</p>
           </button>
         ))}
       </div>
@@ -184,13 +184,13 @@ export const PregeneratedQuestionSelection: React.FC = () => {
 
   return (
     <StepContainer>
-      <h2 className="text-2xl font-semibold mb-4 text-center">Select a Pregenerated Question</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-600">Select a Pregenerated Question</h2>
       <div className="space-y-4">
         {pregeneratedQuestions.map((question: string, index: number) => (
           <button
             key={index}
             onClick={() => handlePregeneratedQuestionSelect(question)}
-            className="w-full text-left p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200"
+            className="w-full text-left p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
           >
             {question}
           </button>
