@@ -211,52 +211,54 @@ const DebateGame: React.FC<DebateGameProps> = ({
   };
 
   return (
-    <div className="text-gray-900 dark:text-gray-100 flex flex-col h-full">
-      <div className="bg-indigo-100 dark:bg-indigo-900 p-2 border-b-2 border-indigo-200 dark:border-indigo-800">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-1 bg-indigo-200 dark:bg-indigo-800 px-3 py-1 rounded-full text-sm">
-            <Clock size={14} className="text-indigo-600 dark:text-indigo-400" />
-            <span className="font-medium text-indigo-600 dark:text-indigo-400">
-              {formatTime(timeLeft)}
+    <div className="text-gray-900 dark:text-gray-100 flex flex-col h-full relative">
+      <div className="fixed top-0 left-0 right-0 z-10">
+        <div className="bg-indigo-100 dark:bg-indigo-900 p-2 border-b-2 border-indigo-200 dark:border-indigo-800">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-1 bg-indigo-200 dark:bg-indigo-800 px-3 py-1 rounded-full text-sm">
+              <Clock size={14} className="text-indigo-600 dark:text-indigo-400" />
+              <span className="font-medium text-indigo-600 dark:text-indigo-400">
+                {formatTime(timeLeft)}
+              </span>
+            </div>
+            <div className="flex items-center flex-grow justify-center mx-2">
+              <h1 className="text-xl font-bold text-indigo-900 dark:text-indigo-100 text-center px-4 py-1 bg-indigo-200 dark:bg-indigo-800 rounded-lg shadow-sm">
+                {topic}
+              </h1>
+              <button
+                onClick={onToggleDarkMode}
+                className="ml-2 p-2 rounded-full hover:bg-indigo-200 dark:hover:bg-indigo-800"
+                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                {isDarkMode ? (
+                  <Sun size={20} className="text-indigo-600 dark:text-indigo-400" />
+                ) : (
+                  <Moon size={20} className="text-indigo-600 dark:text-indigo-400" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="px-2 py-1 bg-gray-50 dark:bg-gray-900">
+          <div className="relative h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+            <div 
+              className={`absolute left-0 top-0 h-full transition-all duration-500 ${getScoreColor(audienceScore.user)}`}
+              style={{ width: `${audienceScore.user}%` }}
+            />
+          </div>
+          <div className="flex justify-between text-xs mt-0.5">
+            <span className={`${getPositionColor(userPosition)} ${audienceScore.user > audienceScore.opponent ? 'font-bold' : ''}`}>
+              You ({userPosition}) - {Math.round(audienceScore.user)}%
+            </span>
+            <span className={`${getPositionColor(aiPosition)} ${audienceScore.opponent > audienceScore.user ? 'font-bold' : ''}`}>
+              {aiPersonality.name} ({aiPosition}) - {Math.round(audienceScore.opponent)}%
             </span>
           </div>
-          <div className="flex items-center flex-grow justify-center mx-2">
-            <h1 className="text-xl font-bold text-indigo-900 dark:text-indigo-100 text-center px-4 py-1 bg-indigo-200 dark:bg-indigo-800 rounded-lg shadow-sm">
-              {topic}
-            </h1>
-            <button
-              onClick={onToggleDarkMode}
-              className="ml-2 p-2 rounded-full hover:bg-indigo-200 dark:hover:bg-indigo-800"
-              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {isDarkMode ? (
-                <Sun size={20} className="text-indigo-600 dark:text-indigo-400" />
-              ) : (
-                <Moon size={20} className="text-indigo-600 dark:text-indigo-400" />
-              )}
-            </button>
-          </div>
         </div>
       </div>
 
-      <div className="px-2 py-1 bg-gray-50 dark:bg-gray-900">
-        <div className="relative h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-          <div 
-            className={`absolute left-0 top-0 h-full transition-all duration-500 ${getScoreColor(audienceScore.user)}`}
-            style={{ width: `${audienceScore.user}%` }}
-          />
-        </div>
-        <div className="flex justify-between text-xs mt-0.5">
-          <span className={`${getPositionColor(userPosition)} ${audienceScore.user > audienceScore.opponent ? 'font-bold' : ''}`}>
-            You ({userPosition}) - {Math.round(audienceScore.user)}%
-          </span>
-          <span className={`${getPositionColor(aiPosition)} ${audienceScore.opponent > audienceScore.user ? 'font-bold' : ''}`}>
-            {aiPersonality.name} ({aiPosition}) - {Math.round(audienceScore.opponent)}%
-          </span>
-        </div>
-      </div>
-
-      <div className="flex-grow overflow-y-auto border-t border-b bg-white dark:bg-gray-800">
+      <div className="flex-grow overflow-y-auto border-t border-b bg-white dark:bg-gray-800 mt-24">
         {messages.map((message) => (
           <div
             key={message.id}
