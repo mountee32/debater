@@ -2,6 +2,22 @@
 
 An interactive AI-powered debate game where users can engage in structured debates with AI opponents. The game features multiple AI personalities, each with unique debate styles and perspectives, allowing players to practice their argumentation skills in a gamified environment.
 
+## Quick Start
+
+1. Install dependencies:
+   ```
+   npm install
+   ```
+
+2. Start both the development server and logging server with a single command:
+   ```
+   npm start
+   ```
+
+3. Access:
+   - Game: http://localhost:5173
+   - Log Viewer: http://localhost:3001/log-viewer.html
+
 ## Game Overview
 
 Players can:
@@ -24,6 +40,7 @@ Players can:
   - Global leaderboard showing top debaters
   - Compact leaderboard view for quick rankings
 - **Responsive Design**: Built with Tailwind CSS for a seamless experience across devices
+- **API Communication Logging**: Comprehensive logging system for debugging and monitoring AI interactions
 
 ## Prerequisites
 
@@ -42,51 +59,50 @@ Before running the project, make sure you have the following installed:
 
 Note: The `.env` file is included in `.gitignore` to prevent sensitive information from being committed to the repository.
 
-## Running the Project
+## API Communication Logging
 
-To run the project, follow these steps:
+The project includes a comprehensive logging system with a user-friendly interface for monitoring and debugging AI communications:
 
-1. Open a terminal and navigate to the project directory:
-   ```
-   cd ~/debater
-   ```
+1. **Interactive Log Viewer**: 
+   - Access at http://localhost:3001/log-viewer.html
+   - Clean, collapsible interface for viewing API logs
+   - One-line summaries with expandable details
+   - Auto-refresh capability
 
-2. Install the project dependencies:
-   ```
-   npm install
-   ```
+2. **Log Viewer Features**:
+   - Summary view showing:
+     - Timestamp
+     - HTTP method
+     - Endpoint
+     - Status (Success/Error)
+     - Request duration
+   - Expandable details showing:
+     - Full request data
+     - Full response data or error details
+     - Formatted JSON for easy reading
+   - Auto-refresh options:
+     - Configurable refresh intervals (1s, 2s, 5s, 10s)
+     - Manual refresh button
+   - Color-coded status indicators
+   - Chronological ordering (newest first)
 
-3. Start the development server:
-   ```
-   npm run dev
-   ```
-
-4. Once the development server starts, it will display a local URL (usually http://localhost:5173). Open this URL in your web browser to view the application.
-
-## Game Mechanics
-
-1. **Topic Selection**: Choose from pre-defined categories or create a custom topic
-2. **Opponent Selection**: Pick an AI personality to debate against
-3. **Difficulty Setting**: Adjust the debate difficulty using the slider
-4. **Debate Flow**:
-   - Take turns presenting arguments
-   - Respond to opponent's points
-   - Provide evidence and reasoning
-   - Conclude with final statements
-5. **Scoring**: Performance is evaluated based on:
-   - Argument coherence
-   - Response relevance
-   - Overall debate structure
-   - Difficulty level
+3. **Using the Log Viewer**:
+   1. Start the application with `npm start`
+   2. Open the game in one browser tab
+   3. Open http://localhost:3001/log-viewer.html in another tab
+   4. Click any log entry to view its details
+   5. Enable auto-refresh for real-time updates
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-- `npm run dev`: Runs the app in development mode
-- `npm run build`: Builds the app for production to the `dist` folder
-- `npm run preview`: Locally preview the production build
-- `npm test`: Runs the test suite using Jest
+- `npm start`: Starts both the development server and logging server
+- `npm run dev`: Runs only the development server
+- `npm run logs`: Runs only the logging server
+- `npm run build`: Builds the app for production
+- `npm run preview`: Locally preview production build
+- `npm test`: Runs the test suite
 
 ## Project Structure
 
@@ -94,8 +110,11 @@ In the project directory, you can run:
   - `api/`: API-related code (e.g., openRouterApi.ts)
   - `components/`: React components (e.g., DebateGame.tsx, DifficultySlider.tsx)
   - `data/`: Data files (e.g., debateQuestions.json, aiPersonalities.ts)
-  - `utils/`: Utility functions
-- `assets/`: SVG images for AI avatars
+  - `utils/`: Utility functions and logging system
+- `public/`: Static files
+  - `assets/`: SVG images for AI avatars
+  - `log-viewer.html`: Interactive log viewer interface
+- `db.json`: Local database file for storing API logs
 - `index.html`: The main HTML file
 - `vite.config.ts`: Vite configuration file
 - `tsconfig.json`, `tsconfig.node.json`, `tsconfig.app.json`, `tsconfig.test.json`: TypeScript configuration files
@@ -128,6 +147,7 @@ Players can view their standings in both detailed and compact views, with regula
 - **Testing**: Jest
 - **AI Integration**: OpenRouter API
 - **State Management**: React Context
+- **Logging**: JSON Server with custom viewer interface
 
 ## Additional Resources
 
@@ -136,3 +156,4 @@ Players can view their standings in both detailed and compact views, with regula
 - TypeScript: [Documentation](https://www.typescriptlang.org/docs/)
 - Tailwind CSS: [Documentation](https://tailwindcss.com/docs)
 - Jest: [Documentation](https://jestjs.io/docs/getting-started)
+- JSON Server: [Documentation](https://github.com/typicode/json-server)
