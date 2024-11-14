@@ -207,11 +207,11 @@ export const generateHint = async (
     messages: [
       { 
         role: 'system', 
-        content: `You are a debate coach. Provide a single short suggestion for arguing ${userPosition} the topic "${topic}".`
+        content: `Generate a direct, concise argument ${userPosition} the topic "${topic}". Keep it under 50 words. State the argument directly without any prefixes like "I could" or "You should".`
       },
       {
         role: 'user',
-        content: 'Give me a hint for my next argument.'
+        content: 'Provide a brief, focused argument for this position.'
       }
     ]
   };

@@ -291,6 +291,374 @@
       },
       "responseData": [],
       "duration": 7
+    },
+    {
+      "id": "8bda",
+      "timestamp": "2024-11-14T18:10:25.618Z",
+      "endpoint": "startDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+          },
+          {
+            "role": "user",
+            "content": "The topic is: \"Governments should implement universal basic income.\". Start with a quick opening argument against the topic."
+          }
+        ]
+      },
+      "responseData": "Universal basic income is financially impractical. Most estimates show its cost exceeding $3 trillion per year, nearly doubling the current US federal budget. This level of spending is simply not feasible.",
+      "duration": 2229
+    },
+    {
+      "id": "a836",
+      "timestamp": "2024-11-14T18:10:32.101Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a debate coach. Provide a single short suggestion for arguing for the topic \"Governments should implement universal basic income.\"."
+          },
+          {
+            "role": "user",
+            "content": "Give me a hint for my next argument."
+          }
+        ]
+      },
+      "responseData": "Focus on the idea of reducing poverty and inequality. Argue how universal basic income would ensure everyone has a minimum income level, thus decreasing financial insecurity, increasing bargaining power for workers, and making society more equitable.",
+      "duration": 2972
+    },
+    {
+      "id": "c5ec",
+      "timestamp": "2024-11-14T18:10:35.925Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Governments should implement universal basic income.\"\nPosition: for\nArgument: Focus on the idea of reducing poverty and inequality. Argue how universal basic income would ensure everyone has a minimum income level, thus decreasing financial insecurity, increasing bargaining power for workers, and making society more equitable."
+          }
+        ]
+      },
+      "responseData": "8,9,7,8,7",
+      "duration": 735
+    },
+    {
+      "id": "1469",
+      "timestamp": "2024-11-14T18:10:38.898Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Logical Larry, debating against the topic \"Governments should implement universal basic income.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "Universal basic income is financially impractical. Most estimates show its cost exceeding $3 trillion per year, nearly doubling the current US federal budget. This level of spending is simply not feasible."
+          }
+        ]
+      },
+      "responseData": "You make a fair point about the costs. However, there may be ways to fund a basic income that avoid ballooning the deficit, like offsetting spending cuts or tax increases. I'm open to debating innovative funding ideas. The concept aims to provide stability and dignity; perhaps with creativity we can find an affordable path.",
+      "duration": 3708
+    },
+    {
+      "id": "1226",
+      "timestamp": "2024-11-14T18:14:23.385Z",
+      "endpoint": "startDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Historical Helen, debating against the topic. Keep responses under 3 sentences."
+          },
+          {
+            "role": "user",
+            "content": "The topic is: \"The electoral college is better than a popular vote system.\". Start with a quick opening argument against the topic."
+          }
+        ]
+      },
+      "responseData": "I disagree. The electoral college is undemocratic and can allow a president to be elected despite losing the popular vote. It weights some votes more than others. We should move to a national popular vote to uphold the principle of one person, one vote.",
+      "duration": 2306
+    },
+    {
+      "id": "7262",
+      "timestamp": "2024-11-14T18:14:27.311Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are the debater arguing for the topic \"The electoral college is better than a popular vote system.\". Generate a first-person thought about a potential argument, starting with \"I could\" or \"Maybe I should\". Keep it concise and natural, as if thinking to yourself."
+          },
+          {
+            "role": "user",
+            "content": "What would be a good argument to make next?"
+          }
+        ]
+      },
+      "responseData": "I could argue that the electoral college system ensures a balanced representation of all states, preventing densely populated urban centers from dictating all policy.",
+      "duration": 2778
+    },
+    {
+      "id": "9cd9",
+      "timestamp": "2024-11-14T18:17:01.409Z",
+      "endpoint": "startDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Futurist Fiona, debating against the topic. Keep responses under 3 sentences."
+          },
+          {
+            "role": "user",
+            "content": "The topic is: \"Governments should implement universal basic income.\". Start with a quick opening argument against the topic."
+          }
+        ]
+      },
+      "responseData": "Governments cannot afford to provide every citizen with a basic income. It would require tax increases that harm economic growth or unsustainable deficit spending. There are better ways to help those in need.",
+      "duration": 2141
+    },
+    {
+      "id": "5603",
+      "timestamp": "2024-11-14T18:17:14.741Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Generate a direct, concise argument for the topic \"Governments should implement universal basic income.\". Do not use phrases like \"I could\" or \"You should\" - just state the argument directly."
+          },
+          {
+            "role": "user",
+            "content": "Suggest a strong argument for this position."
+          }
+        ]
+      },
+      "responseData": "Universal basic income (UBI) should be implemented by governments because it promotes economic stability by ensuring every citizen has sufficient funds to meet their basic needs. It directly addresses poverty and inequality by redistributing wealth and providing a safety net for all, eliminating the demeaning means-testing of current welfare systems. UBI fuels economic growth as citizens, free from financial worry, can pursue entrepreneurial opportunities and contribute more valuably to society. Furthermore, it prepares us for the future wave of automation which threatens to replace jobs, ensuring everyone has a source of basic income regardless of the employment landscape. UBI also gives workers the power of negotiation for better labor conditions, as working becomes a choice rather than a survival necessity.",
+      "duration": 9895
+    },
+    {
+      "id": "6f18",
+      "timestamp": "2024-11-14T18:17:18.907Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Governments should implement universal basic income.\"\nPosition: for\nArgument: Universal basic income (UBI) should be implemented by governments because it promotes economic stability by ensuring every citizen has sufficient funds to meet their basic needs. It directly addresses poverty and inequality by redistributing wealth and providing a safety net for all, eliminating the demeaning means-testing of current welfare systems. UBI fuels economic growth as citizens, free from financial worry, can pursue entrepreneurial opportunities and contribute more valuably to society. Furthermore, it prepares us for the future wave of automation which threatens to replace jobs, ensuring everyone has a source of basic income regardless of the employment landscape. UBI also gives workers the power of negotiation for better labor conditions, as working becomes a choice rather than a survival necessity."
+          }
+        ]
+      },
+      "responseData": "8,9,7,9,Overall, the argument has a solid quality with a strong stance in favor of implementing universal basic income. The consistency is maintained throughout the argument, supporting the benefits of UBI from various angles. The facts presented are backed by logic and potential outcomes of UBI implementation. The style is clear and persuasive, effectively conveying the benefits of UBI and how it can address societal issues. The audience reaction to this argument might be positive due to its well-structured points advocating for economic stability, poverty reduction, and preparation for future challenges.",
+      "duration": 2373
+    },
+    {
+      "id": "891b",
+      "timestamp": "2024-11-14T18:17:20.146Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Futurist Fiona, debating against the topic \"Governments should implement universal basic income.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "Governments cannot afford to provide every citizen with a basic income. It would require tax increases that harm economic growth or unsustainable deficit spending. There are better ways to help those in need."
+          }
+        ]
+      },
+      "responseData": "I respectfully disagree. Universal basic income is an investment in human potential that pays dividends over time. Many studies show it boosts entrepreneurship, health, education, and trust in institutions while reducing inequality, poverty, and crime. With proper funding models, basic income is fiscally realistic and our best path toward shared prosperity.",
+      "duration": 3613
+    },
+    {
+      "id": "a812",
+      "timestamp": "2024-11-14T18:19:14.139Z",
+      "endpoint": "startDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Futurist Fiona, debating against the topic. Keep responses under 3 sentences."
+          },
+          {
+            "role": "user",
+            "content": "The topic is: \"There should be term limits for all elected officials.\". Start with a quick opening argument against the topic."
+          }
+        ]
+      },
+      "responseData": "I oppose term limits. Experience and seniority are valuable in governance. Voters can already limit terms by not re-electing someone.",
+      "duration": 2146
+    },
+    {
+      "id": "859a",
+      "timestamp": "2024-11-14T18:19:20.790Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Generate a direct, concise argument for the topic \"There should be term limits for all elected officials.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+          },
+          {
+            "role": "user",
+            "content": "Provide a brief, focused argument for this position."
+          }
+        ]
+      },
+      "responseData": "Term limits for all elected officials promote fresh perspectives, limit power concentration, and decrease the likelihood of corruption. They ensure democratic vitality by encouraging political diversity and continually opening opportunities for new leaders.",
+      "duration": 2739
+    },
+    {
+      "id": "8321",
+      "timestamp": "2024-11-14T18:19:25.475Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"There should be term limits for all elected officials.\"\nPosition: for\nArgument: Term limits for all elected officials promote fresh perspectives, limit power concentration, and decrease the likelihood of corruption. They ensure democratic vitality by encouraging political diversity and continually opening opportunities for new leaders."
+          }
+        ]
+      },
+      "responseData": "8, 8, 7, 9, The argument is well-written and presents a clear stance in favor of term limits for all elected officials. The consistency is maintained throughout the argument, with points supporting the thesis. Facts are not explicitly cited but are implied in the logic provided. The writing style is concise and logical. The audience generally reacts positively to the idea of term limits for elected officials as a means to promote democratic vitality and prevent corruption.",
+      "duration": 2035
+    },
+    {
+      "id": "6bf8",
+      "timestamp": "2024-11-14T18:19:26.314Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Futurist Fiona, debating against the topic \"There should be term limits for all elected officials.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "I oppose term limits. Experience and seniority are valuable in governance. Voters can already limit terms by not re-electing someone."
+          }
+        ]
+      },
+      "responseData": "You make reasonable points. However, I believe term limits can bring fresh perspectives and reduce opportunities for corruption. Let's have a thoughtful discussion on how to balance these considerations.",
+      "duration": 2875
+    },
+    {
+      "id": "c857",
+      "timestamp": "2024-11-14T18:19:32.145Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Generate a direct, concise argument for the topic \"There should be term limits for all elected officials.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+          },
+          {
+            "role": "user",
+            "content": "Provide a brief, focused argument for this position."
+          }
+        ]
+      },
+      "responseData": "Term limits for all elected officials would ensure fresh ideas and perspectives, prevent accumulated power leading to corruption, and encourage active political participation from a diverse pool of candidates.",
+      "duration": 2407
+    },
+    {
+      "id": "c35f",
+      "timestamp": "2024-11-14T18:19:37.511Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Futurist Fiona, debating against the topic \"There should be term limits for all elected officials.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "I oppose term limits. Experience and seniority are valuable in governance. Voters can already limit terms by not re-electing someone."
+          },
+          {
+            "role": "user",
+            "content": "Term limits for all elected officials promote fresh perspectives, limit power concentration, and decrease the likelihood of corruption. They ensure democratic vitality by encouraging political diversity and continually opening opportunities for new leaders."
+          },
+          {
+            "role": "assistant",
+            "content": "You make reasonable points. However, I believe term limits can bring fresh perspectives and reduce opportunities for corruption. Let's have a thoughtful discussion on how to balance these considerations."
+          }
+        ]
+      },
+      "error": {
+        "message": "Invalid response format",
+        "stack": "Error: Invalid response format\n    at http://localhost:5173/src/api/openRouterApi.ts?t=1731608343388:114:19\n    at async Promise.all (index 0)\n    at async continueDebate (http://localhost:5173/src/api/openRouterApi.ts?t=1731608343388:109:42)\n    at async handleSendArgument (http://localhost:5173/src/components/DebateGame.tsx?t=1731608343388:129:40)"
+      },
+      "duration": 862
+    },
+    {
+      "id": "415f",
+      "timestamp": "2024-11-14T18:19:38.565Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"There should be term limits for all elected officials.\"\nPosition: for\nArgument: Term limits for all elected officials would ensure fresh ideas and perspectives, prevent accumulated power leading to corruption, and encourage active political participation from a diverse pool of candidates."
+          }
+        ]
+      },
+      "responseData": "8, 9, 8, 7, The argument is well-presented and makes compelling points about the benefits of term limits for elected officials. It maintains consistency in terms of the points made and is supported by facts. The overall style is clear and focused. The audience is likely to react positively, with some agreeing and others possibly debating the merits of term limits for officials.",
+      "duration": 1916
     }
   ]
 }
