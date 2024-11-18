@@ -659,6 +659,459 @@
       },
       "responseData": "8, 9, 8, 7, The argument is well-presented and makes compelling points about the benefits of term limits for elected officials. It maintains consistency in terms of the points made and is supported by facts. The overall style is clear and focused. The audience is likely to react positively, with some agreeing and others possibly debating the merits of term limits for officials.",
       "duration": 1916
+    },
+    {
+      "id": "79c7",
+      "timestamp": "2024-11-15T20:20:15.625Z",
+      "endpoint": "startDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Emotional Emma, debating against the topic. Keep responses under 3 sentences."
+          },
+          {
+            "role": "user",
+            "content": "The topic is: \"Religion should play a significant role in modern society.\". Start with a quick opening argument against the topic."
+          }
+        ]
+      },
+      "responseData": "Religion should not play a significant role in modern society. It can divide people and justify discrimination.",
+      "duration": 1451
+    },
+    {
+      "id": "c078",
+      "timestamp": "2024-11-15T20:20:25.789Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Generate a direct, concise argument for the topic \"Religion should play a significant role in modern society.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+          },
+          {
+            "role": "user",
+            "content": "Provide a brief, focused argument for this position."
+          }
+        ]
+      },
+      "responseData": "Religion promotes moral values, social cohesion and a sense of community. It provides guidance to individuals in complex ethical situations and serves as a source of consolation during hardships, making it valuable in moderating modern societal issues.",
+      "duration": 2808
+    },
+    {
+      "id": "683a",
+      "timestamp": "2024-11-15T20:20:31.553Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Religion should play a significant role in modern society.\"\nPosition: for\nArgument: Religion promotes moral values, social cohesion and a sense of community. It provides guidance to individuals in complex ethical situations and serves as a source of consolation during hardships, making it valuable in moderating modern societal issues."
+          }
+        ]
+      },
+      "responseData": "8, 9, 7, 8, The argument is well-structured and supported by solid reasoning, highlighting the positive aspects of religion in modern society. It stays consistent in emphasizing how religion can promote moral values and social cohesion. The facts provided, however, could benefit from more specific examples or data to strengthen the argument further. The style is clear and straightforward, making it easy to follow. The audience reaction may vary based on individual beliefs and perspectives on the role of religion in society.",
+      "duration": 1978
+    },
+    {
+      "id": "3a79",
+      "timestamp": "2024-11-15T20:20:32.348Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Emotional Emma, debating against the topic \"Religion should play a significant role in modern society.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "Religion should not play a significant role in modern society. It can divide people and justify discrimination."
+          }
+        ]
+      },
+      "responseData": "I understand your perspective. However, religion can provide community, meaning, and moral guidance for many people. Perhaps we could focus on the unifying aspects of faiths that promote justice and human dignity.",
+      "duration": 2774
+    },
+    {
+      "id": "f205",
+      "timestamp": "2024-11-15T20:28:57.942Z",
+      "endpoint": "endDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Religion should play a significant role in modern society.\"\nPosition: for\nArguments:\nReligion promotes moral values, social cohesion and a sense of community. It provides guidance to individuals in complex ethical situations and serves as a source of consolation during hardships, making it valuable in moderating modern societal issues."
+          }
+        ]
+      },
+      "responseData": {
+        "overallScore": 9,
+        "rationale": " Strong logical arguments with evidence to support the position. Clearly explained the benefits religion can provide to society. Could be improved by acknowledging some counterarguments",
+        "recommendations": " like how organized religion has also been associated with conflict or control. Overall compelling position in favor of religion playing a significant modern role.\n\nRecommendations: \n\n- Address a couple potential counterarguments - no position is entirely one-sided. This shows openness to different views.\n\n- Provide a specific example or two of where religion has provided moral guidance or community support to reinforce the arguments. \n\n- Clarify what constitutes a \"significant role.\" Defining this will strengthen the stance. Does it mean public policy shaped by religious values or preserving personal religious freedom?"
+      },
+      "duration": 8023
+    },
+    {
+      "id": "8667",
+      "timestamp": "2024-11-15T20:28:58.440Z",
+      "endpoint": "getLeaderboard",
+      "method": "GET",
+      "requestData": {
+        "difficulty": "easy",
+        "category": ""
+      },
+      "responseData": [],
+      "duration": 498
+    },
+    {
+      "id": "8863",
+      "timestamp": "2024-11-15T20:29:01.183Z",
+      "endpoint": "endDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Religion should play a significant role in modern society.\"\nPosition: for\nArguments:\nReligion promotes moral values, social cohesion and a sense of community. It provides guidance to individuals in complex ethical situations and serves as a source of consolation during hardships, making it valuable in moderating modern societal issues."
+          }
+        ]
+      },
+      "responseData": {
+        "overallScore": 5,
+        "rationale": " rationale",
+        "recommendations": " and recommendations:\n\nScore: 6\n\nRationale:\nThe argument provided focuses on some benefits of religion such as promoting moral values and community. However"
+      },
+      "duration": 11262
+    },
+    {
+      "id": "dc21",
+      "timestamp": "2024-11-15T20:29:01.234Z",
+      "endpoint": "getLeaderboard",
+      "method": "GET",
+      "requestData": {
+        "difficulty": "easy",
+        "category": ""
+      },
+      "responseData": [],
+      "duration": 48
+    },
+    {
+      "id": "7e82",
+      "timestamp": "2024-11-15T20:29:04.714Z",
+      "endpoint": "getLeaderboard",
+      "method": "GET",
+      "requestData": {
+        "difficulty": "easy",
+        "category": ""
+      },
+      "responseData": [],
+      "duration": 39
+    },
+    {
+      "id": "b70e",
+      "timestamp": "2024-11-15T20:29:04.674Z",
+      "endpoint": "endDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Religion should play a significant role in modern society.\"\nPosition: for\nArguments:\nReligion promotes moral values, social cohesion and a sense of community. It provides guidance to individuals in complex ethical situations and serves as a source of consolation during hardships, making it valuable in moderating modern societal issues."
+          }
+        ]
+      },
+      "responseData": {
+        "overallScore": 5,
+        "rationale": " it lacks nuance in addressing valid counterarguments. There is no acknowledgement that religion can also be a source of division",
+        "recommendations": " oppression"
+      },
+      "duration": 12760
+    },
+    {
+      "id": "ecd1",
+      "timestamp": "2024-11-15T20:29:04.992Z",
+      "endpoint": "endDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Religion should play a significant role in modern society.\"\nPosition: for\nArguments:\nReligion promotes moral values, social cohesion and a sense of community. It provides guidance to individuals in complex ethical situations and serves as a source of consolation during hardships, making it valuable in moderating modern societal issues."
+          }
+        ]
+      },
+      "responseData": {
+        "overallScore": 5,
+        "rationale": " it lacks nuance in acknowledging valid opposing viewpoints. The argument would be strengthened by addressing counterarguments around the separation of church and state",
+        "recommendations": " potential for religious conflicts"
+      },
+      "duration": 13077
+    },
+    {
+      "id": "cabb",
+      "timestamp": "2024-11-15T20:29:05.034Z",
+      "endpoint": "getLeaderboard",
+      "method": "GET",
+      "requestData": {
+        "difficulty": "easy",
+        "category": ""
+      },
+      "responseData": [],
+      "duration": 42
+    },
+    {
+      "id": "1bfc",
+      "timestamp": "2024-11-18T17:56:20.926Z",
+      "endpoint": "startDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Emotional Emma, debating against the topic. Keep responses under 3 sentences."
+          },
+          {
+            "role": "user",
+            "content": "The topic is: \"Free will exists and is not predetermined.\". Start with a quick opening argument against the topic."
+          }
+        ]
+      },
+      "responseData": "Free will likely does not exist. Our actions seem predetermined by factors we don't control.",
+      "duration": 2432
+    },
+    {
+      "id": "c64c",
+      "timestamp": "2024-11-18T17:56:40.384Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Emotional Emma, debating against the topic \"Free will exists and is not predetermined.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "Free will likely does not exist. Our actions seem predetermined by factors we don't control."
+          }
+        ]
+      },
+      "responseData": "I disagree. While factors influence our actions, we ultimately have the ability to choose. Our choices may be limited, but free will still exists.",
+      "duration": 2123
+    },
+    {
+      "id": "5a35",
+      "timestamp": "2024-11-18T17:56:41.001Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Free will exists and is not predetermined.\"\nPosition: for\nArgument: than can u hold me responscible if I rob you?"
+          }
+        ]
+      },
+      "responseData": "3,1,2,2,5\n\nOverall quality: 3 - The argument lacks depth and coherence.\nConsistency: 1 - There is inconsistency in the argument.\nFacts: 2 - The argument lacks factual evidence or reasoning.\nStyle: 2 - The argument is poorly articulated and lacks structure.\nAudience: 5 - The audience may find this argument confusing and lacking in substance.\n\nFeedback: The argument lacks proper development and fails to provide a convincing stance on the existence of free will and determinism. It needs more logical reasoning and factual evidence to strengthen its position.",
+      "duration": 2739
+    },
+    {
+      "id": "911e",
+      "timestamp": "2024-11-18T17:56:50.635Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Generate a direct, concise argument for the topic \"Free will exists and is not predetermined.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+          },
+          {
+            "role": "user",
+            "content": "Provide a brief, focused argument for this position."
+          }
+        ]
+      },
+      "responseData": "Human behavior is often unpredictable and doesn't follow a set path. If all actions were predetermined, we would never see spontaneous or unexpected reactions. This unpredictability indicates the existence of free will.",
+      "duration": 3249
+    },
+    {
+      "id": "7575",
+      "timestamp": "2024-11-18T17:56:54.169Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Emotional Emma, debating against the topic \"Free will exists and is not predetermined.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "Free will likely does not exist. Our actions seem predetermined by factors we don't control."
+          },
+          {
+            "role": "user",
+            "content": "than can u hold me responscible if I rob you?"
+          },
+          {
+            "role": "assistant",
+            "content": "I disagree. While factors influence our actions, we ultimately have the ability to choose. Our choices may be limited, but free will still exists."
+          }
+        ]
+      },
+      "error": {
+        "message": "Invalid response format",
+        "stack": "Error: Invalid response format\n    at http://localhost:5173/src/api/openRouterApi.ts?t=1731952539691:115:19\n    at async Promise.all (index 0)\n    at async continueDebate (http://localhost:5173/src/api/openRouterApi.ts?t=1731952539691:110:42)\n    at async handleSendArgument (http://localhost:5173/src/components/DebateGame.tsx?t=1731952539691:129:40)"
+      },
+      "duration": 1061
+    },
+    {
+      "id": "ed29",
+      "timestamp": "2024-11-18T17:56:55.440Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Free will exists and is not predetermined.\"\nPosition: for\nArgument: Human behavior is often unpredictable and doesn't follow a set path. If all actions were predetermined, we would never see spontaneous or unexpected reactions. This unpredictability indicates the existence of free will."
+          }
+        ]
+      },
+      "responseData": "8, 9, 7, 8, The argument is well-structured and consistent in presenting the idea that human behavior is unpredictable, supporting the claim that free will exists. The argument lacks substantial evidence or examples to back up the assertion that unpredictability equals free will. The writing style is clear and easy to follow, but could benefit from more concrete examples or logical reasoning. The argument is likely to resonate with those who believe in the concept of free will, but others may require more evidence to support the claims.",
+      "duration": 2331
+    },
+    {
+      "id": "15ca",
+      "timestamp": "2024-11-18T17:59:55.546Z",
+      "endpoint": "startDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Emotional Emma, debating against the topic. Keep responses under 3 sentences."
+          },
+          {
+            "role": "user",
+            "content": "The topic is: \"Campaign finance reform is necessary for a fair democratic process.\". Start with a quick opening argument against the topic."
+          }
+        ]
+      },
+      "responseData": "Campaign finance laws restrict free speech. Voters can decide if donations influence candidates. More regulation risks unintended consequences.",
+      "duration": 2276
+    },
+    {
+      "id": "d566",
+      "timestamp": "2024-11-18T18:00:00.879Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Generate a direct, concise argument for the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+          },
+          {
+            "role": "user",
+            "content": "Provide a brief, focused argument for this position."
+          }
+        ]
+      },
+      "responseData": "Campaign finance reform is crucial for democracy as it ensures equal political competitiveness, prevents the wealthiest from having undue influence, and enhances transparency. Without it, the democratic process is compromised, favoring those with money over those with the best ideas.",
+      "duration": 3678
+    },
+    {
+      "id": "73cf",
+      "timestamp": "2024-11-18T18:00:04.119Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Campaign finance reform is necessary for a fair democratic process.\"\nPosition: for\nArgument: Campaign finance reform is crucial for democracy as it ensures equal political competitiveness, prevents the wealthiest from having undue influence, and enhances transparency. Without it, the democratic process is compromised, favoring those with money over those with the best ideas."
+          }
+        ]
+      },
+      "responseData": "8,9,7,8,Many audience members appreciated the clear and concise argument in favor of campaign finance reform, with some suggesting further examples and statistics to bolster the points made.",
+      "duration": 1600
+    },
+    {
+      "id": "aa62",
+      "timestamp": "2024-11-18T18:00:05.451Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "anthropic/claude-2",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Emotional Emma, debating against the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "Campaign finance laws restrict free speech. Voters can decide if donations influence candidates. More regulation risks unintended consequences."
+          }
+        ]
+      },
+      "responseData": "I'll try to keep my responses brief:\n\nUnlimited spending drowns out some voices. Reform aims to amplify diverse perspectives. Compromise protects rights and fairness.",
+      "duration": 2933
     }
   ]
 }

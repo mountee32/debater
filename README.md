@@ -57,7 +57,55 @@ Before running the project, make sure you have the following installed:
    ```
    Replace `your_api_key_here` with your actual OpenRouter API key.
 
+3. (Optional) Override default AI models through environment variables:
+   ```
+   VITE_OPPONENT_MODEL=your_preferred_model
+   VITE_HINT_MODEL=your_preferred_model
+   VITE_TURN_SCORING_MODEL=your_preferred_model
+   VITE_FINAL_SCORING_MODEL=your_preferred_model
+   ```
+
 Note: The `.env` file is included in `.gitignore` to prevent sensitive information from being committed to the repository.
+
+## Model Configuration
+
+The project uses a centralized configuration system for AI models in `models.config.json`:
+
+```json
+{
+  "models": {
+    "opponent": {
+      "name": "anthropic/claude-2",
+      "description": "Primary model for generating debate responses and arguments",
+      "fallback": "anthropic/claude-instant-1"
+    },
+    "hint": {
+      "name": "openai/gpt-4",
+      "description": "Used for generating helpful debate hints and suggestions",
+      "fallback": "openai/gpt-3.5-turbo"
+    },
+    "turnScoring": {
+      "name": "openai/gpt-3.5-turbo",
+      "description": "Evaluates individual debate turns and provides quick feedback",
+      "fallback": "openai/gpt-3.5-turbo"
+    },
+    "finalScoring": {
+      "name": "anthropic/claude-2",
+      "description": "Provides comprehensive final debate evaluation",
+      "fallback": "anthropic/claude-instant-1"
+    }
+  }
+}
+```
+
+Models are loaded in this priority order:
+1. Environment variables (if set)
+2. models.config.json values
+3. Fallback models (if primary fails)
+
+To modify the models:
+- Edit models.config.json for permanent changes
+- Use environment variables for temporary overrides
 
 ## API Communication Logging
 
@@ -114,6 +162,7 @@ In the project directory, you can run:
 - `public/`: Static files
   - `assets/`: SVG images for AI avatars
   - `log-viewer.html`: Interactive log viewer interface
+- `models.config.json`: Centralized configuration for AI models
 - `db.json`: Local database file for storing API logs
 - `index.html`: The main HTML file
 - `vite.config.ts`: Vite configuration file

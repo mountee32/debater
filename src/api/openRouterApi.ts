@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { AIPersonality } from '../data/aiPersonalities';
 import { withAPILogging } from '../utils/logger';
+import modelConfig from '../../models.config.json';
 
 const API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY;
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
-const OPPONENT_MODEL = import.meta.env.VITE_OPPONENT_MODEL || 'anthropic/claude-2';
-const HINT_MODEL = import.meta.env.VITE_HINT_MODEL || 'openai/gpt-4';
-const TURN_SCORING_MODEL = import.meta.env.VITE_TURN_SCORING_MODEL || 'openai/gpt-3.5-turbo';
-const FINAL_SCORING_MODEL = import.meta.env.VITE_FINAL_SCORING_MODEL || 'anthropic/claude-2';
+// Load models from config with environment variable overrides
+const OPPONENT_MODEL = import.meta.env.VITE_OPPONENT_MODEL || modelConfig.models.opponent.name;
+const HINT_MODEL = import.meta.env.VITE_HINT_MODEL || modelConfig.models.hint.name;
+const TURN_SCORING_MODEL = import.meta.env.VITE_TURN_SCORING_MODEL || modelConfig.models.turnScoring.name;
+const FINAL_SCORING_MODEL = import.meta.env.VITE_FINAL_SCORING_MODEL || modelConfig.models.finalScoring.name;
 
 const headers = {
   'Content-Type': 'application/json',
