@@ -1,215 +1,149 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import DebateGame from './DebateGame';
-import * as openRouterApi from '../api/openRouterApi';
-import { AIPersonality } from '../data/aiPersonalities';
+import { useDebateLogic } from '../hooks/useDebateLogic';
+import { useTimer } from '../hooks/useTimer';
 
-// Mock the API functions
-jest.mock('../api/openRouterApi', () => ({
-  startDebate: jest.fn(),
-  continueDebate: jest.fn(),
-  generateHint: jest.fn(),
-  endDebate: jest.fn(),
-  calculateProgressiveScore: jest.fn(),
-  calculateComboBonus: jest.fn(),
-}));
+// Mock the custom hooks
+jest.mock('../hooks/useDebateLogic');
+jest.mock('../hooks/useTimer');
 
-// Mock the logger
-jest.mock('../utils/logger', () => ({
-  log: jest.fn(),
-}));
+const mockAiPersonality = {
+  id: 'test-ai',
+  name: 'Test AI',
+  description: 'Test AI Description',
+  avatarUrl: '/test-avatar.png',
+  traits: {
+    argumentStyle: 'logical',
+    vocabulary: 'formal',
+    exampleTypes: 'statistical',
+    debateStrategy: 'analytical'
+  }
+};
+
+const mockProps = {
+  topic: 'Test Topic',
+  difficulty: 'medium' as const,
+  onEndGame: jest.fn(),
+  aiPersonality: mockAiPersonality,
+  userPosition: 'for' as const,
+  isDarkMode: false,
+  onToggleDarkMode: jest.fn(),
+};
+
+const mockDebateLogic = {
+  state: {
+    isLoading: false,
+    isGeneratingHint: false,
+    currentScore: 0,
+    audienceScore: { user: 50, opponent: 50 },
+    consecutiveGoodArguments: 0,
+    isDebateEnded: false,
+    isAiThinking: false,
+    error: null,
+  },
+  messages: [
+    { id: 1, role: 'opponent', content: 'Initial message' },
+    { id: 2, role: 'user', content: 'User response', score: 7 },
+  ],
+  handleEndGame: jest.fn(),
+  handleSendArgument: jest.fn(),
+  handleHintRequest: jest.fn(),
+  initializeDebate: jest.fn(),
+};
 
 describe('DebateGame', () => {
-  const mockAiPersonality: AIPersonality = {
-    id: 'test-ai',
-    name: 'Test AI',
-    avatarUrl: 'test-url',
-    description: 'Test description',
-    traits: {
-      argumentStyle: 'logical',
-      vocabulary: 'formal',
-      exampleTypes: 'statistical',
-      debateStrategy: 'analytical',
-    },
-  };
-
-  const createMockProps = (difficulty: 'easy' | 'medium' | 'hard') => ({
-    topic: 'Test Topic',
-    difficulty,
-    onEndGame: jest.fn(),
-    aiPersonality: mockAiPersonality,
-    userPosition: 'for' as const,
-  });
-
   beforeEach(() => {
-    jest.clearAllMocks();
-    // Mock scrollIntoView
-    window.HTMLElement.prototype.scrollIntoView = jest.fn();
+    (useDebateLogic as jest.Mock).mockReturnValue(mockDebateLogic);
+    (useTimer as jest.Mock).mockReturnValue(300);
   });
 
-  test('initializes debate on mount (easy difficulty)', async () => {
-    const mockProps = createMockProps('easy');
-    (openRouterApi.startDebate as jest.Mock).mockResolvedValue('AI initial response (easy)');
-
+  it('renders the debate game with initial components', () => {
     render(<DebateGame {...mockProps} />);
 
-    await waitFor(() => {
-      expect(openRouterApi.startDebate).toHaveBeenCalledWith(
-        mockProps.topic,
-        mockProps.difficulty,
-        mockProps.userPosition,
-        mockProps.aiPersonality
-      );
-    });
+    // Check header elements
+    expect(screen.getByTestId('debate-header')).toBeInTheDocument();
+    expect(screen.getByTestId('debate-topic')).toHaveTextContent('Test Topic');
+    expect(screen.getByTestId('timer')).toBeInTheDocument();
 
-    expect(await screen.findByText('AI initial response (easy)')).toBeInTheDocument();
+    // Check messages
+    expect(screen.getByText('Initial message')).toBeInTheDocument();
+    expect(screen.getByText('User response')).toBeInTheDocument();
+
+    // Check controls
+    expect(screen.getByTestId('debate-controls')).toBeInTheDocument();
+    expect(screen.getByTestId('argument-input')).toBeInTheDocument();
+    expect(screen.getByTestId('send-button')).toBeInTheDocument();
+    expect(screen.getByTestId('hint-button')).toBeInTheDocument();
+    expect(screen.getByTestId('end-button')).toBeInTheDocument();
   });
 
-  test('initializes debate on mount (medium difficulty)', async () => {
-    const mockProps = createMockProps('medium');
-    (openRouterApi.startDebate as jest.Mock).mockResolvedValue('AI initial response (medium)');
-
+  it('handles sending a new argument', async () => {
     render(<DebateGame {...mockProps} />);
 
-    await waitFor(() => {
-      expect(openRouterApi.startDebate).toHaveBeenCalledWith(
-        mockProps.topic,
-        mockProps.difficulty,
-        mockProps.userPosition,
-        mockProps.aiPersonality
-      );
-    });
+    const input = screen.getByTestId('argument-input');
+    const sendButton = screen.getByTestId('send-button');
 
-    expect(await screen.findByText('AI initial response (medium)')).toBeInTheDocument();
-  });
-
-  test('initializes debate on mount (hard difficulty)', async () => {
-    const mockProps = createMockProps('hard');
-    (openRouterApi.startDebate as jest.Mock).mockResolvedValue('AI initial response (hard)');
-
-    render(<DebateGame {...mockProps} />);
-
-    await waitFor(() => {
-      expect(openRouterApi.startDebate).toHaveBeenCalledWith(
-        mockProps.topic,
-        mockProps.difficulty,
-        mockProps.userPosition,
-        mockProps.aiPersonality
-      );
-    });
-
-    expect(await screen.findByText('AI initial response (hard)')).toBeInTheDocument();
-  });
-
-  test('sends user argument and continues debate', async () => {
-    console.log('Starting test: sends user argument and continues debate');
-    const mockProps = createMockProps('medium');
-    (openRouterApi.startDebate as jest.Mock).mockResolvedValue('AI initial response');
-    (openRouterApi.continueDebate as jest.Mock).mockResolvedValue({
-      response: 'AI response',
-      evaluation: {
-        score: 8,
-        feedback: 'Good argument',
-        consistencyScore: 8,
-        factScore: 8,
-        styleScore: 8,
-        audienceReaction: 8,
-      },
-    });
-
-    render(<DebateGame {...mockProps} />);
-
-    console.log('Waiting for AI initial response');
-    await screen.findByText('AI initial response');
-    console.log('AI initial response found');
-
-    const input = screen.getByPlaceholderText('Type your argument here...');
-    fireEvent.change(input, { target: { value: 'User argument' } });
-    console.log('User argument entered');
-
-    const sendButton = screen.getByText('Send');
+    fireEvent.change(input, { target: { value: 'New argument' } });
     fireEvent.click(sendButton);
-    console.log('Send button clicked');
 
     await waitFor(() => {
-      console.log('Checking if user argument is in the document');
-      expect(screen.getByText('User argument')).toBeInTheDocument();
-    }, { timeout: 1000 });
+      expect(mockDebateLogic.handleSendArgument).toHaveBeenCalledWith('New argument');
+    });
+  });
 
-    await waitFor(() => {
-      console.log('Checking if continueDebate was called');
-      expect(openRouterApi.continueDebate).toHaveBeenCalled();
-    }, { timeout: 1000 });
-
-    await waitFor(() => {
-      console.log('Checking continueDebate arguments');
-      expect(openRouterApi.continueDebate).toHaveBeenCalledWith(
-        mockProps.topic,
-        expect.arrayContaining([
-          expect.objectContaining({ role: 'opponent', content: 'AI initial response' }),
-          expect.objectContaining({ role: 'user', content: 'User argument' }),
-        ]),
-        'User argument',
-        mockProps.difficulty,
-        mockProps.userPosition,
-        mockProps.aiPersonality
-      );
-    }, { timeout: 10000 });
-
-    console.log('Waiting for AI response');
-    expect(await screen.findByText('AI response')).toBeInTheDocument();
-    console.log('Test completed');
-  }, 15000);
-
-  test('generates hint when requested', async () => {
-    const mockProps = createMockProps('medium');
-    (openRouterApi.startDebate as jest.Mock).mockResolvedValue('AI initial response');
-    (openRouterApi.generateHint as jest.Mock).mockResolvedValue('Hint message');
+  it('handles requesting a hint', async () => {
+    const mockHint = 'This is a hint';
+    (mockDebateLogic.handleHintRequest as jest.Mock).mockResolvedValueOnce(mockHint);
 
     render(<DebateGame {...mockProps} />);
 
-    await screen.findByText('AI initial response');
-
-    const hintButton = screen.getByText('Hint');
+    const hintButton = screen.getByTestId('hint-button');
     fireEvent.click(hintButton);
 
     await waitFor(() => {
-      expect(openRouterApi.generateHint).toHaveBeenCalledWith(
-        mockProps.topic,
-        expect.arrayContaining([
-          expect.objectContaining({ role: 'opponent', content: 'AI initial response' }),
-        ]),
-        mockProps.difficulty,
-        mockProps.userPosition
-      );
+      expect(mockDebateLogic.handleHintRequest).toHaveBeenCalled();
     });
-
-    expect(await screen.findByText('Hint: Hint message')).toBeInTheDocument();
   });
 
-  test('ends game when end button is clicked', async () => {
-    const mockProps = createMockProps('medium');
-    (openRouterApi.startDebate as jest.Mock).mockResolvedValue('AI initial response');
-    (openRouterApi.endDebate as jest.Mock).mockResolvedValue({
-      overallScore: 100,
-      rationale: 'Game ended rationale',
-      recommendations: 'Game ended recommendations',
+  it('handles ending the game', () => {
+    render(<DebateGame {...mockProps} />);
+
+    const endButton = screen.getByTestId('end-button');
+    fireEvent.click(endButton);
+
+    expect(mockDebateLogic.handleEndGame).toHaveBeenCalled();
+  });
+
+  it('displays error message when present', () => {
+    const errorMessage = 'Test error message';
+    (useDebateLogic as jest.Mock).mockReturnValue({
+      ...mockDebateLogic,
+      state: { ...mockDebateLogic.state, error: errorMessage },
     });
 
     render(<DebateGame {...mockProps} />);
 
-    await screen.findByText('AI initial response');
+    expect(screen.getByTestId('error-message')).toHaveTextContent(errorMessage);
+  });
 
-    const endButton = screen.getByText('End');
-    fireEvent.click(endButton);
-
-    await waitFor(() => {
-      expect(openRouterApi.endDebate).toHaveBeenCalled();
-      expect(mockProps.onEndGame).toHaveBeenCalledWith({
-        overallScore: 100,
-        rationale: 'Game ended rationale',
-        recommendations: 'Game ended recommendations',
-      });
+  it('shows loading state when AI is thinking', () => {
+    (useDebateLogic as jest.Mock).mockReturnValue({
+      ...mockDebateLogic,
+      state: { ...mockDebateLogic.state, isAiThinking: true },
     });
+
+    render(<DebateGame {...mockProps} />);
+
+    expect(screen.getByTestId('thinking-avatar')).toBeInTheDocument();
+  });
+
+  it('toggles dark mode', () => {
+    render(<DebateGame {...mockProps} />);
+
+    const themeToggle = screen.getByTestId('theme-toggle');
+    fireEvent.click(themeToggle);
+
+    expect(mockProps.onToggleDarkMode).toHaveBeenCalled();
   });
 });

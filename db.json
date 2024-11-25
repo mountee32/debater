@@ -2750,6 +2750,393 @@
       },
       "responseData": "Score: 2  \nConsistency: 2  \nFacts: 1  \nStyle: 3  \nAudience: 2  \nFeedback: The argument is lacking coherence and clarity. It fails to provide any substantial reasoning or facts to support the position of supporting term limits. The use of \"never\" is confusing and does not contribute to a compelling argument. The style is simplistic and does not engage the audience effectively. Overall, this argument needs significant development to be persuasive.",
       "duration": 1849
+    },
+    {
+      "id": "b6fc",
+      "timestamp": "2024-11-25T15:14:33.972Z",
+      "endpoint": "startDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Futurist Fiona, debating against the topic. Keep responses under 3 sentences."
+          },
+          {
+            "role": "user",
+            "content": "The topic is: \"There should be term limits for all elected officials.\". Start with a quick opening argument against the topic."
+          }
+        ]
+      },
+      "responseData": "Implementing term limits for all elected officials undermines the democratic process by restricting voters' choices. In a representative democracy, citizens should have the liberty to re-elect leaders they trust and value, fostering stability and long-term governance. Moreover, experienced officials may bring essential knowledge and connections that benefit society as a whole.",
+      "duration": 2130
+    },
+    {
+      "id": "5612",
+      "timestamp": "2024-11-25T15:14:38.897Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Generate a direct, concise argument for the topic \"There should be term limits for all elected officials.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+          },
+          {
+            "role": "user",
+            "content": "Provide a brief, focused argument for this position."
+          }
+        ]
+      },
+      "responseData": "Term limits for elected officials prevent stagnation, promote fresh ideas, and enhance democratic accountability. They reduce the risk of corruption and entrenched power, ensuring that leaders remain responsive to constituents and that new voices can emerge to represent diverse perspectives in government.",
+      "duration": 1503
+    },
+    {
+      "id": "f42c",
+      "timestamp": "2024-11-25T15:14:44.985Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Futurist Fiona, debating against the topic \"There should be term limits for all elected officials.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "Implementing term limits for all elected officials undermines the democratic process by restricting voters' choices. In a representative democracy, citizens should have the liberty to re-elect leaders they trust and value, fostering stability and long-term governance. Moreover, experienced officials may bring essential knowledge and connections that benefit society as a whole."
+          }
+        ]
+      },
+      "responseData": "Term limits often lead to the loss of experienced legislators who understand complex issues and can navigate intricate policymaking processes. This could result in a lower quality of governance, as new officials may lack the depth of knowledge and relationships necessary for effective leadership. Ultimately, the focus should be on accountability and voter engagement rather than arbitrary limits that could diminish legislative effectiveness.",
+      "duration": 4423
+    },
+    {
+      "id": "c6b7",
+      "timestamp": "2024-11-25T15:14:47.101Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"There should be term limits for all elected officials.\"\nPosition: for\nArgument: Term limits for elected officials prevent stagnation, promote fresh ideas, and enhance democratic accountability. They reduce the risk of corruption and entrenched power, ensuring that leaders remain responsive to constituents and that new voices can emerge to represent diverse perspectives in government."
+          }
+        ]
+      },
+      "responseData": "Score: 8  \nConsistency: 8  \nFacts: 7  \nStyle: 8  \nAudience: 9  \nFeedback: The argument presents a clear and compelling case for term limits, emphasizing their benefits such as preventing stagnation and corruption. It maintains a consistent flow of ideas and effectively addresses the positive impact on democracy. While the argument could benefit from specific examples or statistics to strengthen the factual basis, the writing style is engaging and accessible. The likely positive audience reaction suggests that many supporters of democratic accountability would resonate with these points. Overall, a strong and persuasive argument.",
+      "duration": 2116
+    },
+    {
+      "id": "265a",
+      "timestamp": "2024-11-25T15:19:52.574Z",
+      "endpoint": "startDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Futurist Fiona, debating against the topic. Keep responses under 3 sentences."
+          },
+          {
+            "role": "user",
+            "content": "The topic is: \"Campaign finance reform is necessary for a fair democratic process.\". Start with a quick opening argument against the topic."
+          }
+        ]
+      },
+      "responseData": "Campaign finance reform may seem necessary, but it risks infringing on free speech and could ultimately stifle diverse voices in the political landscape. Limiting financial contributions could empower a bureaucratic system to control who can speak and when, undermining the democratic principle of open discourse. Instead of stringent reforms, we should focus on transparency and education for voters to make informed decisions.",
+      "duration": 1765
+    },
+    {
+      "id": "ba88",
+      "timestamp": "2024-11-25T15:19:56.689Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Generate a direct, concise argument for the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+          },
+          {
+            "role": "user",
+            "content": "Provide a brief, focused argument for this position."
+          }
+        ]
+      },
+      "responseData": "Campaign finance reform is necessary to reduce the influence of wealthy donors and corporations in politics. Ensuring equal funding opportunities promotes a more equitable electoral process, allowing diverse voices to compete fairly, thereby enhancing democratic representation and accountability. A transparent system fosters public trust in government.",
+      "duration": 1911
+    },
+    {
+      "id": "6441",
+      "timestamp": "2024-11-25T15:20:00.018Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Futurist Fiona, debating against the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "Campaign finance reform may seem necessary, but it risks infringing on free speech and could ultimately stifle diverse voices in the political landscape. Limiting financial contributions could empower a bureaucratic system to control who can speak and when, undermining the democratic principle of open discourse. Instead of stringent reforms, we should focus on transparency and education for voters to make informed decisions."
+          }
+        ]
+      },
+      "responseData": "While campaign finance reform is often touted as essential for democracy, it paradoxically can lead to unintended consequences like increased power for incumbents. Creating strict financial regulations can inadvertently shield established candidates from new challengers, thus diminishing competition. A better approach would be to foster innovation in funding mechanisms, allowing for a broader array of voices while maintaining transparency.",
+      "duration": 1964
+    },
+    {
+      "id": "43d6",
+      "timestamp": "2024-11-25T15:20:02.776Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Campaign finance reform is necessary for a fair democratic process.\"\nPosition: for\nArgument: Campaign finance reform is necessary to reduce the influence of wealthy donors and corporations in politics. Ensuring equal funding opportunities promotes a more equitable electoral process, allowing diverse voices to compete fairly, thereby enhancing democratic representation and accountability. A transparent system fosters public trust in government."
+          }
+        ]
+      },
+      "responseData": "Score: 8  \nConsistency: 8  \nFacts: 7  \nStyle: 8  \nAudience: 9  \nFeedback: The argument is well-articulated and presents a clear position in favor of campaign finance reform. It consistently emphasizes the need for a fair democratic process and addresses key concerns regarding the influence of money in politics. While it could benefit from more specific examples or data to support its claims, the overall style is persuasive and engaging. The argument resonates well with an audience concerned about equity in politics, enhancing the likelihood of positive reception.",
+      "duration": 2757
+    },
+    {
+      "id": "549b",
+      "timestamp": "2024-11-25T15:20:11.481Z",
+      "endpoint": "generateHint",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Generate a direct, concise argument for the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+          },
+          {
+            "role": "user",
+            "content": "Provide a brief, focused argument for this position."
+          }
+        ]
+      },
+      "responseData": "Campaign finance reform is essential for a fair democratic process because it reduces the influence of money in politics, ensuring that all voices have an equal chance to be heard. By limiting donations and increasing transparency, we can promote accountability and strengthen public trust in elected officials.",
+      "duration": 1657
+    },
+    {
+      "id": "b550",
+      "timestamp": "2024-11-25T15:20:14.301Z",
+      "endpoint": "continueDebate-response",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are Futurist Fiona, debating against the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep responses under 3 sentences."
+          },
+          {
+            "role": "assistant",
+            "content": "Campaign finance reform may seem necessary, but it risks infringing on free speech and could ultimately stifle diverse voices in the political landscape. Limiting financial contributions could empower a bureaucratic system to control who can speak and when, undermining the democratic principle of open discourse. Instead of stringent reforms, we should focus on transparency and education for voters to make informed decisions."
+          },
+          {
+            "role": "user",
+            "content": "Campaign finance reform is necessary to reduce the influence of wealthy donors and corporations in politics. Ensuring equal funding opportunities promotes a more equitable electoral process, allowing diverse voices to compete fairly, thereby enhancing democratic representation and accountability. A transparent system fosters public trust in government."
+          },
+          {
+            "role": "assistant",
+            "content": "While campaign finance reform is often touted as essential for democracy, it paradoxically can lead to unintended consequences like increased power for incumbents. Creating strict financial regulations can inadvertently shield established candidates from new challengers, thus diminishing competition. A better approach would be to foster innovation in funding mechanisms, allowing for a broader array of voices while maintaining transparency."
+          }
+        ]
+      },
+      "responseData": "Campaign finance reform may promise to diminish the influence of wealthy donors, but the reality is that limiting funds can inadvertently benefit those already entrenched in the system. Incumbents often have more resources to comply with regulations, which can stifle true competition and innovation in politics. Promoting transparency without heavy restrictions could better empower grassroots movements and encourage a wider array of voices to participate in the electoral process.",
+      "duration": 1884
+    },
+    {
+      "id": "0db0",
+      "timestamp": "2024-11-25T15:20:16.908Z",
+      "endpoint": "continueDebate-evaluation",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Campaign finance reform is necessary for a fair democratic process.\"\nPosition: for\nArgument: Campaign finance reform is essential for a fair democratic process because it reduces the influence of money in politics, ensuring that all voices have an equal chance to be heard. By limiting donations and increasing transparency, we can promote accountability and strengthen public trust in elected officials."
+          }
+        ]
+      },
+      "responseData": "Score: 8  \nConsistency: 9  \nFacts: 7  \nStyle: 8  \nAudience: 8  \nFeedback: The argument presents a clear and consistent position in favor of campaign finance reform, emphasizing its role in promoting fairness in the democratic process. It effectively highlights the influence of money in politics and the importance of transparency and accountability. To improve on the facts aspect, incorporating specific data or examples demonstrating the positive effects of campaign finance reform would bolster the argument. The style is engaging and appropriate for a general audience, likely leading to a favorable reaction. Overall, a strong argument that could be further enhanced with empirical evidence.",
+      "duration": 2607
+    },
+    {
+      "id": "9c8d",
+      "timestamp": "2024-11-25T15:25:03.734Z",
+      "endpoint": "endDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Campaign finance reform is necessary for a fair democratic process.\"\nPosition: for\nArguments:\nCampaign finance reform is necessary to reduce the influence of wealthy donors and corporations in politics. Ensuring equal funding opportunities promotes a more equitable electoral process, allowing diverse voices to compete fairly, thereby enhancing democratic representation and accountability. A transparent system fosters public trust in government.\nCampaign finance reform is essential for a fair democratic process because it reduces the influence of money in politics, ensuring that all voices have an equal chance to be heard. By limiting donations and increasing transparency, we can promote accountability and strengthen public trust in elected officials."
+          }
+        ]
+      },
+      "responseData": {
+        "overallScore": 5,
+        "rationale": "while the arguments were strong",
+        "recommendations": "the performance could have benefited from specific examples or statistics to further substantiate claims. Additionally"
+      },
+      "duration": 3653
+    },
+    {
+      "id": "7d50",
+      "timestamp": "2024-11-25T15:25:03.887Z",
+      "endpoint": "endDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Campaign finance reform is necessary for a fair democratic process.\"\nPosition: for\nArguments:\nCampaign finance reform is necessary to reduce the influence of wealthy donors and corporations in politics. Ensuring equal funding opportunities promotes a more equitable electoral process, allowing diverse voices to compete fairly, thereby enhancing democratic representation and accountability. A transparent system fosters public trust in government.\nCampaign finance reform is essential for a fair democratic process because it reduces the influence of money in politics, ensuring that all voices have an equal chance to be heard. By limiting donations and increasing transparency, we can promote accountability and strengthen public trust in elected officials."
+          }
+        ]
+      },
+      "responseData": {
+        "overallScore": 8,
+        "rationale": "The arguments presented are compelling and well-structured. The emphasis on reducing the influence of wealthy donors and ensuring equal opportunities for all candidates aligns with core democratic principles. The mention of transparency is crucial as it highlights the importance of public trust. However",
+        "recommendations": "the performance could have further benefited from concrete examples or statistics to strengthen the arguments and address potential counterarguments"
+      },
+      "duration": 2798
+    },
+    {
+      "id": "3364",
+      "timestamp": "2024-11-25T15:25:04.103Z",
+      "endpoint": "getLeaderboard",
+      "method": "GET",
+      "requestData": {
+        "difficulty": "medium",
+        "category": ""
+      },
+      "responseData": [],
+      "duration": 367
+    },
+    {
+      "id": "085f",
+      "timestamp": "2024-11-25T15:25:04.109Z",
+      "endpoint": "getLeaderboard",
+      "method": "GET",
+      "requestData": {
+        "difficulty": "medium",
+        "category": ""
+      },
+      "responseData": [],
+      "duration": 221
+    },
+    {
+      "id": "513a",
+      "timestamp": "2024-11-25T15:25:04.606Z",
+      "endpoint": "endDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Campaign finance reform is necessary for a fair democratic process.\"\nPosition: for\nArguments:\nCampaign finance reform is necessary to reduce the influence of wealthy donors and corporations in politics. Ensuring equal funding opportunities promotes a more equitable electoral process, allowing diverse voices to compete fairly, thereby enhancing democratic representation and accountability. A transparent system fosters public trust in government.\nCampaign finance reform is essential for a fair democratic process because it reduces the influence of money in politics, ensuring that all voices have an equal chance to be heard. By limiting donations and increasing transparency, we can promote accountability and strengthen public trust in elected officials."
+          }
+        ]
+      },
+      "responseData": {
+        "overallScore": 5,
+        "rationale": "highlighting key arguments against the influence of wealthy donors and corporations in politics. The speaker presents a clear case that aligns with the goal of promoting equity in the electoral process. The repetition of points regarding equal funding opportunities and transparency helps reinforce the message. However",
+        "recommendations": "the performance could benefit from a few more specific examples or statistics to bolster the arguments and make them more compelling. Additionally"
+      },
+      "duration": 4527
+    },
+    {
+      "id": "8a4b",
+      "timestamp": "2024-11-25T15:25:04.618Z",
+      "endpoint": "getLeaderboard",
+      "method": "GET",
+      "requestData": {
+        "difficulty": "medium",
+        "category": ""
+      },
+      "responseData": [],
+      "duration": 11
+    },
+    {
+      "id": "0fb7",
+      "timestamp": "2024-11-25T15:25:05.114Z",
+      "endpoint": "endDebate",
+      "method": "POST",
+      "requestData": {
+        "model": "openai/gpt-4o-mini",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+          },
+          {
+            "role": "user",
+            "content": "Topic: \"Campaign finance reform is necessary for a fair democratic process.\"\nPosition: for\nArguments:\nCampaign finance reform is necessary to reduce the influence of wealthy donors and corporations in politics. Ensuring equal funding opportunities promotes a more equitable electoral process, allowing diverse voices to compete fairly, thereby enhancing democratic representation and accountability. A transparent system fosters public trust in government.\nCampaign finance reform is essential for a fair democratic process because it reduces the influence of money in politics, ensuring that all voices have an equal chance to be heard. By limiting donations and increasing transparency, we can promote accountability and strengthen public trust in elected officials."
+          }
+        ]
+      },
+      "responseData": {
+        "overallScore": 5,
+        "rationale": "concise",
+        "recommendations": "and well-articulated. The debater successfully addresses key issues surrounding campaign finance reform"
+      },
+      "duration": 4027
+    },
+    {
+      "id": "5191",
+      "timestamp": "2024-11-25T15:25:05.128Z",
+      "endpoint": "getLeaderboard",
+      "method": "GET",
+      "requestData": {
+        "difficulty": "medium",
+        "category": ""
+      },
+      "responseData": [],
+      "duration": 11
     }
   ]
 }

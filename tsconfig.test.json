@@ -1,10 +1,12 @@
 {
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "ES2022",
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "types": ["jest", "@testing-library/jest-dom"]
+    "types": ["jest", "@testing-library/jest-dom", "node"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

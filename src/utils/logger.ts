@@ -1,83 +1,107 @@
-import axios from 'axios';
+import type { AxiosResponse, AxiosError } from 'axios';
 
-interface APILog {
+interface LogEntry {
   timestamp: string;
-  endpoint: string;
+  level: 'info' | 'error';
+  message: string;
+  data?: any;
+}
+
+interface APILogEntry extends LogEntry {
   method: string;
-  requestData: any;
+  url: string;
+  requestData?: any;
   responseData?: any;
-  error?: any;
+  status?: number;
   duration: number;
 }
 
-const API_LOGS_FILE = 'api_logs.json';
-const LOCAL_JSON_SERVER = 'http://localhost:3001/logs';
+const logs: LogEntry[] = [];
 
-function getTimestamp(): string {
-  return new Date().toISOString();
-}
-
-export function log(message: string): void {
-  const timestamp = getTimestamp();
-  const logMessage = `${timestamp} - ${message}`;
-  console.log(logMessage);
-}
-
-export function clearLog(): void {
-  console.clear();
-}
-
-export async function logAPICall(
-  endpoint: string,
-  method: string,
-  requestData: any,
-  startTime: number,
-  responseData?: any,
-  error?: any
-): Promise<void> {
-  const endTime = Date.now();
-  const duration = endTime - startTime;
-
-  const logEntry: APILog = {
-    timestamp: getTimestamp(),
-    endpoint,
-    method,
-    requestData,
-    responseData,
-    error: error ? {
-      message: error.message,
-      stack: error.stack
-    } : undefined,
-    duration
+export const log = (message: string, data?: any) => {
+  const entry: LogEntry = {
+    timestamp: new Date().toISOString(),
+    level: 'info',
+    message,
+    data
   };
+  
+  logs.push(entry);
+  console.log(`[${entry.timestamp}] ${message}`, data || '');
+};
+
+export const error = (message: string, data?: any) => {
+  const entry: LogEntry = {
+    timestamp: new Date().toISOString(),
+    level: 'error',
+    message,
+    data
+  };
+  
+  logs.push(entry);
+  console.error(`[${entry.timestamp}] ERROR: ${message}`, data || '');
+};
+
+export const getLogs = () => {
+  return [...logs];
+};
+
+export const clearLogs = () => {
+  logs.length = 0;
+};
+
+interface APILogOptions {
+  method?: string;
+  requestData?: any;
+}
+
+export const withAPILogging = async <T>(
+  apiCall: () => Promise<AxiosResponse<T>>,
+  description: string,
+  options?: APILogOptions
+): Promise<T> => {
+  const startTime = Date.now();
+  let logEntry: APILogEntry;
 
   try {
-    // Send log to local JSON server
-    await axios.post(LOCAL_JSON_SERVER, logEntry);
-    console.log(`API call logged: ${endpoint}`);
+    const response = await apiCall();
+    const duration = Date.now() - startTime;
+
+    logEntry = {
+      timestamp: new Date().toISOString(),
+      level: 'info',
+      message: `API Call: ${description}`,
+      method: options?.method || response.config.method?.toUpperCase() || 'UNKNOWN',
+      url: response.config.url || 'UNKNOWN',
+      requestData: options?.requestData || response.config.data,
+      responseData: response.data,
+      status: response.status,
+      duration
+    };
+
+    logs.push(logEntry);
+    console.log(`[${logEntry.timestamp}] ${description} - Success`, logEntry);
+
+    return response.data;
   } catch (err) {
-    console.error('Failed to save API log:', err);
-    // Fallback to console logging if JSON server is unavailable
-    console.log('API Log:', logEntry);
+    const duration = Date.now() - startTime;
+    const axiosError = err as AxiosError;
+
+    logEntry = {
+      timestamp: new Date().toISOString(),
+      level: 'error',
+      message: `API Error: ${description}`,
+      method: options?.method || axiosError.config?.method?.toUpperCase() || 'UNKNOWN',
+      url: axiosError.config?.url || 'UNKNOWN',
+      requestData: options?.requestData || axiosError.config?.data,
+      responseData: axiosError.response?.data,
+      status: axiosError.response?.status,
+      duration
+    };
+
+    logs.push(logEntry);
+    console.error(`[${logEntry.timestamp}] ${description} - Error`, logEntry);
+
+    throw err;
   }
-}
-
-// Helper function to wrap API calls with logging
-export function withAPILogging<T>(
-  apiCall: () => Promise<T>,
-  endpoint: string,
-  method: string,
-  requestData: any
-): Promise<T> {
-  const startTime = Date.now();
-
-  return apiCall()
-    .then((response) => {
-      logAPICall(endpoint, method, requestData, startTime, response);
-      return response;
-    })
-    .catch((error) => {
-      logAPICall(endpoint, method, requestData, startTime, undefined, error);
-      throw error;
-    });
-}
+};

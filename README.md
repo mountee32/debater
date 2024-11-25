@@ -174,7 +174,60 @@ In the project directory, you can run:
 
 ## Testing
 
-The project uses Jest for testing. Test files use the `.test.tsx` extension and are located alongside their corresponding components. Run tests using `npm test`.
+The project uses Jest and React Testing Library for comprehensive testing. Test files are located alongside their corresponding components with the `.test.tsx` extension.
+
+### Running Tests
+
+1. Run all tests:
+   ```bash
+   npm test
+   ```
+
+2. Run tests in watch mode (tests will re-run when files change):
+   ```bash
+   npm test -- --watch
+   ```
+
+3. Run tests with coverage report:
+   ```bash
+   npm test -- --coverage
+   ```
+
+4. Run a specific test file:
+   ```bash
+   npm test -- src/components/DebateGame.test.tsx
+   ```
+
+### Test Reports
+
+After running tests, you can access:
+- Console output showing test results
+- HTML test report at `test-report.html` (can be opened in a browser)
+- Coverage report in the `coverage` directory (when using --coverage flag)
+
+### Test Structure
+
+The project includes tests for:
+- Components (MessageBubble, DebateControls, DebateHeader)
+- Custom hooks (useDebateLogic)
+- Business logic and state management
+- User interactions and event handling
+- Error states and edge cases
+
+Each test file includes:
+- Component rendering tests
+- User interaction tests
+- State management tests
+- Error handling tests
+- Snapshot tests where appropriate
+
+### Testing Tools
+
+- **Jest**: Test runner and assertion library
+- **React Testing Library**: Component testing utilities
+- **jest-dom**: Custom DOM element matchers
+- **ts-jest**: TypeScript support
+- **jest-html-reporter**: HTML report generation
 
 ## Leaderboard System
 

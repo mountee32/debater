@@ -3,6 +3,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.json$': '<rootDir>/src/__mocks__/jsonMock.js'
   },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   transform: {
