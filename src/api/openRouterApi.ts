@@ -88,10 +88,11 @@ export const startDebate = async (
   return withAPILogging(
     async () => {
       const response = await axios.post(API_URL, requestData, { headers });
-      if (!response.data?.choices?.[0]?.message?.content) {
+      const content = response.data?.choices?.[0]?.message?.content;
+      if (typeof content !== 'string') {
         throw new Error('Invalid response format');
       }
-      return response.data.choices[0].message.content;
+      return content.trim();
     },
     'startDebate',
     'POST',
@@ -156,10 +157,11 @@ export const continueDebate = async (
       withAPILogging(
         async () => {
           const response = await axios.post(API_URL, responseRequestData, { headers });
-          if (!response.data?.choices?.[0]?.message?.content) {
+          const content = response.data?.choices?.[0]?.message?.content;
+          if (typeof content !== 'string') {
             throw new Error('Invalid response format');
           }
-          return response.data.choices[0].message.content;
+          return content.trim();
         },
         'continueDebate-response',
         'POST',
@@ -168,10 +170,11 @@ export const continueDebate = async (
       withAPILogging(
         async () => {
           const response = await axios.post(API_URL, evaluationRequestData, { headers });
-          if (!response.data?.choices?.[0]?.message?.content) {
+          const content = response.data?.choices?.[0]?.message?.content;
+          if (typeof content !== 'string') {
             throw new Error('Invalid evaluation format');
           }
-          return response.data.choices[0].message.content;
+          return content.trim();
         },
         'continueDebate-evaluation',
         'POST',
@@ -179,17 +182,38 @@ export const continueDebate = async (
       )
     ]);
 
-    const [score, consistencyScore, factScore, styleScore, audienceReaction, ...feedbackParts] = evaluationText.split(',');
+    // Handle various evaluation response formats
+    let score = 5, consistencyScore = 5, factScore = 5, styleScore = 5, audienceReaction = 5, feedback = '';
+    
+    // Try parsing comma-separated format first
+    const parts = evaluationText.split(',');
+    if (parts.length >= 5) {
+      score = parseInt(parts[0]) || 5;
+      consistencyScore = parseInt(parts[1]) || 5;
+      factScore = parseInt(parts[2]) || 5;
+      styleScore = parseInt(parts[3]) || 5;
+      audienceReaction = parseInt(parts[4]) || 5;
+      feedback = parts.slice(5).join(',').trim() || 'No feedback provided';
+    } else {
+      // Try extracting numbers from the text
+      const numbers = evaluationText.match(/\d+/g);
+      if (numbers && numbers.length >= 5) {
+        [score, consistencyScore, factScore, styleScore, audienceReaction] = 
+          numbers.slice(0, 5).map(n => parseInt(n));
+      }
+      // Extract feedback from the remaining text
+      feedback = evaluationText.replace(/\d+/g, '').trim() || 'No feedback provided';
+    }
 
     return {
       response: aiResponse,
       evaluation: {
-        score: parseInt(score) || 5,
-        consistencyScore: parseInt(consistencyScore) || 5,
-        factScore: parseInt(factScore) || 5,
-        styleScore: parseInt(styleScore) || 5,
-        audienceReaction: parseInt(audienceReaction) || 5,
-        feedback: feedbackParts.join(',').trim() || 'No feedback provided'
+        score: Math.min(Math.max(score, 1), 10),
+        consistencyScore: Math.min(Math.max(consistencyScore, 1), 10),
+        factScore: Math.min(Math.max(factScore, 1), 10),
+        styleScore: Math.min(Math.max(styleScore, 1), 10),
+        audienceReaction: Math.min(Math.max(audienceReaction, 1), 10),
+        feedback
       }
     };
   } catch (error) {
@@ -221,10 +245,11 @@ export const generateHint = async (
   return withAPILogging(
     async () => {
       const response = await axios.post(API_URL, requestData, { headers });
-      if (!response.data?.choices?.[0]?.message?.content) {
+      const content = response.data?.choices?.[0]?.message?.content;
+      if (typeof content !== 'string') {
         throw new Error('Invalid response format');
       }
-      return response.data.choices[0].message.content;
+      return content.trim();
     },
     'generateHint',
     'POST',
@@ -259,17 +284,18 @@ export const endDebate = async (
   return withAPILogging(
     async () => {
       const response = await axios.post(API_URL, requestData, { headers });
-      if (!response.data?.choices?.[0]?.message?.content) {
+      const content = response.data?.choices?.[0]?.message?.content;
+      if (typeof content !== 'string') {
         throw new Error('Invalid response format');
       }
 
-      const [score, rationale, recommendations] = response.data.choices[0].message.content.split(',');
+      const [score, rationale, recommendations] = content.split(',');
       const overallScore = parseInt(score) || 5;
 
       return {
         overallScore: Math.min(Math.max(overallScore, 1), 10),
-        rationale: rationale || 'No rationale provided.',
-        recommendations: recommendations || 'No recommendations provided.'
+        rationale: rationale?.trim() || 'No rationale provided.',
+        recommendations: recommendations?.trim() || 'No recommendations provided.'
       };
     },
     'endDebate',

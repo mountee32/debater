@@ -1,22 +1,22 @@
 {
   "models": {
     "opponent": {
-      "name": "meta-llama/llama-3.1-8b-instruct",
+      "name": "openai/gpt-4o-mini",
       "description": "Primary model for generating debate responses and arguments",
       "fallback": "microsoft/wizardlm-2-7b"
     },
     "hint": {
-      "name": "gryphe/mythomax-l2-13b",
+      "name": "openai/gpt-4o-mini",
       "description": "Used for generating helpful debate hints and suggestions",
       "fallback": "microsoft/wizardlm-2-7b"
     },
     "turnScoring": {
-      "name": "gryphe/mythomax-l2-13b",
+      "name": "openai/gpt-4o-mini",
       "description": "Evaluates individual debate turns and provides quick feedback",
       "fallback": "microsoft/wizardlm-2-7b"
     },
     "finalScoring": {
-      "name": "gryphe/mythomax-l2-13b",
+      "name": "openai/gpt-4o-mini",
       "description": "Provides comprehensive final debate evaluation",
       "fallback": "microsoft/wizardlm-2-7b"
     }
