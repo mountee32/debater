@@ -255,7 +255,7 @@ const DebateGame: React.FC<DebateGameProps> = ({
       </header>
 
       {/* Scrollable Chat Area */}
-      <main className="flex-1 overflow-y-auto mt-[100px] pb-32">
+      <main className="flex-1 overflow-y-auto mt-[120px] pb-32 pt-6">
         <div className="max-w-4xl mx-auto px-4">
           {messages.map((message) => (
             <div
