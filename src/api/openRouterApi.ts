@@ -127,34 +127,21 @@ export const continueDebate = async (
     content: msg.content
   }));
 
-  const responseRequestData = {
-    model: OPPONENT_MODEL,
-    messages: [
-      { 
-        role: 'system', 
-        content: `You are ${aiPersonality.name}, debating ${aiPosition} the topic "${topic}". Keep responses under 3 sentences.`
-      },
-      ...formattedMessages
-    ]
-  };
+  // First, get the AI's response
+  const getAIResponse = async () => {
+    const responseRequestData = {
+      model: OPPONENT_MODEL,
+      messages: [
+        { 
+          role: 'system', 
+          content: `You are ${aiPersonality.name}, debating ${aiPosition} the topic "${topic}". Keep responses under 3 sentences.`
+        },
+        ...formattedMessages
+      ]
+    };
 
-  const evaluationRequestData = {
-    model: TURN_SCORING_MODEL,
-    messages: [
-      {
-        role: 'system',
-        content: 'Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback'
-      },
-      {
-        role: 'user',
-        content: `Topic: "${topic}"\nPosition: ${userPosition}\nArgument: ${userArgument}`
-      }
-    ]
-  };
-
-  try {
-    const [aiResponse, evaluationText] = await Promise.all([
-      withAPILogging(
+    try {
+      const response = await withAPILogging(
         async () => {
           const response = await axios.post(API_URL, responseRequestData, { headers });
           const content = response.data?.choices?.[0]?.message?.content;
@@ -166,8 +153,32 @@ export const continueDebate = async (
         'continueDebate-response',
         'POST',
         responseRequestData
-      ),
-      withAPILogging(
+      );
+      return response;
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+      throw new Error('Failed to get AI response. Please try again.');
+    }
+  };
+
+  // Then, evaluate the user's argument
+  const evaluateArgument = async () => {
+    const evaluationRequestData = {
+      model: TURN_SCORING_MODEL,
+      messages: [
+        {
+          role: 'system',
+          content: 'Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback'
+        },
+        {
+          role: 'user',
+          content: `Topic: "${topic}"\nPosition: ${userPosition}\nArgument: ${userArgument}`
+        }
+      ]
+    };
+
+    try {
+      const evaluationText = await withAPILogging(
         async () => {
           const response = await axios.post(API_URL, evaluationRequestData, { headers });
           const content = response.data?.choices?.[0]?.message?.content;
@@ -179,46 +190,67 @@ export const continueDebate = async (
         'continueDebate-evaluation',
         'POST',
         evaluationRequestData
-      )
-    ]);
+      );
 
-    // Handle various evaluation response formats
-    let score = 5, consistencyScore = 5, factScore = 5, styleScore = 5, audienceReaction = 5, feedback = '';
-    
-    // Try parsing comma-separated format first
-    const parts = evaluationText.split(',');
-    if (parts.length >= 5) {
-      score = parseInt(parts[0]) || 5;
-      consistencyScore = parseInt(parts[1]) || 5;
-      factScore = parseInt(parts[2]) || 5;
-      styleScore = parseInt(parts[3]) || 5;
-      audienceReaction = parseInt(parts[4]) || 5;
-      feedback = parts.slice(5).join(',').trim() || 'No feedback provided';
-    } else {
-      // Try extracting numbers from the text
-      const numbers = evaluationText.match(/\d+/g);
-      if (numbers && numbers.length >= 5) {
-        [score, consistencyScore, factScore, styleScore, audienceReaction] = 
-          numbers.slice(0, 5).map(n => parseInt(n));
+      // Handle various evaluation response formats
+      let score = 5, consistencyScore = 5, factScore = 5, styleScore = 5, audienceReaction = 5, feedback = '';
+      
+      // Try parsing comma-separated format first
+      const parts = evaluationText.split(',');
+      if (parts.length >= 5) {
+        score = parseInt(parts[0]) || 5;
+        consistencyScore = parseInt(parts[1]) || 5;
+        factScore = parseInt(parts[2]) || 5;
+        styleScore = parseInt(parts[3]) || 5;
+        audienceReaction = parseInt(parts[4]) || 5;
+        feedback = parts.slice(5).join(',').trim() || 'No feedback provided';
+      } else {
+        // Try extracting numbers from the text
+        const numbers = evaluationText.match(/\d+/g);
+        if (numbers && numbers.length >= 5) {
+          [score, consistencyScore, factScore, styleScore, audienceReaction] = 
+            numbers.slice(0, 5).map(n => parseInt(n));
+        }
+        // Extract feedback from the remaining text
+        feedback = evaluationText.replace(/\d+/g, '').trim() || 'No feedback provided';
       }
-      // Extract feedback from the remaining text
-      feedback = evaluationText.replace(/\d+/g, '').trim() || 'No feedback provided';
-    }
 
-    return {
-      response: aiResponse,
-      evaluation: {
+      return {
         score: Math.min(Math.max(score, 1), 10),
         consistencyScore: Math.min(Math.max(consistencyScore, 1), 10),
         factScore: Math.min(Math.max(factScore, 1), 10),
         styleScore: Math.min(Math.max(styleScore, 1), 10),
         audienceReaction: Math.min(Math.max(audienceReaction, 1), 10),
         feedback
-      }
+      };
+    } catch (error) {
+      console.error('Error evaluating argument:', error);
+      // Return default evaluation on error
+      return {
+        score: 5,
+        consistencyScore: 5,
+        factScore: 5,
+        styleScore: 5,
+        audienceReaction: 5,
+        feedback: 'Evaluation unavailable at the moment.'
+      };
+    }
+  };
+
+  try {
+    // Get AI response first
+    const aiResponse = await getAIResponse();
+    
+    // Then evaluate the argument
+    const evaluation = await evaluateArgument();
+
+    return {
+      response: aiResponse,
+      evaluation
     };
   } catch (error) {
-    console.error('Error continuing debate:', error);
-    throw new Error('Failed to continue the debate. Please try again.');
+    console.error('Error in debate continuation:', error);
+    throw error;
   }
 };
 
