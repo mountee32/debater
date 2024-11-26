@@ -81,7 +81,7 @@ const DebateGame: React.FC<DebateGameProps> = ({
   return (
     <div 
       data-testid="debate-game"
-      className="flex flex-col h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+      className="fixed inset-0 flex flex-col bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
     >
       <DebateHeader
         topic={topic}
@@ -94,7 +94,7 @@ const DebateGame: React.FC<DebateGameProps> = ({
         onToggleDarkMode={onToggleDarkMode}
       />
 
-      <main className="flex-1 overflow-y-auto mt-[120px] pb-32 pt-6">
+      <div className="flex-1 overflow-y-auto" style={{ paddingTop: '100px', paddingBottom: '160px' }}>
         <div className="max-w-4xl mx-auto px-4">
           {displayMessages.map((message) => (
             <MessageBubble
@@ -132,7 +132,7 @@ const DebateGame: React.FC<DebateGameProps> = ({
           )}
           <div ref={messagesEndRef} />
         </div>
-      </main>
+      </div>
 
       <DebateControls
         currentArgument={currentArgument}
