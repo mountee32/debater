@@ -7,27 +7,27 @@
 - ✅ MessageBubble (components/debate/MessageBubble.test.tsx)
 - ✅ DebateControls (components/debate/DebateControls.test.tsx)
 - ✅ DebateHeader (components/debate/DebateHeader.test.tsx)
+- ✅ CategorySelection (components/CategorySelection.test.tsx)
+- ✅ DifficultySlider (components/DifficultySlider.test.tsx)
+- ✅ Leaderboard (components/Leaderboard.test.tsx)
 
 ### Hooks
 - ✅ useDebateLogic (hooks/useDebateLogic.test.ts)
+- ✅ useTimer (hooks/useTimer.test.ts)
+
+### API & Services
+- ✅ openRouterApi (api/openRouterApi.test.ts)
 
 ## Components Without Test Coverage
 
 ### Core Components
-- ❌ CategorySelection
 - ❌ CompactLeaderboard
-- ❌ DifficultySlider
-- ❌ Leaderboard
 - ❌ GameSetup
 
 ### Game Logic & Context
 - ❌ GameContext
 - ❌ useGameContext
 - ❌ useMessageHandler
-- ❌ useTimer
-
-### API & Services
-- ❌ openRouterApi
 
 ### Data Management
 - ❌ aiPersonalities
@@ -43,24 +43,18 @@ Priority areas that would benefit from test coverage:
 
 1. Core Game Logic
    - GameContext and related hooks (useGameContext)
-   - Timer functionality (useTimer)
    - Message handling logic (useMessageHandler)
 
 2. User Interface Components
-   - CategorySelection - critical for game initialization
-   - DifficultySlider - impacts game mechanics
-   - Leaderboard components - important for user engagement
+   - CompactLeaderboard - for complete leaderboard functionality
+   - GameSetup - critical for game initialization
 
-3. API Integration
-   - openRouterApi - critical for AI interaction
-   - Error handling and API response processing
-
-4. Data Management
+3. Data Management
    - aiPersonalities - ensures correct AI behavior configuration
    - leaderboardData - validates score tracking and display
 
 ## Notes
-- Current test coverage focuses on core debate functionality
-- Many utility functions and hooks lack test coverage
-- API integration tests would improve reliability
-- UI component testing could be expanded for better coverage
+- Core debate functionality and UI components now have good test coverage
+- Some utility functions and hooks still lack test coverage
+- Game setup and context management are key areas for additional testing
+- Data management testing could be expanded for better coverage
