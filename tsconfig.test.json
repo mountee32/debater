@@ -4,9 +4,21 @@
     "module": "ES2022",
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "types": ["jest", "@testing-library/jest-dom", "node"],
+    "types": [
+      "jest",
+      "@testing-library/jest-dom",
+      "@testing-library/react",
+      "node"
+    ],
     "moduleResolution": "node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx"
+  ]
 }
