@@ -67,11 +67,11 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
   const getRankIcon = (index: number) => {
     switch (index) {
       case 0:
-        return <Trophy className="text-yellow-500 w-5 h-5" />;
+        return <Trophy data-testid="trophy-icon" className="text-yellow-500 w-5 h-5" />;
       case 1:
-        return <Medal className="text-gray-400 w-5 h-5" />;
+        return <Medal data-testid="silver-medal-icon" className="text-gray-400 w-5 h-5" />;
       case 2:
-        return <Medal className="text-amber-600 w-5 h-5" />;
+        return <Medal data-testid="bronze-medal-icon" className="text-amber-600 w-5 h-5" />;
       default:
         return null;
     }
@@ -146,10 +146,14 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
       </div>
 
       {showPopup && selectedEntry && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div 
+          role="dialog" 
+          aria-labelledby="dialog-title"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        >
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-100">
             <div className="p-6">
-              <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Ready to Debate?</h3>
+              <h3 id="dialog-title" className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Ready to Debate?</h3>
               <p className="mb-6 text-gray-600 dark:text-gray-300">{selectedEntry.subject}</p>
               <div className="flex justify-end gap-3">
                 <button
