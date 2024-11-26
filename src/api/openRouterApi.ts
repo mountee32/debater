@@ -349,17 +349,16 @@ export const submitScore = async (
       leaderboardData.sort((a, b) => b.score - a.score);
       leaderboardData = leaderboardData.slice(0, 100); // Keep only top 100 scores
       
-      const mockResponse: AxiosResponse = {
+      // Create a simpler mock response without using AxiosHeaders
+      return {
         data: null,
         status: 200,
         statusText: 'OK',
         headers: {},
         config: {
-          headers: new axios.AxiosHeaders(),
-        } as InternalAxiosRequestConfig,
+          headers: {}
+        } as InternalAxiosRequestConfig
       };
-      
-      return mockResponse;
     },
     'submitScore',
     { method: 'POST', requestData: newEntry }
