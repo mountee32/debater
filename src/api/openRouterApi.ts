@@ -48,13 +48,13 @@ interface APIResponse<T> {
 
 let leaderboardData: LeaderboardEntry[] = [];
 
-export const generateTopic = async (category: string, difficulty: Difficulty): Promise<string> => {
+export const generateTopic = async (category: string, _difficulty?: Difficulty): Promise<string> => {
   const requestData = {
     model: OPPONENT_MODEL,
     messages: [
       {
         role: 'system',
-        content: `Generate a debate topic related to ${category}. For ${difficulty} difficulty level.`
+        content: `Generate a debate topic related to ${category}.`
       },
       {
         role: 'user',
@@ -77,7 +77,7 @@ export const generateTopic = async (category: string, difficulty: Difficulty): P
 
 export const startDebate = async (
   topic: string,
-  difficulty: Difficulty,
+  _difficulty: Difficulty,
   userPosition: Position,
   aiPersonality: AIPersonality
 ): Promise<string> => {
@@ -113,7 +113,7 @@ export const continueDebate = async (
   topic: string,
   messages: Message[],
   userArgument: string,
-  difficulty: Difficulty,
+  _difficulty: Difficulty,
   userPosition: Position,
   aiPersonality: AIPersonality
 ): Promise<{
@@ -238,8 +238,8 @@ export const continueDebate = async (
 
 export const generateHint = async (
   topic: string,
-  messages: Message[],
-  difficulty: Difficulty,
+  _messages: Message[],
+  _difficulty: Difficulty,
   userPosition: Position
 ): Promise<string> => {
   const requestData = {
@@ -314,12 +314,12 @@ export const getLeaderboard = async (
   category?: string
 ): Promise<LeaderboardEntry[]> => {
   const response = await withAPILogging(
-    () => axios.get<LeaderboardEntry[]>('/src/data/leaderboard.json'),
+    () => axios.get<AxiosResponse<LeaderboardEntry[]>>('/src/data/leaderboard.json'),
     'getLeaderboard',
     { method: 'GET', requestData: { difficulty, category } }
   );
 
-  leaderboardData = response.data;
+  leaderboardData = (response as unknown as AxiosResponse<LeaderboardEntry[]>).data;
 
   return leaderboardData.filter(entry => 
     (!difficulty || entry.difficulty === difficulty) &&

@@ -48,7 +48,7 @@ describe('MessageBubble', () => {
     expect(screen.getByTestId('message-author')).toHaveTextContent('Test AI (against)');
   });
 
-  it('displays score when provided', () => {
+  it('displays positive percentage score correctly', () => {
     render(
       <MessageBubble
         {...defaultProps}
@@ -56,7 +56,32 @@ describe('MessageBubble', () => {
       />
     );
 
-    expect(screen.getByTestId('message-score')).toHaveTextContent('Score: 7');
+    expect(screen.getByTestId('message-score')).toHaveTextContent('+4%');
+    expect(screen.getByTestId('message-score')).toHaveClass('bg-green-100', 'text-green-700');
+  });
+
+  it('displays negative percentage score correctly', () => {
+    render(
+      <MessageBubble
+        {...defaultProps}
+        score={3}
+      />
+    );
+
+    expect(screen.getByTestId('message-score')).toHaveTextContent('-4%');
+    expect(screen.getByTestId('message-score')).toHaveClass('bg-red-100', 'text-red-700');
+  });
+
+  it('displays neutral percentage score correctly', () => {
+    render(
+      <MessageBubble
+        {...defaultProps}
+        score={5}
+      />
+    );
+
+    expect(screen.getByTestId('message-score')).toHaveTextContent('+0%');
+    expect(screen.getByTestId('message-score')).toHaveClass('bg-gray-100', 'text-gray-700');
   });
 
   it('does not display score when not provided', () => {

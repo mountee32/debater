@@ -23,6 +23,23 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({
     return position === 'for' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400';
   };
 
+  const getScoreDisplay = (score: number) => {
+    const percentageChange = (score - 5) * 2;
+    const sign = percentageChange >= 0 ? '+' : '';
+    const displayValue = Math.round(percentageChange);
+    return sign + displayValue.toString() + '%';
+  };
+
+  const getScoreColor = (score: number) => {
+    const percentageChange = (score - 5) * 2;
+    if (percentageChange > 0) {
+      return 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300';
+    } else if (percentageChange < 0) {
+      return 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300';
+    }
+    return 'bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300';
+  };
+
   return (
     <div
       data-testid={`message-bubble-${role}`}
@@ -78,9 +95,9 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({
           {score !== undefined && (
             <span 
               data-testid="message-score"
-              className="text-sm font-medium px-2.5 py-0.5 rounded-lg bg-white/50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300"
+              className={`text-sm font-medium px-2.5 py-0.5 rounded-lg ${getScoreColor(score)}`}
             >
-              Score: {score}
+              {getScoreDisplay(score)}
             </span>
           )}
         </div>
