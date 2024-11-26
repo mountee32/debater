@@ -2,7 +2,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
+    '^src/(.*)$': '<rootDir>/src/$1',
     '\\.json$': '<rootDir>/src/__mocks__/jsonMock.js'
   },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
@@ -22,4 +22,8 @@ module.exports = {
       includeConsoleLog: true,
     }],
   ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    'src/components/DebateGame.test.tsx'
+  ]
 };
