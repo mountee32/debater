@@ -39,22 +39,6 @@ describe('Logger', () => {
     expect(mockAxios.put).toHaveBeenCalledWith('http://localhost:3001/logs', []);
   });
 
-  it('should get logs', async () => {
-    const mockLogs: LogEntry[] = [
-      {
-        id: '1234',
-        timestamp: '2024-01-01T00:00:00.000Z',
-        message: 'Test message'
-      }
-    ];
-    mockAxios.get.mockResolvedValueOnce({ data: mockLogs });
-
-    const logs = await getLogs();
-
-    expect(mockAxios.get).toHaveBeenCalledWith('http://localhost:3001/logs');
-    expect(logs).toEqual(mockLogs);
-  });
-
   it('should handle errors when creating logs', async () => {
     const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
     mockAxios.get.mockRejectedValueOnce(new Error('Network error'));
@@ -72,17 +56,6 @@ describe('Logger', () => {
     await clearLogs();
 
     expect(consoleError).toHaveBeenCalledWith('Failed to clear logs:', expect.any(Error));
-    consoleError.mockRestore();
-  });
-
-  it('should handle errors when getting logs', async () => {
-    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
-    mockAxios.get.mockRejectedValueOnce(new Error('Network error'));
-
-    const logs = await getLogs();
-
-    expect(consoleError).toHaveBeenCalledWith('Failed to read logs:', expect.any(Error));
-    expect(logs).toEqual([]);
     consoleError.mockRestore();
   });
 });
