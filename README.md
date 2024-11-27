@@ -1,261 +1,74 @@
-# Debater Project
+# Debate Master
 
-An interactive AI-powered debate game where users can engage in structured debates with AI opponents. The game features multiple AI personalities, each with unique debate styles and perspectives, allowing players to practice their argumentation skills in a gamified environment.
+A debate practice application with AI opponents powered by OpenRouter API.
 
-## Quick Start
+## Architecture
+
+The application uses a secure client-server architecture:
+- Frontend: React/TypeScript application using Vite
+- Backend: Express/TypeScript server that securely proxies OpenRouter API calls
+- API keys and sensitive operations are handled server-side
+- Rate limiting and security middleware implemented
+
+## Setup
 
 1. Install dependencies:
-   ```
-   npm install
-   ```
-
-2. Start both the development server and logging server with a single command:
-   ```
-   npm start
-   ```
-
-3. Access:
-   - Game: http://localhost:5173
-   - Log Viewer: http://localhost:3001/log-viewer.html
-
-## Game Overview
-
-Players can:
-- Choose debate topics from various categories or create custom topics
-- Select AI opponents with different personalities and debate styles
-- Engage in turn-based debates with structured arguments and rebuttals
-- Adjust difficulty levels to match their skill level
-- Track their performance on the leaderboard
-- View their debate history and progress
-
-## Features
-
-- **Dynamic AI Opponents**: Multiple AI personalities powered by OpenRouter API, each with unique characteristics and debate styles
-- **Customizable Difficulty**: Adjustable difficulty slider that affects AI response complexity and argumentation depth
-- **Rich Topic Selection**: Pre-created debate subjects across various categories including politics, philosophy, technology, and more
-- **Custom Topics**: Ability to create and debate custom topics
-- **Avatar System**: Diverse collection of avatars representing different AI personalities
-- **Performance Tracking**: 
-  - Real-time scoring system
-  - Global leaderboard showing top debaters
-  - Compact leaderboard view for quick rankings
-- **Responsive Design**: Built with Tailwind CSS for a seamless experience across devices
-- **API Communication Logging**: Comprehensive logging system for debugging and monitoring AI interactions
-
-## Prerequisites
-
-Before running the project, make sure you have the following installed:
-- Node.js (preferably the latest LTS version)
-- npm (comes with Node.js)
-
-## Environment Setup
-
-1. Create a `.env` file in the root directory of the project.
-2. Add your OpenRouter API key to the `.env` file:
-   ```
-   VITE_OPENROUTER_API_KEY=your_api_key_here
-   ```
-   Replace `your_api_key_here` with your actual OpenRouter API key.
-
-3. (Optional) Override default AI models through environment variables:
-   ```
-   VITE_OPPONENT_MODEL=your_preferred_model
-   VITE_HINT_MODEL=your_preferred_model
-   VITE_TURN_SCORING_MODEL=your_preferred_model
-   VITE_FINAL_SCORING_MODEL=your_preferred_model
-   ```
-
-Note: The `.env` file is included in `.gitignore` to prevent sensitive information from being committed to the repository.
-
-## Model Configuration
-
-The project uses a centralized configuration system for AI models in `models.config.json`:
-
-```json
-{
-  "models": {
-    "opponent": {
-      "name": "anthropic/claude-2",
-      "description": "Primary model for generating debate responses and arguments",
-      "fallback": "anthropic/claude-instant-1"
-    },
-    "hint": {
-      "name": "openai/gpt-4",
-      "description": "Used for generating helpful debate hints and suggestions",
-      "fallback": "openai/gpt-3.5-turbo"
-    },
-    "turnScoring": {
-      "name": "openai/gpt-3.5-turbo",
-      "description": "Evaluates individual debate turns and provides quick feedback",
-      "fallback": "openai/gpt-3.5-turbo"
-    },
-    "finalScoring": {
-      "name": "anthropic/claude-2",
-      "description": "Provides comprehensive final debate evaluation",
-      "fallback": "anthropic/claude-instant-1"
-    }
-  }
-}
+```bash
+npm install
 ```
 
-Models are loaded in this priority order:
-1. Environment variables (if set)
-2. models.config.json values
-3. Fallback models (if primary fails)
+2. Configure environment variables:
+```bash
+cp .env.example .env
+```
+Then edit `.env` and add your OpenRouter API key and other configuration.
 
-To modify the models:
-- Edit models.config.json for permanent changes
-- Use environment variables for temporary overrides
+3. Start the development servers:
+```bash
+npm run dev
+```
+This will start both the frontend (port 5173) and backend (port 3000) servers.
 
-## API Communication Logging
+## Development
 
-The project includes a comprehensive logging system with a user-friendly interface for monitoring and debugging AI communications:
+- Frontend code is in `src/`
+- Backend code is in `server/src/`
+- API routes are in `server/src/routes/`
+- Environment configuration in `.env`
 
-1. **Interactive Log Viewer**: 
-   - Access at http://localhost:3001/log-viewer.html
-   - Clean, collapsible interface for viewing API logs
-   - One-line summaries with expandable details
-   - Auto-refresh capability
+## Security Features
 
-2. **Log Viewer Features**:
-   - Summary view showing:
-     - Timestamp
-     - HTTP method
-     - Endpoint
-     - Status (Success/Error)
-     - Request duration
-   - Expandable details showing:
-     - Full request data
-     - Full response data or error details
-     - Formatted JSON for easy reading
-   - Auto-refresh options:
-     - Configurable refresh intervals (1s, 2s, 5s, 10s)
-     - Manual refresh button
-   - Color-coded status indicators
-   - Chronological ordering (newest first)
-
-3. **Using the Log Viewer**:
-   1. Start the application with `npm start`
-   2. Open the game in one browser tab
-   3. Open http://localhost:3001/log-viewer.html in another tab
-   4. Click any log entry to view its details
-   5. Enable auto-refresh for real-time updates
+- API keys stored securely on backend
+- CORS protection
+- Rate limiting
+- Helmet security headers
+- Input validation
+- Error handling
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm run dev` - Start both frontend and backend in development mode
+- `npm run dev:frontend` - Start only frontend
+- `npm run dev:backend` - Start only backend
+- `npm run build` - Build both frontend and backend
+- `npm run start` - Start production server
+- `npm test` - Run tests
 
-- `npm start`: Starts both the development server and logging server
-- `npm run dev`: Runs only the development server
-- `npm run logs`: Runs only the logging server
-- `npm run build`: Builds the app for production
-- `npm run preview`: Locally preview production build
-- `npm test`: Runs the test suite
+## API Endpoints
 
-## Project Structure
+All debate-related endpoints are prefixed with `/api/debate`:
 
-- `src/`: Contains the source code for the application
-  - `api/`: API-related code (e.g., openRouterApi.ts)
-  - `components/`: React components (e.g., DebateGame.tsx, DifficultySlider.tsx)
-  - `data/`: Data files (e.g., debateQuestions.json, aiPersonalities.ts)
-  - `utils/`: Utility functions and logging system
-- `public/`: Static files
-  - `assets/`: SVG images for AI avatars
-  - `log-viewer.html`: Interactive log viewer interface
-- `models.config.json`: Centralized configuration for AI models
-- `db.json`: Local database file for storing API logs
-- `index.html`: The main HTML file
-- `vite.config.ts`: Vite configuration file
-- `tsconfig.json`, `tsconfig.node.json`, `tsconfig.app.json`, `tsconfig.test.json`: TypeScript configuration files
-- `tailwind.config.js`: Tailwind CSS configuration
-- `postcss.config.js`: PostCSS configuration
-- `eslint.config.js`: ESLint configuration
-- `jest.config.cjs`: Jest configuration for testing
+- POST `/topic` - Generate debate topic
+- POST `/response` - Get AI response
+- POST `/evaluate` - Evaluate argument
+- POST `/hint` - Get debate hint
+- POST `/evaluate-debate` - Get final debate evaluation
 
-## Testing
+## Environment Variables
 
-The project uses Jest and React Testing Library for comprehensive testing. Test files are located alongside their corresponding components with the `.test.tsx` extension.
+See `.env.example` for all available configuration options:
 
-### Running Tests
-
-1. Run all tests:
-   ```bash
-   npm test
-   ```
-
-2. Run tests in watch mode (tests will re-run when files change):
-   ```bash
-   npm test -- --watch
-   ```
-
-3. Run tests with coverage report:
-   ```bash
-   npm test -- --coverage
-   ```
-
-4. Run a specific test file:
-   ```bash
-   npm test -- src/components/DebateGame.test.tsx
-   ```
-
-### Test Reports
-
-After running tests, you can access:
-- Console output showing test results
-- HTML test report at `test-report.html` (can be opened in a browser)
-- Coverage report in the `coverage` directory (when using --coverage flag)
-
-### Test Structure
-
-The project includes tests for:
-- Components (MessageBubble, DebateControls, DebateHeader)
-- Custom hooks (useDebateLogic)
-- Business logic and state management
-- User interactions and event handling
-- Error states and edge cases
-
-Each test file includes:
-- Component rendering tests
-- User interaction tests
-- State management tests
-- Error handling tests
-- Snapshot tests where appropriate
-
-### Testing Tools
-
-- **Jest**: Test runner and assertion library
-- **React Testing Library**: Component testing utilities
-- **jest-dom**: Custom DOM element matchers
-- **ts-jest**: TypeScript support
-- **jest-html-reporter**: HTML report generation
-
-## Leaderboard System
-
-The leaderboard tracks:
-- Player rankings
-- Total debates participated
-- Win/loss ratio
-- Average difficulty level
-- Best debate topics
-- Recent activity
-
-Players can view their standings in both detailed and compact views, with regular updates to reflect recent debate performances.
-
-## Technologies Used
-
-- **Frontend**: React with TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **Testing**: Jest
-- **AI Integration**: OpenRouter API
-- **State Management**: React Context
-- **Logging**: JSON Server with custom viewer interface
-
-## Additional Resources
-
-- Vite: [Documentation](https://vitejs.dev/)
-- React: [Documentation](https://reactjs.org/docs/getting-started.html)
-- TypeScript: [Documentation](https://www.typescriptlang.org/docs/)
-- Tailwind CSS: [Documentation](https://tailwindcss.com/docs)
-- Jest: [Documentation](https://jestjs.io/docs/getting-started)
-- JSON Server: [Documentation](https://github.com/typicode/json-server)
+- `PORT` - Backend server port
+- `OPENROUTER_API_KEY` - Your OpenRouter API key
+- `CORS_ORIGIN` - Allowed frontend origin
+- Model configuration options
