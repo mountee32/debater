@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { OpenRouterService } from '../services/openRouterService';
+import { ApiLogger } from '../services/apiLogger';
 import { rateLimit } from 'express-rate-limit';
 
 const router = Router();
@@ -13,16 +14,44 @@ const apiLimiter = rateLimit({
 
 router.use(apiLimiter);
 
+// Test logging endpoint
+router.post('/test-log', async (req, res) => {
+  try {
+    console.log('[DebateRoutes] Testing logger');
+    const requestId = await ApiLogger.logRequest('test-endpoint', 'POST', {
+      test: 'data',
+      timestamp: new Date().toISOString()
+    });
+    
+    await ApiLogger.logResponse(requestId, 'test-endpoint', 'POST', {
+      result: 'success',
+      timestamp: new Date().toISOString()
+    });
+
+    res.json({ success: true, requestId });
+  } catch (error) {
+    console.error('[DebateRoutes] Logger test error:', error);
+    res.status(500).json({ error: 'Logger test failed' });
+  }
+});
+
 // Generate debate topic
 router.post('/topic', async (req, res) => {
   try {
-    console.log('Generating topic:', req.body);
+    console.log('[DebateRoutes] Generating topic:', req.body);
     const { category, model } = req.body;
+    
+    if (!category || !model) {
+      console.error('[DebateRoutes] Missing required fields:', { category, model });
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    console.log('[DebateRoutes] Calling OpenRouterService.generateTopic');
     const topic = await OpenRouterService.generateTopic(category, model);
-    console.log('Generated topic:', topic);
+    console.log('[DebateRoutes] Generated topic:', topic);
     res.json({ topic });
   } catch (error) {
-    console.error('Topic generation error:', error);
+    console.error('[DebateRoutes] Topic generation error:', error);
     res.status(500).json({ 
       error: 'Failed to generate topic',
       details: error instanceof Error ? error.message : 'Unknown error'
@@ -33,7 +62,7 @@ router.post('/topic', async (req, res) => {
 // Generate debate response
 router.post('/response', async (req, res) => {
   try {
-    console.log('Generating response:', req.body);
+    console.log('[DebateRoutes] Generating response:', req.body);
     const { topic, position, messages, model } = req.body;
     const response = await OpenRouterService.generateDebateResponse(
       topic,
@@ -41,10 +70,10 @@ router.post('/response', async (req, res) => {
       messages,
       model
     );
-    console.log('Generated response:', response);
+    console.log('[DebateRoutes] Generated response:', response);
     res.json({ response });
   } catch (error) {
-    console.error('Response generation error:', error);
+    console.error('[DebateRoutes] Response generation error:', error);
     res.status(500).json({ 
       error: 'Failed to generate response',
       details: error instanceof Error ? error.message : 'Unknown error'
@@ -55,7 +84,7 @@ router.post('/response', async (req, res) => {
 // Evaluate argument
 router.post('/evaluate', async (req, res) => {
   try {
-    console.log('Evaluating argument:', req.body);
+    console.log('[DebateRoutes] Evaluating argument:', req.body);
     const { topic, position, argument, model } = req.body;
     const evaluation = await OpenRouterService.evaluateArgument(
       topic,
@@ -63,10 +92,10 @@ router.post('/evaluate', async (req, res) => {
       argument,
       model
     );
-    console.log('Evaluation result:', evaluation);
+    console.log('[DebateRoutes] Evaluation result:', evaluation);
     res.json(evaluation);
   } catch (error) {
-    console.error('Evaluation error:', error);
+    console.error('[DebateRoutes] Evaluation error:', error);
     res.status(500).json({ 
       error: 'Failed to evaluate argument',
       details: error instanceof Error ? error.message : 'Unknown error'
@@ -77,13 +106,13 @@ router.post('/evaluate', async (req, res) => {
 // Generate hint
 router.post('/hint', async (req, res) => {
   try {
-    console.log('Generating hint:', req.body);
+    console.log('[DebateRoutes] Generating hint:', req.body);
     const { topic, position, model } = req.body;
     const hint = await OpenRouterService.generateHint(topic, position, model);
-    console.log('Generated hint:', hint);
+    console.log('[DebateRoutes] Generated hint:', hint);
     res.json({ hint });
   } catch (error) {
-    console.error('Hint generation error:', error);
+    console.error('[DebateRoutes] Hint generation error:', error);
     res.status(500).json({ 
       error: 'Failed to generate hint',
       details: error instanceof Error ? error.message : 'Unknown error'
@@ -94,7 +123,7 @@ router.post('/hint', async (req, res) => {
 // Evaluate entire debate
 router.post('/evaluate-debate', async (req, res) => {
   try {
-    console.log('Evaluating debate:', req.body);
+    console.log('[DebateRoutes] Evaluating debate:', req.body);
     const { topic, userArguments, position, model } = req.body;
     const evaluation = await OpenRouterService.evaluateDebate(
       topic,
@@ -102,10 +131,10 @@ router.post('/evaluate-debate', async (req, res) => {
       position,
       model
     );
-    console.log('Debate evaluation result:', evaluation);
+    console.log('[DebateRoutes] Debate evaluation result:', evaluation);
     res.json(evaluation);
   } catch (error) {
-    console.error('Debate evaluation error:', error);
+    console.error('[DebateRoutes] Debate evaluation error:', error);
     res.status(500).json({ 
       error: 'Failed to evaluate debate',
       details: error instanceof Error ? error.message : 'Unknown error'

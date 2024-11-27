@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { env } from '../config/env';
+import { ApiLogger } from './apiLogger';
 
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -26,33 +27,39 @@ interface APIResponse {
 export class OpenRouterService {
   static async generateCompletion(messages: Message[], model: string): Promise<string> {
     try {
-      console.log('OpenRouter Request:', {
-        url: API_URL,
+      const requestData = {
         model,
         messages,
+        temperature: 0.7,
+        max_tokens: 500
+      };
+
+      console.log('[OpenRouterService] About to log request');
+      // Log the request
+      const requestId = await ApiLogger.logRequest(API_URL, 'POST', {
+        ...requestData,
         headers: {
           ...headers,
           'Authorization': 'Bearer [REDACTED]'
         }
       });
+      console.log('[OpenRouterService] Request logged with ID:', requestId);
 
       const response = await axios.post<APIResponse>(
         API_URL,
-        {
-          model,
-          messages,
-          temperature: 0.7,
-          max_tokens: 500
-        },
+        requestData,
         { headers }
       );
 
-      console.log('OpenRouter Response:', {
+      console.log('[OpenRouterService] About to log response');
+      // Log the response
+      await ApiLogger.logResponse(requestId, API_URL, 'POST', {
         status: response.status,
         statusText: response.statusText,
         data: response.data,
         headers: response.headers
       });
+      console.log('[OpenRouterService] Response logged');
 
       if (!response.data?.choices?.[0]?.message?.content) {
         console.error('Invalid OpenRouter response format:', response.data);
@@ -79,7 +86,7 @@ export class OpenRouterService {
   }
 
   static async generateTopic(category: string, model: string): Promise<string> {
-    console.log('Generating topic:', { category, model });
+    console.log('[OpenRouterService] Generating topic:', { category, model });
     const messages = [
       {
         role: 'system',
@@ -107,7 +114,7 @@ export class OpenRouterService {
     audienceReaction: number;
     feedback: string;
   }> {
-    console.log('Evaluating argument:', { topic, position, model });
+    console.log('[OpenRouterService] Evaluating argument:', { topic, position, model });
     const messages = [
       {
         role: 'system',
@@ -138,7 +145,7 @@ export class OpenRouterService {
     messages: Message[],
     model: string
   ): Promise<string> {
-    console.log('Generating debate response:', { topic, position, model });
+    console.log('[OpenRouterService] Generating debate response:', { topic, position, model });
     const systemMessage = {
       role: 'system',
       content: `You are debating ${position} the topic "${topic}". Keep responses under 3 sentences.`
@@ -153,7 +160,7 @@ export class OpenRouterService {
     position: 'for' | 'against',
     model: string
   ): Promise<string> {
-    console.log('Generating hint:', { topic, position, model });
+    console.log('[OpenRouterService] Generating hint:', { topic, position, model });
     const messages = [
       {
         role: 'system',
@@ -178,7 +185,7 @@ export class OpenRouterService {
     rationale: string;
     recommendations: string;
   }> {
-    console.log('Evaluating debate:', { topic, position, model });
+    console.log('[OpenRouterService] Evaluating debate:', { topic, position, model });
     const messages = [
       {
         role: 'system',
