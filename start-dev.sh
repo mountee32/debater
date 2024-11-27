@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# Start the JSON server for logging in the background
-json-server --watch db.json --port 3001 --static ./public &
+# Start the game server or application
+echo "Starting the game..."
+# Add the command to start your game server or application here
+# Example: npm run game-start
 
 # Start the development server
 npm run dev
