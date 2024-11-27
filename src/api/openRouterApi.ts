@@ -6,7 +6,6 @@ import { env } from '../utils/env';
 const API_KEY = env.OPENROUTER_API_KEY;
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
-// Load models from config with environment variable overrides
 const OPPONENT_MODEL = env.OPPONENT_MODEL || modelConfig.models.opponent.name;
 const HINT_MODEL = env.HINT_MODEL || modelConfig.models.hint.name;
 const TURN_SCORING_MODEL = env.TURN_SCORING_MODEL || modelConfig.models.turnScoring.name;
@@ -64,7 +63,7 @@ export const generateTopic = async (category: string, _difficulty?: Difficulty):
 
   const response = await axios.post<APIResponse<never>>(API_URL, requestData, { headers });
 
-  if (!response.data.choices?.[0]?.message?.content) {
+  if (!response.data || !response.data.choices?.[0]?.message?.content) {
     throw new Error('Invalid response format');
   }
   return response.data.choices[0].message.content;
@@ -93,11 +92,10 @@ export const startDebate = async (
 
   const response = await axios.post<APIResponse<never>>(API_URL, requestData, { headers });
 
-  const content = response.data.choices?.[0]?.message?.content;
-  if (typeof content !== 'string') {
+  if (!response.data || !response.data.choices?.[0]?.message?.content) {
     throw new Error('Invalid response format');
   }
-  return content.trim();
+  return response.data.choices[0].message.content.trim();
 };
 
 export const continueDebate = async (
@@ -124,7 +122,6 @@ export const continueDebate = async (
     content: msg.content
   }));
 
-  // First, get the AI's response
   const getAIResponse = async () => {
     const responseRequestData = {
       model: OPPONENT_MODEL,
@@ -139,14 +136,12 @@ export const continueDebate = async (
 
     const response = await axios.post<APIResponse<never>>(API_URL, responseRequestData, { headers });
 
-    const content = response.data.choices?.[0]?.message?.content;
-    if (typeof content !== 'string') {
+    if (!response.data || !response.data.choices?.[0]?.message?.content) {
       throw new Error('Invalid response format');
     }
-    return content.trim();
+    return response.data.choices[0].message.content.trim();
   };
 
-  // Then, evaluate the user's argument
   const evaluateArgument = async () => {
     const evaluationRequestData = {
       model: TURN_SCORING_MODEL,
@@ -164,15 +159,13 @@ export const continueDebate = async (
 
     const evaluationResponse = await axios.post<APIResponse<never>>(API_URL, evaluationRequestData, { headers });
 
-    const evaluationText = evaluationResponse.data.choices?.[0]?.message?.content;
-    if (typeof evaluationText !== 'string') {
+    if (!evaluationResponse.data || !evaluationResponse.data.choices?.[0]?.message?.content) {
       throw new Error('Invalid evaluation format');
     }
 
-    // Handle various evaluation response formats
+    const evaluationText = evaluationResponse.data.choices[0].message.content;
     let score = 5, consistencyScore = 5, factScore = 5, styleScore = 5, audienceReaction = 5, feedback = '';
     
-    // Try parsing comma-separated format first
     const parts = evaluationText.split(',');
     if (parts.length >= 5) {
       score = parseInt(parts[0]) || 5;
@@ -182,13 +175,11 @@ export const continueDebate = async (
       audienceReaction = parseInt(parts[4]) || 5;
       feedback = parts.slice(5).join(',').trim() || 'No feedback provided';
     } else {
-      // Try extracting numbers from the text
       const numbers = evaluationText.match(/\d+/g);
       if (numbers && numbers.length >= 5) {
         [score, consistencyScore, factScore, styleScore, audienceReaction] = 
           numbers.slice(0, 5).map(n => parseInt(n));
       }
-      // Extract feedback from the remaining text
       feedback = evaluationText.replace(/\d+/g, '').trim() || 'No feedback provided';
     }
 
@@ -203,10 +194,7 @@ export const continueDebate = async (
   };
 
   try {
-    // Get AI response first
     const aiResponse = await getAIResponse();
-    
-    // Then evaluate the argument
     const evaluation = await evaluateArgument();
 
     return {
@@ -214,7 +202,6 @@ export const continueDebate = async (
       evaluation
     };
   } catch (error) {
-    console.error('Error in debate continuation:', error);
     throw error;
   }
 };
@@ -241,11 +228,10 @@ export const generateHint = async (
 
   const response = await axios.post<APIResponse<never>>(API_URL, requestData, { headers });
 
-  const content = response.data.choices?.[0]?.message?.content;
-  if (typeof content !== 'string') {
+  if (!response.data || !response.data.choices?.[0]?.message?.content) {
     throw new Error('Invalid response format');
   }
-  return content.trim();
+  return response.data.choices[0].message.content.trim();
 };
 
 export const endDebate = async (
@@ -269,11 +255,11 @@ export const endDebate = async (
 
   const response = await axios.post<APIResponse<never>>(API_URL, requestData, { headers });
 
-  const content = response.data.choices?.[0]?.message?.content;
-  if (typeof content !== 'string') {
+  if (!response.data || !response.data.choices?.[0]?.message?.content) {
     throw new Error('Invalid response format');
   }
 
+  const content = response.data.choices[0].message.content;
   const [score, rationale, recommendations] = content.split(',');
   const overallScore = parseInt(score) || 5;
 
@@ -288,9 +274,10 @@ export const getLeaderboard = async (
   difficulty?: Difficulty,
   category?: string
 ): Promise<LeaderboardEntry[]> => {
-  const response = await axios.get<AxiosResponse<LeaderboardEntry[]>>('/src/data/leaderboard.json');
-
-  leaderboardData = (response as unknown as AxiosResponse<LeaderboardEntry[]>).data;
+  if (leaderboardData.length === 0) {
+    const response = await axios.get<LeaderboardEntry[]>('/src/data/leaderboard.json');
+    leaderboardData = response.data || [];
+  }
 
   return leaderboardData.filter(entry => 
     (!difficulty || entry.difficulty === difficulty) &&
@@ -316,5 +303,5 @@ export const submitScore = async (
 
   leaderboardData.push(newEntry);
   leaderboardData.sort((a, b) => b.score - a.score);
-  leaderboardData = leaderboardData.slice(0, 100); // Keep only top 100 scores
+  leaderboardData = leaderboardData.slice(0, 100);
 };

@@ -81,14 +81,14 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       setIsDarkMode(storedDarkMode === 'true');
     }
 
-    // Load pregenerated questions
     fetch('/src/data/debateQuestions.json')
       .then(response => response.json())
       .then(data => {
-        console.log('Pregenerated questions loaded:', data.questions);
         setPregeneratedQuestions(data.questions);
       })
-      .catch(error => console.error('Error loading pregenerated questions:', error));
+      .catch(() => {
+        setPregeneratedQuestions([]);
+      });
   }, []);
 
   useEffect(() => {
@@ -96,54 +96,45 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   }, [isDarkMode]);
 
   const handleStartChat = () => {
-    console.log('Starting new chat');
     setGameState('select-category');
   };
 
   const handleCategorySelect = (selectedCategory: string) => {
-    console.log('Selected category:', selectedCategory);
     setCategory(selectedCategory);
     setPreCreatedSubjects(preCreatedSubjectsData[selectedCategory as keyof typeof preCreatedSubjectsData]);
     setGameState('select-topic');
   };
 
   const handleTopicSubmit = () => {
-    console.log('Topic submitted:', topic);
     setGameState('select-position');
   };
 
   const handlePersonalitySelect = (personality: AIPersonality) => {
-    console.log('Selected personality:', personality.name);
     setSelectedPersonality(personality);
     setGameState('select-difficulty');
   };
 
   const handleDifficultyChange = (newDifficulty: Difficulty) => {
-    console.log('Selected difficulty:', newDifficulty);
     setDifficulty(newDifficulty);
     setGameState('playing');
   };
 
   const handlePositionSelect = (position: Position) => {
-    console.log('Selected position:', position);
     setUserPosition(position);
     setGameState('select-personality');
   };
 
   const handlePregeneratedQuestionSelect = (question: string) => {
-    console.log('Selected pregenerated question:', question);
     setTopic(question);
     setGameState('select-position');
   };
 
   const handlePreCreatedSubjectSelect = (subject: string) => {
-    console.log('Selected pre-created subject:', subject);
     setTopic(subject);
     setGameState('select-position');
   };
 
   const handleEndGame = async (result: { overallScore: number; rationale: string; recommendations: string }) => {
-    console.log('Game ended. Score:', result.overallScore);
     const difficultyMultiplier = difficulty === 'easy' ? 1.0 : difficulty === 'medium' ? 1.1 : 1.2;
     const adjustedScore = Math.round(result.overallScore * difficultyMultiplier);
     setScore(adjustedScore);
@@ -163,7 +154,6 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     const formData = new FormData(event.currentTarget);
     const newUsername = formData.get('username') as string;
     if (newUsername) {
-      console.log('Submitting username:', newUsername);
       setUsername(newUsername);
       localStorage.setItem('username', newUsername);
       if (isHighScore) {

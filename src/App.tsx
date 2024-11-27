@@ -53,7 +53,6 @@ function AppContent() {
   };
 
   const goBack = () => {
-    console.log('Going back from:', gameState);
     switch (gameState) {
       case 'select-topic': setGameState('select-category'); break;
       case 'select-position': setGameState('select-topic'); break;
