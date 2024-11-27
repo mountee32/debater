@@ -1,6 +1,5 @@
 import axios, { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { AIPersonality } from '../data/aiPersonalities';
-import { withAPILogging } from '../utils/logger';
 import modelConfig from '../../models.config.json';
 import { env } from '../utils/env';
 
@@ -63,16 +62,12 @@ export const generateTopic = async (category: string, _difficulty?: Difficulty):
     ]
   };
 
-  const response = await withAPILogging(
-    () => axios.post<APIResponse<never>>(API_URL, requestData, { headers }),
-    'generateTopic',
-    { method: 'POST', requestData }
-  );
+  const response = await axios.post<APIResponse<never>>(API_URL, requestData, { headers });
 
-  if (!response.choices?.[0]?.message?.content) {
+  if (!response.data.choices?.[0]?.message?.content) {
     throw new Error('Invalid response format');
   }
-  return response.choices[0].message.content;
+  return response.data.choices[0].message.content;
 };
 
 export const startDebate = async (
@@ -96,13 +91,9 @@ export const startDebate = async (
     ]
   };
 
-  const response = await withAPILogging(
-    () => axios.post<APIResponse<never>>(API_URL, requestData, { headers }),
-    'startDebate',
-    { method: 'POST', requestData }
-  );
+  const response = await axios.post<APIResponse<never>>(API_URL, requestData, { headers });
 
-  const content = response.choices?.[0]?.message?.content;
+  const content = response.data.choices?.[0]?.message?.content;
   if (typeof content !== 'string') {
     throw new Error('Invalid response format');
   }
@@ -146,13 +137,9 @@ export const continueDebate = async (
       ]
     };
 
-    const response = await withAPILogging(
-      () => axios.post<APIResponse<never>>(API_URL, responseRequestData, { headers }),
-      'continueDebate-response',
-      { method: 'POST', requestData: responseRequestData }
-    );
+    const response = await axios.post<APIResponse<never>>(API_URL, responseRequestData, { headers });
 
-    const content = response.choices?.[0]?.message?.content;
+    const content = response.data.choices?.[0]?.message?.content;
     if (typeof content !== 'string') {
       throw new Error('Invalid response format');
     }
@@ -175,13 +162,9 @@ export const continueDebate = async (
       ]
     };
 
-    const evaluationResponse = await withAPILogging(
-      () => axios.post<APIResponse<never>>(API_URL, evaluationRequestData, { headers }),
-      'continueDebate-evaluation',
-      { method: 'POST', requestData: evaluationRequestData }
-    );
+    const evaluationResponse = await axios.post<APIResponse<never>>(API_URL, evaluationRequestData, { headers });
 
-    const evaluationText = evaluationResponse.choices?.[0]?.message?.content;
+    const evaluationText = evaluationResponse.data.choices?.[0]?.message?.content;
     if (typeof evaluationText !== 'string') {
       throw new Error('Invalid evaluation format');
     }
@@ -256,13 +239,9 @@ export const generateHint = async (
     ]
   };
 
-  const response = await withAPILogging(
-    () => axios.post<APIResponse<never>>(API_URL, requestData, { headers }),
-    'generateHint',
-    { method: 'POST', requestData }
-  );
+  const response = await axios.post<APIResponse<never>>(API_URL, requestData, { headers });
 
-  const content = response.choices?.[0]?.message?.content;
+  const content = response.data.choices?.[0]?.message?.content;
   if (typeof content !== 'string') {
     throw new Error('Invalid response format');
   }
@@ -288,13 +267,9 @@ export const endDebate = async (
     ]
   };
 
-  const response = await withAPILogging(
-    () => axios.post<APIResponse<never>>(API_URL, requestData, { headers }),
-    'endDebate',
-    { method: 'POST', requestData }
-  );
+  const response = await axios.post<APIResponse<never>>(API_URL, requestData, { headers });
 
-  const content = response.choices?.[0]?.message?.content;
+  const content = response.data.choices?.[0]?.message?.content;
   if (typeof content !== 'string') {
     throw new Error('Invalid response format');
   }
@@ -313,11 +288,7 @@ export const getLeaderboard = async (
   difficulty?: Difficulty,
   category?: string
 ): Promise<LeaderboardEntry[]> => {
-  const response = await withAPILogging(
-    () => axios.get<AxiosResponse<LeaderboardEntry[]>>('/src/data/leaderboard.json'),
-    'getLeaderboard',
-    { method: 'GET', requestData: { difficulty, category } }
-  );
+  const response = await axios.get<AxiosResponse<LeaderboardEntry[]>>('/src/data/leaderboard.json');
 
   leaderboardData = (response as unknown as AxiosResponse<LeaderboardEntry[]>).data;
 
@@ -343,24 +314,7 @@ export const submitScore = async (
     subject,
   };
 
-  await withAPILogging(
-    async () => {
-      leaderboardData.push(newEntry);
-      leaderboardData.sort((a, b) => b.score - a.score);
-      leaderboardData = leaderboardData.slice(0, 100); // Keep only top 100 scores
-      
-      // Create a simpler mock response without using AxiosHeaders
-      return {
-        data: null,
-        status: 200,
-        statusText: 'OK',
-        headers: {},
-        config: {
-          headers: {}
-        } as InternalAxiosRequestConfig
-      };
-    },
-    'submitScore',
-    { method: 'POST', requestData: newEntry }
-  );
+  leaderboardData.push(newEntry);
+  leaderboardData.sort((a, b) => b.score - a.score);
+  leaderboardData = leaderboardData.slice(0, 100); // Keep only top 100 scores
 };

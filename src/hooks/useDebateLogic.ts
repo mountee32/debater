@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { AIPersonality } from '../data/aiPersonalities';
 import { useMessageHandler } from './useMessageHandler';
 import { startDebate, continueDebate, generateHint, endDebate } from '../api/openRouterApi';
-import { log } from '../utils/logger';
 
 export interface DebateState {
   isLoading: boolean;
@@ -73,7 +72,6 @@ export const useDebateLogic = (
       updateState({ isDebateEnded: true });
       onEndGame(result);
     } catch (error) {
-      log(`DebateGame: Error ending debate: ${error}`);
       updateState({ error: 'Failed to end debate. Please try again.' });
     }
   };
@@ -113,7 +111,6 @@ export const useDebateLogic = (
         updateAudienceScore(aiScore, false);
       }
     } catch (error) {
-      log(`DebateGame: Error in debate continuation: ${error}`);
       updateState({ error: 'Failed to get AI response. Please try again.' });
     } finally {
       updateState({ isLoading: false, isAiThinking: false });
@@ -129,7 +126,6 @@ export const useDebateLogic = (
       const hint = await generateHint(topic, messages, difficulty, userPosition);
       return hint;
     } catch (error) {
-      log(`DebateGame: Error generating hint: ${error}`);
       updateState({ error: 'Failed to generate hint. Please try again.' });
       return null;
     } finally {
@@ -142,12 +138,10 @@ export const useDebateLogic = (
 
     try {
       const response = await startDebate(topic, difficulty, userPosition, aiPersonality);
-      log(`DebateGame: Received initial AI response: ${response}`);
       if (response) {
         addMessage('opponent', response);
       }
     } catch (error) {
-      log(`DebateGame: Error initializing debate: ${error}`);
       updateState({ error: 'Failed to start debate. Please try again.' });
     } finally {
       updateState({ isLoading: false, isAiThinking: false });

@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-import { log } from '../utils/logger';
 
 interface Message {
   id: number;
@@ -12,8 +11,6 @@ export const useMessageHandler = () => {
   const [messages, setMessages] = useState<Message[]>([]);
 
   const addMessage = useCallback((role: 'user' | 'opponent' | 'hint', content: string, score?: number) => {
-    log(`Adding message: ${role} - ${content}`);
-    
     setMessages(prevMessages => [
       ...prevMessages,
       { 

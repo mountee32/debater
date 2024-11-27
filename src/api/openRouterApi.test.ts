@@ -1,13 +1,9 @@
 import axios from 'axios';
 import { generateTopic, startDebate, continueDebate, generateHint, endDebate, getLeaderboard, submitScore } from './openRouterApi';
-import { withAPILogging } from '../utils/logger';
 import { AIPersonality } from '../data/aiPersonalities';
 
 // Mock dependencies
 jest.mock('axios');
-jest.mock('../utils/logger', () => ({
-  withAPILogging: jest.fn((fn) => fn()),
-}));
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
@@ -32,7 +28,9 @@ describe('openRouterApi', () => {
   describe('generateTopic', () => {
     it('should generate a topic successfully', async () => {
       const mockResponse = {
-        choices: [{ message: { content: 'Test Topic' } }]
+        data: {
+          choices: [{ message: { content: 'Test Topic' } }]
+        }
       };
       mockedAxios.post.mockResolvedValueOnce(mockResponse);
 
@@ -50,7 +48,9 @@ describe('openRouterApi', () => {
   describe('startDebate', () => {
     it('should start debate successfully', async () => {
       const mockResponse = {
-        choices: [{ message: { content: 'Opening argument' } }]
+        data: {
+          choices: [{ message: { content: 'Opening argument' } }]
+        }
       };
       mockedAxios.post.mockResolvedValueOnce(mockResponse);
 
@@ -70,10 +70,14 @@ describe('openRouterApi', () => {
 
     it('should continue debate and evaluate successfully', async () => {
       const mockResponseData = {
-        choices: [{ message: { content: 'AI Response' } }]
+        data: {
+          choices: [{ message: { content: 'AI Response' } }]
+        }
       };
       const mockEvaluationData = {
-        choices: [{ message: { content: '8,7,6,7,8,Good argument' } }]
+        data: {
+          choices: [{ message: { content: '8,7,6,7,8,Good argument' } }]
+        }
       };
 
       mockedAxios.post
@@ -96,10 +100,14 @@ describe('openRouterApi', () => {
 
     it('should handle evaluation with different format', async () => {
       const mockResponseData = {
-        choices: [{ message: { content: 'AI Response' } }]
+        data: {
+          choices: [{ message: { content: 'AI Response' } }]
+        }
       };
       const mockEvaluationData = {
-        choices: [{ message: { content: 'Score: 8 Consistency: 7 Facts: 6 Style: 7 Audience: 8 Feedback: Good' } }]
+        data: {
+          choices: [{ message: { content: 'Score: 8 Consistency: 7 Facts: 6 Style: 7 Audience: 8 Feedback: Good' } }]
+        }
       };
 
       mockedAxios.post
@@ -123,7 +131,9 @@ describe('openRouterApi', () => {
   describe('generateHint', () => {
     it('should generate hint successfully', async () => {
       const mockResponse = {
-        choices: [{ message: { content: 'Hint text' } }]
+        data: {
+          choices: [{ message: { content: 'Hint text' } }]
+        }
       };
       mockedAxios.post.mockResolvedValueOnce(mockResponse);
 
@@ -136,7 +146,9 @@ describe('openRouterApi', () => {
   describe('endDebate', () => {
     it('should end debate with evaluation', async () => {
       const mockResponse = {
-        choices: [{ message: { content: '9,Great performance,Keep practicing' } }]
+        data: {
+          choices: [{ message: { content: '9,Great performance,Keep practicing' } }]
+        }
       };
       mockedAxios.post.mockResolvedValueOnce(mockResponse);
 
@@ -164,7 +176,9 @@ describe('openRouterApi', () => {
   describe('submitScore', () => {
     it('should submit score successfully', async () => {
       await submitScore('testUser', 100, 'easy', 'tech', 'AI');
-      expect(withAPILogging).toHaveBeenCalled();
+      // Verify the score was added to leaderboard data
+      const result = await getLeaderboard('easy', 'tech');
+      expect(result.some(entry => entry.username === 'testUser')).toBe(true);
     });
   });
 });
