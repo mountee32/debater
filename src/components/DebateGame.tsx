@@ -21,7 +21,10 @@ interface DisplayMessage {
   id: number;
   role: 'user' | 'opponent';
   content: string;
-  score?: number;
+  score?: {
+    score: number;
+    previousScore: number;
+  };
 }
 
 const DebateGame: React.FC<DebateGameProps> = ({ 
@@ -101,7 +104,8 @@ const DebateGame: React.FC<DebateGameProps> = ({
               key={message.id}
               role={message.role}
               content={message.content}
-              score={message.score}
+              score={message.score?.score}
+              previousScore={message.score?.previousScore}
               userPosition={userPosition}
               aiPosition={aiPosition}
               aiPersonality={aiPersonality}
