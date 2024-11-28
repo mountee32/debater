@@ -94,12 +94,12 @@ router.post('/response', async (req, res) => {
 router.post('/evaluate', async (req, res) => {
   try {
     await DiagnosticLogger.log('[DebateRoutes] Evaluating argument request:', req.body);
-    const { topic, position, messages, currentScores, model } = req.body;
+    const { topic, position, messages, currentScores, model, roleToScore } = req.body;
     
-    if (!topic || !position || !messages || !currentScores || !model) {
+    if (!topic || !position || !messages || !currentScores || !model || !roleToScore) {
       const error = 'Missing required fields';
       await DiagnosticLogger.error('[DebateRoutes] Evaluation error - missing fields:', { 
-        topic, position, messages, currentScores, model 
+        topic, position, messages, currentScores, model, roleToScore 
       });
       return res.status(400).json({ error });
     }
@@ -109,7 +109,8 @@ router.post('/evaluate', async (req, res) => {
       position,
       messagesCount: messages.length,
       currentScores,
-      model
+      model,
+      roleToScore
     });
 
     const score = await OpenRouterService.evaluateArgument(
@@ -117,7 +118,8 @@ router.post('/evaluate', async (req, res) => {
       position,
       messages,
       currentScores,
-      model
+      model,
+      roleToScore
     );
 
     await DiagnosticLogger.log('[DebateRoutes] Evaluation result:', { score });

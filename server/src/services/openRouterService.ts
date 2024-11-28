@@ -15,6 +15,7 @@ const headers = {
 interface Message {
   role: string;
   content: string;
+  id?: number;
 }
 
 interface APIResponse {
@@ -28,9 +29,16 @@ interface APIResponse {
 export class OpenRouterService {
   static async generateCompletion(messages: Message[], model: string): Promise<string> {
     try {
+      // Clean and map messages to valid API roles
+      const mappedMessages = messages.map(msg => ({
+        role: msg.role === 'opponent' ? 'assistant' : 
+              msg.role === 'user' || msg.role === 'system' ? msg.role : 'user',
+        content: msg.content
+      })).filter(msg => msg.content.trim() !== '');
+
       const requestData = {
         model,
-        messages,
+        messages: mappedMessages,
         temperature: 0.7,
         max_tokens: 500
       };
@@ -101,19 +109,30 @@ export class OpenRouterService {
     position: 'for' | 'against',
     messages: Message[],
     currentScores: { user: number; opponent: number },
-    model: string
+    model: string,
+    roleToScore: 'user' | 'opponent'
   ): Promise<number> {
     await DiagnosticLogger.log('Evaluating argument:', { 
       topic, 
       position, 
       currentScores,
+      roleToScore,
       messagesCount: messages.length,
       lastMessage: messages[messages.length - 1]
     });
 
+    // Swap labels and scores based on who we're scoring
+    const [primaryLabel, secondaryLabel] = roleToScore === 'user' 
+        ? ['User (Player)', 'Assistant (AI)']
+        : ['Assistant (AI)', 'User (Player)'];
+    
+    const [primaryScore, secondaryScore] = roleToScore === 'user'
+        ? [currentScores.user, currentScores.opponent]
+        : [currentScores.opponent, currentScores.user];
+
     const systemMessage = {
       role: 'system',
-      content: `You are scoring a debate on "${topic}". Current scores - User (Player): ${currentScores.user}%, Assistant (AI): ${currentScores.opponent}%.
+      content: `You are scoring a debate on "${topic}". Current scores - ${primaryLabel}: ${primaryScore}%, ${secondaryLabel}: ${secondaryScore}%.
 
 SCORING PRINCIPLES:
 
@@ -151,7 +170,7 @@ Critical Moments
 - Complete position reversal: -35-45 points
 
 RESPONSE FORMAT:
-Return ONLY a number between 0-100 representing the human player's new overall percentage score. No other text.
+Return ONLY a number between 0-100 representing the ${primaryLabel}'s new overall percentage score. No other text.
 
 Example valid responses:
 55
@@ -166,13 +185,6 @@ Example valid responses:
       messageCount: allMessages.length
     });
 
-    const requestData = {
-      model,
-      messages: allMessages,
-      temperature: 0.7,
-      max_tokens: 50  // Reduced since we only need a number
-    };
-
     const response = await this.generateCompletion(allMessages, model);
     await DiagnosticLogger.log('Received evaluation response:', response);
     
@@ -183,14 +195,15 @@ Example valid responses:
         response,
         parsedValue: newScore
       });
-      return currentScores.user;
+      return roleToScore === 'user' ? currentScores.user : currentScores.opponent;
     }
 
     const boundedScore = Math.min(Math.max(newScore, 0), 100);
     await DiagnosticLogger.log('Final calculated score:', {
+      roleToScore,
       rawScore: newScore,
       boundedScore,
-      originalScore: currentScores.user
+      originalScore: roleToScore === 'user' ? currentScores.user : currentScores.opponent
     });
 
     return boundedScore;
@@ -208,12 +221,30 @@ Example valid responses:
       messagesCount: messages.length
     });
 
+    // Create a single system message with clear instructions
     const systemMessage = {
       role: 'system',
-      content: `You are debating ${position} the topic "${topic}". Keep responses under 3 sentences.`
+      content: `You are debating ${position} the topic "${topic}". Keep responses under 3 sentences and maintain a clear position.`
     };
 
-    const allMessages = [systemMessage, ...messages];
+    // Format conversation history, excluding any existing system messages
+    const conversationHistory = messages
+      .filter(msg => msg.role !== 'system')
+      .map(msg => ({
+        role: msg.role === 'opponent' ? 'assistant' : 'user',
+        content: msg.content
+      }));
+
+    // If there's no conversation history, add an initial prompt
+    if (conversationHistory.length === 0) {
+      conversationHistory.push({
+        role: 'user',
+        content: `The topic is: "${topic}". Start with a quick opening argument ${position} the topic.`
+      });
+    }
+
+    // Combine system message with conversation history
+    const allMessages = [systemMessage, ...conversationHistory];
     return this.generateCompletion(allMessages, model);
   }
 

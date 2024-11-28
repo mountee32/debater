@@ -1,374 +1,77 @@
-[2024-11-28T13:09:13.155Z] [DebateRoutes] Evaluating debate:
+[2024-11-28T15:46:50.857Z] Diagnostic logging initialized
+[2024-11-28T15:46:50.858Z] Middleware configured
 Data: {
-  "topic": "There should be a complete separation of church and state.",
-  "userArguments": [
-    "otherwise politics can corrupt religion",
-    "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy.",
-    "I agree with you",
-    "another good point you make",
-    "yup that's true",
-    "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens.",
-    "Complete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
-  ],
-  "position": "for",
-  "model": "openai/gpt-4o-mini"
-}
-[2024-11-28T13:09:13.155Z] Evaluating debate:
-Data: {
-  "topic": "There should be a complete separation of church and state.",
-  "position": "for",
-  "argumentsCount": 7
-}
-[2024-11-28T13:09:13.155Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-4o-mini",
-  "messages": [
-    {
-      "role": "system",
-      "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
-    },
-    {
-      "role": "user",
-      "content": "Topic: \"There should be a complete separation of church and state.\"\nPosition: for\nArguments:\notherwise politics can corrupt religion\nComplete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy.\nI agree with you\nanother good point you make\nyup that's true\nA complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens.\nComplete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-11-28T13:09:13.158Z] [DebateRoutes] Evaluating debate:
-Data: {
-  "topic": "There should be a complete separation of church and state.",
-  "userArguments": [
-    "otherwise politics can corrupt religion",
-    "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy.",
-    "I agree with you",
-    "another good point you make",
-    "yup that's true",
-    "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens.",
-    "Complete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
-  ],
-  "position": "for",
-  "model": "openai/gpt-4o-mini"
-}
-[2024-11-28T13:09:13.158Z] Evaluating debate:
-Data: {
-  "topic": "There should be a complete separation of church and state.",
-  "position": "for",
-  "argumentsCount": 7
-}
-[2024-11-28T13:09:13.158Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-4o-mini",
-  "messages": [
-    {
-      "role": "system",
-      "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
-    },
-    {
-      "role": "user",
-      "content": "Topic: \"There should be a complete separation of church and state.\"\nPosition: for\nArguments:\notherwise politics can corrupt religion\nComplete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy.\nI agree with you\nanother good point you make\nyup that's true\nA complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens.\nComplete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-11-28T13:09:17.871Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1732799353-qc4am5DRQmR2YtcnFumo",
-    "provider": "OpenAI",
-    "model": "openai/gpt-4o-mini",
-    "object": "chat.completion",
-    "created": 1732799353,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "Score: 6\n\nRationale: The arguments presented effectively highlight the importance of the separation of church and state, emphasizing key points such as the protection of religious freedom, the prevention of government endorsement of specific beliefs, and the fostering of a pluralistic society. However, the performance lacks depth and varied examples that could strengthen the arguments. The use of phrases like \"I agree with you\" and \"another good point you make\" suggests a lack of engagement with opposing views or a more nuanced discussion, which is essential in a debate setting. Additionally, the repetition of similar points could indicate a lack of preparation or critical thinking.\n\nRecommendations:\n1. Incorporate specific examples or historical instances where the lack of separation led to negative consequences, such as discrimination or oppression, to add weight to the arguments.\n2. Engage more with potential counterarguments and provide rebuttals to demonstrate a comprehensive understanding of the topic.\n3. Vary the language and structure of the arguments to avoid redundancy and maintain audience interest.\n4. Consider using data or statistics to back up claims about the benefits of separation in societies that have implemented it successfully.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": "fp_0705bf87c0",
-    "usage": {
-      "prompt_tokens": 234,
-      "completion_tokens": 224,
-      "total_tokens": 458
-    }
+  "cors": {
+    "origin": "http://localhost:5173",
+    "methods": [
+      "GET",
+      "POST"
+    ]
   }
 }
-[2024-11-28T13:09:17.873Z] Received debate evaluation response:
-Data: "Score: 6\n\nRationale: The arguments presented effectively highlight the importance of the separation of church and state, emphasizing key points such as the protection of religious freedom, the prevention of government endorsement of specific beliefs, and the fostering of a pluralistic society. However, the performance lacks depth and varied examples that could strengthen the arguments. The use of phrases like \"I agree with you\" and \"another good point you make\" suggests a lack of engagement with opposing views or a more nuanced discussion, which is essential in a debate setting. Additionally, the repetition of similar points could indicate a lack of preparation or critical thinking.\n\nRecommendations:\n1. Incorporate specific examples or historical instances where the lack of separation led to negative consequences, such as discrimination or oppression, to add weight to the arguments.\n2. Engage more with potential counterarguments and provide rebuttals to demonstrate a comprehensive understanding of the topic.\n3. Vary the language and structure of the arguments to avoid redundancy and maintain audience interest.\n4. Consider using data or statistics to back up claims about the benefits of separation in societies that have implemented it successfully."
-[2024-11-28T13:09:17.874Z] Parsed debate evaluation result:
+[2024-11-28T15:46:50.858Z] Routes configured
 Data: {
-  "overallScore": 5,
-  "rationale": "emphasizing key points such as the protection of religious freedom",
-  "recommendations": "the prevention of government endorsement of specific beliefs"
+  "endpoints": [
+    "/api/debate"
+  ]
 }
-[2024-11-28T13:09:17.874Z] [DebateRoutes] Debate evaluation result:
+[2024-11-28T15:46:50.858Z] Testing diagnostic logger
 Data: {
-  "overallScore": 5,
-  "rationale": "emphasizing key points such as the protection of religious freedom",
-  "recommendations": "the prevention of government endorsement of specific beliefs"
+  "test": "This is a test log entry",
+  "timestamp": "2024-11-28T15:46:50.858Z"
 }
-[2024-11-28T13:09:17.880Z] [DebateRoutes] Evaluating debate:
+[2024-11-28T15:46:50.860Z] Server running on port 3000
+[2024-11-28T15:46:50.860Z] Server configuration
 Data: {
-  "topic": "There should be a complete separation of church and state.",
-  "userArguments": [
-    "otherwise politics can corrupt religion",
-    "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy.",
-    "I agree with you",
-    "another good point you make",
-    "yup that's true",
-    "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens.",
-    "Complete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
-  ],
-  "position": "for",
-  "model": "openai/gpt-4o-mini"
+  "port": 3000,
+  "corsOrigin": "http://localhost:5173",
+  "diagnosticLogging": true
 }
-[2024-11-28T13:09:17.880Z] Evaluating debate:
+[2024-11-28T15:52:18.393Z] [DebateRoutes] Generating response:
 Data: {
-  "topic": "There should be a complete separation of church and state.",
-  "position": "for",
-  "argumentsCount": 7
-}
-[2024-11-28T13:09:17.880Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-4o-mini",
-  "messages": [
-    {
-      "role": "system",
-      "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
-    },
-    {
-      "role": "user",
-      "content": "Topic: \"There should be a complete separation of church and state.\"\nPosition: for\nArguments:\notherwise politics can corrupt religion\nComplete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy.\nI agree with you\nanother good point you make\nyup that's true\nA complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens.\nComplete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-11-28T13:09:19.727Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1732799353-H89dfDE3NRjzWnIweYeW",
-    "provider": "OpenAI",
-    "model": "openai/gpt-4o-mini",
-    "object": "chat.completion",
-    "created": 1732799353,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "Score: 6\n\nRationale: The arguments presented for the separation of church and state are solid and well-articulated, focusing on key principles such as freedom of belief, protection of minority faiths, and the promotion of a pluralistic society. However, the overall delivery comes across as somewhat repetitive and lacks depth. The use of phrases like \"another good point you make\" and \"yup that's true\" detracts from the professionalism and seriousness of the debate performance. While the arguments are valid, they would benefit from more varied and nuanced examples or evidence to strengthen their impact.\n\nRecommendations:\n1. **Diversify Arguments**: Introduce a wider range of arguments and examples to avoid repetition. This could include historical examples of the negative impact of intertwining religion with government, or case studies illustrating successful secular governance.\n2. **Enhanced Delivery**: Remove casual phrases and maintain a more formal tone throughout the debate. This will enhance the credibility of the arguments.\n3. **Engage with Counterarguments**: Address potential counterarguments more thoroughly to show a deeper understanding of the topic. This will strengthen the position and demonstrate critical thinking.\n4. **Use of Evidence**: Incorporate statistics, quotes from authoritative figures, or references to legal cases that support the stance on separation of church and state. This will provide a stronger foundation for the arguments presented.\n5. **Emotional Appeal**: Consider including personal stories or anecdotes that illustrate the importance of religious freedom and the consequences of a lack of separation, making the argument more relatable and impactful.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": "fp_0705bf87c0",
-    "usage": {
-      "prompt_tokens": 234,
-      "completion_tokens": 311,
-      "total_tokens": 545
-    }
-  }
-}
-[2024-11-28T13:09:19.729Z] Received debate evaluation response:
-Data: "Score: 6\n\nRationale: The arguments presented for the separation of church and state are solid and well-articulated, focusing on key principles such as freedom of belief, protection of minority faiths, and the promotion of a pluralistic society. However, the overall delivery comes across as somewhat repetitive and lacks depth. The use of phrases like \"another good point you make\" and \"yup that's true\" detracts from the professionalism and seriousness of the debate performance. While the arguments are valid, they would benefit from more varied and nuanced examples or evidence to strengthen their impact.\n\nRecommendations:\n1. **Diversify Arguments**: Introduce a wider range of arguments and examples to avoid repetition. This could include historical examples of the negative impact of intertwining religion with government, or case studies illustrating successful secular governance.\n2. **Enhanced Delivery**: Remove casual phrases and maintain a more formal tone throughout the debate. This will enhance the credibility of the arguments.\n3. **Engage with Counterarguments**: Address potential counterarguments more thoroughly to show a deeper understanding of the topic. This will strengthen the position and demonstrate critical thinking.\n4. **Use of Evidence**: Incorporate statistics, quotes from authoritative figures, or references to legal cases that support the stance on separation of church and state. This will provide a stronger foundation for the arguments presented.\n5. **Emotional Appeal**: Consider including personal stories or anecdotes that illustrate the importance of religious freedom and the consequences of a lack of separation, making the argument more relatable and impactful."
-[2024-11-28T13:09:19.729Z] Parsed debate evaluation result:
-Data: {
-  "overallScore": 5,
-  "rationale": "focusing on key principles such as freedom of belief",
-  "recommendations": "protection of minority faiths"
-}
-[2024-11-28T13:09:19.729Z] [DebateRoutes] Debate evaluation result:
-Data: {
-  "overallScore": 5,
-  "rationale": "focusing on key principles such as freedom of belief",
-  "recommendations": "protection of minority faiths"
-}
-[2024-11-28T13:09:19.735Z] [DebateRoutes] Evaluating debate:
-Data: {
-  "topic": "There should be a complete separation of church and state.",
-  "userArguments": [
-    "otherwise politics can corrupt religion",
-    "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy.",
-    "I agree with you",
-    "another good point you make",
-    "yup that's true",
-    "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens.",
-    "Complete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
-  ],
-  "position": "for",
-  "model": "openai/gpt-4o-mini"
-}
-[2024-11-28T13:09:19.735Z] Evaluating debate:
-Data: {
-  "topic": "There should be a complete separation of church and state.",
-  "position": "for",
-  "argumentsCount": 7
-}
-[2024-11-28T13:09:19.735Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-4o-mini",
-  "messages": [
-    {
-      "role": "system",
-      "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
-    },
-    {
-      "role": "user",
-      "content": "Topic: \"There should be a complete separation of church and state.\"\nPosition: for\nArguments:\notherwise politics can corrupt religion\nComplete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy.\nI agree with you\nanother good point you make\nyup that's true\nA complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens.\nComplete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-11-28T13:09:26.213Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1732799360-FfXXDuXxeiyDNcA5rmV6",
-    "provider": "OpenAI",
-    "model": "openai/gpt-4o-mini",
-    "object": "chat.completion",
-    "created": 1732799360,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "Score: 7\n\nRationale: The performance effectively articulated the importance of a complete separation of church and state by focusing on key arguments such as the protection of minority beliefs, the prevention of government interference in personal faith, and the promotion of a pluralistic society. The points made were relevant and highlighted the benefits of secular governance, which is critical in a diverse society. However, the delivery lacked depth in addressing potential counterarguments or exploring the implications of a complete separation. The repetition of phrases like \"I agree with you\" and \"another good point you make\" did not contribute meaningfully to the argument and could be perceived as lacking originality or critical engagement.\n\nRecommendations: \n1. Incorporate counterarguments: Address potential objections to the complete separation of church and state, such as the argument that moral guidance from religious institutions can benefit governance. This would demonstrate a more nuanced understanding of the topic.\n2. Use examples: Provide real-world examples or historical contexts where the lack of separation has led to negative consequences. This would strengthen the argument by illustrating the practical implications of the position.\n3. Enhance engagement: Instead of relying on affirmations, engage with the audience or opponents more directly by challenging their views or asking rhetorical questions to provoke thought. This would create a more dynamic debate atmosphere.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": "fp_0705bf87c0",
-    "usage": {
-      "prompt_tokens": 234,
-      "completion_tokens": 257,
-      "total_tokens": 491
-    }
-  }
-}
-[2024-11-28T13:09:26.215Z] Received debate evaluation response:
-Data: "Score: 7\n\nRationale: The performance effectively articulated the importance of a complete separation of church and state by focusing on key arguments such as the protection of minority beliefs, the prevention of government interference in personal faith, and the promotion of a pluralistic society. The points made were relevant and highlighted the benefits of secular governance, which is critical in a diverse society. However, the delivery lacked depth in addressing potential counterarguments or exploring the implications of a complete separation. The repetition of phrases like \"I agree with you\" and \"another good point you make\" did not contribute meaningfully to the argument and could be perceived as lacking originality or critical engagement.\n\nRecommendations: \n1. Incorporate counterarguments: Address potential objections to the complete separation of church and state, such as the argument that moral guidance from religious institutions can benefit governance. This would demonstrate a more nuanced understanding of the topic.\n2. Use examples: Provide real-world examples or historical contexts where the lack of separation has led to negative consequences. This would strengthen the argument by illustrating the practical implications of the position.\n3. Enhance engagement: Instead of relying on affirmations, engage with the audience or opponents more directly by challenging their views or asking rhetorical questions to provoke thought. This would create a more dynamic debate atmosphere."
-[2024-11-28T13:09:26.215Z] Parsed debate evaluation result:
-Data: {
-  "overallScore": 5,
-  "rationale": "the prevention of government interference in personal faith",
-  "recommendations": "and the promotion of a pluralistic society. The points made were relevant and highlighted the benefits of secular governance"
-}
-[2024-11-28T13:09:26.215Z] [DebateRoutes] Debate evaluation result:
-Data: {
-  "overallScore": 5,
-  "rationale": "the prevention of government interference in personal faith",
-  "recommendations": "and the promotion of a pluralistic society. The points made were relevant and highlighted the benefits of secular governance"
-}
-[2024-11-28T13:09:28.091Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1732799358-8eDEHW4fEwPd3wMRrmYu",
-    "provider": "OpenAI",
-    "model": "openai/gpt-4o-mini",
-    "object": "chat.completion",
-    "created": 1732799358,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "Score: 7\n\nRationale: The performance effectively articulates the importance of separating church and state, emphasizing key points such as the protection of minority faiths, the prevention of government endorsement of any religion, and the promotion of a pluralistic society. The arguments presented are well-reasoned and relevant to the topic, showcasing a clear understanding of the implications of this separation on democracy and individual rights. However, the delivery lacks a bit of depth and persuasive power; the use of phrases like \"I agree with you\" and \"another good point you make\" suggests a reliance on consensus rather than showcasing strong, independent argumentation. This could weaken the overall impact of the debate.\n\nRecommendations: \n1. Strengthen arguments by incorporating more evidence or examples to support claims, such as historical instances where the lack of separation led to negative consequences.\n2. Avoid repetitive phrases and engage more dynamically with the audience or opponent to enhance persuasive appeal.\n3. Consider addressing potential counterarguments regarding the role of religion in public life to demonstrate a comprehensive understanding of the topic. This could involve discussing how some argue for a moral framework provided by religion in governance while refuting that with secular evidence.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": "fp_0705bf87c0",
-    "usage": {
-      "prompt_tokens": 234,
-      "completion_tokens": 236,
-      "total_tokens": 470
-    }
-  }
-}
-[2024-11-28T13:09:28.094Z] Received debate evaluation response:
-Data: "Score: 7\n\nRationale: The performance effectively articulates the importance of separating church and state, emphasizing key points such as the protection of minority faiths, the prevention of government endorsement of any religion, and the promotion of a pluralistic society. The arguments presented are well-reasoned and relevant to the topic, showcasing a clear understanding of the implications of this separation on democracy and individual rights. However, the delivery lacks a bit of depth and persuasive power; the use of phrases like \"I agree with you\" and \"another good point you make\" suggests a reliance on consensus rather than showcasing strong, independent argumentation. This could weaken the overall impact of the debate.\n\nRecommendations: \n1. Strengthen arguments by incorporating more evidence or examples to support claims, such as historical instances where the lack of separation led to negative consequences.\n2. Avoid repetitive phrases and engage more dynamically with the audience or opponent to enhance persuasive appeal.\n3. Consider addressing potential counterarguments regarding the role of religion in public life to demonstrate a comprehensive understanding of the topic. This could involve discussing how some argue for a moral framework provided by religion in governance while refuting that with secular evidence."
-[2024-11-28T13:09:28.094Z] Parsed debate evaluation result:
-Data: {
-  "overallScore": 5,
-  "rationale": "emphasizing key points such as the protection of minority faiths",
-  "recommendations": "the prevention of government endorsement of any religion"
-}
-[2024-11-28T13:09:28.094Z] [DebateRoutes] Debate evaluation result:
-Data: {
-  "overallScore": 5,
-  "rationale": "emphasizing key points such as the protection of minority faiths",
-  "recommendations": "the prevention of government endorsement of any religion"
-}
-[2024-11-28T13:10:13.643Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "The electoral college is better than a popular vote system.",
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
   "position": "against",
   "messages": [
     {
       "role": "system",
-      "content": "You are Devil's Advocate Dan, debating against the topic. Keep responses under 3 sentences."
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
     },
     {
       "role": "user",
-      "content": "The topic is: \"The electoral college is better than a popular vote system.\". Start with a quick opening argument against the topic."
+      "content": "The topic is: \"Campaign finance reform is necessary for a fair democratic process.\". Start with a quick opening argument against the topic."
     }
-  ],
-  "model": "openai/gpt-4o-mini"
+  ]
 }
-[2024-11-28T13:10:13.643Z] Generating debate response:
+[2024-11-28T15:52:18.393Z] Generating debate response:
 Data: {
-  "topic": "The electoral college is better than a popular vote system.",
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
   "position": "against",
   "messagesCount": 2
 }
-[2024-11-28T13:10:13.643Z] Generating completion with request:
+[2024-11-28T15:52:18.393Z] Generating completion with request:
 Data: {
-  "model": "openai/gpt-4o-mini",
   "messages": [
     {
       "role": "system",
-      "content": "You are debating against the topic \"The electoral college is better than a popular vote system.\". Keep responses under 3 sentences."
-    },
-    {
-      "role": "system",
-      "content": "You are Devil's Advocate Dan, debating against the topic. Keep responses under 3 sentences."
+      "content": "You are debating against the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep responses under 3 sentences and maintain a clear position."
     },
     {
       "role": "user",
-      "content": "The topic is: \"The electoral college is better than a popular vote system.\". Start with a quick opening argument against the topic."
+      "content": "The topic is: \"Campaign finance reform is necessary for a fair democratic process.\". Start with a quick opening argument against the topic."
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-11-28T13:10:15.826Z] Received API response:
+[2024-11-28T15:52:21.998Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1732799414-mMEKoglRHEgfdqOe1Y9O",
-    "provider": "OpenAI",
-    "model": "openai/gpt-4o-mini",
+    "id": "gen-1732809138-MxdkWmLQYsYoCd6OM9i0",
+    "provider": "DeepInfra",
+    "model": "meta-llama/llama-3-70b-instruct",
     "object": "chat.completion",
-    "created": 1732799414,
+    "created": 1732809138,
     "choices": [
       {
         "logprobs": null,
@@ -376,41 +79,129 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate.",
+          "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena.",
           "refusal": ""
         }
       }
     ],
-    "system_fingerprint": "fp_0705bf87c0",
     "usage": {
-      "prompt_tokens": 85,
-      "completion_tokens": 79,
-      "total_tokens": 164
+      "prompt_tokens": 71,
+      "completion_tokens": 57,
+      "total_tokens": 128
     }
   }
 }
-[2024-11-28T13:10:15.829Z] [DebateRoutes] Generated response:
+[2024-11-28T15:52:21.999Z] [DebateRoutes] Generated response:
 Data: {
-  "response": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
+  "response": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
 }
-[2024-11-28T13:10:17.142Z] [DebateRoutes] Generating hint:
+[2024-11-28T15:52:22.013Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "The electoral college is better than a popular vote system.",
-  "position": "for",
-  "model": "openai/gpt-4o-mini"
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messages": [],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "anthropic/claude-3.5-sonnet",
+  "roleToScore": "opponent"
 }
-[2024-11-28T13:10:17.142Z] Generating hint:
+[2024-11-28T15:52:22.013Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "The electoral college is better than a popular vote system.",
-  "position": "for"
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messagesCount": 0,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "anthropic/claude-3.5-sonnet",
+  "roleToScore": "opponent"
 }
-[2024-11-28T13:10:17.142Z] Generating completion with request:
+[2024-11-28T15:52:22.013Z] Evaluating argument:
 Data: {
-  "model": "openai/gpt-4o-mini",
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "roleToScore": "opponent",
+  "messagesCount": 0
+}
+[2024-11-28T15:52:22.013Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 1
+}
+[2024-11-28T15:52:22.013Z] Generating completion with request:
+Data: {
+  "model": "anthropic/claude-3.5-sonnet",
   "messages": [
     {
       "role": "system",
-      "content": "Generate a direct, concise argument for the topic \"The electoral college is better than a popular vote system.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+      "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T15:52:25.679Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732809142-rFLrRJWVLD05HqwYQWdc",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732809142,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Assistant (AI)'s argument: \"Campaign finance reform is critical for democracy. Without restrictions on money in politics, wealthy individuals and corporations can exert disproportionate influence through large donations, drowning out the voices of average citizens. This undermines core democratic principles of political equality and representation. Data shows that politicians are more responsive to donor interests than public opinion. Reforms like contribution limits and transparency requirements would help level the playing field.\"\n\nUser (Player)'s response: \"While campaign finance has issues, reforms often have unintended consequences that can make things worse. Contribution limits just push money into less transparent channels like PACs. Plus, donations are a form of political speech protected by the First Amendment. The focus should be on increasing transparency and voter education rather than restricting political participation through donations.\"\n\n48",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 479,
+      "completion_tokens": 171,
+      "total_tokens": 650
+    }
+  }
+}
+[2024-11-28T15:52:25.679Z] Received evaluation response:
+Data: "Assistant (AI)'s argument: \"Campaign finance reform is critical for democracy. Without restrictions on money in politics, wealthy individuals and corporations can exert disproportionate influence through large donations, drowning out the voices of average citizens. This undermines core democratic principles of political equality and representation. Data shows that politicians are more responsive to donor interests than public opinion. Reforms like contribution limits and transparency requirements would help level the playing field.\"\n\nUser (Player)'s response: \"While campaign finance has issues, reforms often have unintended consequences that can make things worse. Contribution limits just push money into less transparent channels like PACs. Plus, donations are a form of political speech protected by the First Amendment. The focus should be on increasing transparency and voter education rather than restricting political participation through donations.\"\n\n48"
+[2024-11-28T15:52:25.680Z] ERROR: Failed to parse score from response:
+Error Data: {
+  "response": "Assistant (AI)'s argument: \"Campaign finance reform is critical for democracy. Without restrictions on money in politics, wealthy individuals and corporations can exert disproportionate influence through large donations, drowning out the voices of average citizens. This undermines core democratic principles of political equality and representation. Data shows that politicians are more responsive to donor interests than public opinion. Reforms like contribution limits and transparency requirements would help level the playing field.\"\n\nUser (Player)'s response: \"While campaign finance has issues, reforms often have unintended consequences that can make things worse. Contribution limits just push money into less transparent channels like PACs. Plus, donations are a form of political speech protected by the First Amendment. The focus should be on increasing transparency and voter education rather than restricting political participation through donations.\"\n\n48",
+  "parsedValue": null
+}
+[2024-11-28T15:52:25.680Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 50
+}
+[2024-11-28T15:52:26.833Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for"
+}
+[2024-11-28T15:52:26.833Z] Generating hint:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for"
+}
+[2024-11-28T15:52:26.833Z] Generating completion with request:
+Data: {
+  "messages": [
+    {
+      "role": "system",
+      "content": "Generate a direct, concise argument for the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
     },
     {
       "role": "user",
@@ -420,15 +211,15 @@ Data: {
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-11-28T13:10:19.022Z] Received API response:
+[2024-11-28T15:52:30.187Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1732799417-c53xOgYBLvSnNthhPSE6",
-    "provider": "OpenAI",
-    "model": "openai/gpt-4o-mini",
+    "id": "gen-1732809147-vTZdh3N2QLZf2I3sJLmO",
+    "provider": "DeepInfra",
+    "model": "meta-llama/llama-3-70b-instruct",
     "object": "chat.completion",
-    "created": 1732799417,
+    "created": 1732809147,
     "choices": [
       {
         "logprobs": null,
@@ -436,146 +227,98 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance.",
+          "content": "Campaign finance reform is necessary for a fair democratic process because unlimited corporate and special interest donations distort election outcomes, amplify wealthy voices, and undermine equal representation, allowing money to trump citizen votes and corrupt the political system.",
           "refusal": ""
         }
       }
     ],
-    "system_fingerprint": "fp_0705bf87c0",
     "usage": {
-      "prompt_tokens": 66,
-      "completion_tokens": 53,
-      "total_tokens": 119
+      "prompt_tokens": 70,
+      "completion_tokens": 42,
+      "total_tokens": 112
     }
   }
 }
-[2024-11-28T13:10:19.025Z] [DebateRoutes] Generated hint:
+[2024-11-28T15:52:30.189Z] [DebateRoutes] Generated hint:
 Data: {
-  "hint": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance."
+  "hint": "Campaign finance reform is necessary for a fair democratic process because unlimited corporate and special interest donations distort election outcomes, amplify wealthy voices, and undermine equal representation, allowing money to trump citizen votes and corrupt the political system."
 }
-[2024-11-28T13:10:19.957Z] [DebateRoutes] Evaluating argument request:
+[2024-11-28T15:52:33.623Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "The electoral college is better than a popular vote system.",
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
   "position": "for",
   "messages": [
     {
-      "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    },
-    {
-      "role": "user",
-      "content": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance."
+      "id": 1,
+      "role": "opponent",
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
     }
   ],
   "currentScores": {
     "user": 50,
     "opponent": 50
   },
-  "model": "anthropic/claude-3.5-sonnet"
+  "model": "anthropic/claude-3.5-sonnet",
+  "roleToScore": "user"
 }
-[2024-11-28T13:10:19.957Z] [DebateRoutes] Starting evaluation with:
+[2024-11-28T15:52:33.623Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "The electoral college is better than a popular vote system.",
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
   "position": "for",
-  "messagesCount": 2,
+  "messagesCount": 1,
   "currentScores": {
     "user": 50,
     "opponent": 50
   },
-  "model": "anthropic/claude-3.5-sonnet"
+  "model": "anthropic/claude-3.5-sonnet",
+  "roleToScore": "user"
 }
-[2024-11-28T13:10:19.957Z] Evaluating argument:
+[2024-11-28T15:52:33.623Z] Evaluating argument:
 Data: {
-  "topic": "The electoral college is better than a popular vote system.",
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
   "position": "for",
   "currentScores": {
     "user": 50,
     "opponent": 50
   },
-  "messagesCount": 2,
+  "roleToScore": "user",
+  "messagesCount": 1,
   "lastMessage": {
-    "role": "user",
-    "content": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance."
+    "id": 1,
+    "role": "opponent",
+    "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
   }
 }
-[2024-11-28T13:10:19.957Z] Sending evaluation request with messages:
-Data: [
-  {
-    "role": "system",
-    "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
-  },
-  {
-    "role": "assistant",
-    "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-  },
-  {
-    "role": "user",
-    "content": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance."
-  }
-]
-[2024-11-28T13:10:19.957Z] Generating completion with request:
+[2024-11-28T15:52:33.623Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - User (Player): 50%, Assistant (AI): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 2
+}
+[2024-11-28T15:52:33.623Z] Generating completion with request:
 Data: {
   "model": "anthropic/claude-3.5-sonnet",
   "messages": [
     {
       "role": "system",
-      "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+      "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - User (Player): 50%, Assistant (AI): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
     },
     {
       "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    },
-    {
-      "role": "user",
-      "content": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance."
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-11-28T13:10:20.273Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "The electoral college is better than a popular vote system.",
-  "position": "against",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    }
-  ],
-  "model": "openai/gpt-4o-mini"
-}
-[2024-11-28T13:10:20.273Z] Generating debate response:
-Data: {
-  "topic": "The electoral college is better than a popular vote system.",
-  "position": "against",
-  "messagesCount": 1
-}
-[2024-11-28T13:10:20.273Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-4o-mini",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are debating against the topic \"The electoral college is better than a popular vote system.\". Keep responses under 3 sentences."
-    },
-    {
-      "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-11-28T13:10:21.743Z] Received API response:
+[2024-11-28T15:52:35.444Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1732799420-gsNd0neslUmzsySL4frK",
+    "id": "gen-1732809154-SP5jzZVZf6TAUjymfWwG",
     "provider": "Anthropic",
     "model": "anthropic/claude-3.5-sonnet",
     "object": "chat.completion",
-    "created": 1732799420,
+    "created": 1732809154,
     "choices": [
       {
         "logprobs": null,
@@ -583,39 +326,73 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "55",
+          "content": "58",
           "refusal": ""
         }
       }
     ],
     "usage": {
-      "prompt_tokens": 283,
+      "prompt_tokens": 536,
       "completion_tokens": 7,
-      "total_tokens": 290
+      "total_tokens": 543
     }
   }
 }
-[2024-11-28T13:10:21.746Z] Received evaluation response:
-Data: "55"
-[2024-11-28T13:10:21.746Z] Final calculated score:
+[2024-11-28T15:52:35.445Z] Received evaluation response:
+Data: "58"
+[2024-11-28T15:52:35.445Z] Final calculated score:
 Data: {
-  "rawScore": 55,
-  "boundedScore": 55,
+  "roleToScore": "user",
+  "rawScore": 58,
+  "boundedScore": 58,
   "originalScore": 50
 }
-[2024-11-28T13:10:21.746Z] [DebateRoutes] Evaluation result:
+[2024-11-28T15:52:35.445Z] [DebateRoutes] Evaluation result:
 Data: {
-  "score": 55
+  "score": 58
 }
-[2024-11-28T13:10:22.551Z] Received API response:
+[2024-11-28T15:52:35.457Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
+    }
+  ]
+}
+[2024-11-28T15:52:35.457Z] Generating debate response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messagesCount": 1
+}
+[2024-11-28T15:52:35.457Z] Generating completion with request:
+Data: {
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep responses under 3 sentences and maintain a clear position."
+    },
+    {
+      "role": "user",
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T15:52:42.535Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1732799420-huRdQMIzA9RkKyQYW5ZH",
-    "provider": "OpenAI",
-    "model": "openai/gpt-4o-mini",
+    "id": "gen-1732809155-vEvvdXqBovjaw37qNA3i",
+    "provider": "DeepInfra",
+    "model": "meta-llama/llama-3-70b-instruct",
     "object": "chat.completion",
-    "created": 1732799420,
+    "created": 1732809155,
     "choices": [
       {
         "logprobs": null,
@@ -623,174 +400,470 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate.",
+          "content": "That's a great starting point. To build upon this argument, I'd like to add that campaign finance reform can also be overly broad and ambiguous, leading to unintended consequences and potential lawsuits that can stifle political participation and speech.",
           "refusal": ""
         }
       }
     ],
-    "system_fingerprint": "fp_0705bf87c0",
     "usage": {
-      "prompt_tokens": 115,
-      "completion_tokens": 79,
-      "total_tokens": 194
+      "prompt_tokens": 102,
+      "completion_tokens": 46,
+      "total_tokens": 148
     }
   }
 }
-[2024-11-28T13:10:22.554Z] [DebateRoutes] Generated response:
+[2024-11-28T15:52:42.536Z] [DebateRoutes] Generated response:
 Data: {
-  "response": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
+  "response": "That's a great starting point. To build upon this argument, I'd like to add that campaign finance reform can also be overly broad and ambiguous, leading to unintended consequences and potential lawsuits that can stifle political participation and speech."
 }
-[2024-11-28T13:10:44.221Z] [DebateRoutes] Generating response:
+[2024-11-28T15:52:42.546Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "The electoral college is better than a popular vote system.",
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
   "position": "against",
   "messages": [
     {
-      "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    },
-    {
-      "role": "user",
-      "content": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance."
-    },
-    {
-      "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
+      "id": 1,
+      "role": "opponent",
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
     }
   ],
-  "model": "openai/gpt-4o-mini"
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "anthropic/claude-3.5-sonnet",
+  "roleToScore": "opponent"
 }
-[2024-11-28T13:10:44.221Z] Generating debate response:
+[2024-11-28T15:52:42.546Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "The electoral college is better than a popular vote system.",
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
   "position": "against",
-  "messagesCount": 3
-}
-[2024-11-28T13:10:44.221Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-4o-mini",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are debating against the topic \"The electoral college is better than a popular vote system.\". Keep responses under 3 sentences."
-    },
-    {
-      "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    },
-    {
-      "role": "user",
-      "content": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance."
-    },
-    {
-      "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-11-28T13:10:44.224Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "The electoral college is better than a popular vote system.",
-  "position": "for",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    },
-    {
-      "role": "user",
-      "content": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance."
-    },
-    {
-      "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    },
-    {
-      "role": "user",
-      "content": "I agree with you"
-    }
-  ],
+  "messagesCount": 1,
   "currentScores": {
-    "user": 55,
-    "opponent": 45
+    "user": 50,
+    "opponent": 50
   },
-  "model": "anthropic/claude-3.5-sonnet"
+  "model": "anthropic/claude-3.5-sonnet",
+  "roleToScore": "opponent"
 }
-[2024-11-28T13:10:44.224Z] [DebateRoutes] Starting evaluation with:
+[2024-11-28T15:52:42.546Z] Evaluating argument:
 Data: {
-  "topic": "The electoral college is better than a popular vote system.",
-  "position": "for",
-  "messagesCount": 4,
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
   "currentScores": {
-    "user": 55,
-    "opponent": 45
+    "user": 50,
+    "opponent": 50
   },
-  "model": "anthropic/claude-3.5-sonnet"
-}
-[2024-11-28T13:10:44.224Z] Evaluating argument:
-Data: {
-  "topic": "The electoral college is better than a popular vote system.",
-  "position": "for",
-  "currentScores": {
-    "user": 55,
-    "opponent": 45
-  },
-  "messagesCount": 4,
+  "roleToScore": "opponent",
+  "messagesCount": 1,
   "lastMessage": {
-    "role": "user",
-    "content": "I agree with you"
+    "id": 1,
+    "role": "opponent",
+    "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
   }
 }
-[2024-11-28T13:10:44.224Z] Sending evaluation request with messages:
-Data: [
-  {
-    "role": "system",
-    "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - Player: 55%, AI: 45%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
-  },
-  {
-    "role": "assistant",
-    "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-  },
-  {
-    "role": "user",
-    "content": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance."
-  },
-  {
-    "role": "assistant",
-    "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-  },
-  {
-    "role": "user",
-    "content": "I agree with you"
-  }
-]
-[2024-11-28T13:10:44.224Z] Generating completion with request:
+[2024-11-28T15:52:42.546Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 2
+}
+[2024-11-28T15:52:42.546Z] Generating completion with request:
 Data: {
   "model": "anthropic/claude-3.5-sonnet",
   "messages": [
     {
       "role": "system",
-      "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - Player: 55%, AI: 45%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+      "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
     },
     {
       "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    },
-    {
-      "role": "user",
-      "content": "The electoral college ensures balanced representation across diverse states, preventing populous regions from dominating elections. It encourages candidates to campaign nationwide, fostering unity and consideration for all voters, rather than focusing solely on urban centers. This system protects minority interests and maintains the federal structure of governance."
-    },
-    {
-      "role": "assistant",
-      "content": "The electoral college distorts the true will of the people by allowing a candidate to win the presidency without securing a majority of the popular vote, which undermines the principle of democracy. It disproportionately favors smaller states, leading to unequal representation and diminishing the voices of voters in larger states. Ultimately, a popular vote system would ensure that every vote carries equal weight, reflecting the true choice of the electorate."
-    },
-    {
-      "role": "user",
-      "content": "I agree with you"
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
+}
+[2024-11-28T15:52:44.356Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732809163-UfEsDk64DqWx0hx2lflF",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732809163,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "42",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 536,
+      "completion_tokens": 7,
+      "total_tokens": 543
+    }
+  }
+}
+[2024-11-28T15:52:44.357Z] Received evaluation response:
+Data: "42"
+[2024-11-28T15:52:44.357Z] Final calculated score:
+Data: {
+  "roleToScore": "opponent",
+  "rawScore": 42,
+  "boundedScore": 42,
+  "originalScore": 50
+}
+[2024-11-28T15:52:44.357Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 42
+}
+[2024-11-28T15:52:47.956Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena.",
+      "score": {
+        "score": 42,
+        "previousScore": 50
+      }
+    },
+    {
+      "id": 2,
+      "role": "user",
+      "content": "Campaign finance reform is necessary for a fair democratic process because unlimited corporate and special interest donations distort election outcomes, amplify wealthy voices, and undermine equal representation, allowing money to trump citizen votes and corrupt the political system."
+    },
+    {
+      "id": 3,
+      "role": "opponent",
+      "content": "That's a great starting point. To build upon this argument, I'd like to add that campaign finance reform can also be overly broad and ambiguous, leading to unintended consequences and potential lawsuits that can stifle political participation and speech."
+    }
+  ],
+  "currentScores": {
+    "user": 58,
+    "opponent": 42
+  },
+  "model": "anthropic/claude-3.5-sonnet",
+  "roleToScore": "user"
+}
+[2024-11-28T15:52:47.956Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for",
+  "messagesCount": 3,
+  "currentScores": {
+    "user": 58,
+    "opponent": 42
+  },
+  "model": "anthropic/claude-3.5-sonnet",
+  "roleToScore": "user"
+}
+[2024-11-28T15:52:47.956Z] Evaluating argument:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for",
+  "currentScores": {
+    "user": 58,
+    "opponent": 42
+  },
+  "roleToScore": "user",
+  "messagesCount": 3,
+  "lastMessage": {
+    "id": 3,
+    "role": "opponent",
+    "content": "That's a great starting point. To build upon this argument, I'd like to add that campaign finance reform can also be overly broad and ambiguous, leading to unintended consequences and potential lawsuits that can stifle political participation and speech."
+  }
+}
+[2024-11-28T15:52:47.956Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - User (Player): 58%, Assistant (AI): 42%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 4
+}
+[2024-11-28T15:52:47.956Z] Generating completion with request:
+Data: {
+  "model": "anthropic/claude-3.5-sonnet",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - User (Player): 58%, Assistant (AI): 42%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    },
+    {
+      "role": "assistant",
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
+    },
+    {
+      "role": "user",
+      "content": "Campaign finance reform is necessary for a fair democratic process because unlimited corporate and special interest donations distort election outcomes, amplify wealthy voices, and undermine equal representation, allowing money to trump citizen votes and corrupt the political system."
+    },
+    {
+      "role": "assistant",
+      "content": "That's a great starting point. To build upon this argument, I'd like to add that campaign finance reform can also be overly broad and ambiguous, leading to unintended consequences and potential lawsuits that can stifle political participation and speech."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T15:52:50.444Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732809168-FBCnY9myH9Dl5P2hh6jb",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732809168,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "\n\nThe Supreme Court has consistently held that political spending is a form of protected speech under the First Amendment. This includes the Citizens United decision, which affirmed that corporations and unions have free speech rights in political discourse.\n\nAdditionally, campaign finance restrictions can create complex regulatory burdens that disproportionately affect grassroots movements and smaller political organizations while established players have the resources to navigate them.",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 635,
+      "completion_tokens": 85,
+      "total_tokens": 720
+    }
+  }
+}
+[2024-11-28T15:52:50.445Z] Received evaluation response:
+Data: "The Supreme Court has consistently held that political spending is a form of protected speech under the First Amendment. This includes the Citizens United decision, which affirmed that corporations and unions have free speech rights in political discourse.\n\nAdditionally, campaign finance restrictions can create complex regulatory burdens that disproportionately affect grassroots movements and smaller political organizations while established players have the resources to navigate them."
+[2024-11-28T15:52:50.445Z] ERROR: Failed to parse score from response:
+Error Data: {
+  "response": "The Supreme Court has consistently held that political spending is a form of protected speech under the First Amendment. This includes the Citizens United decision, which affirmed that corporations and unions have free speech rights in political discourse.\n\nAdditionally, campaign finance restrictions can create complex regulatory burdens that disproportionately affect grassroots movements and smaller political organizations while established players have the resources to navigate them.",
+  "parsedValue": null
+}
+[2024-11-28T15:52:50.445Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 58
+}
+[2024-11-28T15:52:50.496Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena.",
+      "score": {
+        "score": 42,
+        "previousScore": 50
+      }
+    },
+    {
+      "id": 2,
+      "role": "user",
+      "content": "Campaign finance reform is necessary for a fair democratic process because unlimited corporate and special interest donations distort election outcomes, amplify wealthy voices, and undermine equal representation, allowing money to trump citizen votes and corrupt the political system."
+    },
+    {
+      "id": 3,
+      "role": "opponent",
+      "content": "That's a great starting point. To build upon this argument, I'd like to add that campaign finance reform can also be overly broad and ambiguous, leading to unintended consequences and potential lawsuits that can stifle political participation and speech."
+    }
+  ]
+}
+[2024-11-28T15:52:50.497Z] Generating debate response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messagesCount": 3
+}
+[2024-11-28T15:52:50.497Z] Generating completion with request:
+Data: {
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep responses under 3 sentences and maintain a clear position."
+    },
+    {
+      "role": "user",
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
+    },
+    {
+      "role": "user",
+      "content": "Campaign finance reform is necessary for a fair democratic process because unlimited corporate and special interest donations distort election outcomes, amplify wealthy voices, and undermine equal representation, allowing money to trump citizen votes and corrupt the political system."
+    },
+    {
+      "role": "user",
+      "content": "That's a great starting point. To build upon this argument, I'd like to add that campaign finance reform can also be overly broad and ambiguous, leading to unintended consequences and potential lawsuits that can stifle political participation and speech."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T15:52:54.629Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732809170-p4wAiWdwrSk2DvkoH0J6",
+    "provider": "Novita",
+    "model": "meta-llama/llama-3-70b-instruct",
+    "object": "chat.completion",
+    "created": 1732809170,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "I disagree. While the intention behind campaign finance reform may be to curb the influence of big money, the reality is that it often ends up entrenching the status quo, as incumbent politicians are best equipped to navigate the complex web of regulations and loopholes. This can ultimately lead to a less competitive political landscape, where fresh voices and perspectives are discouraged from entering the fray.",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    }
+  }
+}
+[2024-11-28T15:52:54.630Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "I disagree. While the intention behind campaign finance reform may be to curb the influence of big money, the reality is that it often ends up entrenching the status quo, as incumbent politicians are best equipped to navigate the complex web of regulations and loopholes. This can ultimately lead to a less competitive political landscape, where fresh voices and perspectives are discouraged from entering the fray."
+}
+[2024-11-28T15:52:54.675Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena.",
+      "score": {
+        "score": 42,
+        "previousScore": 50
+      }
+    },
+    {
+      "id": 2,
+      "role": "user",
+      "content": "Campaign finance reform is necessary for a fair democratic process because unlimited corporate and special interest donations distort election outcomes, amplify wealthy voices, and undermine equal representation, allowing money to trump citizen votes and corrupt the political system."
+    },
+    {
+      "id": 3,
+      "role": "opponent",
+      "content": "That's a great starting point. To build upon this argument, I'd like to add that campaign finance reform can also be overly broad and ambiguous, leading to unintended consequences and potential lawsuits that can stifle political participation and speech."
+    }
+  ],
+  "currentScores": {
+    "user": 58,
+    "opponent": 42
+  },
+  "model": "anthropic/claude-3.5-sonnet",
+  "roleToScore": "opponent"
+}
+[2024-11-28T15:52:54.675Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messagesCount": 3,
+  "currentScores": {
+    "user": 58,
+    "opponent": 42
+  },
+  "model": "anthropic/claude-3.5-sonnet",
+  "roleToScore": "opponent"
+}
+[2024-11-28T15:52:54.675Z] Evaluating argument:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "currentScores": {
+    "user": 58,
+    "opponent": 42
+  },
+  "roleToScore": "opponent",
+  "messagesCount": 3,
+  "lastMessage": {
+    "id": 3,
+    "role": "opponent",
+    "content": "That's a great starting point. To build upon this argument, I'd like to add that campaign finance reform can also be overly broad and ambiguous, leading to unintended consequences and potential lawsuits that can stifle political participation and speech."
+  }
+}
+[2024-11-28T15:52:54.675Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Assistant (AI): 42%, User (Player): 58%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 4
+}
+[2024-11-28T15:52:54.675Z] Generating completion with request:
+Data: {
+  "model": "anthropic/claude-3.5-sonnet",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Assistant (AI): 42%, User (Player): 58%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    },
+    {
+      "role": "assistant",
+      "content": "Campaign finance reform is not necessary for a fair democratic process because it restricts individuals' and organizations' freedom of speech, which is a fundamental right protected by the First Amendment. Moreover, such reforms often favor incumbents and established interests, thereby limiting competition and innovation in the political arena."
+    },
+    {
+      "role": "user",
+      "content": "Campaign finance reform is necessary for a fair democratic process because unlimited corporate and special interest donations distort election outcomes, amplify wealthy voices, and undermine equal representation, allowing money to trump citizen votes and corrupt the political system."
+    },
+    {
+      "role": "assistant",
+      "content": "That's a great starting point. To build upon this argument, I'd like to add that campaign finance reform can also be overly broad and ambiguous, leading to unintended consequences and potential lawsuits that can stifle political participation and speech."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T15:52:56.523Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732809175-9xUHS7FRph23ZAIbfzUQ",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732809175,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "\n\nAdditionally, there are existing transparency and reporting requirements that already help protect against corruption in campaign finance. The real solution may be better enforcement of current laws rather than additional restrictions.",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 635,
+      "completion_tokens": 40,
+      "total_tokens": 675
+    }
+  }
+}
+[2024-11-28T15:52:56.524Z] Received evaluation response:
+Data: "Additionally, there are existing transparency and reporting requirements that already help protect against corruption in campaign finance. The real solution may be better enforcement of current laws rather than additional restrictions."
+[2024-11-28T15:52:56.524Z] ERROR: Failed to parse score from response:
+Error Data: {
+  "response": "Additionally, there are existing transparency and reporting requirements that already help protect against corruption in campaign finance. The real solution may be better enforcement of current laws rather than additional restrictions.",
+  "parsedValue": null
+}
+[2024-11-28T15:52:56.524Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 42
 }

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { AIPersonality } from '../data/aiPersonalities';
 import { useMessageHandler } from './useMessageHandler';
-import { startDebate, continueDebate, generateHint, endDebate } from '../api/openRouterApi';
+import { startDebate, continueDebate, generateHint, endDebate, evaluateArgument } from '../api/openRouterApi';
+import modelConfig from '../../models.config.json';
 
 export interface DebateState {
   isLoading: boolean;
@@ -29,19 +30,25 @@ export const useDebateLogic = (
     error: null,
   });
 
+  // Calculate AI's position based on user's position
+  const aiPosition = userPosition === 'for' ? 'against' : 'for';
+
   const updateState = (updates: Partial<DebateState>) => {
     setState(prev => ({ ...prev, ...updates }));
   };
 
-  const updateScores = (newUserScore: number) => {
+  const updateScores = (newScore: number, role: 'user' | 'opponent') => {
     // Ensure the score is within bounds
-    const boundedScore = Math.min(Math.max(newUserScore, 0), 100);
+    const boundedScore = Math.min(Math.max(newScore, 0), 100);
     
     setState(prev => ({
       ...prev,
-      audienceScore: {
+      audienceScore: role === 'user' ? {
         user: boundedScore,
-        opponent: 100 - boundedScore // AI score is always complementary
+        opponent: 100 - boundedScore
+      } : {
+        user: 100 - boundedScore,
+        opponent: boundedScore
       }
     }));
   };
@@ -66,33 +73,46 @@ export const useDebateLogic = (
     updateState({ isLoading: true, isAiThinking: true, error: null });
 
     try {
-      // Store current score before update
-      const currentScore = state.audienceScore.user;
-      
+      // Add and evaluate player's message
+      const currentUserScore = state.audienceScore.user;
       addMessage('user', currentArgument);
 
-      const { response, newScore } = await continueDebate(
+      const playerScore = await evaluateArgument(
         topic,
-        messages,
-        currentArgument,
-        difficulty,
         userPosition,
-        aiPersonality,
-        state.audienceScore
+        messages,
+        state.audienceScore,
+        modelConfig.models.turnScoring.name,
+        'user'
       );
 
-      if (response) {
-        addMessage('opponent', response);
-        
-        // Pass both new score and previous score
-        updateMessageScore(messages.length + 1, {
-          score: newScore,
-          previousScore: currentScore
-        });
-        
-        // Update the overall scores
-        updateScores(newScore);
-      }
+      updateMessageScore(messages.length, {
+        score: playerScore,
+        previousScore: currentUserScore
+      });
+      updateScores(playerScore, 'user');
+
+      // Get AI's response
+      const aiResponse = await continueDebate(topic, messages, aiPosition);
+      const currentAiScore = state.audienceScore.opponent;
+      addMessage('opponent', aiResponse);
+
+      // Evaluate AI's response
+      const aiScore = await evaluateArgument(
+        topic,
+        aiPosition,
+        messages,
+        state.audienceScore,
+        modelConfig.models.turnScoring.name,
+        'opponent'
+      );
+
+      updateMessageScore(messages.length, {
+        score: aiScore,
+        previousScore: currentAiScore
+      });
+      updateScores(aiScore, 'opponent');
+
     } catch (error) {
       updateState({ error: 'Failed to get AI response. Please try again.' });
     } finally {
@@ -120,10 +140,27 @@ export const useDebateLogic = (
     updateState({ isLoading: true, isAiThinking: true, error: null });
 
     try {
-      const response = await startDebate(topic, difficulty, userPosition, aiPersonality);
-      if (response) {
-        addMessage('opponent', response);
-      }
+      // Get AI's initial response
+      const aiResponse = await startDebate(topic, difficulty, userPosition, aiPersonality);
+      const currentAiScore = state.audienceScore.opponent;
+      addMessage('opponent', aiResponse);
+
+      // Evaluate AI's initial message
+      const aiScore = await evaluateArgument(
+        topic,
+        aiPosition,
+        messages,
+        state.audienceScore,
+        modelConfig.models.turnScoring.name,
+        'opponent'
+      );
+
+      updateMessageScore(messages.length, {
+        score: aiScore,
+        previousScore: currentAiScore
+      });
+      updateScores(aiScore, 'opponent');
+
     } catch (error) {
       updateState({ error: 'Failed to start debate. Please try again.' });
     } finally {
