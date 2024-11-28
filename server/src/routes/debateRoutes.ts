@@ -44,6 +44,9 @@ router.post('/test-log', async (req, res) => {
 // Generate debate topic
 router.post('/topic', async (req, res) => {
   try {
+    // Start new logging session for new debate
+    ApiLogger.startNewSession();
+    
     await DiagnosticLogger.log('[DebateRoutes] Generating topic:', req.body);
     const { category, model } = req.body;
     

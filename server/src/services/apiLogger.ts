@@ -47,7 +47,7 @@ interface ApiLog {
 
 export class ApiLogger {
   private static logDir = path.join('/home/andy/debater/server/logs');
-  private static currentLogFile = path.join(ApiLogger.logDir, `api-${new Date().toISOString().split('T')[0]}.json`);
+  private static currentSessionId: string = '';
   private static logs: ApiLog[] = [];
 
   private static ensureLogDir() {
@@ -61,6 +61,11 @@ export class ApiLogger {
       console.error('[ApiLogger] Error creating log directory:', error);
       throw error;
     }
+  }
+
+  private static getLogFilePath(): string {
+    const date = new Date().toISOString().split('T')[0];
+    return path.join(this.logDir, `api-${date}-session-${this.currentSessionId}.json`);
   }
 
   private static determineFunctionType(data: ApiRequestData): FunctionType {
@@ -85,14 +90,15 @@ export class ApiLogger {
   private static async writeLog(log: ApiLog) {
     try {
       this.ensureLogDir();
-      console.log(`[ApiLogger] Writing ${log.type} log to ${this.currentLogFile}`);
+      const logFile = this.getLogFilePath();
+      console.log(`[ApiLogger] Writing ${log.type} log to ${logFile}`);
       
       // Add log to array
       this.logs.push(log);
       
       // Write entire array to file
       await fs.promises.writeFile(
-        this.currentLogFile,
+        logFile,
         JSON.stringify(this.logs, null, 2),
         'utf8'
       );
@@ -124,19 +130,18 @@ export class ApiLogger {
     };
   }
 
+  static startNewSession() {
+    this.currentSessionId = uuidv4().slice(0, 8); // Use first 8 characters of UUID for shorter filenames
+    this.logs = []; // Clear in-memory logs for new session
+    console.log(`[ApiLogger] Started new session: ${this.currentSessionId}`);
+  }
+
   static async logRequest(endpoint: string, method: string, data: ApiRequestData): Promise<string> {
     console.log('[ApiLogger] Logging request...');
     
-    // Delete existing log file if this is the first request of the session
-    if (this.logs.length === 0) {
-      try {
-        if (fs.existsSync(this.currentLogFile)) {
-          await fs.promises.unlink(this.currentLogFile);
-          console.log('[ApiLogger] Deleted existing log file');
-        }
-      } catch (error) {
-        console.error('[ApiLogger] Error deleting existing log file:', error);
-      }
+    // Start new session if none exists
+    if (!this.currentSessionId) {
+      this.startNewSession();
     }
 
     const requestId = uuidv4();

@@ -113,22 +113,65 @@ export class OpenRouterService {
 
     const systemMessage = {
       role: 'system',
-      content: `You are scoring a debate on "${topic}". Current scores - Player: ${currentScores.user}%, AI: ${currentScores.opponent}%.
+      content: `You are scoring a debate on "${topic}". Current scores - User (Player): ${currentScores.user}%, Assistant (AI): ${currentScores.opponent}%.
 
-IMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.
+SCORING PRINCIPLES:
 
-This score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.
+Momentum Shifts
+- Series of strong arguments should compound for +10-15 points
+- Successfully countering main points causes +8-12 point shifts
+- Failing to address critical counterpoints results in -10-15 point penalties
+- Dropping previously made strong points causes -5-8 point penalties
 
-Example responses:
+Point Impact
+- Core topic arguments worth +5-8 points more than peripheral points
+- Novel arguments worth +3-5 points more than repeated points
+- Well-supported claims worth +5-7 points more than unsupported assertions
+- Direct rebuttals worth +7-10 points more than tangential responses
+
+Debate Flow
+- Building on previous strong points multiplies impact by 1.5x
+- Dropping/failing to defend points reduces score by 8-12 points
+- Successfully maintaining position against strong counterarguments adds 10-15 points
+- Contradicting own points reduces score by 12-15 points
+
+Position Management
+- Maintaining consistent position: +5-8 points
+- Successfully defending position against pressure: +10-15 points
+- Partial agreement while defending core position: -3-5 points
+- Agreeing with opponent's core arguments: -15-20 points
+- Abandoning position entirely: -30-40 points
+
+Critical Moments
+- Defending against strong counterarguments: +10-15 points
+- Landing unanswered critical points: +12-18 points
+- Minor concessions while maintaining overall position: -5-10 points
+- Major concessions undermining core position: -15-25 points
+- Agreeing with opponent's main position: -25-35 points
+- Complete position reversal: -35-45 points
+
+RESPONSE FORMAT:
+Return ONLY a number between 0-100 representing the human player's new overall percentage score. No other text.
+
+Example valid responses:
 55
 48
-62
-
-Analyze the debate history and latest message to determine the new score:`
+62`
     };
 
     const allMessages = [systemMessage, ...messages];
-    await DiagnosticLogger.log('Sending evaluation request with messages:', allMessages);
+    
+    await DiagnosticLogger.log('Sending evaluation request:', {
+      systemMessage: systemMessage.content,
+      messageCount: allMessages.length
+    });
+
+    const requestData = {
+      model,
+      messages: allMessages,
+      temperature: 0.7,
+      max_tokens: 50  // Reduced since we only need a number
+    };
 
     const response = await this.generateCompletion(allMessages, model);
     await DiagnosticLogger.log('Received evaluation response:', response);
