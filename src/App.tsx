@@ -1,6 +1,6 @@
 import React from 'react';
-import { MessageSquare, ArrowLeft, Trophy, Star } from 'lucide-react';
-import { DebateGame, Leaderboard } from './components';
+import { ArrowLeft, Trophy, Star } from 'lucide-react';
+import { DebateGame, Leaderboard, HomeScreen } from './components';
 import { GameProvider } from './contexts/GameContext';
 import { useGameContext } from './hooks/useGameContext';
 import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection, TopicSelection } from './GameSetup';
@@ -104,29 +104,19 @@ function AppContent() {
     );
   };
 
-  const HomeScreen = () => (
-    <div className="text-center">
-      <Leaderboard username={username} onStartDebate={handleStartDebateFromLeaderboard} />
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={handleStartChat}
-          className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-3 py-1.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center text-sm"
-          title="Start a new debate chat"
-        >
-          <span>Start Chat</span>
-          <MessageSquare size={16} className="ml-2 inline-block" />
-        </button>
-      </div>
-    </div>
-  );
-
   return (
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
       <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300 bg-opacity-50 dark:bg-opacity-50" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'4\' height=\'4\' viewBox=\'0 0 4 4\'%3E%3Cpath fill=\'%239C92AC\' fill-opacity=\'0.4\' d=\'M1 3h1v1H1V3zm2-2h1v1H3V1z\'%3E%3C/path%3E%3C/svg%3E")'}}>
         <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6">
           <WizardSteps />
 
-          {gameState === 'home' && <HomeScreen />}
+          {gameState === 'home' && (
+            <HomeScreen 
+              username={username} 
+              onStartDebate={handleStartDebateFromLeaderboard} 
+              handleStartChat={handleStartChat}
+            />
+          )}
           {gameState === 'select-category' && <CategorySelection />}
           {gameState === 'select-topic' && <TopicSelection />}
           {gameState === 'select-position' && <PositionSelection />}

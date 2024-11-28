@@ -4,139 +4,255 @@
     "username": "PrayerWarrior420",
     "score": 15,
     "subject": "Religion should play a significant role in modern society.",
-    "category": "Religion"
+    "category": "Religion",
+    "position": "for"
   },
   {
     "id": 2,
     "username": "BuddhaBeGaming",
     "score": 12,
     "subject": "There should be a complete separation of church and state.",
-    "category": "Religion"
+    "category": "Religion",
+    "position": "against"
   },
   {
     "id": 3,
     "username": "ZenMasterFlex",
     "score": 18,
     "subject": "Religious freedom should take precedence over secular laws.",
-    "category": "Religion"
+    "category": "Religion",
+    "position": "for"
   },
   {
     "id": 4,
     "username": "HolyMolyGuacamole",
     "score": 10,
     "subject": "Religious education has a positive impact on youth development.",
-    "category": "Religion"
+    "category": "Religion",
+    "position": "for"
   },
   {
     "id": 5,
-    "username": "FilibusterBob",
-    "score": 14,
-    "subject": "Governments should implement universal basic income.",
-    "category": "Politics"
+    "username": "FaithfulDebater",
+    "score": 16,
+    "subject": "Religion should play a significant role in modern society.",
+    "category": "Religion",
+    "position": "against"
   },
   {
     "id": 6,
-    "username": "VoteyMcVoteFace",
-    "score": 16,
-    "subject": "The electoral college is better than a popular vote system.",
-    "category": "Politics"
+    "username": "SpiritualSage",
+    "score": 14,
+    "subject": "Religion should play a significant role in modern society.",
+    "category": "Religion",
+    "position": "for"
   },
   {
     "id": 7,
-    "username": "SenatorSassypants",
-    "score": 13,
-    "subject": "There should be term limits for all elected officials.",
-    "category": "Politics"
+    "username": "DivineLogic",
+    "score": 17,
+    "subject": "There should be a complete separation of church and state.",
+    "category": "Religion",
+    "position": "for"
   },
   {
     "id": 8,
-    "username": "DemocracyDude99",
-    "score": 19,
-    "subject": "Campaign finance reform is necessary for a fair democratic process.",
-    "category": "Politics"
+    "username": "SacredDebater",
+    "score": 13,
+    "subject": "There should be a complete separation of church and state.",
+    "category": "Religion",
+    "position": "against"
   },
   {
     "id": 9,
-    "username": "LabCoatLarry",
-    "score": 11,
-    "subject": "Genetic engineering is ethically justifiable.",
-    "category": "Science"
+    "username": "FilibusterBob",
+    "score": 14,
+    "subject": "Governments should implement universal basic income.",
+    "category": "Politics",
+    "position": "against"
   },
   {
     "id": 10,
-    "username": "BillNyeTheReplyGuy",
-    "score": 17,
-    "subject": "Climate change can be effectively mitigated through human intervention.",
-    "category": "Science"
+    "username": "VoteyMcVoteFace",
+    "score": 16,
+    "subject": "The electoral college is better than a popular vote system.",
+    "category": "Politics",
+    "position": "for"
   },
   {
     "id": 11,
-    "username": "RocketManRandy",
-    "score": 14,
-    "subject": "Space exploration funding should be increased.",
-    "category": "Science"
+    "username": "SenatorSassypants",
+    "score": 13,
+    "subject": "There should be term limits for all elected officials.",
+    "category": "Politics",
+    "position": "for"
   },
   {
     "id": 12,
-    "username": "BeakerBreaker",
-    "score": 11,
-    "subject": "Artificial intelligence should be strictly regulated.",
-    "category": "Science"
+    "username": "DemocracyDude99",
+    "score": 19,
+    "subject": "Campaign finance reform is necessary for a fair democratic process.",
+    "category": "Politics",
+    "position": "for"
   },
   {
     "id": 13,
-    "username": "SocratesInSneakers",
-    "score": 18,
-    "subject": "Free will exists and is not predetermined.",
-    "category": "Philosophy"
+    "username": "PoliticalPro",
+    "score": 17,
+    "subject": "Governments should implement universal basic income.",
+    "category": "Politics",
+    "position": "for"
   },
   {
     "id": 14,
-    "username": "PlatonicPete",
-    "score": 13,
-    "subject": "Consciousness is a fundamental aspect of reality.",
-    "category": "Philosophy"
+    "username": "VoteVeteran",
+    "score": 15,
+    "subject": "Governments should implement universal basic income.",
+    "category": "Politics",
+    "position": "against"
   },
   {
     "id": 15,
-    "username": "ExistentialElvis",
-    "score": 16,
-    "subject": "Advanced AI poses significant ethical challenges to society.",
-    "category": "Philosophy"
+    "username": "ElectoralExpert",
+    "score": 18,
+    "subject": "The electoral college is better than a popular vote system.",
+    "category": "Politics",
+    "position": "against"
   },
   {
     "id": 16,
-    "username": "NietzschesPizza",
-    "score": 15,
-    "subject": "Life has an inherent, objective meaning.",
-    "category": "Philosophy"
+    "username": "TermLimitTitan",
+    "score": 16,
+    "subject": "There should be term limits for all elected officials.",
+    "category": "Politics",
+    "position": "against"
   },
   {
     "id": 17,
-    "username": "WildCardWanda",
-    "score": 12,
-    "subject": "Social media has a net positive impact on society.",
-    "category": "Random"
+    "username": "LabCoatLarry",
+    "score": 11,
+    "subject": "Genetic engineering is ethically justifiable.",
+    "category": "Science",
+    "position": "for"
   },
   {
     "id": 18,
-    "username": "ChaoticDebater",
-    "score": 19,
-    "subject": "Automation will lead to more job creation than job loss.",
-    "category": "Random"
+    "username": "BillNyeTheReplyGuy",
+    "score": 17,
+    "subject": "Climate change can be effectively mitigated through human intervention.",
+    "category": "Science",
+    "position": "for"
   },
   {
     "id": 19,
-    "username": "RandomRebel",
-    "score": 10,
-    "subject": "All countries should adopt universal healthcare systems.",
-    "category": "Random"
+    "username": "RocketManRandy",
+    "score": 14,
+    "subject": "Space exploration funding should be increased.",
+    "category": "Science",
+    "position": "for"
   },
   {
     "id": 20,
-    "username": "DebateMaster3000",
+    "username": "BeakerBreaker",
+    "score": 11,
+    "subject": "Artificial intelligence should be strictly regulated.",
+    "category": "Science",
+    "position": "against"
+  },
+  {
+    "id": 21,
+    "username": "ScienceSeeker",
+    "score": 15,
+    "subject": "Genetic engineering is ethically justifiable.",
+    "category": "Science",
+    "position": "against"
+  },
+  {
+    "id": 22,
+    "username": "ClimateCritic",
+    "score": 16,
+    "subject": "Climate change can be effectively mitigated through human intervention.",
+    "category": "Science",
+    "position": "against"
+  },
+  {
+    "id": 23,
+    "username": "SpaceLogician",
+    "score": 18,
+    "subject": "Space exploration funding should be increased.",
+    "category": "Science",
+    "position": "against"
+  },
+  {
+    "id": 24,
+    "username": "AIAnalyst",
     "score": 17,
-    "subject": "Art plays a crucial role in societal development and well-being.",
-    "category": "Random"
+    "subject": "Artificial intelligence should be strictly regulated.",
+    "category": "Science",
+    "position": "for"
+  },
+  {
+    "id": 25,
+    "username": "SocratesInSneakers",
+    "score": 18,
+    "subject": "Free will exists and is not predetermined.",
+    "category": "Philosophy",
+    "position": "for"
+  },
+  {
+    "id": 26,
+    "username": "PlatonicPete",
+    "score": 13,
+    "subject": "Consciousness is a fundamental aspect of reality.",
+    "category": "Philosophy",
+    "position": "against"
+  },
+  {
+    "id": 27,
+    "username": "ExistentialElvis",
+    "score": 16,
+    "subject": "Advanced AI poses significant ethical challenges to society.",
+    "category": "Philosophy",
+    "position": "for"
+  },
+  {
+    "id": 28,
+    "username": "NietzschesPizza",
+    "score": 15,
+    "subject": "Life has an inherent, objective meaning.",
+    "category": "Philosophy",
+    "position": "against"
+  },
+  {
+    "id": 29,
+    "username": "PhilosopherKing",
+    "score": 19,
+    "subject": "Free will exists and is not predetermined.",
+    "category": "Philosophy",
+    "position": "against"
+  },
+  {
+    "id": 30,
+    "username": "MindMaster",
+    "score": 17,
+    "subject": "Consciousness is a fundamental aspect of reality.",
+    "category": "Philosophy",
+    "position": "for"
+  },
+  {
+    "id": 31,
+    "username": "EthicsExplorer",
+    "score": 14,
+    "subject": "Advanced AI poses significant ethical challenges to society.",
+    "category": "Philosophy",
+    "position": "against"
+  },
+  {
+    "id": 32,
+    "username": "MeaningMaker",
+    "score": 16,
+    "subject": "Life has an inherent, objective meaning.",
+    "category": "Philosophy",
+    "position": "for"
   }
 ]
