@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Book, Globe, Atom, Lightbulb, Shuffle } from 'lucide-react';
-import { LeaderboardEntry, leaderboardData } from '../data/leaderboardData';
+import React, { useState, useMemo } from 'react';
+import { Book, Globe, Atom, Lightbulb } from 'lucide-react';
+import leaderboardData from '../data/leaderboard.json';
+import debateSubjects from '../data/debateSubjects.json';
 
 interface CompactLeaderboardProps {
   username: string;
@@ -8,16 +9,48 @@ interface CompactLeaderboardProps {
   onToggle: () => void;
 }
 
+interface EnrichedEntry {
+  id: number;
+  username: string;
+  score: number;
+  subject: string;
+  category: string;
+  position: 'for' | 'against';
+}
+
 const categoryIcons: { [key: string]: React.ElementType } = {
   Religion: Book,
   Politics: Globe,
   Science: Atom,
   Philosophy: Lightbulb,
-  Random: Shuffle,
 };
 
 const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExpanded, onToggle }) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const enrichedEntries = useMemo(() => {
+    // Create a map of subject IDs to their details
+    const subjectMap = new Map(
+      debateSubjects.subjects.map(subject => [subject.id, subject])
+    );
+
+    // Enrich entries with subject details
+    return leaderboardData.entries
+      .map(entry => {
+        const subjectDetails = subjectMap.get(entry.subjectId);
+        if (!subjectDetails) return null;
+
+        return {
+          id: entry.id,
+          username: entry.username,
+          score: entry.score,
+          subject: subjectDetails.subject,
+          category: subjectDetails.category,
+          position: entry.position
+        };
+      })
+      .filter((entry): entry is EnrichedEntry => entry !== null);
+  }, []);
 
   const truncateText = (text: string, maxLength: number) => {
     if (text.length <= maxLength) return text;
@@ -25,8 +58,8 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
   };
 
   const filteredEntries = selectedCategory
-    ? leaderboardData.filter(entry => entry.category === selectedCategory)
-    : leaderboardData;
+    ? enrichedEntries.filter(entry => entry.category === selectedCategory)
+    : enrichedEntries;
 
   const sortedEntries = filteredEntries.sort((a, b) => b.score - a.score);
   const displayedEntries = isExpanded ? sortedEntries : sortedEntries.slice(0, 5);
@@ -63,6 +96,7 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
           <div className="w-16 text-center">Score</div>
           <div className="w-32 text-left">Name</div>
           <div className="flex-1 text-left">Subject</div>
+          <div className="w-16 text-center">Position</div>
         </div>
         {displayedEntries.map((entry) => (
           <div key={entry.id} className={`flex py-2 text-xs ${username === entry.username ? 'font-bold bg-indigo-100 dark:bg-indigo-900' : ''} hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-150`}>
@@ -72,6 +106,15 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
             </div>
             <div className="flex-1 text-gray-800 dark:text-gray-200 truncate text-left" title={entry.subject}>
               {entry.subject}
+            </div>
+            <div className="w-16 text-center">
+              <span className={`px-2 py-1 rounded-full text-xs ${
+                entry.position === 'for' 
+                  ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
+                  : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
+              }`}>
+                {entry.position}
+              </span>
             </div>
           </div>
         ))}
