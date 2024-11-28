@@ -1,258 +1,228 @@
-[
-  {
-    "id": 1,
-    "username": "PrayerWa",
-    "score": 15,
-    "subject": "Religion should play a significant role in modern society.",
-    "category": "Religion",
-    "position": "for"
-  },
-  {
-    "id": 2,
-    "username": "BuddhaBe",
-    "score": 12,
-    "subject": "There should be a complete separation of church and state.",
-    "category": "Religion",
-    "position": "against"
-  },
-  {
-    "id": 3,
-    "username": "ZenMaste",
-    "score": 18,
-    "subject": "Religious freedom should take precedence over secular laws.",
-    "category": "Religion",
-    "position": "for"
-  },
-  {
-    "id": 4,
-    "username": "HolyMoly",
-    "score": 10,
-    "subject": "Religious education has a positive impact on youth development.",
-    "category": "Religion",
-    "position": "for"
-  },
-  {
-    "id": 5,
-    "username": "Faithful",
-    "score": 16,
-    "subject": "Religion should play a significant role in modern society.",
-    "category": "Religion",
-    "position": "against"
-  },
-  {
-    "id": 6,
-    "username": "Spirital",
-    "score": 14,
-    "subject": "Religion should play a significant role in modern society.",
-    "category": "Religion",
-    "position": "for"
-  },
-  {
-    "id": 7,
-    "username": "DivinLog",
-    "score": 17,
-    "subject": "There should be a complete separation of church and state.",
-    "category": "Religion",
-    "position": "for"
-  },
-  {
-    "id": 8,
-    "username": "SacredDb",
-    "score": 13,
-    "subject": "There should be a complete separation of church and state.",
-    "category": "Religion",
-    "position": "against"
-  },
-  {
-    "id": 9,
-    "username": "Filibust",
-    "score": 14,
-    "subject": "Governments should implement universal basic income.",
-    "category": "Politics",
-    "position": "against"
-  },
-  {
-    "id": 10,
-    "username": "VoteyMcV",
-    "score": 16,
-    "subject": "The electoral college is better than a popular vote system.",
-    "category": "Politics",
-    "position": "for"
-  },
-  {
-    "id": 11,
-    "username": "Senator",
-    "score": 13,
-    "subject": "There should be term limits for all elected officials.",
-    "category": "Politics",
-    "position": "for"
-  },
-  {
-    "id": 12,
-    "username": "DemoDude",
-    "score": 19,
-    "subject": "Campaign finance reform is necessary for a fair democratic process.",
-    "category": "Politics",
-    "position": "for"
-  },
-  {
-    "id": 13,
-    "username": "PolPro",
-    "score": 17,
-    "subject": "Governments should implement universal basic income.",
-    "category": "Politics",
-    "position": "for"
-  },
-  {
-    "id": 14,
-    "username": "VoteVet",
-    "score": 15,
-    "subject": "Governments should implement universal basic income.",
-    "category": "Politics",
-    "position": "against"
-  },
-  {
-    "id": 15,
-    "username": "ElectExp",
-    "score": 18,
-    "subject": "The electoral college is better than a popular vote system.",
-    "category": "Politics",
-    "position": "against"
-  },
-  {
-    "id": 16,
-    "username": "TermLimt",
-    "score": 16,
-    "subject": "There should be term limits for all elected officials.",
-    "category": "Politics",
-    "position": "against"
-  },
-  {
-    "id": 17,
-    "username": "LabCoat",
-    "score": 11,
-    "subject": "Genetic engineering is ethically justifiable.",
-    "category": "Science",
-    "position": "for"
-  },
-  {
-    "id": 18,
-    "username": "BillNye",
-    "score": 17,
-    "subject": "Climate change can be effectively mitigated through human intervention.",
-    "category": "Science",
-    "position": "for"
-  },
-  {
-    "id": 19,
-    "username": "RocketMn",
-    "score": 14,
-    "subject": "Space exploration funding should be increased.",
-    "category": "Science",
-    "position": "for"
-  },
-  {
-    "id": 20,
-    "username": "BeakerBr",
-    "score": 11,
-    "subject": "Artificial intelligence should be strictly regulated.",
-    "category": "Science",
-    "position": "against"
-  },
-  {
-    "id": 21,
-    "username": "SciSeek",
-    "score": 15,
-    "subject": "Genetic engineering is ethically justifiable.",
-    "category": "Science",
-    "position": "against"
-  },
-  {
-    "id": 22,
-    "username": "ClimCrit",
-    "score": 16,
-    "subject": "Climate change can be effectively mitigated through human intervention.",
-    "category": "Science",
-    "position": "against"
-  },
-  {
-    "id": 23,
-    "username": "SpaceLog",
-    "score": 18,
-    "subject": "Space exploration funding should be increased.",
-    "category": "Science",
-    "position": "against"
-  },
-  {
-    "id": 24,
-    "username": "AIAnaly",
-    "score": 17,
-    "subject": "Artificial intelligence should be strictly regulated.",
-    "category": "Science",
-    "position": "for"
-  },
-  {
-    "id": 25,
-    "username": "Socrates",
-    "score": 18,
-    "subject": "Free will exists and is not predetermined.",
-    "category": "Philosophy",
-    "position": "for"
-  },
-  {
-    "id": 26,
-    "username": "PlatoPet",
-    "score": 13,
-    "subject": "Consciousness is a fundamental aspect of reality.",
-    "category": "Philosophy",
-    "position": "against"
-  },
-  {
-    "id": 27,
-    "username": "ExistElv",
-    "score": 16,
-    "subject": "Advanced AI poses significant ethical challenges to society.",
-    "category": "Philosophy",
-    "position": "for"
-  },
-  {
-    "id": 28,
-    "username": "NietzPiz",
-    "score": 15,
-    "subject": "Life has an inherent, objective meaning.",
-    "category": "Philosophy",
-    "position": "against"
-  },
-  {
-    "id": 29,
-    "username": "PhilKing",
-    "score": 19,
-    "subject": "Free will exists and is not predetermined.",
-    "category": "Philosophy",
-    "position": "against"
-  },
-  {
-    "id": 30,
-    "username": "MindMstr",
-    "score": 17,
-    "subject": "Consciousness is a fundamental aspect of reality.",
-    "category": "Philosophy",
-    "position": "for"
-  },
-  {
-    "id": 31,
-    "username": "EthicExp",
-    "score": 14,
-    "subject": "Advanced AI poses significant ethical challenges to society.",
-    "category": "Philosophy",
-    "position": "against"
-  },
-  {
-    "id": 32,
-    "username": "MeanMakr",
-    "score": 16,
-    "subject": "Life has an inherent, objective meaning.",
-    "category": "Philosophy",
-    "position": "for"
-  }
-]
+{
+  "entries": [
+    {
+      "id": 1,
+      "username": "PrayerWa",
+      "score": 15,
+      "subjectId": "REL001",
+      "position": "for"
+    },
+    {
+      "id": 2,
+      "username": "BuddhaBe",
+      "score": 12,
+      "subjectId": "REL002",
+      "position": "against"
+    },
+    {
+      "id": 3,
+      "username": "ZenMaste",
+      "score": 18,
+      "subjectId": "REL003",
+      "position": "for"
+    },
+    {
+      "id": 4,
+      "username": "HolyMoly",
+      "score": 10,
+      "subjectId": "REL004",
+      "position": "for"
+    },
+    {
+      "id": 5,
+      "username": "Faithful",
+      "score": 16,
+      "subjectId": "REL001",
+      "position": "against"
+    },
+    {
+      "id": 6,
+      "username": "Spirital",
+      "score": 14,
+      "subjectId": "REL001",
+      "position": "for"
+    },
+    {
+      "id": 7,
+      "username": "DivinLog",
+      "score": 17,
+      "subjectId": "REL002",
+      "position": "for"
+    },
+    {
+      "id": 8,
+      "username": "SacredDb",
+      "score": 13,
+      "subjectId": "REL002",
+      "position": "against"
+    },
+    {
+      "id": 9,
+      "username": "Filibust",
+      "score": 14,
+      "subjectId": "POL001",
+      "position": "against"
+    },
+    {
+      "id": 10,
+      "username": "VoteyMcV",
+      "score": 16,
+      "subjectId": "POL002",
+      "position": "for"
+    },
+    {
+      "id": 11,
+      "username": "Senator",
+      "score": 13,
+      "subjectId": "POL003",
+      "position": "for"
+    },
+    {
+      "id": 12,
+      "username": "DemoDude",
+      "score": 19,
+      "subjectId": "POL004",
+      "position": "for"
+    },
+    {
+      "id": 13,
+      "username": "PolPro",
+      "score": 17,
+      "subjectId": "POL001",
+      "position": "for"
+    },
+    {
+      "id": 14,
+      "username": "VoteVet",
+      "score": 15,
+      "subjectId": "POL001",
+      "position": "against"
+    },
+    {
+      "id": 15,
+      "username": "ElectExp",
+      "score": 18,
+      "subjectId": "POL002",
+      "position": "against"
+    },
+    {
+      "id": 16,
+      "username": "TermLimt",
+      "score": 16,
+      "subjectId": "POL003",
+      "position": "against"
+    },
+    {
+      "id": 17,
+      "username": "LabCoat",
+      "score": 11,
+      "subjectId": "SCI001",
+      "position": "for"
+    },
+    {
+      "id": 18,
+      "username": "BillNye",
+      "score": 17,
+      "subjectId": "SCI002",
+      "position": "for"
+    },
+    {
+      "id": 19,
+      "username": "RocketMn",
+      "score": 14,
+      "subjectId": "SCI003",
+      "position": "for"
+    },
+    {
+      "id": 20,
+      "username": "BeakerBr",
+      "score": 11,
+      "subjectId": "SCI004",
+      "position": "against"
+    },
+    {
+      "id": 21,
+      "username": "SciSeek",
+      "score": 15,
+      "subjectId": "SCI001",
+      "position": "against"
+    },
+    {
+      "id": 22,
+      "username": "ClimCrit",
+      "score": 16,
+      "subjectId": "SCI002",
+      "position": "against"
+    },
+    {
+      "id": 23,
+      "username": "SpaceLog",
+      "score": 18,
+      "subjectId": "SCI003",
+      "position": "against"
+    },
+    {
+      "id": 24,
+      "username": "AIAnaly",
+      "score": 17,
+      "subjectId": "SCI004",
+      "position": "for"
+    },
+    {
+      "id": 25,
+      "username": "Socrates",
+      "score": 18,
+      "subjectId": "PHIL001",
+      "position": "for"
+    },
+    {
+      "id": 26,
+      "username": "PlatoPet",
+      "score": 13,
+      "subjectId": "PHIL002",
+      "position": "against"
+    },
+    {
+      "id": 27,
+      "username": "ExistElv",
+      "score": 16,
+      "subjectId": "PHIL003",
+      "position": "for"
+    },
+    {
+      "id": 28,
+      "username": "NietzPiz",
+      "score": 15,
+      "subjectId": "PHIL004",
+      "position": "against"
+    },
+    {
+      "id": 29,
+      "username": "PhilKing",
+      "score": 19,
+      "subjectId": "PHIL001",
+      "position": "against"
+    },
+    {
+      "id": 30,
+      "username": "MindMstr",
+      "score": 17,
+      "subjectId": "PHIL002",
+      "position": "for"
+    },
+    {
+      "id": 31,
+      "username": "EthicExp",
+      "score": 14,
+      "subjectId": "PHIL003",
+      "position": "against"
+    },
+    {
+      "id": 32,
+      "username": "MeanMakr",
+      "score": 16,
+      "subjectId": "PHIL004",
+      "position": "for"
+    }
+  ]
+}

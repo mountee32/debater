@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { MessageSquare } from 'lucide-react';
 import leaderboardData from '../data/leaderboard.json';
-import preCreatedSubjects from '../data/preCreatedSubjects.json';
+import debateSubjects from '../data/debateSubjects.json';
 
 interface HomeScreenProps {
   username: string;
@@ -13,19 +13,18 @@ interface LeaderboardEntry {
   id: number;
   username: string;
   score: number;
-  subject: string;
-  category: string;
+  subjectId: string;
   position: 'for' | 'against';
 }
 
-type SubjectCategories = {
-  Religion: string[];
-  Politics: string[];
-  Science: string[];
-  Philosophy: string[];
-};
+interface DebateSubject {
+  id: string;
+  category: string;
+  subject: string;
+  access: string;
+}
 
-type CategoryType = keyof SubjectCategories;
+type CategoryType = 'Religion' | 'Politics' | 'Science' | 'Philosophy';
 
 const CATEGORIES: CategoryType[] = ['Religion', 'Politics', 'Science', 'Philosophy'];
 
@@ -58,18 +57,31 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
       Philosophy: {}
     };
 
-    const validEntries = leaderboardData.filter(entry => 
-      CATEGORIES.includes(entry.category as CategoryType)
+    // Create a map of subject IDs to their full details
+    const subjectMap = new Map(
+      debateSubjects.subjects.map(subject => [subject.id, subject])
     );
 
-    validEntries.forEach(entry => {
-      const category = entry.category as CategoryType;
-      if (!entries[category][entry.subject]) {
-        entries[category][entry.subject] = [];
-      }
-      entries[category][entry.subject].push(entry as LeaderboardEntry);
+    // Filter and group entries
+    const validEntries = leaderboardData.entries.filter(entry => {
+      const subject = subjectMap.get(entry.subjectId);
+      return subject && CATEGORIES.includes(subject.category as CategoryType);
     });
 
+    validEntries.forEach(entry => {
+      const subject = subjectMap.get(entry.subjectId)!;
+      const category = subject.category as CategoryType;
+      
+      if (!entries[category][subject.subject]) {
+        entries[category][subject.subject] = [];
+      }
+      entries[category][subject.subject].push({
+        ...entry,
+        position: entry.position as 'for' | 'against'
+      });
+    });
+
+    // Sort entries by score and limit to top 5
     Object.keys(entries).forEach(category => {
       Object.keys(entries[category as CategoryType]).forEach(subject => {
         entries[category as CategoryType][subject].sort((a, b) => b.score - a.score);
@@ -160,7 +172,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
                         {players.map((player) => (
                           <div
                             key={player.id}
-                            onClick={() => onStartDebate(player.subject)}
+                            onClick={() => onStartDebate(subject)}
                             className="flex items-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 
                               rounded-full px-5 py-2.5 shadow-sm hover:shadow-md transition-all duration-300 
                               transform hover:-translate-y-0.5 cursor-pointer select-none group

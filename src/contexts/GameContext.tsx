@@ -1,11 +1,18 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { generateTopic, submitScore, getLeaderboard } from '../api/openRouterApi';
+import { submitScore, getLeaderboard } from '../api/openRouterApi';
 import { AIPersonality } from '../data/aiPersonalities';
-import preCreatedSubjectsData from '../data/preCreatedSubjects.json';
+import debateSubjectsData from '../data/debateSubjects.json';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
 type GameState = 'home' | 'select-category' | 'select-topic' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'end' | 'leaderboard' | 'select-pregenerated';
 type Position = 'for' | 'against';
+
+interface DebateSubject {
+  id: string;
+  category: string;
+  subject: string;
+  access: string;
+}
 
 export interface GameContextType {
   gameState: GameState;
@@ -34,18 +41,15 @@ export interface GameContextType {
   setIsHighScore: React.Dispatch<React.SetStateAction<boolean>>;
   isDarkMode: boolean;
   setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-  pregeneratedQuestions: string[];
-  setPregeneratedQuestions: React.Dispatch<React.SetStateAction<string[]>>;
-  preCreatedSubjects: string[];
-  setPreCreatedSubjects: React.Dispatch<React.SetStateAction<string[]>>;
+  availableSubjects: DebateSubject[];
+  setAvailableSubjects: React.Dispatch<React.SetStateAction<DebateSubject[]>>;
   handleStartChat: () => void;
   handleCategorySelect: (selectedCategory: string) => void;
   handleTopicSubmit: () => void;
   handlePersonalitySelect: (personality: AIPersonality) => void;
   handleDifficultyChange: (newDifficulty: Difficulty) => void;
   handlePositionSelect: (position: Position) => void;
-  handlePregeneratedQuestionSelect: (question: string) => void;
-  handlePreCreatedSubjectSelect: (subject: string) => void;
+  handleSubjectSelect: (subject: string) => void;
   handleEndGame: (result: { overallScore: number; rationale: string; recommendations: string }) => Promise<void>;
   handleUsernameSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
   toggleDarkMode: () => void;
@@ -67,8 +71,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [showUsernamePrompt, setShowUsernamePrompt] = useState(false);
   const [isHighScore, setIsHighScore] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [pregeneratedQuestions, setPregeneratedQuestions] = useState<string[]>([]);
-  const [preCreatedSubjects, setPreCreatedSubjects] = useState<string[]>([]);
+  const [availableSubjects, setAvailableSubjects] = useState<DebateSubject[]>([]);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -80,15 +83,6 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     if (storedDarkMode) {
       setIsDarkMode(storedDarkMode === 'true');
     }
-
-    fetch('/src/data/debateQuestions.json')
-      .then(response => response.json())
-      .then(data => {
-        setPregeneratedQuestions(data.questions);
-      })
-      .catch(() => {
-        setPregeneratedQuestions([]);
-      });
   }, []);
 
   useEffect(() => {
@@ -101,7 +95,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const handleCategorySelect = (selectedCategory: string) => {
     setCategory(selectedCategory);
-    setPreCreatedSubjects(preCreatedSubjectsData[selectedCategory as keyof typeof preCreatedSubjectsData]);
+    const subjectsInCategory = debateSubjectsData.subjects.filter(
+      subject => subject.category === selectedCategory && subject.access === 'free'
+    );
+    setAvailableSubjects(subjectsInCategory);
     setGameState('select-topic');
   };
 
@@ -124,12 +121,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setGameState('select-personality');
   };
 
-  const handlePregeneratedQuestionSelect = (question: string) => {
-    setTopic(question);
-    setGameState('select-position');
-  };
-
-  const handlePreCreatedSubjectSelect = (subject: string) => {
+  const handleSubjectSelect = (subject: string) => {
     setTopic(subject);
     setGameState('select-position');
   };
@@ -141,8 +133,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setRationale(result.rationale);
     setRecommendations(result.recommendations);
     
-    const leaderboard = await getLeaderboard(difficulty, category);
-    const highScore = leaderboard.length < 100 || adjustedScore > leaderboard[leaderboard.length - 1].score;
+    const leaderboardData = await getLeaderboard();
+    const highScore = leaderboardData.length < 100 || adjustedScore > leaderboardData[leaderboardData.length - 1].score;
 
     setIsHighScore(highScore);
     setShowUsernamePrompt(highScore && !username);
@@ -157,7 +149,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       setUsername(newUsername);
       localStorage.setItem('username', newUsername);
       if (isHighScore) {
-        await submitScore(newUsername, score, difficulty, category, topic);
+        await submitScore(newUsername, score);
       }
       setShowUsernamePrompt(false);
       setGameState('leaderboard');
@@ -196,18 +188,15 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setIsHighScore,
     isDarkMode,
     setIsDarkMode,
-    pregeneratedQuestions,
-    setPregeneratedQuestions,
-    preCreatedSubjects,
-    setPreCreatedSubjects,
+    availableSubjects,
+    setAvailableSubjects,
     handleStartChat,
     handleCategorySelect,
     handleTopicSubmit,
     handlePersonalitySelect,
     handleDifficultyChange,
     handlePositionSelect,
-    handlePregeneratedQuestionSelect,
-    handlePreCreatedSubjectSelect,
+    handleSubjectSelect,
     handleEndGame,
     handleUsernameSubmit,
     toggleDarkMode,

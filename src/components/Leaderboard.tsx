@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Book, Globe, Atom, Lightbulb, Trophy, Medal } from 'lucide-react';
 import leaderboardData from '../data/leaderboard.json';
+import debateSubjects from '../data/debateSubjects.json';
 
 interface LeaderboardProps {
   username: string;
@@ -11,6 +12,18 @@ interface LeaderboardEntry {
   id: number;
   username: string;
   score: number;
+  subjectId: string;
+  position: 'for' | 'against';
+}
+
+interface DebateSubject {
+  id: string;
+  category: string;
+  subject: string;
+  access: string;
+}
+
+interface EnrichedLeaderboardEntry extends LeaderboardEntry {
   subject: string;
   category: string;
 }
@@ -23,8 +36,8 @@ const categoryIcons: { [key: string]: React.ReactNode } = {
 };
 
 const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) => {
-  const [leaderboardEntries, setLeaderboardEntries] = useState<LeaderboardEntry[]>([]);
-  const [selectedEntry, setSelectedEntry] = useState<LeaderboardEntry | null>(null);
+  const [leaderboardEntries, setLeaderboardEntries] = useState<EnrichedLeaderboardEntry[]>([]);
+  const [selectedEntry, setSelectedEntry] = useState<EnrichedLeaderboardEntry | null>(null);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('Politics');
 
@@ -33,10 +46,27 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
   }, []);
 
   const fetchLeaderboard = () => {
-    const sortedEntries = (leaderboardData as LeaderboardEntry[])
-      .filter(entry => entry.category !== 'Random')
+    // Create a map of subject IDs to their details
+    const subjectMap = new Map(
+      debateSubjects.subjects.map(subject => [subject.id, subject])
+    );
+
+    // Enrich leaderboard entries with subject details
+    const enrichedEntries = leaderboardData.entries
+      .map(entry => {
+        const subjectDetails = subjectMap.get(entry.subjectId);
+        if (!subjectDetails) return null;
+
+        return {
+          ...entry,
+          subject: subjectDetails.subject,
+          category: subjectDetails.category
+        };
+      })
+      .filter((entry): entry is EnrichedLeaderboardEntry => entry !== null)
       .sort((a, b) => b.score - a.score);
-    setLeaderboardEntries(sortedEntries);
+
+    setLeaderboardEntries(enrichedEntries);
   };
 
   const truncateSubject = (subject: string, maxLength: number) => {
@@ -44,7 +74,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
     return `${subject.substring(0, maxLength)}...`;
   };
 
-  const handleEntryClick = (entry: LeaderboardEntry) => {
+  const handleEntryClick = (entry: EnrichedLeaderboardEntry) => {
     setSelectedEntry(entry);
     setShowPopup(true);
   };
@@ -112,6 +142,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
                 <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Score</th>
                 <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Name</th>
                 <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Subject</th>
+                <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Position</th>
               </tr>
             </thead>
             <tbody>
@@ -136,6 +167,15 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
                   <td className="p-4 text-gray-600 dark:text-gray-300">
                     <span title={entry.subject} className="cursor-help">
                       {truncateSubject(entry.subject, 50)}
+                    </span>
+                  </td>
+                  <td className="p-4 text-gray-600 dark:text-gray-300">
+                    <span className={`px-2 py-1 rounded-full text-sm ${
+                      entry.position === 'for' 
+                        ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
+                        : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
+                    }`}>
+                      {entry.position}
                     </span>
                   </td>
                 </tr>

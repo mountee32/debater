@@ -1,0 +1,100 @@
+{
+  "subjects": [
+    {
+      "id": "REL001",
+      "category": "Religion",
+      "subject": "Religion should play a significant role in modern society",
+      "access": "free"
+    },
+    {
+      "id": "REL002",
+      "category": "Religion",
+      "subject": "There should be a complete separation of church and state",
+      "access": "free"
+    },
+    {
+      "id": "REL003",
+      "category": "Religion",
+      "subject": "Religious freedom should take precedence over secular laws",
+      "access": "free"
+    },
+    {
+      "id": "REL004",
+      "category": "Religion",
+      "subject": "Religious education has a positive impact on youth development",
+      "access": "free"
+    },
+    {
+      "id": "POL001",
+      "category": "Politics",
+      "subject": "Governments should implement universal basic income",
+      "access": "free"
+    },
+    {
+      "id": "POL002",
+      "category": "Politics",
+      "subject": "The electoral college is better than a popular vote system",
+      "access": "free"
+    },
+    {
+      "id": "POL003",
+      "category": "Politics",
+      "subject": "There should be term limits for all elected officials",
+      "access": "free"
+    },
+    {
+      "id": "POL004",
+      "category": "Politics",
+      "subject": "Campaign finance reform is necessary for a fair democratic process",
+      "access": "free"
+    },
+    {
+      "id": "SCI001",
+      "category": "Science",
+      "subject": "Genetic engineering is ethically justifiable",
+      "access": "free"
+    },
+    {
+      "id": "SCI002",
+      "category": "Science",
+      "subject": "Climate change can be effectively mitigated through human intervention",
+      "access": "free"
+    },
+    {
+      "id": "SCI003",
+      "category": "Science",
+      "subject": "Space exploration funding should be increased",
+      "access": "free"
+    },
+    {
+      "id": "SCI004",
+      "category": "Science",
+      "subject": "Artificial intelligence should be strictly regulated",
+      "access": "free"
+    },
+    {
+      "id": "PHIL001",
+      "category": "Philosophy",
+      "subject": "Free will exists and is not predetermined",
+      "access": "free"
+    },
+    {
+      "id": "PHIL002",
+      "category": "Philosophy",
+      "subject": "Consciousness is a fundamental aspect of reality",
+      "access": "free"
+    },
+    {
+      "id": "PHIL003",
+      "category": "Philosophy",
+      "subject": "Advanced AI poses significant ethical challenges to society",
+      "access": "free"
+    },
+    {
+      "id": "PHIL004",
+      "category": "Philosophy",
+      "subject": "Life has an inherent, objective meaning",
+      "access": "free"
+    }
+  ]
+}
