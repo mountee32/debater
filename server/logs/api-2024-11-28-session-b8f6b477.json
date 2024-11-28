@@ -1,0 +1,398 @@
+[
+  {
+    "timestamp": "2024-11-28T20:30:02.627Z",
+    "requestId": "1eb23fd7-890e-4a23-afb6-61b630e40a46",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+        },
+        {
+          "role": "user",
+          "content": "The topic is: \"The electoral college is better than a popular vote system.\". Start with a quick opening argument against the topic."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:30:13.190Z",
+    "requestId": "1eb23fd7-890e-4a23-afb6-61b630e40a46",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "The electoral college is an outdated system that often leads to a disconnect between the popular will and the outcome of the election, as we've seen in five instances where the winner of the popular vote did not win the presidency. This can lead to a lack of faith in the democratic process and undermine the legitimacy of the elected leader. A popular vote system, on the other hand, ensures that every citizen's vote has equal weight and that the winner is truly representative of the people's choice.",
+      "usage": {
+        "prompt_tokens": 59,
+        "completion_tokens": 98,
+        "total_tokens": 157
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:30:13.218Z",
+    "requestId": "c74e0dfd-715a-4960-9c04-8d8a8cacb301",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "anthropic/claude-3.5-sonnet",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+        },
+        {
+          "role": "assistant",
+          "content": "The electoral college is an outdated system that often leads to a disconnect between the popular will and the outcome of the election, as we've seen in five instances where the winner of the popular vote did not win the presidency. This can lead to a lack of faith in the democratic process and undermine the legitimacy of the elected leader. A popular vote system, on the other hand, ensures that every citizen's vote has equal weight and that the winner is truly representative of the people's choice."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:30:15.977Z",
+    "requestId": "c74e0dfd-715a-4960-9c04-8d8a8cacb301",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "42",
+      "usage": {
+        "prompt_tokens": 579,
+        "completion_tokens": 7,
+        "total_tokens": 586
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:30:32.164Z",
+    "requestId": "6bdb2046-5c1e-466f-8384-1deba76f6b87",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "anthropic/claude-3.5-sonnet",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - User (Player): 58%, Assistant (AI): 42%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+        },
+        {
+          "role": "assistant",
+          "content": "The electoral college is an outdated system that often leads to a disconnect between the popular will and the outcome of the election, as we've seen in five instances where the winner of the popular vote did not win the presidency. This can lead to a lack of faith in the democratic process and undermine the legitimacy of the elected leader. A popular vote system, on the other hand, ensures that every citizen's vote has equal weight and that the winner is truly representative of the people's choice."
+        },
+        {
+          "role": "user",
+          "content": "maybe"
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:30:34.226Z",
+    "requestId": "6bdb2046-5c1e-466f-8384-1deba76f6b87",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "44",
+      "usage": {
+        "prompt_tokens": 581,
+        "completion_tokens": 7,
+        "total_tokens": 588
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:30:34.750Z",
+    "requestId": "7df272ba-5c89-4cc3-bc5a-4a1277f6a637",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "The electoral college is an outdated system that often leads to a disconnect between the popular will and the outcome of the election, as we've seen in five instances where the winner of the popular vote did not win the presidency. This can lead to a lack of faith in the democratic process and undermine the legitimacy of the elected leader. A popular vote system, on the other hand, ensures that every citizen's vote has equal weight and that the winner is truly representative of the people's choice."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:30:35.430Z",
+    "requestId": "7df272ba-5c89-4cc3-bc5a-4a1277f6a637",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "",
+      "usage": {
+        "prompt_tokens": 102,
+        "completion_tokens": 1,
+        "total_tokens": 103
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:30:35.444Z",
+    "requestId": "8eb20a8f-87a0-4f78-b691-3f27eceb8239",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "anthropic/claude-3.5-sonnet",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - Assistant (AI): 42%, User (Player): 58%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+        },
+        {
+          "role": "assistant",
+          "content": "The electoral college is an outdated system that often leads to a disconnect between the popular will and the outcome of the election, as we've seen in five instances where the winner of the popular vote did not win the presidency. This can lead to a lack of faith in the democratic process and undermine the legitimacy of the elected leader. A popular vote system, on the other hand, ensures that every citizen's vote has equal weight and that the winner is truly representative of the people's choice."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:30:36.970Z",
+    "requestId": "8eb20a8f-87a0-4f78-b691-3f27eceb8239",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "35",
+      "usage": {
+        "prompt_tokens": 579,
+        "completion_tokens": 7,
+        "total_tokens": 586
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:32:11.468Z",
+    "requestId": "49229cbf-f68a-4e57-9172-928d7defe223",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+        },
+        {
+          "role": "user",
+          "content": "The topic is: \"Campaign finance reform is necessary for a fair democratic process.\". Start with a quick opening argument against the topic."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:32:15.667Z",
+    "requestId": "49229cbf-f68a-4e57-9172-928d7defe223",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "The notion that campaign finance reform is necessary for a fair democratic process is a misguided attempt to stifle free speech and limit the ability of citizens to support candidates who share their values. By restricting campaign contributions, we're not eliminating the influence of money in politics, we're just giving an unfair advantage to incumbent politicians and the media elite. Instead, we should focus on increasing transparency and letting the free market of ideas prevail.",
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:32:15.782Z",
+    "requestId": "6361c2a1-ec01-4c5e-a261-54900850c50b",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "anthropic/claude-3.5-sonnet",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+        },
+        {
+          "role": "assistant",
+          "content": "The notion that campaign finance reform is necessary for a fair democratic process is a misguided attempt to stifle free speech and limit the ability of citizens to support candidates who share their values. By restricting campaign contributions, we're not eliminating the influence of money in politics, we're just giving an unfair advantage to incumbent politicians and the media elite. Instead, we should focus on increasing transparency and letting the free market of ideas prevail."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:32:17.605Z",
+    "requestId": "6361c2a1-ec01-4c5e-a261-54900850c50b",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "42",
+      "usage": {
+        "prompt_tokens": 570,
+        "completion_tokens": 7,
+        "total_tokens": 577
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:32:28.304Z",
+    "requestId": "26651ad3-6fa3-46b3-9268-62f7eb9b5ea6",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "anthropic/claude-3.5-sonnet",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - User (Player): 58%, Assistant (AI): 42%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+        },
+        {
+          "role": "assistant",
+          "content": "The notion that campaign finance reform is necessary for a fair democratic process is a misguided attempt to stifle free speech and limit the ability of citizens to support candidates who share their values. By restricting campaign contributions, we're not eliminating the influence of money in politics, we're just giving an unfair advantage to incumbent politicians and the media elite. Instead, we should focus on increasing transparency and letting the free market of ideas prevail."
+        },
+        {
+          "role": "user",
+          "content": "sometimes"
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:32:30.150Z",
+    "requestId": "26651ad3-6fa3-46b3-9268-62f7eb9b5ea6",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "",
+      "usage": {
+        "prompt_tokens": 530,
+        "completion_tokens": 0,
+        "total_tokens": 530
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:32:30.703Z",
+    "requestId": "c3f86a38-c965-4012-8d6d-223d33c30771",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "messages": [
+        {
+          "role": "assistant",
+          "content": "The notion that campaign finance reform is necessary for a fair democratic process is a misguided attempt to stifle free speech and limit the ability of citizens to support candidates who share their values. By restricting campaign contributions, we're not eliminating the influence of money in politics, we're just giving an unfair advantage to incumbent politicians and the media elite. Instead, we should focus on increasing transparency and letting the free market of ideas prevail."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:32:31.990Z",
+    "requestId": "c3f86a38-c965-4012-8d6d-223d33c30771",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "",
+      "usage": {
+        "prompt_tokens": 89,
+        "completion_tokens": 0,
+        "total_tokens": 89
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:32:32.001Z",
+    "requestId": "e55b8b3c-7c9f-4dfe-bd1e-8f1f7634c3a9",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "anthropic/claude-3.5-sonnet",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Assistant (AI): 42%, User (Player): 58%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+        },
+        {
+          "role": "assistant",
+          "content": "The notion that campaign finance reform is necessary for a fair democratic process is a misguided attempt to stifle free speech and limit the ability of citizens to support candidates who share their values. By restricting campaign contributions, we're not eliminating the influence of money in politics, we're just giving an unfair advantage to incumbent politicians and the media elite. Instead, we should focus on increasing transparency and letting the free market of ideas prevail."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-28T20:32:35.339Z",
+    "requestId": "e55b8b3c-7c9f-4dfe-bd1e-8f1f7634c3a9",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "",
+      "usage": {
+        "prompt_tokens": 525,
+        "completion_tokens": 0,
+        "total_tokens": 525
+      }
+    }
+  }
+]

@@ -73,9 +73,7 @@ router.post('/response', async (req, res) => {
   try {
     await DiagnosticLogger.log('[DebateRoutes] Generating response:', req.body);
     const { topic, position, messages, model } = req.body;
-    const response = await OpenRouterService.generateDebateResponse(
-      topic,
-      position,
+    const response = await OpenRouterService.generateCompletion(
       messages,
       model
     );

@@ -93,6 +93,26 @@ class DiagnosticLogger {
     }
   }
 
+  static warn(message: string, data?: any) {
+    if (!this.enabled) return;
+
+    let logMessage = `WARNING: ${message}`;
+    if (data) {
+      try {
+        logMessage += '\nData: ' + JSON.stringify(data, null, 2);
+      } catch (error) {
+        logMessage += '\nData: [Error stringifying data]';
+        console.error('Error stringifying warning data:', error);
+      }
+    }
+
+    this.writeToLog(logMessage).catch(error => {
+      console.error('Error writing warning log:', error);
+      // Try sync write as fallback
+      this.writeToLogSync(logMessage);
+    });
+  }
+
   static error(message: string, error: any) {
     if (!this.enabled) return;
 

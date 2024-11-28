@@ -28,64 +28,74 @@ interface APIResponse {
 
 export class OpenRouterService {
   static async generateCompletion(messages: Message[], model: string): Promise<string> {
-    try {
-      // Clean and map messages to valid API roles
-      const mappedMessages = messages.map(msg => ({
-        role: msg.role === 'opponent' ? 'assistant' : 
-              msg.role === 'user' || msg.role === 'system' ? msg.role : 'user',
-        content: msg.content
-      })).filter(msg => msg.content.trim() !== '');
+    const maxRetries = 3;
+    const retryDelay = 1000; // 1 second
 
-      const requestData = {
-        model,
-        messages: mappedMessages,
-        temperature: 0.7,
-        max_tokens: 500
-      };
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        // Clean and map messages to valid API roles
+        const mappedMessages = messages.map(msg => ({
+          role: msg.role === 'opponent' ? 'assistant' : 
+                msg.role === 'user' || msg.role === 'system' ? msg.role : 'user',
+          content: msg.content
+        })).filter(msg => msg.content.trim() !== '');
 
-      await DiagnosticLogger.log('Generating completion with request:', requestData);
+        const requestData = {
+          model,
+          messages: mappedMessages,
+          temperature: 0.7,
+          max_tokens: 500
+        };
 
-      const requestId = await ApiLogger.logRequest(API_URL, 'POST', {
-        ...requestData,
-        headers: {
-          ...headers,
-          'Authorization': 'Bearer [REDACTED]'
+        await DiagnosticLogger.log('Generating completion with request:', requestData);
+
+        const requestId = await ApiLogger.logRequest(API_URL, 'POST', {
+          ...requestData,
+          headers: {
+            ...headers,
+            'Authorization': 'Bearer [REDACTED]'
+          }
+        });
+
+        const response = await axios.post<APIResponse>(
+          API_URL,
+          requestData,
+          { headers }
+        );
+
+        await DiagnosticLogger.log('Received API response:', {
+          status: response.status,
+          data: response.data
+        });
+
+        await ApiLogger.logResponse(requestId, API_URL, 'POST', {
+          status: response.status,
+          statusText: response.statusText,
+          data: response.data,
+          headers: response.headers
+        });
+
+        // Safeguard against empty or missing content
+        const content = response.data?.choices?.[0]?.message?.content;
+        if (!content) {
+          const warning = 'Empty or missing content in OpenRouter response';
+          await DiagnosticLogger.warn(warning, response.data);
+          return ''; // Return an empty string as a default value
         }
-      });
 
-      const response = await axios.post<APIResponse>(
-        API_URL,
-        requestData,
-        { headers }
-      );
+        return content.trim();
+      } catch (error: any) { // Explicitly cast error to any
+        await DiagnosticLogger.error(`Attempt ${attempt} failed for OpenRouter API:`, error);
 
-      await DiagnosticLogger.log('Received API response:', {
-        status: response.status,
-        data: response.data
-      });
-
-      await ApiLogger.logResponse(requestId, API_URL, 'POST', {
-        status: response.status,
-        statusText: response.statusText,
-        data: response.data,
-        headers: response.headers
-      });
-
-      if (!response.data?.choices?.[0]?.message?.content) {
-        const error = 'Invalid OpenRouter response format';
-        await DiagnosticLogger.error(error, response.data);
-        throw new Error(error);
+        if (attempt < maxRetries) {
+          await new Promise(resolve => setTimeout(resolve, retryDelay));
+        } else {
+          throw new Error(`OpenRouter API failed after ${maxRetries} attempts: ${error.message}`);
+        }
       }
-
-      return response.data.choices[0].message.content.trim();
-    } catch (error) {
-      await DiagnosticLogger.error('OpenRouter API error:', error);
-      
-      if (axios.isAxiosError(error)) {
-        throw new Error(`OpenRouter API error: ${error.response?.data?.error || error.message}`);
-      }
-      throw error;
     }
+
+    throw new Error('Unexpected error in generateCompletion');
   }
 
   static async generateTopic(category: string, model: string): Promise<string> {
@@ -121,7 +131,6 @@ export class OpenRouterService {
       lastMessage: messages[messages.length - 1]
     });
 
-    // Swap labels and scores based on who we're scoring
     const [primaryLabel, secondaryLabel] = roleToScore === 'user' 
         ? ['User (Player)', 'Assistant (AI)']
         : ['Assistant (AI)', 'User (Player)'];
@@ -185,128 +194,61 @@ Example valid responses:
       messageCount: allMessages.length
     });
 
-    const response = await this.generateCompletion(allMessages, model);
-    await DiagnosticLogger.log('Received evaluation response:', response);
-    
-    // Parse response as number, default to current score if parsing fails
-    const newScore = parseInt(response);
-    if (isNaN(newScore)) {
-      await DiagnosticLogger.error('Failed to parse score from response:', {
-        response,
-        parsedValue: newScore
+    try {
+      const response = await this.generateCompletion(allMessages, model);
+      await DiagnosticLogger.log('Received evaluation response:', response);
+      
+      const newScore = parseInt(response);
+      if (isNaN(newScore)) {
+        await DiagnosticLogger.warn('Failed to parse score from response:', {
+          response,
+          parsedValue: newScore
+        });
+        return roleToScore === 'user' ? currentScores.user : currentScores.opponent;
+      }
+
+      const boundedScore = Math.min(Math.max(newScore, 0), 100);
+      await DiagnosticLogger.log('Final calculated score:', {
+        roleToScore,
+        rawScore: newScore,
+        boundedScore,
+        originalScore: roleToScore === 'user' ? currentScores.user : currentScores.opponent
       });
+
+      return boundedScore;
+    } catch (error: any) {
+      await DiagnosticLogger.error('Scoring API failed:', error);
       return roleToScore === 'user' ? currentScores.user : currentScores.opponent;
     }
-
-    const boundedScore = Math.min(Math.max(newScore, 0), 100);
-    await DiagnosticLogger.log('Final calculated score:', {
-      roleToScore,
-      rawScore: newScore,
-      boundedScore,
-      originalScore: roleToScore === 'user' ? currentScores.user : currentScores.opponent
-    });
-
-    return boundedScore;
   }
 
-  static async generateDebateResponse(
-    topic: string,
-    position: 'for' | 'against',
-    messages: Message[],
-    model: string
-  ): Promise<string> {
-    await DiagnosticLogger.log('Generating debate response:', { 
-      topic, 
-      position,
-      messagesCount: messages.length
-    });
-
-    // Create a single system message with clear instructions
-    const systemMessage = {
-      role: 'system',
-      content: `You are debating ${position} the topic "${topic}". Keep responses under 3 sentences and maintain a clear position.`
-    };
-
-    // Format conversation history, excluding any existing system messages
-    const conversationHistory = messages
-      .filter(msg => msg.role !== 'system')
-      .map(msg => ({
-        role: msg.role === 'opponent' ? 'assistant' : 'user',
-        content: msg.content
-      }));
-
-    // If there's no conversation history, add an initial prompt
-    if (conversationHistory.length === 0) {
-      conversationHistory.push({
-        role: 'user',
-        content: `The topic is: "${topic}". Start with a quick opening argument ${position} the topic.`
-      });
-    }
-
-    // Combine system message with conversation history
-    const allMessages = [systemMessage, ...conversationHistory];
-    return this.generateCompletion(allMessages, model);
-  }
-
-  static async generateHint(
-    topic: string,
-    position: 'for' | 'against',
-    model: string
-  ): Promise<string> {
-    await DiagnosticLogger.log('Generating hint:', { topic, position });
+  static async generateHint(topic: string, position: string, model: string): Promise<string> {
     const messages = [
       {
         role: 'system',
-        content: `Generate a direct, concise argument ${position} the topic "${topic}". Keep it under 50 words. State the argument directly without any prefixes like "I could" or "You should".`
+        content: `You are an assistant providing hints for a debate. The topic is "${topic}". Provide a hint for the position "${position}".`
       },
       {
         role: 'user',
-        content: 'Provide a brief, focused argument for this position.'
+        content: `Provide a helpful hint for debating the position "${position}" on the topic "${topic}".`
       }
     ];
 
     return this.generateCompletion(messages, model);
   }
 
-  static async evaluateDebate(
-    topic: string,
-    userArguments: string[],
-    position: 'for' | 'against',
-    model: string
-  ): Promise<{
-    overallScore: number;
-    rationale: string;
-    recommendations: string;
-  }> {
-    await DiagnosticLogger.log('Evaluating debate:', { 
-      topic, 
-      position,
-      argumentsCount: userArguments.length
-    });
-
+  static async evaluateDebate(topic: string, userArguments: string[], position: string, model: string): Promise<string> {
     const messages = [
       {
         role: 'system',
-        content: 'Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations'
+        content: `You are evaluating a debate on the topic "${topic}". The user has taken the position "${position}". Evaluate the user's arguments and provide feedback.`
       },
       {
         role: 'user',
-        content: `Topic: "${topic}"\nPosition: ${position}\nArguments:\n${userArguments.join('\n')}`
+        content: `Evaluate the following arguments: ${userArguments.join(' ')}`
       }
     ];
 
-    const response = await this.generateCompletion(messages, model);
-    await DiagnosticLogger.log('Received debate evaluation response:', response);
-
-    const [score, rationale, recommendations] = response.split(',');
-
-    const result = {
-      overallScore: parseInt(score) || 5,
-      rationale: rationale?.trim() || 'No rationale provided.',
-      recommendations: recommendations?.trim() || 'No recommendations provided.'
-    };
-
-    await DiagnosticLogger.log('Parsed debate evaluation result:', result);
-    return result;
+    return this.generateCompletion(messages, model);
   }
 }
