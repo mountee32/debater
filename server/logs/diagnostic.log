@@ -1,5 +1,5 @@
-[2024-11-28T23:11:29.971Z] Diagnostic logging initialized
-[2024-11-28T23:11:29.972Z] Middleware configured
+[2024-11-28T23:35:28.040Z] Diagnostic logging initialized
+[2024-11-28T23:35:28.040Z] Middleware configured
 Data: {
   "cors": {
     "origin": "http://localhost:5173",
@@ -9,21 +9,568 @@ Data: {
     ]
   }
 }
-[2024-11-28T23:11:29.973Z] Routes configured
+[2024-11-28T23:35:28.041Z] Routes configured
 Data: {
   "endpoints": [
     "/api/debate"
   ]
 }
-[2024-11-28T23:11:29.973Z] Testing diagnostic logger
+[2024-11-28T23:35:28.041Z] Testing diagnostic logger
 Data: {
   "test": "This is a test log entry",
-  "timestamp": "2024-11-28T23:11:29.973Z"
+  "timestamp": "2024-11-28T23:35:28.041Z"
 }
-[2024-11-28T23:11:29.974Z] Server running on port 3000
-[2024-11-28T23:11:29.974Z] Server configuration
+[2024-11-28T23:35:28.042Z] Server running on port 3000
+[2024-11-28T23:35:28.043Z] Server configuration
 Data: {
   "port": 3000,
   "corsOrigin": "http://localhost:5173",
   "diagnosticLogging": true
+}
+[2024-11-28T23:38:26.543Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Start with a quick opening argument against the topic."
+    }
+  ]
+}
+[2024-11-28T23:38:26.543Z] Generating completion with request:
+Data: {
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T23:38:29.318Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732837106-xVgHzI8PQdsMFvDKjRkS",
+    "provider": "DeepInfra",
+    "model": "meta-llama/llama-3-70b-instruct",
+    "object": "chat.completion",
+    "created": 1732837106,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources.",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 60,
+      "completion_tokens": 53,
+      "total_tokens": 113
+    }
+  }
+}
+[2024-11-28T23:38:29.319Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources."
+}
+[2024-11-28T23:38:29.358Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "against",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources."
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-2024-11-20",
+  "roleToScore": "opponent"
+}
+[2024-11-28T23:38:29.358Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "against",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-2024-11-20",
+  "roleToScore": "opponent"
+}
+[2024-11-28T23:38:29.358Z] Evaluating argument:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "against",
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "roleToScore": "opponent",
+  "messagesCount": 1,
+  "lastMessage": {
+    "id": 1,
+    "role": "opponent",
+    "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources."
+  }
+}
+[2024-11-28T23:38:29.358Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring a debate on \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Current scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 2
+}
+[2024-11-28T23:38:29.358Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-2024-11-20",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Current scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    },
+    {
+      "role": "assistant",
+      "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T23:38:30.739Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "for"
+}
+[2024-11-28T23:38:30.739Z] Generating completion with request:
+Data: {
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an assistant providing hints for a debate. The topic is \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Provide a hint for the position \"for\"."
+    },
+    {
+      "role": "user",
+      "content": "Provide a helpful hint for debating the position \"for\" on the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\"."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T23:38:30.844Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732837110-oAD3AIstbTOw8f4apCWi",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-2024-11-20",
+    "object": "chat.completion",
+    "created": 1732837110,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "50",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_28935134ad",
+    "usage": {
+      "prompt_tokens": 493,
+      "completion_tokens": 1,
+      "total_tokens": 494
+    }
+  }
+}
+[2024-11-28T23:38:30.846Z] Received evaluation response:
+Data: "50"
+[2024-11-28T23:38:30.846Z] Final calculated score:
+Data: {
+  "roleToScore": "opponent",
+  "rawScore": 50,
+  "boundedScore": 50,
+  "originalScore": 50
+}
+[2024-11-28T23:38:30.846Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 50
+}
+[2024-11-28T23:38:47.452Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732837111-B0gcxDUJLS36rhH9VwpA",
+    "provider": "DeepInfra",
+    "model": "meta-llama/llama-3-70b-instruct",
+    "object": "chat.completion",
+    "created": 1732837111,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Here's a helpful hint for debating the position \"for\" on the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\":\n\n**Hint:** Emphasize the **Early Eyewitness Testimony** and the **Undeniable Historical Consensus**.\n\nWhen debating for the position, focus on the following points:\n\n1. **Eyewitness Accounts:** Highlight the fact that the New Testament accounts of Jesus' resurrection were written by eyewitnesses or people who interviewed eyewitnesses, such as the apostles and early Christian leaders. This lends credibility to the accounts, making them more reliable historical sources.\n2. **Early Dating:** Stress that the New Testament accounts were written within a few decades of Jesus' death and resurrection, making it unlikely that myth or legend had time to develop and distort the facts.\n3. **Non-Christian Sources:** Cite non-Christian sources, such as Flavius Josephus, Tacitus, and Pliny the Younger, who confirm the existence of Jesus and the early Christian movement. While they may not explicitly mention the resurrection, they provide independent evidence for the historical context.\n4. **Historical Consensus:** Argue that the vast majority of historians, both Christian and non-Christian, agree that Jesus of Nazareth was a real person who lived, was crucified, and buried. This consensus is a strong foundation for accepting the resurrection as a historical event.\n5. **The Empty Tomb:** Focus on the fact that Jesus' tomb was found empty by his followers, which is a historically verified event. This, combined with the eyewitness accounts of his post-resurrection appearances, provides strong evidence for the resurrection.\n\nBy emphasizing these points, you'll be able to build a robust case for the historical factuality of Jesus Christ's resurrection.",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 79,
+      "completion_tokens": 355,
+      "total_tokens": 434
+    }
+  }
+}
+[2024-11-28T23:38:47.453Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Here's a helpful hint for debating the position \"for\" on the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\":\n\n**Hint:** Emphasize the **Early Eyewitness Testimony** and the **Undeniable Historical Consensus**.\n\nWhen debating for the position, focus on the following points:\n\n1. **Eyewitness Accounts:** Highlight the fact that the New Testament accounts of Jesus' resurrection were written by eyewitnesses or people who interviewed eyewitnesses, such as the apostles and early Christian leaders. This lends credibility to the accounts, making them more reliable historical sources.\n2. **Early Dating:** Stress that the New Testament accounts were written within a few decades of Jesus' death and resurrection, making it unlikely that myth or legend had time to develop and distort the facts.\n3. **Non-Christian Sources:** Cite non-Christian sources, such as Flavius Josephus, Tacitus, and Pliny the Younger, who confirm the existence of Jesus and the early Christian movement. While they may not explicitly mention the resurrection, they provide independent evidence for the historical context.\n4. **Historical Consensus:** Argue that the vast majority of historians, both Christian and non-Christian, agree that Jesus of Nazareth was a real person who lived, was crucified, and buried. This consensus is a strong foundation for accepting the resurrection as a historical event.\n5. **The Empty Tomb:** Focus on the fact that Jesus' tomb was found empty by his followers, which is a historically verified event. This, combined with the eyewitness accounts of his post-resurrection appearances, provides strong evidence for the resurrection.\n\nBy emphasizing these points, you'll be able to build a robust case for the historical factuality of Jesus Christ's resurrection."
+}
+[2024-11-28T23:38:49.610Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "for",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources.",
+      "score": {
+        "score": 50,
+        "previousScore": 50
+      }
+    },
+    {
+      "id": 2,
+      "role": "user",
+      "content": "Here's a helpful hint for debating the position \"for\" on the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\":\n\n**Hint:** Emphasize the **Early Eyewitness Testimony** and the **Undeniable Historical Consensus**.\n\nWhen debating for the position, focus on the following points:\n\n1. **Eyewitness Accounts:** Highlight the fact that the New Testament accounts of Jesus' resurrection were written by eyewitnesses or people who interviewed eyewitnesses, such as the apostles and early Christian leaders. This lends credibility to the accounts, making them more reliable historical sources.\n2. **Early Dating:** Stress that the New Testament accounts were written within a few decades of Jesus' death and resurrection, making it unlikely that myth or legend had time to develop and distort the facts.\n3. **Non-Christian Sources:** Cite non-Christian sources, such as Flavius Josephus, Tacitus, and Pliny the Younger, who confirm the existence of Jesus and the early Christian movement. While they may not explicitly mention the resurrection, they provide independent evidence for the historical context.\n4. **Historical Consensus:** Argue that the vast majority of historians, both Christian and non-Christian, agree that Jesus of Nazareth was a real person who lived, was crucified, and buried. This consensus is a strong foundation for accepting the resurrection as a historical event.\n5. **The Empty Tomb:** Focus on the fact that Jesus' tomb was found empty by his followers, which is a historically verified event. This, combined with the eyewitness accounts of his post-resurrection appearances, provides strong evidence for the resurrection.\n\nBy emphasizing these points, you'll be able to build a robust case for the historical factuality of Jesus Christ's resurrection."
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-2024-11-20",
+  "roleToScore": "user"
+}
+[2024-11-28T23:38:49.610Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-2024-11-20",
+  "roleToScore": "user"
+}
+[2024-11-28T23:38:49.610Z] Evaluating argument:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "for",
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "roleToScore": "user",
+  "messagesCount": 2,
+  "lastMessage": {
+    "id": 2,
+    "role": "user",
+    "content": "Here's a helpful hint for debating the position \"for\" on the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\":\n\n**Hint:** Emphasize the **Early Eyewitness Testimony** and the **Undeniable Historical Consensus**.\n\nWhen debating for the position, focus on the following points:\n\n1. **Eyewitness Accounts:** Highlight the fact that the New Testament accounts of Jesus' resurrection were written by eyewitnesses or people who interviewed eyewitnesses, such as the apostles and early Christian leaders. This lends credibility to the accounts, making them more reliable historical sources.\n2. **Early Dating:** Stress that the New Testament accounts were written within a few decades of Jesus' death and resurrection, making it unlikely that myth or legend had time to develop and distort the facts.\n3. **Non-Christian Sources:** Cite non-Christian sources, such as Flavius Josephus, Tacitus, and Pliny the Younger, who confirm the existence of Jesus and the early Christian movement. While they may not explicitly mention the resurrection, they provide independent evidence for the historical context.\n4. **Historical Consensus:** Argue that the vast majority of historians, both Christian and non-Christian, agree that Jesus of Nazareth was a real person who lived, was crucified, and buried. This consensus is a strong foundation for accepting the resurrection as a historical event.\n5. **The Empty Tomb:** Focus on the fact that Jesus' tomb was found empty by his followers, which is a historically verified event. This, combined with the eyewitness accounts of his post-resurrection appearances, provides strong evidence for the resurrection.\n\nBy emphasizing these points, you'll be able to build a robust case for the historical factuality of Jesus Christ's resurrection."
+  }
+}
+[2024-11-28T23:38:49.610Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring a debate on \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Current scores - User (Player): 50%, Assistant (AI): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 3
+}
+[2024-11-28T23:38:49.610Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-2024-11-20",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Current scores - User (Player): 50%, Assistant (AI): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    },
+    {
+      "role": "assistant",
+      "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources."
+    },
+    {
+      "role": "user",
+      "content": "Here's a helpful hint for debating the position \"for\" on the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\":\n\n**Hint:** Emphasize the **Early Eyewitness Testimony** and the **Undeniable Historical Consensus**.\n\nWhen debating for the position, focus on the following points:\n\n1. **Eyewitness Accounts:** Highlight the fact that the New Testament accounts of Jesus' resurrection were written by eyewitnesses or people who interviewed eyewitnesses, such as the apostles and early Christian leaders. This lends credibility to the accounts, making them more reliable historical sources.\n2. **Early Dating:** Stress that the New Testament accounts were written within a few decades of Jesus' death and resurrection, making it unlikely that myth or legend had time to develop and distort the facts.\n3. **Non-Christian Sources:** Cite non-Christian sources, such as Flavius Josephus, Tacitus, and Pliny the Younger, who confirm the existence of Jesus and the early Christian movement. While they may not explicitly mention the resurrection, they provide independent evidence for the historical context.\n4. **Historical Consensus:** Argue that the vast majority of historians, both Christian and non-Christian, agree that Jesus of Nazareth was a real person who lived, was crucified, and buried. This consensus is a strong foundation for accepting the resurrection as a historical event.\n5. **The Empty Tomb:** Focus on the fact that Jesus' tomb was found empty by his followers, which is a historically verified event. This, combined with the eyewitness accounts of his post-resurrection appearances, provides strong evidence for the resurrection.\n\nBy emphasizing these points, you'll be able to build a robust case for the historical factuality of Jesus Christ's resurrection."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T23:38:50.805Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732837130-aASGQCWuR8KfpjrmeXqB",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-2024-11-20",
+    "object": "chat.completion",
+    "created": 1732837130,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "58",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_a523ccd45c",
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 1,
+      "total_tokens": 848
+    }
+  }
+}
+[2024-11-28T23:38:50.806Z] Received evaluation response:
+Data: "58"
+[2024-11-28T23:38:50.806Z] Final calculated score:
+Data: {
+  "roleToScore": "user",
+  "rawScore": 58,
+  "boundedScore": 58,
+  "originalScore": 50
+}
+[2024-11-28T23:38:50.806Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 58
+}
+[2024-11-28T23:38:51.407Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "against",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources.",
+      "score": {
+        "score": 50,
+        "previousScore": 50
+      }
+    }
+  ]
+}
+[2024-11-28T23:38:51.407Z] Generating completion with request:
+Data: {
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T23:38:51.898Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732837131-lZ6v1q6vyzlVZN5baR9B",
+    "provider": "Lepton",
+    "model": "meta-llama/llama-3-70b-instruct",
+    "object": "chat.completion",
+    "created": 1732837131,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 58,
+      "completion_tokens": 1,
+      "total_tokens": 59
+    }
+  }
+}
+[2024-11-28T23:38:51.900Z] WARNING: Empty or missing content in OpenRouter response
+Data: {
+  "id": "gen-1732837131-lZ6v1q6vyzlVZN5baR9B",
+  "provider": "Lepton",
+  "model": "meta-llama/llama-3-70b-instruct",
+  "object": "chat.completion",
+  "created": 1732837131,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "refusal": ""
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 58,
+    "completion_tokens": 1,
+    "total_tokens": 59
+  }
+}
+[2024-11-28T23:38:51.900Z] [DebateRoutes] Generated response:
+Data: {
+  "response": ""
+}
+[2024-11-28T23:38:51.911Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "against",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources.",
+      "score": {
+        "score": 50,
+        "previousScore": 50
+      }
+    },
+    {
+      "id": 3,
+      "role": "opponent",
+      "content": ""
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-2024-11-20",
+  "roleToScore": "opponent"
+}
+[2024-11-28T23:38:51.911Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "against",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-2024-11-20",
+  "roleToScore": "opponent"
+}
+[2024-11-28T23:38:51.911Z] Evaluating argument:
+Data: {
+  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "position": "against",
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "roleToScore": "opponent",
+  "messagesCount": 2,
+  "lastMessage": {
+    "id": 3,
+    "role": "opponent",
+    "content": ""
+  }
+}
+[2024-11-28T23:38:51.911Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring a debate on \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Current scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 3
+}
+[2024-11-28T23:38:51.911Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-2024-11-20",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Current scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    },
+    {
+      "role": "assistant",
+      "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians. There is no empirical evidence to support the claim, and the accounts of the resurrection come from biased, unverifiable sources."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T23:38:52.885Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732837132-jSaaYoPeOBPhliqv9sas",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-2024-11-20",
+    "object": "chat.completion",
+    "created": 1732837132,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_a523ccd45c",
+    "usage": {
+      "prompt_tokens": 493,
+      "completion_tokens": 1,
+      "total_tokens": 494
+    }
+  }
+}
+[2024-11-28T23:38:52.886Z] Received evaluation response:
+Data: "45"
+[2024-11-28T23:38:52.886Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
+}
+[2024-11-28T23:38:52.886Z] Final calculated score:
+Data: {
+  "roleToScore": "opponent",
+  "rawScore": 45,
+  "boundedScore": 45,
+  "originalScore": 50
 }
