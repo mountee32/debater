@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Book, Globe, Atom, Lightbulb, Trophy, Medal } from 'lucide-react';
+import { Book, Globe, Atom, Lightbulb, Trophy, Medal, CheckCircle, Circle, CircleDot } from 'lucide-react';
 import leaderboardData from '../data/leaderboard.json';
 import debateSubjects from '../data/debateSubjects.json';
 
@@ -14,6 +14,7 @@ interface LeaderboardEntry {
   score: number;
   subjectId: string;
   position: 'for' | 'against';
+  skill: 'easy' | 'medium' | 'hard';
 }
 
 interface DebateSubject {
@@ -35,23 +36,34 @@ const categoryIcons: { [key: string]: React.ReactNode } = {
   'Philosophy': <Lightbulb size={24} className="text-yellow-500" />,
 };
 
+const skillIcons: { [key: string]: React.ReactNode } = {
+  'easy': <CheckCircle size={20} />,
+  'medium': <Circle size={20} />,
+  'hard': <CircleDot size={20} />
+};
+
+const skillColors: { [key: string]: string } = {
+  'easy': 'from-green-500 to-green-600',
+  'medium': 'from-yellow-500 to-yellow-600',
+  'hard': 'from-red-500 to-red-600'
+};
+
 const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) => {
   const [leaderboardEntries, setLeaderboardEntries] = useState<EnrichedLeaderboardEntry[]>([]);
   const [selectedEntry, setSelectedEntry] = useState<EnrichedLeaderboardEntry | null>(null);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('Politics');
+  const [selectedSkill, setSelectedSkill] = useState<'easy' | 'medium' | 'hard'>('easy');
 
   useEffect(() => {
     fetchLeaderboard();
   }, []);
 
   const fetchLeaderboard = () => {
-    // Create a map of subject IDs to their details
     const subjectMap = new Map(
       debateSubjects.subjects.map(subject => [subject.id, subject])
     );
 
-    // Enrich leaderboard entries with subject details
     const enrichedEntries = leaderboardData.entries
       .map(entry => {
         const subjectDetails = subjectMap.get(entry.subjectId);
@@ -90,9 +102,16 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
     setSelectedCategory(category);
   };
 
-  const filteredEntries = leaderboardEntries.filter(entry => entry.category === selectedCategory);
+  const handleSkillFilter = (skill: 'easy' | 'medium' | 'hard') => {
+    setSelectedSkill(skill);
+  };
+
+  const filteredEntries = leaderboardEntries.filter(entry => 
+    entry.category === selectedCategory && entry.skill === selectedSkill
+  );
 
   const categories = [...new Set(leaderboardEntries.map(entry => entry.category))];
+  const skills: ('easy' | 'medium' | 'hard')[] = ['easy', 'medium', 'hard'];
 
   const getRankIcon = (index: number) => {
     switch (index) {
@@ -115,23 +134,44 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
           <p className="text-indigo-100 text-center text-sm">Compete with the best debaters worldwide</p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 p-4 bg-gray-50 dark:bg-gray-700">
-          {categories.map(category => (
-            <button
-              key={category}
-              className={`
-                px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 transform hover:scale-105
-                ${selectedCategory === category
-                  ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:shadow-md'
-                }
-              `}
-              onClick={() => handleCategoryFilter(category)}
-            >
-              {categoryIcons[category]}
-              <span className="font-medium">{category}</span>
-            </button>
-          ))}
+        <div className="flex flex-col gap-4 p-4 bg-gray-50 dark:bg-gray-700">
+          <div className="flex flex-wrap justify-center gap-4">
+            {categories.map(category => (
+              <button
+                key={category}
+                className={`
+                  px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 transform hover:scale-105
+                  ${selectedCategory === category
+                    ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:shadow-md'
+                  }
+                `}
+                onClick={() => handleCategoryFilter(category)}
+              >
+                {categoryIcons[category]}
+                <span className="font-medium">{category}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="flex justify-center gap-3">
+            {skills.map(skill => (
+              <button
+                key={skill}
+                className={`
+                  px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 transform hover:scale-105
+                  ${selectedSkill === skill
+                    ? `bg-gradient-to-r ${skillColors[skill]} text-white shadow-lg`
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:shadow-md'
+                  }
+                `}
+                onClick={() => handleSkillFilter(skill)}
+              >
+                {skillIcons[skill]}
+                <span className="font-medium capitalize">{skill}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="overflow-x-auto w-full">

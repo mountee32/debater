@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, CheckCircle, Circle, CircleDot } from 'lucide-react';
 import leaderboardData from '../data/leaderboard.json';
 import debateSubjects from '../data/debateSubjects.json';
 
@@ -15,6 +15,7 @@ interface LeaderboardEntry {
   score: number;
   subjectId: string;
   position: 'for' | 'against';
+  skill: 'easy' | 'medium' | 'hard';
 }
 
 interface DebateSubject {
@@ -25,8 +26,22 @@ interface DebateSubject {
 }
 
 type CategoryType = 'Religion' | 'Politics' | 'Science' | 'Philosophy';
+type SkillType = 'easy' | 'medium' | 'hard';
 
 const CATEGORIES: CategoryType[] = ['Religion', 'Politics', 'Science', 'Philosophy'];
+const SKILLS: SkillType[] = ['easy', 'medium', 'hard'];
+
+const skillIcons: { [key in SkillType]: React.ReactNode } = {
+  'easy': <CheckCircle size={20} />,
+  'medium': <Circle size={20} />,
+  'hard': <CircleDot size={20} />
+};
+
+const skillColors: { [key in SkillType]: string } = {
+  'easy': 'from-green-500 to-green-600',
+  'medium': 'from-yellow-500 to-yellow-600',
+  'hard': 'from-red-500 to-red-600'
+};
 
 const getCategoryIcon = (category: CategoryType): string => {
   switch (category) {
@@ -48,6 +63,7 @@ const abbreviateUsername = (username: string): string => {
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handleStartChat }) => {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>('Religion');
+  const [selectedSkill, setSelectedSkill] = useState<SkillType>('easy');
 
   const groupedEntries = useMemo(() => {
     const entries: Record<CategoryType, Record<string, LeaderboardEntry[]>> = {
@@ -57,15 +73,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
       Philosophy: {}
     };
 
-    // Create a map of subject IDs to their full details
     const subjectMap = new Map(
       debateSubjects.subjects.map(subject => [subject.id, subject])
     );
 
-    // Filter and group entries
-    const validEntries = leaderboardData.entries.filter(entry => {
+    const validEntries = (leaderboardData.entries as LeaderboardEntry[]).filter(entry => {
       const subject = subjectMap.get(entry.subjectId);
-      return subject && CATEGORIES.includes(subject.category as CategoryType);
+      return subject && 
+             CATEGORIES.includes(subject.category as CategoryType) && 
+             entry.skill === selectedSkill;
     });
 
     validEntries.forEach(entry => {
@@ -75,13 +91,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
       if (!entries[category][subject.subject]) {
         entries[category][subject.subject] = [];
       }
-      entries[category][subject.subject].push({
-        ...entry,
-        position: entry.position as 'for' | 'against'
-      });
+      entries[category][subject.subject].push(entry);
     });
 
-    // Sort entries by score and limit to top 5
     Object.keys(entries).forEach(category => {
       Object.keys(entries[category as CategoryType]).forEach(subject => {
         entries[category as CategoryType][subject].sort((a, b) => b.score - a.score);
@@ -91,10 +103,14 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
     });
 
     return entries;
-  }, []);
+  }, [selectedSkill]);
 
   const handleCategorySelect = useCallback((category: CategoryType) => {
     setSelectedCategory(category);
+  }, []);
+
+  const handleSkillSelect = useCallback((skill: SkillType) => {
+    setSelectedSkill(skill);
   }, []);
 
   const categoriesToDisplay = useMemo(() => {
@@ -103,7 +119,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
 
   return (
     <div className="max-w-6xl mx-auto px-4">
-      {/* Title Section */}
       <div className="text-center mb-12 mt-8">
         <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
           SpeakUp!
@@ -113,40 +128,58 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
         </p>
       </div>
 
-      {/* Main Content Box */}
       <div className="bg-white/95 dark:bg-gray-800/95 rounded-xl shadow-lg backdrop-blur-sm overflow-hidden">
-        {/* Category Filter Buttons - Now inside the main box */}
         <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/50">
-          <div className="flex flex-wrap justify-center gap-4">
-            {CATEGORIES.map((category) => (
-              <button
-                key={category}
-                onClick={() => handleCategorySelect(category)}
-                className={`flex items-center gap-3 px-6 py-3.5 rounded-xl transition-all duration-300 
-                  transform hover:-translate-y-0.5 font-semibold text-lg group
-                  ${selectedCategory === category
-                    ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg scale-105'
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700/80 shadow hover:shadow-md'}`}
-              >
-                <span className={`text-3xl transform transition-all duration-300 ${
-                  selectedCategory === category ? 'scale-110' : 'group-hover:scale-110'
-                }`}>
-                  {getCategoryIcon(category)}
-                </span>
-                <span className={`transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'text-white'
-                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'
-                }`}>
-                  {category}
-                </span>
-              </button>
-            ))}
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
+              {CATEGORIES.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => handleCategorySelect(category)}
+                  className={`flex items-center gap-3 px-6 py-3.5 rounded-xl transition-all duration-300 
+                    transform hover:-translate-y-0.5 font-semibold text-lg group
+                    ${selectedCategory === category
+                      ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg scale-105'
+                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700/80 shadow hover:shadow-md'}`}
+                >
+                  <span className={`text-3xl transform transition-all duration-300 ${
+                    selectedCategory === category ? 'scale-110' : 'group-hover:scale-110'
+                  }`}>
+                    {getCategoryIcon(category)}
+                  </span>
+                  <span className={`transition-all duration-300 ${
+                    selectedCategory === category
+                      ? 'text-white'
+                      : 'bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'
+                  }`}>
+                    {category}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            <div className="flex justify-center gap-3">
+              {SKILLS.map((skill) => (
+                <button
+                  key={skill}
+                  onClick={() => handleSkillSelect(skill)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 
+                    transform hover:-translate-y-0.5 font-medium text-sm
+                    ${selectedSkill === skill
+                      ? `bg-gradient-to-r ${skillColors[skill]} text-white shadow-lg`
+                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/80 shadow hover:shadow-md'}`}
+                >
+                  <span className="transform transition-all duration-300">
+                    {skillIcons[skill]}
+                  </span>
+                  <span className="capitalize">{skill}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Debate Categories */}
-        <div key={selectedCategory} className="p-8">
+        <div key={`${selectedCategory}-${selectedSkill}`} className="p-8">
           {categoriesToDisplay.map((category) => {
             const subjects = groupedEntries[category];
             if (!subjects || Object.keys(subjects).length === 0) return null;

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Book, Globe, Atom, Lightbulb } from 'lucide-react';
+import { Book, Globe, Atom, Lightbulb, CheckCircle, Circle, CircleDot } from 'lucide-react';
 import leaderboardData from '../data/leaderboard.json';
 import debateSubjects from '../data/debateSubjects.json';
 
@@ -16,6 +16,7 @@ interface EnrichedEntry {
   subject: string;
   category: string;
   position: 'for' | 'against';
+  skill: 'easy' | 'medium' | 'hard';
 }
 
 const categoryIcons: { [key: string]: React.ElementType } = {
@@ -25,16 +26,27 @@ const categoryIcons: { [key: string]: React.ElementType } = {
   Philosophy: Lightbulb,
 };
 
+const skillIcons: { [key: string]: React.ReactNode } = {
+  'easy': <CheckCircle size={12} />,
+  'medium': <Circle size={12} />,
+  'hard': <CircleDot size={12} />
+};
+
+const skillColors: { [key: string]: string } = {
+  'easy': 'bg-green-500 hover:bg-green-600',
+  'medium': 'bg-yellow-500 hover:bg-yellow-600',
+  'hard': 'bg-red-500 hover:bg-red-600'
+};
+
 const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExpanded, onToggle }) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedSkill, setSelectedSkill] = useState<'easy' | 'medium' | 'hard'>('easy');
 
   const enrichedEntries = useMemo(() => {
-    // Create a map of subject IDs to their details
     const subjectMap = new Map(
       debateSubjects.subjects.map(subject => [subject.id, subject])
     );
 
-    // Enrich entries with subject details
     return leaderboardData.entries
       .map(entry => {
         const subjectDetails = subjectMap.get(entry.subjectId);
@@ -46,7 +58,8 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
           score: entry.score,
           subject: subjectDetails.subject,
           category: subjectDetails.category,
-          position: entry.position
+          position: entry.position,
+          skill: entry.skill
         };
       })
       .filter((entry): entry is EnrichedEntry => entry !== null);
@@ -57,12 +70,14 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
     return `${text.substring(0, maxLength)}...`;
   };
 
-  const filteredEntries = selectedCategory
-    ? enrichedEntries.filter(entry => entry.category === selectedCategory)
-    : enrichedEntries;
+  const filteredEntries = enrichedEntries
+    .filter(entry => !selectedCategory || entry.category === selectedCategory)
+    .filter(entry => entry.skill === selectedSkill);
 
   const sortedEntries = filteredEntries.sort((a, b) => b.score - a.score);
   const displayedEntries = isExpanded ? sortedEntries : sortedEntries.slice(0, 5);
+
+  const skills: ('easy' | 'medium' | 'hard')[] = ['easy', 'medium', 'hard'];
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
@@ -75,23 +90,44 @@ const CompactLeaderboard: React.FC<CompactLeaderboardProps> = ({ username, isExp
           {isExpanded ? 'Show Less' : 'Show More'}
         </button>
       </div>
-      <div className="flex flex-wrap justify-center mb-4">
-        {Object.entries(categoryIcons).map(([category, Icon]) => (
-          <button
-            key={category}
-            className={`flex items-center m-1 px-2 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
-              selectedCategory === category
-                ? 'bg-indigo-600 text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
-            onClick={() => setSelectedCategory(selectedCategory === category ? null : category)}
-          >
-            <Icon size={12} className="mr-1" />
-            {category}
-          </button>
-        ))}
+      
+      <div className="space-y-2">
+        <div className="flex flex-wrap justify-center gap-1">
+          {Object.entries(categoryIcons).map(([category, Icon]) => (
+            <button
+              key={category}
+              className={`flex items-center m-1 px-2 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
+                selectedCategory === category
+                  ? 'bg-indigo-600 text-white'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+              onClick={() => setSelectedCategory(selectedCategory === category ? null : category)}
+            >
+              <Icon size={12} className="mr-1" />
+              {category}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex justify-center gap-1">
+          {skills.map(skill => (
+            <button
+              key={skill}
+              className={`flex items-center px-2 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
+                selectedSkill === skill
+                  ? `${skillColors[skill]} text-white`
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+              onClick={() => setSelectedSkill(skill)}
+            >
+              <span className="mr-1">{skillIcons[skill]}</span>
+              <span className="capitalize">{skill}</span>
+            </button>
+          ))}
+        </div>
       </div>
-      <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96' : 'max-h-40'}`}>
+
+      <div className={`overflow-hidden transition-all duration-300 mt-4 ${isExpanded ? 'max-h-96' : 'max-h-40'}`}>
         <div className="flex text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2">
           <div className="w-16 text-center">Score</div>
           <div className="w-32 text-left">Name</div>
