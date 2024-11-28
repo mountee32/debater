@@ -66,8 +66,8 @@ const DebateGame: React.FC<DebateGameProps> = ({
   }, [topic, messages.length, initializeDebate]);
 
   const onSendArgumentClick = async () => {
+    setCurrentArgument(''); // Clear the input field immediately
     await handleSendArgument(currentArgument);
-    setCurrentArgument('');
   };
 
   const onHintRequestClick = async () => {
