@@ -1532,3 +1532,2407 @@ Data: {
 Data: {
   "response": "While it's true that excessive money in politics can skew power, imposing strict campaign finance limits could hinder free speech and the ability of individuals to support causes they believe in. Furthermore, reforms may not necessarily lead to better representation, as they might push political activity underground or into less transparent channels. Instead of limiting contributions, we should focus on increasing voter engagement and ensuring a more informed electorate to truly strengthen democracy."
 }
+[2024-11-28T13:03:37.696Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"There should be a complete separation of church and state.\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:03:37.696Z] Generating debate response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messagesCount": 2
+}
+[2024-11-28T13:03:37.696Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"There should be a complete separation of church and state.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"There should be a complete separation of church and state.\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:03:39.755Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799018-qBCusOnYWEIJNuFWqLFQ",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799018,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 83,
+      "completion_tokens": 70,
+      "total_tokens": 153
+    }
+  }
+}
+[2024-11-28T13:03:39.757Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+}
+[2024-11-28T13:04:06.184Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:04:06.184Z] Generating debate response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messagesCount": 1
+}
+[2024-11-28T13:04:06.184Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"There should be a complete separation of church and state.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:06.188Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:06.188Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:06.188Z] Evaluating argument:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "messagesCount": 2,
+  "lastMessage": {
+    "role": "user",
+    "content": "otherwise politics can corrupt religion"
+  }
+}
+[2024-11-28T13:04:06.188Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "otherwise politics can corrupt religion"
+  }
+]
+[2024-11-28T13:04:06.188Z] Generating completion with request:
+Data: {
+  "model": "anthropic/claude-3.5-sonnet",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:07.446Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799046-0Swwer3PJmTBP1H52JMW",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732799046,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 216,
+      "completion_tokens": 7,
+      "total_tokens": 223
+    }
+  }
+}
+[2024-11-28T13:04:07.448Z] Received evaluation response:
+Data: "45"
+[2024-11-28T13:04:07.448Z] Final calculated score:
+Data: {
+  "rawScore": 45,
+  "boundedScore": 45,
+  "originalScore": 50
+}
+[2024-11-28T13:04:07.448Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
+}
+[2024-11-28T13:04:08.171Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799046-jc9bt39KY2cwhCwbkFrD",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799046,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 106,
+      "completion_tokens": 70,
+      "total_tokens": 176
+    }
+  }
+}
+[2024-11-28T13:04:08.173Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+}
+[2024-11-28T13:04:13.943Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:04:13.943Z] Generating hint:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for"
+}
+[2024-11-28T13:04:13.943Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Generate a direct, concise argument for the topic \"There should be a complete separation of church and state.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+    },
+    {
+      "role": "user",
+      "content": "Provide a brief, focused argument for this position."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:15.733Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799054-lvdKAzQl8xYNAvAm2klB",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799054,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 66,
+      "completion_tokens": 55,
+      "total_tokens": 121
+    }
+  }
+}
+[2024-11-28T13:04:15.736Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+}
+[2024-11-28T13:04:16.859Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    }
+  ],
+  "currentScores": {
+    "user": 45,
+    "opponent": 55
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:16.859Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messagesCount": 4,
+  "currentScores": {
+    "user": 45,
+    "opponent": 55
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:16.859Z] Evaluating argument:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "currentScores": {
+    "user": 45,
+    "opponent": 55
+  },
+  "messagesCount": 4,
+  "lastMessage": {
+    "role": "user",
+    "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+  }
+}
+[2024-11-28T13:04:16.859Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 45%, AI: 55%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "otherwise politics can corrupt religion"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+  }
+]
+[2024-11-28T13:04:16.859Z] Generating completion with request:
+Data: {
+  "model": "anthropic/claude-3.5-sonnet",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 45%, AI: 55%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:17.186Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:04:17.186Z] Generating debate response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messagesCount": 3
+}
+[2024-11-28T13:04:17.186Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"There should be a complete separation of church and state.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:18.408Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799057-upBhHRvo7nbAAQf3A8W2",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732799057,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "52",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 358,
+      "completion_tokens": 7,
+      "total_tokens": 365
+    }
+  }
+}
+[2024-11-28T13:04:18.411Z] Received evaluation response:
+Data: "52"
+[2024-11-28T13:04:18.411Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 52
+}
+[2024-11-28T13:04:18.411Z] Final calculated score:
+Data: {
+  "rawScore": 52,
+  "boundedScore": 52,
+  "originalScore": 45
+}
+[2024-11-28T13:04:19.187Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799057-oqQ688rC1PSVfSM9gUSZ",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799057,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 189,
+      "completion_tokens": 62,
+      "total_tokens": 251
+    }
+  }
+}
+[2024-11-28T13:04:19.191Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+}
+[2024-11-28T13:04:25.283Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    }
+  ],
+  "currentScores": {
+    "user": 52,
+    "opponent": 48
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:25.283Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messagesCount": 6,
+  "currentScores": {
+    "user": 52,
+    "opponent": 48
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:25.283Z] Evaluating argument:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "currentScores": {
+    "user": 52,
+    "opponent": 48
+  },
+  "messagesCount": 6,
+  "lastMessage": {
+    "role": "user",
+    "content": "I agree with you"
+  }
+}
+[2024-11-28T13:04:25.283Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 52%, AI: 48%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "otherwise politics can corrupt religion"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+  },
+  {
+    "role": "assistant",
+    "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+  },
+  {
+    "role": "user",
+    "content": "I agree with you"
+  }
+]
+[2024-11-28T13:04:25.283Z] Generating completion with request:
+Data: {
+  "model": "anthropic/claude-3.5-sonnet",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 52%, AI: 48%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:25.287Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:04:25.287Z] Generating debate response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messagesCount": 5
+}
+[2024-11-28T13:04:25.287Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"There should be a complete separation of church and state.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:26.917Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799065-AFbUQlmEGyigyBy1J3Ox",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732799065,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 435,
+      "completion_tokens": 7,
+      "total_tokens": 442
+    }
+  }
+}
+[2024-11-28T13:04:26.919Z] Received evaluation response:
+Data: "45"
+[2024-11-28T13:04:26.920Z] Final calculated score:
+Data: {
+  "rawScore": 45,
+  "boundedScore": 45,
+  "originalScore": 52
+}
+[2024-11-28T13:04:26.920Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
+}
+[2024-11-28T13:04:27.322Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799065-th2kjAN8AAEK7G7o5Ai7",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799065,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 314,
+      "completion_tokens": 62,
+      "total_tokens": 376
+    }
+  }
+}
+[2024-11-28T13:04:27.324Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+}
+[2024-11-28T13:04:34.632Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:04:34.632Z] Generating debate response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messagesCount": 7
+}
+[2024-11-28T13:04:34.632Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"There should be a complete separation of church and state.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:34.636Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    }
+  ],
+  "currentScores": {
+    "user": 45,
+    "opponent": 55
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:34.636Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messagesCount": 8,
+  "currentScores": {
+    "user": 45,
+    "opponent": 55
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:34.636Z] Evaluating argument:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "currentScores": {
+    "user": 45,
+    "opponent": 55
+  },
+  "messagesCount": 8,
+  "lastMessage": {
+    "role": "user",
+    "content": "another good point you make"
+  }
+}
+[2024-11-28T13:04:34.636Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 45%, AI: 55%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "otherwise politics can corrupt religion"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+  },
+  {
+    "role": "assistant",
+    "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+  },
+  {
+    "role": "user",
+    "content": "I agree with you"
+  },
+  {
+    "role": "assistant",
+    "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+  },
+  {
+    "role": "user",
+    "content": "another good point you make"
+  }
+]
+[2024-11-28T13:04:34.636Z] Generating completion with request:
+Data: {
+  "model": "anthropic/claude-3.5-sonnet",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 45%, AI: 55%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:36.401Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799075-k2RBTbDpghMTnhfq1ix8",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799075,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 388,
+      "completion_tokens": 51,
+      "total_tokens": 439
+    }
+  }
+}
+[2024-11-28T13:04:36.404Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+}
+[2024-11-28T13:04:36.618Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799075-XPAS3Y8EWO9XRe9kpAcs",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732799075,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "40",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 513,
+      "completion_tokens": 7,
+      "total_tokens": 520
+    }
+  }
+}
+[2024-11-28T13:04:36.620Z] Received evaluation response:
+Data: "40"
+[2024-11-28T13:04:36.620Z] Final calculated score:
+Data: {
+  "rawScore": 40,
+  "boundedScore": 40,
+  "originalScore": 45
+}
+[2024-11-28T13:04:36.620Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 40
+}
+[2024-11-28T13:04:45.646Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "yup that's true"
+    }
+  ],
+  "currentScores": {
+    "user": 40,
+    "opponent": 60
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:45.646Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messagesCount": 10,
+  "currentScores": {
+    "user": 40,
+    "opponent": 60
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:45.646Z] Evaluating argument:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "currentScores": {
+    "user": 40,
+    "opponent": 60
+  },
+  "messagesCount": 10,
+  "lastMessage": {
+    "role": "user",
+    "content": "yup that's true"
+  }
+}
+[2024-11-28T13:04:45.646Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 40%, AI: 60%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "otherwise politics can corrupt religion"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+  },
+  {
+    "role": "assistant",
+    "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+  },
+  {
+    "role": "user",
+    "content": "I agree with you"
+  },
+  {
+    "role": "assistant",
+    "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+  },
+  {
+    "role": "user",
+    "content": "another good point you make"
+  },
+  {
+    "role": "assistant",
+    "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+  },
+  {
+    "role": "user",
+    "content": "yup that's true"
+  }
+]
+[2024-11-28T13:04:45.646Z] Generating completion with request:
+Data: {
+  "model": "anthropic/claude-3.5-sonnet",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 40%, AI: 60%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "yup that's true"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:45.648Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:04:45.648Z] Generating debate response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messagesCount": 9
+}
+[2024-11-28T13:04:45.648Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"There should be a complete separation of church and state.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:47.292Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799086-sqEOrhLEjNxQc8rD7bQ0",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799086,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 452,
+      "completion_tokens": 51,
+      "total_tokens": 503
+    }
+  }
+}
+[2024-11-28T13:04:47.294Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+}
+[2024-11-28T13:04:49.024Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799086-tSDzsUD4Hg4S11vUXkyr",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732799086,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "35",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 582,
+      "completion_tokens": 7,
+      "total_tokens": 589
+    }
+  }
+}
+[2024-11-28T13:04:49.026Z] Received evaluation response:
+Data: "35"
+[2024-11-28T13:04:49.026Z] Final calculated score:
+Data: {
+  "rawScore": 35,
+  "boundedScore": 35,
+  "originalScore": 40
+}
+[2024-11-28T13:04:49.026Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 35
+}
+[2024-11-28T13:04:52.378Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:04:52.378Z] Generating hint:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for"
+}
+[2024-11-28T13:04:52.378Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Generate a direct, concise argument for the topic \"There should be a complete separation of church and state.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+    },
+    {
+      "role": "user",
+      "content": "Provide a brief, focused argument for this position."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:54.162Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799092-Vo6lrxSJwbpNlkV8kBIn",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799092,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 66,
+      "completion_tokens": 50,
+      "total_tokens": 116
+    }
+  }
+}
+[2024-11-28T13:04:54.164Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens."
+}
+[2024-11-28T13:04:55.053Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "yup that's true"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens."
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:55.053Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messagesCount": 12,
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:04:55.053Z] Evaluating argument:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "messagesCount": 12,
+  "lastMessage": {
+    "role": "user",
+    "content": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens."
+  }
+}
+[2024-11-28T13:04:55.053Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 35%, AI: 65%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "otherwise politics can corrupt religion"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+  },
+  {
+    "role": "assistant",
+    "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+  },
+  {
+    "role": "user",
+    "content": "I agree with you"
+  },
+  {
+    "role": "assistant",
+    "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+  },
+  {
+    "role": "user",
+    "content": "another good point you make"
+  },
+  {
+    "role": "assistant",
+    "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+  },
+  {
+    "role": "user",
+    "content": "yup that's true"
+  },
+  {
+    "role": "assistant",
+    "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+  },
+  {
+    "role": "user",
+    "content": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens."
+  }
+]
+[2024-11-28T13:04:55.053Z] Generating completion with request:
+Data: {
+  "model": "anthropic/claude-3.5-sonnet",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 35%, AI: 65%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "yup that's true"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:55.375Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "yup that's true"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:04:55.375Z] Generating debate response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messagesCount": 11
+}
+[2024-11-28T13:04:55.376Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"There should be a complete separation of church and state.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "yup that's true"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:04:57.092Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799095-1vMP1NSgtK5LU3GvjdEw",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732799095,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "40",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 698,
+      "completion_tokens": 7,
+      "total_tokens": 705
+    }
+  }
+}
+[2024-11-28T13:04:57.094Z] Received evaluation response:
+Data: "40"
+[2024-11-28T13:04:57.094Z] Final calculated score:
+Data: {
+  "rawScore": 40,
+  "boundedScore": 40,
+  "originalScore": 35
+}
+[2024-11-28T13:04:57.094Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 40
+}
+[2024-11-28T13:04:57.142Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799095-wmxgnooGLVr0hhBfeTUL",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799095,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "I'm glad we see eye to eye! Emphasizing collaboration between church and state can lead to policies that are informed by ethical considerations while also respecting individual freedoms. Ultimately, this approach can strengthen democracy and foster a more inclusive society.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 515,
+      "completion_tokens": 46,
+      "total_tokens": 561
+    }
+  }
+}
+[2024-11-28T13:04:57.145Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "I'm glad we see eye to eye! Emphasizing collaboration between church and state can lead to policies that are informed by ethical considerations while also respecting individual freedoms. Ultimately, this approach can strengthen democracy and foster a more inclusive society."
+}
+[2024-11-28T13:05:01.926Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:05:01.926Z] Generating hint:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for"
+}
+[2024-11-28T13:05:01.926Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Generate a direct, concise argument for the topic \"There should be a complete separation of church and state.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+    },
+    {
+      "role": "user",
+      "content": "Provide a brief, focused argument for this position."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:05:03.727Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799102-ZkfrDPUXCoLSizl9xLIF",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799102,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Complete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 66,
+      "completion_tokens": 50,
+      "total_tokens": 116
+    }
+  }
+}
+[2024-11-28T13:05:03.730Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Complete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
+}
+[2024-11-28T13:05:04.854Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "yup that's true"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens."
+    },
+    {
+      "role": "assistant",
+      "content": "I'm glad we see eye to eye! Emphasizing collaboration between church and state can lead to policies that are informed by ethical considerations while also respecting individual freedoms. Ultimately, this approach can strengthen democracy and foster a more inclusive society."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
+    }
+  ],
+  "currentScores": {
+    "user": 40,
+    "opponent": 60
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:05:04.854Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "messagesCount": 14,
+  "currentScores": {
+    "user": 40,
+    "opponent": 60
+  },
+  "model": "anthropic/claude-3.5-sonnet"
+}
+[2024-11-28T13:05:04.854Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 40%, AI: 60%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "otherwise politics can corrupt religion"
+  },
+  {
+    "role": "assistant",
+    "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+  },
+  {
+    "role": "user",
+    "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+  },
+  {
+    "role": "assistant",
+    "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+  },
+  {
+    "role": "user",
+    "content": "I agree with you"
+  },
+  {
+    "role": "assistant",
+    "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+  },
+  {
+    "role": "user",
+    "content": "another good point you make"
+  },
+  {
+    "role": "assistant",
+    "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+  },
+  {
+    "role": "user",
+    "content": "yup that's true"
+  },
+  {
+    "role": "assistant",
+    "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+  },
+  {
+    "role": "user",
+    "content": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens."
+  },
+  {
+    "role": "assistant",
+    "content": "I'm glad we see eye to eye! Emphasizing collaboration between church and state can lead to policies that are informed by ethical considerations while also respecting individual freedoms. Ultimately, this approach can strengthen democracy and foster a more inclusive society."
+  },
+  {
+    "role": "user",
+    "content": "Complete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
+  }
+]
+[2024-11-28T13:05:04.854Z] Evaluating argument:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "for",
+  "currentScores": {
+    "user": 40,
+    "opponent": 60
+  },
+  "messagesCount": 14,
+  "lastMessage": {
+    "role": "user",
+    "content": "Complete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
+  }
+}
+[2024-11-28T13:05:04.854Z] Generating completion with request:
+Data: {
+  "model": "anthropic/claude-3.5-sonnet",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"There should be a complete separation of church and state.\". Current scores - Player: 40%, AI: 60%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "yup that's true"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens."
+    },
+    {
+      "role": "assistant",
+      "content": "I'm glad we see eye to eye! Emphasizing collaboration between church and state can lead to policies that are informed by ethical considerations while also respecting individual freedoms. Ultimately, this approach can strengthen democracy and foster a more inclusive society."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures religious freedom for all individuals, prevents government endorsement of specific beliefs, and protects democracy by keeping governance free from religious influence. This fosters a pluralistic society where diverse beliefs coexist without interference or favoritism from the state."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:05:05.174Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "yup that's true"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens."
+    },
+    {
+      "role": "assistant",
+      "content": "I'm glad we see eye to eye! Emphasizing collaboration between church and state can lead to policies that are informed by ethical considerations while also respecting individual freedoms. Ultimately, this approach can strengthen democracy and foster a more inclusive society."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T13:05:05.174Z] Generating debate response:
+Data: {
+  "topic": "There should be a complete separation of church and state.",
+  "position": "against",
+  "messagesCount": 13
+}
+[2024-11-28T13:05:05.174Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"There should be a complete separation of church and state.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "otherwise politics can corrupt religion"
+    },
+    {
+      "role": "assistant",
+      "content": "A complete separation of church and state undermines the moral and ethical foundations that many laws and societal norms are built upon, which are often influenced by religious teachings. Additionally, religion can provide a framework for community values and social cohesion that benefit society as a whole. Therefore, a healthy interaction between church and state can enhance governance and promote the common good."
+    },
+    {
+      "role": "user",
+      "content": "Complete separation of church and state ensures freedom of belief, prevents government endorsement of any religion, and protects minority faiths from discrimination. It fosters a pluralistic society where diverse beliefs coexist harmoniously, safeguarding democracy and individual rights. Religion should influence personal lives, not public policy."
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "I agree with you"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's true that politics can corrupt religion, a complete separation is not the only solution. Instead, fostering accountability and transparency in both realms can prevent such corruption while allowing for constructive dialogue and mutual influence. A balanced relationship can help ensure that both politics and religion serve the best interests of society without compromising their integrity."
+    },
+    {
+      "role": "user",
+      "content": "another good point you make"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "yup that's true"
+    },
+    {
+      "role": "assistant",
+      "content": "I appreciate your agreement! It’s important to recognize that a nuanced approach can allow for the positive contributions of both religion and government while safeguarding against potential abuses. Striking that balance can lead to a more cohesive society that respects diverse beliefs while promoting shared values."
+    },
+    {
+      "role": "user",
+      "content": "A complete separation of church and state ensures religious freedom, protects minority beliefs, and prevents government interference in personal faith. It promotes equality by ensuring laws are based on secular principles rather than religious doctrine, fostering a more inclusive and fair society for all citizens."
+    },
+    {
+      "role": "assistant",
+      "content": "I'm glad we see eye to eye! Emphasizing collaboration between church and state can lead to policies that are informed by ethical considerations while also respecting individual freedoms. Ultimately, this approach can strengthen democracy and foster a more inclusive society."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T13:05:07.525Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799105-jfz6x8u401cVfRAQO3D6",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732799105,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "While a complete separation of church and state promotes religious freedom and protects minority beliefs, it can also overlook the ways in which moral and ethical frameworks, often informed by religious teachings, can contribute positively to public policy. A collaborative approach allows for diverse perspectives to shape laws that reflect the values of a pluralistic society. Ultimately, creating dialogue between these entities can enhance societal well-being while respecting individual rights.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 619,
+      "completion_tokens": 79,
+      "total_tokens": 698
+    }
+  }
+}
+[2024-11-28T13:05:07.528Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "While a complete separation of church and state promotes religious freedom and protects minority beliefs, it can also overlook the ways in which moral and ethical frameworks, often informed by religious teachings, can contribute positively to public policy. A collaborative approach allows for diverse perspectives to shape laws that reflect the values of a pluralistic society. Ultimately, creating dialogue between these entities can enhance societal well-being while respecting individual rights."
+}
+[2024-11-28T13:05:07.664Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732799106-cr9V2qCjpHxoqBiqfbPO",
+    "provider": "Anthropic",
+    "model": "anthropic/claude-3.5-sonnet",
+    "object": "chat.completion",
+    "created": 1732799106,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "end_turn",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 809,
+      "completion_tokens": 6,
+      "total_tokens": 815
+    }
+  }
+}
+[2024-11-28T13:05:07.667Z] Received evaluation response:
+Data: "45"
+[2024-11-28T13:05:07.667Z] Final calculated score:
+Data: {
+  "rawScore": 45,
+  "boundedScore": 45,
+  "originalScore": 40
+}
+[2024-11-28T13:05:07.667Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
+}
