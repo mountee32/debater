@@ -95,12 +95,19 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({
               ? `You (${userPosition})`
               : `${aiPersonality.name} (${aiPosition})`}
           </span>
-          {score !== undefined && previousScore !== undefined && (
+          {score !== undefined && previousScore !== undefined ? (
             <span 
               data-testid="message-score"
               className={`text-sm font-medium px-2.5 py-0.5 rounded-lg ${getScoreColor(score, previousScore)}`}
             >
               {getScoreDisplay(score, previousScore)}
+            </span>
+          ) : (
+            <span 
+              data-testid="message-loading"
+              className="text-sm font-medium px-2.5 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 animate-pulse"
+            >
+              Calculating...
             </span>
           )}
         </div>

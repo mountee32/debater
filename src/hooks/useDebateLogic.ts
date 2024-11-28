@@ -75,39 +75,44 @@ export const useDebateLogic = (
     try {
       // Add and evaluate player's message
       const currentUserScore = state.audienceScore.user;
+      const userMessageId = messages.length + 1; // Assign unique ID for the user's message
       addMessage('user', currentArgument);
 
       const playerScore = await evaluateArgument(
         topic,
         userPosition,
-        messages,
+        [...messages, { id: userMessageId, role: 'user', content: currentArgument }],
         state.audienceScore,
         modelConfig.models.turnScoring.name,
         'user'
       );
 
-      updateMessageScore(messages.length, {
+      updateMessageScore(userMessageId, {
         score: playerScore,
         previousScore: currentUserScore
       });
       updateScores(playerScore, 'user');
 
+      // Wait for the player's score to be applied before proceeding
+      await new Promise(resolve => setTimeout(resolve, 500)); // Simulate delay for score application
+
       // Get AI's response
       const aiResponse = await continueDebate(topic, messages, aiPosition);
       const currentAiScore = state.audienceScore.opponent;
+      const aiMessageId = userMessageId + 1; // Assign unique ID for the AI's message
       addMessage('opponent', aiResponse);
 
       // Evaluate AI's response
       const aiScore = await evaluateArgument(
         topic,
         aiPosition,
-        messages,
+        [...messages, { id: aiMessageId, role: 'opponent', content: aiResponse }],
         state.audienceScore,
         modelConfig.models.turnScoring.name,
         'opponent'
       );
 
-      updateMessageScore(messages.length, {
+      updateMessageScore(aiMessageId, {
         score: aiScore,
         previousScore: currentAiScore
       });
@@ -143,19 +148,20 @@ export const useDebateLogic = (
       // Get AI's initial response
       const aiResponse = await startDebate(topic, difficulty, userPosition, aiPersonality);
       const currentAiScore = state.audienceScore.opponent;
+      const aiMessageId = messages.length + 1; // Assign unique ID for the AI's message
       addMessage('opponent', aiResponse);
 
       // Evaluate AI's initial message
       const aiScore = await evaluateArgument(
         topic,
         aiPosition,
-        messages,
+        [...messages, { id: aiMessageId, role: 'opponent', content: aiResponse }],
         state.audienceScore,
         modelConfig.models.turnScoring.name,
         'opponent'
       );
 
-      updateMessageScore(messages.length, {
+      updateMessageScore(aiMessageId, {
         score: aiScore,
         previousScore: currentAiScore
       });

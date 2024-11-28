@@ -6,7 +6,7 @@ interface MessageScore {
 }
 
 interface Message {
-  id: number;
+  id: number; // Add id property to uniquely identify messages
   role: 'user' | 'opponent' | 'hint';
   content: string;
   score?: MessageScore;
