@@ -1,16 +1,21 @@
 import { useState, useCallback } from 'react';
 
+interface MessageScore {
+  score: number;
+  previousScore: number;
+}
+
 interface Message {
   id: number;
   role: 'user' | 'opponent' | 'hint';
   content: string;
-  score?: number;
+  score?: MessageScore;
 }
 
 export const useMessageHandler = () => {
   const [messages, setMessages] = useState<Message[]>([]);
 
-  const addMessage = useCallback((role: 'user' | 'opponent' | 'hint', content: string, score?: number) => {
+  const addMessage = useCallback((role: 'user' | 'opponent' | 'hint', content: string, score?: MessageScore) => {
     setMessages(prevMessages => [
       ...prevMessages,
       { 
@@ -22,7 +27,7 @@ export const useMessageHandler = () => {
     ]);
   }, []);
 
-  const updateMessageScore = useCallback((messageId: number, score: number) => {
+  const updateMessageScore = useCallback((messageId: number, score: MessageScore) => {
     setMessages(prevMessages =>
       prevMessages.map(msg =>
         msg.id === messageId ? { ...msg, score } : msg

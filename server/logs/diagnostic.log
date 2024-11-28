@@ -523,3 +523,1117 @@ Data: {
 Data: {
   "response": "Implementing universal basic income (UBI) could strain government budgets and lead to unsustainable debt, as funding such a program would require massive tax increases or reallocating funds from essential services. Additionally, UBI may discourage work, reducing motivation for individuals to seek employment and stunting economic growth. Rather than a blanket cash distribution, targeted support for those truly in need would be a more effective and responsible approach."
 }
+[2024-11-28T10:42:11.686Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Devil's Advocate Dan, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"The electoral college is better than a popular vote system.\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:42:11.686Z] Generating debate response:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "against",
+  "messagesCount": 2
+}
+[2024-11-28T10:42:11.686Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"The electoral college is better than a popular vote system.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "system",
+      "content": "You are Devil's Advocate Dan, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"The electoral college is better than a popular vote system.\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:42:14.118Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790532-1fpkLu7xUNlPVjzH3yHu",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790532,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 85,
+      "completion_tokens": 75,
+      "total_tokens": 160
+    }
+  }
+}
+[2024-11-28T10:42:14.119Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+}
+[2024-11-28T10:42:17.332Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    },
+    {
+      "role": "user",
+      "content": "I agree"
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:42:17.332Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:42:17.332Z] Evaluating argument:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "messagesCount": 2,
+  "lastMessage": {
+    "role": "user",
+    "content": "I agree"
+  }
+}
+[2024-11-28T10:42:17.332Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+  },
+  {
+    "role": "user",
+    "content": "I agree"
+  }
+]
+[2024-11-28T10:42:17.332Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    },
+    {
+      "role": "user",
+      "content": "I agree"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:42:17.656Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:42:17.656Z] Generating debate response:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "against",
+  "messagesCount": 1
+}
+[2024-11-28T10:42:17.656Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"The electoral college is better than a popular vote system.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:42:18.291Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790537-UITUPfWx5bA7LwBESJ0w",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790537,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "40",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 210,
+      "completion_tokens": 1,
+      "total_tokens": 211
+    }
+  }
+}
+[2024-11-28T10:42:18.292Z] Final calculated score:
+Data: {
+  "rawScore": 40,
+  "boundedScore": 40,
+  "originalScore": 50
+}
+[2024-11-28T10:42:18.292Z] Received evaluation response:
+Data: "40"
+[2024-11-28T10:42:18.292Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 40
+}
+[2024-11-28T10:42:20.103Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790538-IQmPqmLXvkqXMDjbyusE",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790538,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 111,
+      "completion_tokens": 75,
+      "total_tokens": 186
+    }
+  }
+}
+[2024-11-28T10:42:20.104Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+}
+[2024-11-28T10:42:24.294Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:42:24.294Z] Generating hint:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for"
+}
+[2024-11-28T10:42:24.294Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Generate a direct, concise argument for the topic \"The electoral college is better than a popular vote system.\". Keep it under 50 words. State the argument directly without any prefixes like \"I could\" or \"You should\"."
+    },
+    {
+      "role": "user",
+      "content": "Provide a brief, focused argument for this position."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:42:25.740Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790544-adRerx1rThrC0nhlUjFQ",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790544,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 66,
+      "completion_tokens": 49,
+      "total_tokens": 115
+    }
+  }
+}
+[2024-11-28T10:42:25.741Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "The electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+}
+[2024-11-28T10:42:26.715Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    },
+    {
+      "role": "user",
+      "content": "I agree"
+    },
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    },
+    {
+      "role": "user",
+      "content": "The electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+    }
+  ],
+  "currentScores": {
+    "user": 40,
+    "opponent": 60
+  },
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:42:26.715Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "messagesCount": 4,
+  "currentScores": {
+    "user": 40,
+    "opponent": 60
+  },
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:42:26.715Z] Evaluating argument:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "currentScores": {
+    "user": 40,
+    "opponent": 60
+  },
+  "messagesCount": 4,
+  "lastMessage": {
+    "role": "user",
+    "content": "The electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+  }
+}
+[2024-11-28T10:42:26.715Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - Player: 40%, AI: 60%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+  },
+  {
+    "role": "user",
+    "content": "I agree"
+  },
+  {
+    "role": "assistant",
+    "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+  },
+  {
+    "role": "user",
+    "content": "The electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+  }
+]
+[2024-11-28T10:42:26.715Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"The electoral college is better than a popular vote system.\". Current scores - Player: 40%, AI: 60%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    },
+    {
+      "role": "user",
+      "content": "I agree"
+    },
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    },
+    {
+      "role": "user",
+      "content": "The electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:42:27.032Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    },
+    {
+      "role": "user",
+      "content": "I agree"
+    },
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:42:27.033Z] Generating debate response:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "against",
+  "messagesCount": 3
+}
+[2024-11-28T10:42:27.033Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"The electoral college is better than a popular vote system.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    },
+    {
+      "role": "user",
+      "content": "I agree"
+    },
+    {
+      "role": "assistant",
+      "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:42:28.231Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790547-aYWWRAAlfvwgcX50nqB6",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790547,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 342,
+      "completion_tokens": 1,
+      "total_tokens": 343
+    }
+  }
+}
+[2024-11-28T10:42:28.232Z] Received evaluation response:
+Data: "45"
+[2024-11-28T10:42:28.232Z] Final calculated score:
+Data: {
+  "rawScore": 45,
+  "boundedScore": 45,
+  "originalScore": 40
+}
+[2024-11-28T10:42:28.232Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
+}
+[2024-11-28T10:42:28.808Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790547-UL1izWcOlARXVqvzGNd0",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790547,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 196,
+      "completion_tokens": 75,
+      "total_tokens": 271
+    }
+  }
+}
+[2024-11-28T10:42:28.809Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "The electoral college undermines the principle of one person, one vote, allowing a candidate to win the presidency without securing the majority of popular votes. This system disproportionately amplifies the influence of smaller states, while the voices of voters in larger states can be effectively silenced. In a true democracy, every vote should carry equal weight, promoting a more representative and fair electoral process."
+}
+[2024-11-28T10:47:19.510Z] [DebateRoutes] Evaluating debate:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "userArguments": [
+    "I agree",
+    "The electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+  ],
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:47:19.510Z] Evaluating debate:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "argumentsCount": 2
+}
+[2024-11-28T10:47:19.510Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+    },
+    {
+      "role": "user",
+      "content": "Topic: \"The electoral college is better than a popular vote system.\"\nPosition: for\nArguments:\nI agree\nThe electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:47:19.513Z] [DebateRoutes] Evaluating debate:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "userArguments": [
+    "I agree",
+    "The electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+  ],
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:47:19.513Z] Evaluating debate:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "argumentsCount": 2
+}
+[2024-11-28T10:47:19.513Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+    },
+    {
+      "role": "user",
+      "content": "Topic: \"The electoral college is better than a popular vote system.\"\nPosition: for\nArguments:\nI agree\nThe electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:47:22.909Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790839-THU0UGuPAHvA7hjeDpVx",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790839,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Score: 6\n\nRationale: The argument presented for the electoral college effectively highlights the benefits of the system, such as ensuring all states have a voice and promoting national unity. However, the points made are somewhat underdeveloped and lack depth. The argument does not address potential counterarguments, such as the feelings of disenfranchisement among voters in less populous states or the criticism that the electoral college can result in a president who does not win the popular vote. Additionally, more concrete examples or data could strengthen the argument and make it more persuasive.\n\nRecommendations:\n1. Expand on the arguments by including specific examples or historical instances where the electoral college has benefited the representation of smaller states.\n2. Acknowledge and address common counterarguments to strengthen the overall position.\n3. Incorporate statistical data to support claims about campaign strategies and voter representation.\n4. Improve the delivery by practicing clearer articulation and emphasizing key points to engage the audience more effectively.\n5. Consider discussing potential reforms to the electoral college that could enhance its effectiveness while maintaining its core benefits.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 109,
+      "completion_tokens": 211,
+      "total_tokens": 320
+    }
+  }
+}
+[2024-11-28T10:47:22.910Z] Received debate evaluation response:
+Data: "Score: 6\n\nRationale: The argument presented for the electoral college effectively highlights the benefits of the system, such as ensuring all states have a voice and promoting national unity. However, the points made are somewhat underdeveloped and lack depth. The argument does not address potential counterarguments, such as the feelings of disenfranchisement among voters in less populous states or the criticism that the electoral college can result in a president who does not win the popular vote. Additionally, more concrete examples or data could strengthen the argument and make it more persuasive.\n\nRecommendations:\n1. Expand on the arguments by including specific examples or historical instances where the electoral college has benefited the representation of smaller states.\n2. Acknowledge and address common counterarguments to strengthen the overall position.\n3. Incorporate statistical data to support claims about campaign strategies and voter representation.\n4. Improve the delivery by practicing clearer articulation and emphasizing key points to engage the audience more effectively.\n5. Consider discussing potential reforms to the electoral college that could enhance its effectiveness while maintaining its core benefits."
+[2024-11-28T10:47:22.911Z] Parsed debate evaluation result:
+Data: {
+  "overallScore": 5,
+  "rationale": "such as ensuring all states have a voice and promoting national unity. However",
+  "recommendations": "the points made are somewhat underdeveloped and lack depth. The argument does not address potential counterarguments"
+}
+[2024-11-28T10:47:22.911Z] [DebateRoutes] Debate evaluation result:
+Data: {
+  "overallScore": 5,
+  "rationale": "such as ensuring all states have a voice and promoting national unity. However",
+  "recommendations": "the points made are somewhat underdeveloped and lack depth. The argument does not address potential counterarguments"
+}
+[2024-11-28T10:47:22.916Z] [DebateRoutes] Evaluating debate:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "userArguments": [
+    "I agree",
+    "The electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+  ],
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:47:22.916Z] Evaluating debate:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "argumentsCount": 2
+}
+[2024-11-28T10:47:22.916Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+    },
+    {
+      "role": "user",
+      "content": "Topic: \"The electoral college is better than a popular vote system.\"\nPosition: for\nArguments:\nI agree\nThe electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:47:23.985Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790839-TJ4MxnuU4Jt88EKpeLGO",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790839,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Score: 6\n\nRationale: The debater presented a clear position in favor of the electoral college and articulated a couple of key arguments supporting this stance. The emphasis on national unity and the representation of less populous states is a valid point, as it highlights the potential for a more balanced political landscape. However, the argument lacks depth and counterarguments to strengthen the case. The points made could also benefit from empirical evidence or examples to enhance credibility and engagement. Additionally, addressing potential criticisms of the electoral college would make the argument more robust.\n\nRecommendations:\n1. **Expand Arguments**: Provide more detailed explanations and examples of how the electoral college promotes national unity and represents diverse interests.\n2. **Incorporate Data**: Use statistics or historical examples to support claims about candidates addressing a wider range of issues due to the electoral college.\n3. **Anticipate Counterarguments**: Acknowledge and refute common criticisms of the electoral college to demonstrate a well-rounded understanding of the topic.\n4. **Engage Emotionally**: Consider incorporating anecdotes or stories that illustrate the importance of giving a voice to smaller states, which could resonate more with the audience.\n5. **Practice Delivery**: Work on the pacing and engagement level during the debate to maintain audience interest and convey confidence.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 109,
+      "completion_tokens": 258,
+      "total_tokens": 367
+    }
+  }
+}
+[2024-11-28T10:47:23.986Z] Received debate evaluation response:
+Data: "Score: 6\n\nRationale: The debater presented a clear position in favor of the electoral college and articulated a couple of key arguments supporting this stance. The emphasis on national unity and the representation of less populous states is a valid point, as it highlights the potential for a more balanced political landscape. However, the argument lacks depth and counterarguments to strengthen the case. The points made could also benefit from empirical evidence or examples to enhance credibility and engagement. Additionally, addressing potential criticisms of the electoral college would make the argument more robust.\n\nRecommendations:\n1. **Expand Arguments**: Provide more detailed explanations and examples of how the electoral college promotes national unity and represents diverse interests.\n2. **Incorporate Data**: Use statistics or historical examples to support claims about candidates addressing a wider range of issues due to the electoral college.\n3. **Anticipate Counterarguments**: Acknowledge and refute common criticisms of the electoral college to demonstrate a well-rounded understanding of the topic.\n4. **Engage Emotionally**: Consider incorporating anecdotes or stories that illustrate the importance of giving a voice to smaller states, which could resonate more with the audience.\n5. **Practice Delivery**: Work on the pacing and engagement level during the debate to maintain audience interest and convey confidence."
+[2024-11-28T10:47:23.986Z] Parsed debate evaluation result:
+Data: {
+  "overallScore": 5,
+  "rationale": "as it highlights the potential for a more balanced political landscape. However",
+  "recommendations": "the argument lacks depth and counterarguments to strengthen the case. The points made could also benefit from empirical evidence or examples to enhance credibility and engagement. Additionally"
+}
+[2024-11-28T10:47:23.986Z] [DebateRoutes] Debate evaluation result:
+Data: {
+  "overallScore": 5,
+  "rationale": "as it highlights the potential for a more balanced political landscape. However",
+  "recommendations": "the argument lacks depth and counterarguments to strengthen the case. The points made could also benefit from empirical evidence or examples to enhance credibility and engagement. Additionally"
+}
+[2024-11-28T10:47:23.993Z] [DebateRoutes] Evaluating debate:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "userArguments": [
+    "I agree",
+    "The electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+  ],
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:47:23.993Z] Evaluating debate:
+Data: {
+  "topic": "The electoral college is better than a popular vote system.",
+  "position": "for",
+  "argumentsCount": 2
+}
+[2024-11-28T10:47:23.993Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Evaluate the debate performance and provide a score (1-10), rationale, and recommendations. Format: score,rationale,recommendations"
+    },
+    {
+      "role": "user",
+      "content": "Topic: \"The electoral college is better than a popular vote system.\"\nPosition: for\nArguments:\nI agree\nThe electoral college ensures that all states, regardless of population size, have a voice in presidential elections, promoting national unity and preventing dominance by populous regions. This system encourages candidates to campaign nationwide, addressing diverse interests rather than focusing solely on urban centers."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:47:27.505Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790843-4LSErdYwH59RTXigWGCO",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790843,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Score: 6\n\nRationale: The performance presents a clear stance in favor of the electoral college, highlighting its benefits such as promoting national unity and ensuring representation for less populous states. However, the argument lacks depth and supporting evidence, which diminishes its persuasiveness. The points made are valid but could benefit from more elaboration, examples, and counterarguments to strengthen the case against the popular vote system. The argument would also be more compelling if it addressed potential criticisms of the electoral college, such as claims of disenfranchisement or disproportionality in representation.\n\nRecommendations:\n1. Provide specific examples or historical instances where the electoral college has successfully represented diverse state interests.\n2. Address common counterarguments to the electoral college, such as the potential for a candidate to win the presidency without winning the popular vote.\n3. Incorporate statistical data or studies that showcase the impact of the electoral college on campaign strategies and voter engagement across various states.\n4. Enhance rhetorical techniques to engage the audience emotionally and intellectually, emphasizing the importance of every state’s voice in the electoral process.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 109,
+      "completion_tokens": 217,
+      "total_tokens": 326
+    }
+  }
+}
+[2024-11-28T10:47:27.507Z] Received debate evaluation response:
+Data: "Score: 6\n\nRationale: The performance presents a clear stance in favor of the electoral college, highlighting its benefits such as promoting national unity and ensuring representation for less populous states. However, the argument lacks depth and supporting evidence, which diminishes its persuasiveness. The points made are valid but could benefit from more elaboration, examples, and counterarguments to strengthen the case against the popular vote system. The argument would also be more compelling if it addressed potential criticisms of the electoral college, such as claims of disenfranchisement or disproportionality in representation.\n\nRecommendations:\n1. Provide specific examples or historical instances where the electoral college has successfully represented diverse state interests.\n2. Address common counterarguments to the electoral college, such as the potential for a candidate to win the presidency without winning the popular vote.\n3. Incorporate statistical data or studies that showcase the impact of the electoral college on campaign strategies and voter engagement across various states.\n4. Enhance rhetorical techniques to engage the audience emotionally and intellectually, emphasizing the importance of every state’s voice in the electoral process."
+[2024-11-28T10:47:27.507Z] Parsed debate evaluation result:
+Data: {
+  "overallScore": 5,
+  "rationale": "highlighting its benefits such as promoting national unity and ensuring representation for less populous states. However",
+  "recommendations": "the argument lacks depth and supporting evidence"
+}
+[2024-11-28T10:47:27.507Z] [DebateRoutes] Debate evaluation result:
+Data: {
+  "overallScore": 5,
+  "rationale": "highlighting its benefits such as promoting national unity and ensuring representation for less populous states. However",
+  "recommendations": "the argument lacks depth and supporting evidence"
+}
+[2024-11-28T10:47:28.138Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790844-7vTU0XWmgwVfG7tYjP2Z",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790844,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Score: 5\n\nRationale: The performance presents a clear stance in favor of the electoral college, emphasizing the importance of state representation and the promotion of national unity. However, the argument lacks depth and counterpoints to strengthen the position. While the points about campaigning nationwide and addressing diverse interests are valid, they could be bolstered with examples or statistics that illustrate the benefits more effectively. Additionally, addressing common counterarguments against the electoral college would provide a more rounded debate performance.\n\nRecommendations:\n1. Incorporate specific examples or case studies that illustrate how the electoral college has positively impacted national elections.\n2. Anticipate and address counterarguments, such as claims that the popular vote would better reflect the will of the people, to strengthen the argument.\n3. Use data or statistics to support claims about campaigning behaviors and the diversity of interests represented under the electoral college system.\n4. Enhance rhetorical techniques, such as storytelling or emotional appeals, to connect with the audience on a deeper level.\n5. Develop a more structured argument with clear points and transitions to improve overall coherence and persuasiveness.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 109,
+      "completion_tokens": 217,
+      "total_tokens": 326
+    }
+  }
+}
+[2024-11-28T10:47:28.139Z] Received debate evaluation response:
+Data: "Score: 5\n\nRationale: The performance presents a clear stance in favor of the electoral college, emphasizing the importance of state representation and the promotion of national unity. However, the argument lacks depth and counterpoints to strengthen the position. While the points about campaigning nationwide and addressing diverse interests are valid, they could be bolstered with examples or statistics that illustrate the benefits more effectively. Additionally, addressing common counterarguments against the electoral college would provide a more rounded debate performance.\n\nRecommendations:\n1. Incorporate specific examples or case studies that illustrate how the electoral college has positively impacted national elections.\n2. Anticipate and address counterarguments, such as claims that the popular vote would better reflect the will of the people, to strengthen the argument.\n3. Use data or statistics to support claims about campaigning behaviors and the diversity of interests represented under the electoral college system.\n4. Enhance rhetorical techniques, such as storytelling or emotional appeals, to connect with the audience on a deeper level.\n5. Develop a more structured argument with clear points and transitions to improve overall coherence and persuasiveness."
+[2024-11-28T10:47:28.139Z] Parsed debate evaluation result:
+Data: {
+  "overallScore": 5,
+  "rationale": "emphasizing the importance of state representation and the promotion of national unity. However",
+  "recommendations": "the argument lacks depth and counterpoints to strengthen the position. While the points about campaigning nationwide and addressing diverse interests are valid"
+}
+[2024-11-28T10:47:28.139Z] [DebateRoutes] Debate evaluation result:
+Data: {
+  "overallScore": 5,
+  "rationale": "emphasizing the importance of state representation and the promotion of national unity. However",
+  "recommendations": "the argument lacks depth and counterpoints to strengthen the position. While the points about campaigning nationwide and addressing diverse interests are valid"
+}
+[2024-11-28T10:55:35.905Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Campaign finance reform is necessary for a fair democratic process.\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:55:35.905Z] Generating debate response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messagesCount": 2
+}
+[2024-11-28T10:55:35.905Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Campaign finance reform is necessary for a fair democratic process.\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:55:37.598Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732791336-v7KamS5ad8CEMND4u6ob",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732791336,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Campaign finance reform can limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Rather than creating a fair democratic process, it may inadvertently favor established political entities and stifle emerging voices. Additionally, the focus should be on transparency and accountability rather than constraining funding sources.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 83,
+      "completion_tokens": 58,
+      "total_tokens": 141
+    }
+  }
+}
+[2024-11-28T10:55:37.599Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Campaign finance reform can limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Rather than creating a fair democratic process, it may inadvertently favor established political entities and stifle emerging voices. Additionally, the focus should be on transparency and accountability rather than constraining funding sources."
+}
+[2024-11-28T10:55:41.011Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Campaign finance reform can limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Rather than creating a fair democratic process, it may inadvertently favor established political entities and stifle emerging voices. Additionally, the focus should be on transparency and accountability rather than constraining funding sources."
+    },
+    {
+      "role": "user",
+      "content": "I agree"
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:55:41.011Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:55:41.011Z] Evaluating argument:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for",
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "messagesCount": 2,
+  "lastMessage": {
+    "role": "user",
+    "content": "I agree"
+  }
+}
+[2024-11-28T10:55:41.011Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "Campaign finance reform can limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Rather than creating a fair democratic process, it may inadvertently favor established political entities and stifle emerging voices. Additionally, the focus should be on transparency and accountability rather than constraining funding sources."
+  },
+  {
+    "role": "user",
+    "content": "I agree"
+  }
+]
+[2024-11-28T10:55:41.012Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "Campaign finance reform can limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Rather than creating a fair democratic process, it may inadvertently favor established political entities and stifle emerging voices. Additionally, the focus should be on transparency and accountability rather than constraining funding sources."
+    },
+    {
+      "role": "user",
+      "content": "I agree"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:55:41.334Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Campaign finance reform can limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Rather than creating a fair democratic process, it may inadvertently favor established political entities and stifle emerging voices. Additionally, the focus should be on transparency and accountability rather than constraining funding sources."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:55:41.334Z] Generating debate response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messagesCount": 1
+}
+[2024-11-28T10:55:41.335Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "Campaign finance reform can limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Rather than creating a fair democratic process, it may inadvertently favor established political entities and stifle emerging voices. Additionally, the focus should be on transparency and accountability rather than constraining funding sources."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:55:41.965Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732791341-zPPy7zEgC5lWlt6UFmd9",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732791341,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "52",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 193,
+      "completion_tokens": 1,
+      "total_tokens": 194
+    }
+  }
+}
+[2024-11-28T10:55:41.967Z] Received evaluation response:
+Data: "52"
+[2024-11-28T10:55:41.967Z] Final calculated score:
+Data: {
+  "rawScore": 52,
+  "boundedScore": 52,
+  "originalScore": 50
+}
+[2024-11-28T10:55:41.967Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 52
+}
+[2024-11-28T10:55:42.922Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732791341-E3bTiBXRsrSr2jiH3ISX",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732791341,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Campaign finance reform can limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Instead of fostering a fair democratic process, it may inadvertently favor established political entities while stifling emerging voices. A better approach is to enhance transparency and accountability without constraining funding sources.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 94,
+      "completion_tokens": 57,
+      "total_tokens": 151
+    }
+  }
+}
+[2024-11-28T10:55:42.923Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Campaign finance reform can limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Instead of fostering a fair democratic process, it may inadvertently favor established political entities while stifling emerging voices. A better approach is to enhance transparency and accountability without constraining funding sources."
+}

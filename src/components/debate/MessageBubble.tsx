@@ -6,6 +6,7 @@ interface MessageBubbleProps {
   role: 'user' | 'opponent';
   content: string;
   score?: number;
+  previousScore?: number;  // Add previousScore prop
   userPosition: 'for' | 'against';
   aiPosition: 'for' | 'against';
   aiPersonality: AIPersonality;
@@ -15,6 +16,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({
   role,
   content,
   score,
+  previousScore,
   userPosition,
   aiPosition,
   aiPersonality,
@@ -23,15 +25,16 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({
     return position === 'for' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400';
   };
 
-  const getScoreDisplay = (score: number) => {
-    const percentageChange = (score - 5) * 2;
+  const getScoreDisplay = (newScore: number, prevScore: number) => {
+    // Calculate change from previous score to new score
+    const percentageChange = newScore - prevScore;
     const sign = percentageChange >= 0 ? '+' : '';
     const displayValue = Math.round(percentageChange);
     return sign + displayValue.toString() + '%';
   };
 
-  const getScoreColor = (score: number) => {
-    const percentageChange = (score - 5) * 2;
+  const getScoreColor = (newScore: number, prevScore: number) => {
+    const percentageChange = newScore - prevScore;
     if (percentageChange > 0) {
       return 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300';
     } else if (percentageChange < 0) {
@@ -92,12 +95,12 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({
               ? `You (${userPosition})`
               : `${aiPersonality.name} (${aiPosition})`}
           </span>
-          {score !== undefined && (
+          {score !== undefined && previousScore !== undefined && (
             <span 
               data-testid="message-score"
-              className={`text-sm font-medium px-2.5 py-0.5 rounded-lg ${getScoreColor(score)}`}
+              className={`text-sm font-medium px-2.5 py-0.5 rounded-lg ${getScoreColor(score, previousScore)}`}
             >
-              {getScoreDisplay(score)}
+              {getScoreDisplay(score, previousScore)}
             </span>
           )}
         </div>

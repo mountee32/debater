@@ -66,6 +66,9 @@ export const useDebateLogic = (
     updateState({ isLoading: true, isAiThinking: true, error: null });
 
     try {
+      // Store current score before update
+      const currentScore = state.audienceScore.user;
+      
       addMessage('user', currentArgument);
 
       const { response, newScore } = await continueDebate(
@@ -81,9 +84,11 @@ export const useDebateLogic = (
       if (response) {
         addMessage('opponent', response);
         
-        // Calculate the score change from previous
-        const scoreDelta = newScore - state.audienceScore.user;
-        updateMessageScore(messages.length + 1, scoreDelta);
+        // Pass both new score and previous score
+        updateMessageScore(messages.length + 1, {
+          score: newScore,
+          previousScore: currentScore
+        });
         
         // Update the overall scores
         updateScores(newScore);
