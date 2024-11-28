@@ -70,7 +70,7 @@ export class ApiLogger {
 
     const systemMessage = data.messages.find((m: Message) => m.role === 'system')?.content || '';
     
-    if (systemMessage.includes('Rate the argument')) {
+    if (systemMessage.includes('Score the latest player message') || systemMessage.includes('Current scores')) {
       return 'message_scoring';
     }
     if (systemMessage.includes('Generate a hint') || systemMessage.includes('Generate a direct, concise argument')) {

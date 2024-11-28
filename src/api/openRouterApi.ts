@@ -118,46 +118,44 @@ export const continueDebate = async (
   userArgument: string,
   difficulty: Difficulty,
   userPosition: Position,
-  aiPersonality: AIPersonality
+  aiPersonality: AIPersonality,
+  currentScores: { user: number; opponent: number }
 ): Promise<{
   response: string;
-  evaluation: {
-    score: number;
-    feedback: string;
-    consistencyScore: number;
-    factScore: number;
-    styleScore: number;
-    audienceReaction: number;
-  };
+  newScore: number;
 }> => {
   try {
     const aiPosition = userPosition === 'for' ? 'against' : 'for';
+
+    // Map message roles to OpenRouter accepted roles
+    const mappedMessages = messages.map(msg => ({
+      role: msg.role === 'user' ? 'user' : 'assistant',
+      content: msg.content
+    }));
 
     const [evaluationResponse, aiResponse] = await Promise.all([
       axios.post(`${API_BASE_URL}/evaluate`, {
         topic,
         position: userPosition,
-        argument: userArgument,
+        messages: [...mappedMessages, { role: 'user', content: userArgument }],
+        currentScores,
         model: TURN_SCORING_MODEL
       }),
       axios.post(`${API_BASE_URL}/response`, {
         topic,
         position: aiPosition,
-        messages: messages.map(msg => ({
-          role: msg.role === 'user' ? 'user' : 'assistant',
-          content: msg.content
-        })),
+        messages: mappedMessages,
         model: OPPONENT_MODEL
       })
     ]);
 
-    if (!aiResponse.data?.response || !evaluationResponse.data) {
+    if (!aiResponse.data?.response || typeof evaluationResponse.data?.score !== 'number') {
       throw new Error('Invalid response format');
     }
 
     return {
       response: aiResponse.data.response,
-      evaluation: evaluationResponse.data
+      newScore: evaluationResponse.data.score
     };
   } catch (error) {
     console.error('Continue debate error:', error);

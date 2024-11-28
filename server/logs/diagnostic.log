@@ -1,0 +1,525 @@
+[2024-11-28T10:35:00.598Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Campaign finance reform is necessary for a fair democratic process.\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:35:00.598Z] Generating debate response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messagesCount": 2
+}
+[2024-11-28T10:35:00.598Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Campaign finance reform is necessary for a fair democratic process.\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:35:02.746Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790101-F55PREsoFhm2Ssdz5fSB",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790101,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Campaign finance reform can inadvertently limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Moreover, it may not address the root causes of inequality in political influence, as wealthy individuals will always find ways to exert their power, whether through legal loopholes or alternative means. Therefore, rather than reforming campaign finance, we should focus on enhancing voter education and engagement to create a more informed electorate.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 83,
+      "completion_tokens": 82,
+      "total_tokens": 165
+    }
+  }
+}
+[2024-11-28T10:35:02.747Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Campaign finance reform can inadvertently limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Moreover, it may not address the root causes of inequality in political influence, as wealthy individuals will always find ways to exert their power, whether through legal loopholes or alternative means. Therefore, rather than reforming campaign finance, we should focus on enhancing voter education and engagement to create a more informed electorate."
+}
+[2024-11-28T10:35:09.064Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Campaign finance reform can inadvertently limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Moreover, it may not address the root causes of inequality in political influence, as wealthy individuals will always find ways to exert their power, whether through legal loopholes or alternative means. Therefore, rather than reforming campaign finance, we should focus on enhancing voter education and engagement to create a more informed electorate."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:35:09.064Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:35:09.065Z] Evaluating argument:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "for",
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "messagesCount": 2,
+  "lastMessage": {
+    "role": "user",
+    "content": "sometimes"
+  }
+}
+[2024-11-28T10:35:09.065Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "id": 1,
+    "role": "opponent",
+    "content": "Campaign finance reform can inadvertently limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Moreover, it may not address the root causes of inequality in political influence, as wealthy individuals will always find ways to exert their power, whether through legal loopholes or alternative means. Therefore, rather than reforming campaign finance, we should focus on enhancing voter education and engagement to create a more informed electorate."
+  },
+  {
+    "role": "user",
+    "content": "sometimes"
+  }
+]
+[2024-11-28T10:35:09.065Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"Campaign finance reform is necessary for a fair democratic process.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Campaign finance reform can inadvertently limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Moreover, it may not address the root causes of inequality in political influence, as wealthy individuals will always find ways to exert their power, whether through legal loopholes or alternative means. Therefore, rather than reforming campaign finance, we should focus on enhancing voter education and engagement to create a more informed electorate."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:35:09.068Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Campaign finance reform can inadvertently limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Moreover, it may not address the root causes of inequality in political influence, as wealthy individuals will always find ways to exert their power, whether through legal loopholes or alternative means. Therefore, rather than reforming campaign finance, we should focus on enhancing voter education and engagement to create a more informed electorate."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:35:09.068Z] Generating debate response:
+Data: {
+  "topic": "Campaign finance reform is necessary for a fair democratic process.",
+  "position": "against",
+  "messagesCount": 1
+}
+[2024-11-28T10:35:09.068Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"Campaign finance reform is necessary for a fair democratic process.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "Campaign finance reform can inadvertently limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Moreover, it may not address the root causes of inequality in political influence, as wealthy individuals will always find ways to exert their power, whether through legal loopholes or alternative means. Therefore, rather than reforming campaign finance, we should focus on enhancing voter education and engagement to create a more informed electorate."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:35:09.715Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "error": {
+      "message": "Provider returned error",
+      "code": 400,
+      "metadata": {
+        "raw": "{\n  \"error\": {\n    \"message\": \"Invalid value: 'opponent'. Supported values are: 'system', 'assistant', 'user', 'function', and 'tool'.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"messages[1].role\",\n    \"code\": \"invalid_value\"\n  }\n}",
+        "provider_name": "OpenAI"
+      }
+    }
+  }
+}
+[2024-11-28T10:35:09.716Z] ERROR: Invalid OpenRouter response format
+Error Data: {
+  "error": {
+    "message": "Provider returned error",
+    "code": 400,
+    "metadata": {
+      "raw": "{\n  \"error\": {\n    \"message\": \"Invalid value: 'opponent'. Supported values are: 'system', 'assistant', 'user', 'function', and 'tool'.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"messages[1].role\",\n    \"code\": \"invalid_value\"\n  }\n}",
+      "provider_name": "OpenAI"
+    }
+  }
+}
+[2024-11-28T10:35:09.717Z] ERROR: OpenRouter API error:
+Error: Invalid OpenRouter response format
+Stack: Error: Invalid OpenRouter response format
+    at OpenRouterService.generateCompletion (/home/andy/debater/server/dist/services/openRouterService.js:49:23)
+    at async OpenRouterService.evaluateArgument (/home/andy/debater/server/dist/services/openRouterService.js:100:26)
+    at async /home/andy/debater/server/dist/routes/debateRoutes.js:101:23
+[2024-11-28T10:35:09.717Z] ERROR: [DebateRoutes] Evaluation error:
+Error: Invalid OpenRouter response format
+Stack: Error: Invalid OpenRouter response format
+    at OpenRouterService.generateCompletion (/home/andy/debater/server/dist/services/openRouterService.js:49:23)
+    at async OpenRouterService.evaluateArgument (/home/andy/debater/server/dist/services/openRouterService.js:100:26)
+    at async /home/andy/debater/server/dist/routes/debateRoutes.js:101:23
+[2024-11-28T10:35:11.116Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790109-wrgwwcvPgVrHwytlkksg",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790109,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Campaign finance reform can inadvertently limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Moreover, it may not address the root causes of inequality in political influence, as wealthy individuals will always find ways to exert their power, whether through legal loopholes or alternative means. Therefore, rather than reforming campaign finance, we should focus on enhancing voter education and engagement to create a more informed electorate.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 118,
+      "completion_tokens": 82,
+      "total_tokens": 200
+    }
+  }
+}
+[2024-11-28T10:35:11.116Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Campaign finance reform can inadvertently limit free speech by imposing restrictions on how individuals and organizations express their political opinions. Moreover, it may not address the root causes of inequality in political influence, as wealthy individuals will always find ways to exert their power, whether through legal loopholes or alternative means. Therefore, rather than reforming campaign finance, we should focus on enhancing voter education and engagement to create a more informed electorate."
+}
+[2024-11-28T10:38:03.996Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Governments should implement universal basic income.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Devil's Advocate Dan, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Governments should implement universal basic income.\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:38:03.996Z] Generating debate response:
+Data: {
+  "topic": "Governments should implement universal basic income.",
+  "position": "against",
+  "messagesCount": 2
+}
+[2024-11-28T10:38:03.996Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"Governments should implement universal basic income.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "system",
+      "content": "You are Devil's Advocate Dan, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Governments should implement universal basic income.\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:38:06.366Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790284-wn5GIOKC0dKsxHbbFctB",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790284,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Implementing universal basic income (UBI) could strain government budgets and lead to unsustainable debt, as funding such a program would require massive tax increases or reallocating funds from essential services. Additionally, UBI may discourage work, reducing motivation for individuals to seek employment and stunting economic growth. Rather than a blanket cash distribution, targeted support for those truly in need would be a more effective and responsible approach.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 79,
+      "completion_tokens": 82,
+      "total_tokens": 161
+    }
+  }
+}
+[2024-11-28T10:38:06.367Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Implementing universal basic income (UBI) could strain government budgets and lead to unsustainable debt, as funding such a program would require massive tax increases or reallocating funds from essential services. Additionally, UBI may discourage work, reducing motivation for individuals to seek employment and stunting economic growth. Rather than a blanket cash distribution, targeted support for those truly in need would be a more effective and responsible approach."
+}
+[2024-11-28T10:38:08.217Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Governments should implement universal basic income.",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Implementing universal basic income (UBI) could strain government budgets and lead to unsustainable debt, as funding such a program would require massive tax increases or reallocating funds from essential services. Additionally, UBI may discourage work, reducing motivation for individuals to seek employment and stunting economic growth. Rather than a blanket cash distribution, targeted support for those truly in need would be a more effective and responsible approach."
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:38:08.217Z] Generating debate response:
+Data: {
+  "topic": "Governments should implement universal basic income.",
+  "position": "against",
+  "messagesCount": 1
+}
+[2024-11-28T10:38:08.217Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are debating against the topic \"Governments should implement universal basic income.\". Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "Implementing universal basic income (UBI) could strain government budgets and lead to unsustainable debt, as funding such a program would require massive tax increases or reallocating funds from essential services. Additionally, UBI may discourage work, reducing motivation for individuals to seek employment and stunting economic growth. Rather than a blanket cash distribution, targeted support for those truly in need would be a more effective and responsible approach."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:38:08.537Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Governments should implement universal basic income.",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Implementing universal basic income (UBI) could strain government budgets and lead to unsustainable debt, as funding such a program would require massive tax increases or reallocating funds from essential services. Additionally, UBI may discourage work, reducing motivation for individuals to seek employment and stunting economic growth. Rather than a blanket cash distribution, targeted support for those truly in need would be a more effective and responsible approach."
+    },
+    {
+      "role": "user",
+      "content": "yes"
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:38:08.537Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Governments should implement universal basic income.",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "openai/gpt-4o-mini"
+}
+[2024-11-28T10:38:08.537Z] Evaluating argument:
+Data: {
+  "topic": "Governments should implement universal basic income.",
+  "position": "for",
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "messagesCount": 2,
+  "lastMessage": {
+    "role": "user",
+    "content": "yes"
+  }
+}
+[2024-11-28T10:38:08.537Z] Sending evaluation request with messages:
+Data: [
+  {
+    "role": "system",
+    "content": "You are scoring a debate on \"Governments should implement universal basic income.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+  },
+  {
+    "role": "assistant",
+    "content": "Implementing universal basic income (UBI) could strain government budgets and lead to unsustainable debt, as funding such a program would require massive tax increases or reallocating funds from essential services. Additionally, UBI may discourage work, reducing motivation for individuals to seek employment and stunting economic growth. Rather than a blanket cash distribution, targeted support for those truly in need would be a more effective and responsible approach."
+  },
+  {
+    "role": "user",
+    "content": "yes"
+  }
+]
+[2024-11-28T10:38:08.537Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring a debate on \"Governments should implement universal basic income.\". Current scores - Player: 50%, AI: 50%.\n\nIMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.\n\nThis score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.\n\nExample responses:\n55\n48\n62\n\nAnalyze the debate history and latest message to determine the new score:"
+    },
+    {
+      "role": "assistant",
+      "content": "Implementing universal basic income (UBI) could strain government budgets and lead to unsustainable debt, as funding such a program would require massive tax increases or reallocating funds from essential services. Additionally, UBI may discourage work, reducing motivation for individuals to seek employment and stunting economic growth. Rather than a blanket cash distribution, targeted support for those truly in need would be a more effective and responsible approach."
+    },
+    {
+      "role": "user",
+      "content": "yes"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-28T10:38:09.416Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790289-eEN21N3aeft5OJ3xMkFl",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790289,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 213,
+      "completion_tokens": 1,
+      "total_tokens": 214
+    }
+  }
+}
+[2024-11-28T10:38:09.417Z] Received evaluation response:
+Data: "45"
+[2024-11-28T10:38:09.417Z] Final calculated score:
+Data: {
+  "rawScore": 45,
+  "boundedScore": 45,
+  "originalScore": 50
+}
+[2024-11-28T10:38:09.417Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
+}
+[2024-11-28T10:38:10.084Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732790288-amcRqUAjC1VhWWkX1Xoc",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1732790288,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Implementing universal basic income (UBI) could strain government budgets and lead to unsustainable debt, as funding such a program would require massive tax increases or reallocating funds from essential services. Additionally, UBI may discourage work, reducing motivation for individuals to seek employment and stunting economic growth. Rather than a blanket cash distribution, targeted support for those truly in need would be a more effective and responsible approach.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 115,
+      "completion_tokens": 82,
+      "total_tokens": 197
+    }
+  }
+}
+[2024-11-28T10:38:10.085Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Implementing universal basic income (UBI) could strain government budgets and lead to unsustainable debt, as funding such a program would require massive tax increases or reallocating funds from essential services. Additionally, UBI may discourage work, reducing motivation for individuals to seek employment and stunting economic growth. Rather than a blanket cash distribution, targeted support for those truly in need would be a more effective and responsible approach."
+}

@@ -1,74 +1,135 @@
-# Debate Master
+# Debater
 
-A debate practice application with AI opponents powered by OpenRouter API.
+A real-time debate application where users can engage in structured debates with an AI opponent.
+
+## Quick Start
+
+1. Clone the repository
+2. Copy `.env.example` to `.env` and fill in your OpenRouter API key:
+```bash
+cp .env.example .env
+```
+3. Run the application:
+```bash
+./start-dev.sh
+```
+
+The script will:
+- Install dependencies
+- Initialize logging system
+- Start both frontend and backend servers
+- Enable diagnostic logging
+
+Your application will be running at:
+- Frontend: http://localhost:5173
+- Backend: http://localhost:3000
+
+## Diagnostic Logging
+
+The application includes comprehensive diagnostic logging to help debug API interactions and scoring issues.
+
+### Log Files
+- Main diagnostic log: `server/logs/diagnostic.log`
+- Startup log: `server/logs/startup.log`
+
+### Viewing Logs
+View logs in real-time:
+```bash
+cd server && npm run view-logs
+```
+
+Clear logs:
+```bash
+cd server && npm run clean-logs
+```
+
+### Log Contents
+The diagnostic log captures:
+- Server startup and configuration
+- API requests and responses
+- Message scoring calculations
+- Error traces
+- State changes
+
+## Manual Start
+
+If you prefer to start components manually:
+
+1. Start frontend only:
+```bash
+npm run dev:frontend
+```
+
+2. Start backend only:
+```bash
+npm run dev:backend
+```
+
+3. Start both:
+```bash
+npm run dev
+```
+
+## Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| PORT | Server port | 3000 |
+| CORS_ORIGIN | CORS origin URL | http://localhost:5173 |
+| OPENROUTER_API_KEY | OpenRouter API key | (required) |
+| ENABLE_DIAGNOSTIC_LOGGING | Enable detailed logging | false |
+
+## Features
+
+- Real-time debate with AI
+- Dynamic scoring system
+- Argument evaluation
+- Hint generation
+- Debate history tracking
+- Performance analytics
 
 ## Architecture
 
-The application uses a secure client-server architecture:
-- Frontend: React/TypeScript application using Vite
-- Backend: Express/TypeScript server that securely proxies OpenRouter API calls
-- API keys and sensitive operations are handled server-side
-- Rate limiting and security middleware implemented
+The application uses a client-server architecture:
 
-## Setup
+- Frontend: React + TypeScript
+- Backend: Node.js + Express
+- API: OpenRouter for AI interactions
+- Logging: Custom diagnostic and API logging systems
 
-1. Install dependencies:
+## Scoring System
+
+The debate scoring system:
+1. Starts at 50/50 baseline for both players
+2. Evaluates each message in context of the full debate
+3. Updates scores based on argument strength
+4. Maintains complementary scoring (player + AI = 100%)
+5. Shows per-message impact on overall score
+
+## Troubleshooting
+
+If you encounter issues:
+
+1. Check the diagnostic logs:
+```bash
+cd server && npm run view-logs
+```
+
+2. Verify environment variables:
+```bash
+cat .env
+```
+
+3. Ensure all dependencies are installed:
 ```bash
 npm install
 ```
 
-2. Configure environment variables:
+4. Check server status:
 ```bash
-cp .env.example .env
+curl http://localhost:3000/api/debate/test-log
 ```
-Then edit `.env` and add your OpenRouter API key and other configuration.
 
-3. Start the development servers:
+5. If logs aren't being created:
 ```bash
-npm run dev
-```
-This will start both the frontend (port 5173) and backend (port 3000) servers.
-
-## Development
-
-- Frontend code is in `src/`
-- Backend code is in `server/src/`
-- API routes are in `server/src/routes/`
-- Environment configuration in `.env`
-
-## Security Features
-
-- API keys stored securely on backend
-- CORS protection
-- Rate limiting
-- Helmet security headers
-- Input validation
-- Error handling
-
-## Available Scripts
-
-- `npm run dev` - Start both frontend and backend in development mode
-- `npm run dev:frontend` - Start only frontend
-- `npm run dev:backend` - Start only backend
-- `npm run build` - Build both frontend and backend
-- `npm run start` - Start production server
-- `npm test` - Run tests
-
-## API Endpoints
-
-All debate-related endpoints are prefixed with `/api/debate`:
-
-- POST `/topic` - Generate debate topic
-- POST `/response` - Get AI response
-- POST `/evaluate` - Evaluate argument
-- POST `/hint` - Get debate hint
-- POST `/evaluate-debate` - Get final debate evaluation
-
-## Environment Variables
-
-See `.env.example` for all available configuration options:
-
-- `PORT` - Backend server port
-- `OPENROUTER_API_KEY` - Your OpenRouter API key
-- `CORS_ORIGIN` - Allowed frontend origin
-- Model configuration options
+cd server && npm run init-logs

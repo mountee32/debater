@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { env } from '../config/env';
 import { ApiLogger } from './apiLogger';
+import DiagnosticLogger from '../utils/diagnosticLogger';
 
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -34,8 +35,8 @@ export class OpenRouterService {
         max_tokens: 500
       };
 
-      console.log('[OpenRouterService] About to log request');
-      // Log the request
+      await DiagnosticLogger.log('Generating completion with request:', requestData);
+
       const requestId = await ApiLogger.logRequest(API_URL, 'POST', {
         ...requestData,
         headers: {
@@ -43,7 +44,6 @@ export class OpenRouterService {
           'Authorization': 'Bearer [REDACTED]'
         }
       });
-      console.log('[OpenRouterService] Request logged with ID:', requestId);
 
       const response = await axios.post<APIResponse>(
         API_URL,
@@ -51,32 +51,27 @@ export class OpenRouterService {
         { headers }
       );
 
-      console.log('[OpenRouterService] About to log response');
-      // Log the response
+      await DiagnosticLogger.log('Received API response:', {
+        status: response.status,
+        data: response.data
+      });
+
       await ApiLogger.logResponse(requestId, API_URL, 'POST', {
         status: response.status,
         statusText: response.statusText,
         data: response.data,
         headers: response.headers
       });
-      console.log('[OpenRouterService] Response logged');
 
       if (!response.data?.choices?.[0]?.message?.content) {
-        console.error('Invalid OpenRouter response format:', response.data);
-        throw new Error('Invalid response format from OpenRouter API');
+        const error = 'Invalid OpenRouter response format';
+        await DiagnosticLogger.error(error, response.data);
+        throw new Error(error);
       }
 
       return response.data.choices[0].message.content.trim();
     } catch (error) {
-      console.error('OpenRouter API error:', {
-        error: error instanceof Error ? error.message : 'Unknown error',
-        details: axios.isAxiosError(error) ? {
-          status: error.response?.status,
-          statusText: error.response?.statusText,
-          data: error.response?.data,
-          headers: error.response?.headers
-        } : undefined
-      });
+      await DiagnosticLogger.error('OpenRouter API error:', error);
       
       if (axios.isAxiosError(error)) {
         throw new Error(`OpenRouter API error: ${error.response?.data?.error || error.message}`);
@@ -86,7 +81,7 @@ export class OpenRouterService {
   }
 
   static async generateTopic(category: string, model: string): Promise<string> {
-    console.log('[OpenRouterService] Generating topic:', { category, model });
+    await DiagnosticLogger.log('Generating topic:', { category, model });
     const messages = [
       {
         role: 'system',
@@ -104,39 +99,58 @@ export class OpenRouterService {
   static async evaluateArgument(
     topic: string,
     position: 'for' | 'against',
-    argument: string,
+    messages: Message[],
+    currentScores: { user: number; opponent: number },
     model: string
-  ): Promise<{
-    score: number;
-    consistencyScore: number;
-    factScore: number;
-    styleScore: number;
-    audienceReaction: number;
-    feedback: string;
-  }> {
-    console.log('[OpenRouterService] Evaluating argument:', { topic, position, model });
-    const messages = [
-      {
-        role: 'system',
-        content: 'Rate the argument from 1-10 on: overall quality, consistency, facts, style, and audience reaction. Format: score,consistency,facts,style,audience,feedback'
-      },
-      {
-        role: 'user',
-        content: `Topic: "${topic}"\nPosition: ${position}\nArgument: ${argument}`
-      }
-    ];
+  ): Promise<number> {
+    await DiagnosticLogger.log('Evaluating argument:', { 
+      topic, 
+      position, 
+      currentScores,
+      messagesCount: messages.length,
+      lastMessage: messages[messages.length - 1]
+    });
 
-    const response = await this.generateCompletion(messages, model);
-    const parts = response.split(',');
-    
-    return {
-      score: parseInt(parts[0]) || 5,
-      consistencyScore: parseInt(parts[1]) || 5,
-      factScore: parseInt(parts[2]) || 5,
-      styleScore: parseInt(parts[3]) || 5,
-      audienceReaction: parseInt(parts[4]) || 5,
-      feedback: parts.slice(5).join(',').trim() || 'No feedback provided'
+    const systemMessage = {
+      role: 'system',
+      content: `You are scoring a debate on "${topic}". Current scores - Player: ${currentScores.user}%, AI: ${currentScores.opponent}%.
+
+IMPORTANT: You must respond with ONLY a number between 0 and 100 representing the player's new overall percentage score. No other text or explanation.
+
+This score represents their relative debate performance against the AI opponent. The scores must sum to 100%, so if you give the player 60%, the AI automatically gets 40%.
+
+Example responses:
+55
+48
+62
+
+Analyze the debate history and latest message to determine the new score:`
     };
+
+    const allMessages = [systemMessage, ...messages];
+    await DiagnosticLogger.log('Sending evaluation request with messages:', allMessages);
+
+    const response = await this.generateCompletion(allMessages, model);
+    await DiagnosticLogger.log('Received evaluation response:', response);
+    
+    // Parse response as number, default to current score if parsing fails
+    const newScore = parseInt(response);
+    if (isNaN(newScore)) {
+      await DiagnosticLogger.error('Failed to parse score from response:', {
+        response,
+        parsedValue: newScore
+      });
+      return currentScores.user;
+    }
+
+    const boundedScore = Math.min(Math.max(newScore, 0), 100);
+    await DiagnosticLogger.log('Final calculated score:', {
+      rawScore: newScore,
+      boundedScore,
+      originalScore: currentScores.user
+    });
+
+    return boundedScore;
   }
 
   static async generateDebateResponse(
@@ -145,7 +159,12 @@ export class OpenRouterService {
     messages: Message[],
     model: string
   ): Promise<string> {
-    console.log('[OpenRouterService] Generating debate response:', { topic, position, model });
+    await DiagnosticLogger.log('Generating debate response:', { 
+      topic, 
+      position,
+      messagesCount: messages.length
+    });
+
     const systemMessage = {
       role: 'system',
       content: `You are debating ${position} the topic "${topic}". Keep responses under 3 sentences.`
@@ -160,7 +179,7 @@ export class OpenRouterService {
     position: 'for' | 'against',
     model: string
   ): Promise<string> {
-    console.log('[OpenRouterService] Generating hint:', { topic, position, model });
+    await DiagnosticLogger.log('Generating hint:', { topic, position });
     const messages = [
       {
         role: 'system',
@@ -185,7 +204,12 @@ export class OpenRouterService {
     rationale: string;
     recommendations: string;
   }> {
-    console.log('[OpenRouterService] Evaluating debate:', { topic, position, model });
+    await DiagnosticLogger.log('Evaluating debate:', { 
+      topic, 
+      position,
+      argumentsCount: userArguments.length
+    });
+
     const messages = [
       {
         role: 'system',
@@ -198,12 +222,17 @@ export class OpenRouterService {
     ];
 
     const response = await this.generateCompletion(messages, model);
+    await DiagnosticLogger.log('Received debate evaluation response:', response);
+
     const [score, rationale, recommendations] = response.split(',');
 
-    return {
+    const result = {
       overallScore: parseInt(score) || 5,
       rationale: rationale?.trim() || 'No rationale provided.',
       recommendations: recommendations?.trim() || 'No recommendations provided.'
     };
+
+    await DiagnosticLogger.log('Parsed debate evaluation result:', result);
+    return result;
   }
 }

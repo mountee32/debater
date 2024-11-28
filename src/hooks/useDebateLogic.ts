@@ -6,9 +6,7 @@ import { startDebate, continueDebate, generateHint, endDebate } from '../api/ope
 export interface DebateState {
   isLoading: boolean;
   isGeneratingHint: boolean;
-  currentScore: number;
   audienceScore: { user: number; opponent: number };
-  consecutiveGoodArguments: number;
   isDebateEnded: boolean;
   isAiThinking: boolean;
   error: string | null;
@@ -25,9 +23,7 @@ export const useDebateLogic = (
   const [state, setState] = useState<DebateState>({
     isLoading: false,
     isGeneratingHint: false,
-    currentScore: 0,
-    audienceScore: { user: 50, opponent: 50 },
-    consecutiveGoodArguments: 0,
+    audienceScore: { user: 50, opponent: 50 }, // Start at 50/50
     isDebateEnded: false,
     isAiThinking: false,
     error: null,
@@ -37,29 +33,17 @@ export const useDebateLogic = (
     setState(prev => ({ ...prev, ...updates }));
   };
 
-  const updateAudienceScore = (messageScore: number, isUserMessage: boolean) => {
-    setState(prev => {
-      const scoreDelta = (messageScore - 5) * 2;
-      if (isUserMessage) {
-        const userNew = Math.min(Math.max(prev.audienceScore.user + scoreDelta, 0), 100);
-        return {
-          ...prev,
-          audienceScore: {
-            user: userNew,
-            opponent: 100 - userNew
-          }
-        };
-      } else {
-        const opponentNew = Math.min(Math.max(prev.audienceScore.opponent + scoreDelta, 0), 100);
-        return {
-          ...prev,
-          audienceScore: {
-            user: 100 - opponentNew,
-            opponent: opponentNew
-          }
-        };
+  const updateScores = (newUserScore: number) => {
+    // Ensure the score is within bounds
+    const boundedScore = Math.min(Math.max(newUserScore, 0), 100);
+    
+    setState(prev => ({
+      ...prev,
+      audienceScore: {
+        user: boundedScore,
+        opponent: 100 - boundedScore // AI score is always complementary
       }
-    });
+    }));
   };
 
   const handleEndGame = async () => {
@@ -84,31 +68,25 @@ export const useDebateLogic = (
     try {
       addMessage('user', currentArgument);
 
-      const { response, evaluation } = await continueDebate(
+      const { response, newScore } = await continueDebate(
         topic,
         messages,
         currentArgument,
         difficulty,
         userPosition,
-        aiPersonality
+        aiPersonality,
+        state.audienceScore
       );
 
       if (response) {
         addMessage('opponent', response);
-
-        const totalScore = evaluation.score;
-        updateMessageScore(messages.length + 1, totalScore);
-        updateState({ currentScore: state.currentScore + totalScore });
-        updateAudienceScore(totalScore, true);
-
-        if (evaluation.score >= 7) {
-          updateState({ consecutiveGoodArguments: state.consecutiveGoodArguments + 1 });
-        } else {
-          updateState({ consecutiveGoodArguments: 0 });
-        }
-
-        const aiScore = 5 + (Math.random() * 2 - 1);
-        updateAudienceScore(aiScore, false);
+        
+        // Calculate the score change from previous
+        const scoreDelta = newScore - state.audienceScore.user;
+        updateMessageScore(messages.length + 1, scoreDelta);
+        
+        // Update the overall scores
+        updateScores(newScore);
       }
     } catch (error) {
       updateState({ error: 'Failed to get AI response. Please try again.' });
