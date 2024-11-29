@@ -16,6 +16,10 @@ interface Message {
   role: string;
   content: string;
   id?: number; // Make id optional since API messages don't need it
+  score?: {
+    score: number;
+    previousScore: number;
+  };
 }
 
 interface APIResponse {
@@ -33,16 +37,15 @@ export class OpenRouterService {
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
-        // Clean and map messages to valid API roles
-        const mappedMessages = messages.map(msg => ({
-          role: msg.role === 'opponent' ? 'assistant' : 
-                msg.role === 'user' || msg.role === 'system' ? msg.role : 'user',
+        // Keep messages as they are - don't remap roles
+        const cleanedMessages = messages.map(msg => ({
+          role: msg.role,
           content: msg.content
         })).filter(msg => msg.content.trim() !== '');
 
         const requestData = {
           model,
-          messages: mappedMessages,
+          messages: cleanedMessages,
           temperature: 0.7,
           max_tokens: 500
         };
