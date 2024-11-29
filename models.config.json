@@ -1,7 +1,7 @@
 {
   "models": {
     "opponent": {
-      "name": "openai/gpt-4o-mini",
+      "name": "google/gemini-flash-1.5",
       "description": "Primary model for generating debate responses and arguments",
       "fallback": "microsoft/wizardlm-2-7b"
     },
