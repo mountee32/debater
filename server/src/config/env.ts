@@ -19,6 +19,7 @@ interface EnvConfig {
   CORS_ORIGIN: string;
   OPENROUTER_API_KEY: string;
   ENABLE_DIAGNOSTIC_LOGGING: boolean;
+  API_BASE_URL: string; // Added API_BASE_URL
 }
 
 // Default values
@@ -26,7 +27,8 @@ const defaults: EnvConfig = {
   PORT: 3000,
   CORS_ORIGIN: 'http://localhost:5173',
   OPENROUTER_API_KEY: '',
-  ENABLE_DIAGNOSTIC_LOGGING: false
+  ENABLE_DIAGNOSTIC_LOGGING: false,
+  API_BASE_URL: 'http://localhost:3000/api/debate' // Set default for API_BASE_URL
 };
 
 // Log raw environment variables
@@ -34,7 +36,7 @@ console.log('Raw environment variables:', {
   PORT: process.env.PORT,
   CORS_ORIGIN: process.env.CORS_ORIGIN,
   ENABLE_DIAGNOSTIC_LOGGING: process.env.ENABLE_DIAGNOSTIC_LOGGING,
-  // Exclude OPENROUTER_API_KEY for security
+  // Exclude OPENROUTER_API_KEY and API_BASE_URL for security
 });
 
 // Environment variables with validation
@@ -42,7 +44,8 @@ export const env: EnvConfig = {
   PORT: parseInt(process.env.PORT || String(defaults.PORT)),
   CORS_ORIGIN: process.env.CORS_ORIGIN || defaults.CORS_ORIGIN,
   OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY || defaults.OPENROUTER_API_KEY,
-  ENABLE_DIAGNOSTIC_LOGGING: process.env.ENABLE_DIAGNOSTIC_LOGGING === 'true' || defaults.ENABLE_DIAGNOSTIC_LOGGING
+  ENABLE_DIAGNOSTIC_LOGGING: process.env.ENABLE_DIAGNOSTIC_LOGGING === 'true' || defaults.ENABLE_DIAGNOSTIC_LOGGING,
+  API_BASE_URL: process.env.API_BASE_URL || defaults.API_BASE_URL // Added API_BASE_URL
 };
 
 // Log processed environment configuration
@@ -50,7 +53,7 @@ console.log('Processed environment configuration:', {
   PORT: env.PORT,
   CORS_ORIGIN: env.CORS_ORIGIN,
   ENABLE_DIAGNOSTIC_LOGGING: env.ENABLE_DIAGNOSTIC_LOGGING,
-  // Exclude OPENROUTER_API_KEY for security
+  // Exclude OPENROUTER_API_KEY and API_BASE_URL for security
 });
 
 // Validate required environment variables

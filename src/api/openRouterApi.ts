@@ -213,33 +213,3 @@ export const generateHint = async (
 
   return response.data.hint;
 };
-
-export const endDebate = async (
-  topic: string,
-  userArguments: string[],
-  userPosition: 'for' | 'against'
-): Promise<{ overallScore: number; rationale: string; recommendations: string }> => {
-  const response = await axios.post(`${API_BASE_URL}/evaluate-debate`, {
-    topic,
-    userArguments,
-    position: userPosition,
-  });
-
-  return {
-    overallScore: response.data.overallScore,
-    rationale: response.data.rationale,
-    recommendations: response.data.recommendations
-  };
-};
-
-export const getLeaderboard = async (): Promise<Array<{ name: string; score: number }>> => {
-  const response = await axios.get(`${API_BASE_URL}/leaderboard`);
-  return response.data.leaderboard;
-};
-
-export const submitScore = async (name: string, score: number): Promise<void> => {
-  await axios.post(`${API_BASE_URL}/submit-score`, {
-    name,
-    score
-  });
-};

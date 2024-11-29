@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Loader } from 'lucide-react';
 import { AIPersonality } from '../data/aiPersonalities';
 import { useDebateLogic } from '../hooks/useDebateLogic';
@@ -6,11 +6,11 @@ import { useTimer } from '../hooks/useTimer';
 import { MessageBubble } from './debate/MessageBubble';
 import { DebateControls } from './debate/DebateControls';
 import { DebateHeader } from './debate/DebateHeader';
+import { GameSummary } from './GameSummary';
 
 interface DebateGameProps {
   topic: string;
   difficulty: 'easy' | 'medium' | 'hard';
-  onEndGame: (result: { overallScore: number; rationale: string; recommendations: string }) => void;
   aiPersonality: AIPersonality;
   userPosition: 'for' | 'against';
   isDarkMode: boolean;
@@ -30,13 +30,12 @@ interface DisplayMessage {
 const DebateGame: React.FC<DebateGameProps> = ({ 
   topic, 
   difficulty, 
-  onEndGame, 
   aiPersonality, 
   userPosition,
   isDarkMode,
   onToggleDarkMode
 }) => {
-  const [currentArgument, setCurrentArgument] = useState('');
+  const [currentArgument, setCurrentArgument] = React.useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const debateInitializedRef = useRef(false);
   const aiPosition = userPosition === 'for' ? 'against' : 'for';
@@ -44,13 +43,15 @@ const DebateGame: React.FC<DebateGameProps> = ({
   const {
     state,
     messages,
-    handleEndGame,
     handleSendArgument,
     handleHintRequest,
     initializeDebate,
-  } = useDebateLogic(topic, difficulty, userPosition, aiPersonality, onEndGame);
+    generateDebateSummary,
+  } = useDebateLogic(topic, difficulty, userPosition, aiPersonality);
 
-  const timeLeft = useTimer(300, handleEndGame);
+  const { timeLeft } = useTimer(300, async () => {
+    return Promise.resolve();
+  });
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -66,20 +67,44 @@ const DebateGame: React.FC<DebateGameProps> = ({
   }, [topic, messages.length, initializeDebate]);
 
   const onSendArgumentClick = async () => {
+    if (state.isLoading) return;
     setCurrentArgument(''); // Clear the input field immediately
     await handleSendArgument(currentArgument);
   };
 
   const onHintRequestClick = async () => {
+    if (state.isGeneratingHint) return;
     const hint = await handleHintRequest();
     if (hint) {
       setCurrentArgument(hint);
     }
   };
 
+  const onEndDebateClick = async () => {
+    await generateDebateSummary();
+  };
+
+  const onPlayAgain = () => {
+    window.location.reload(); // For now, just reload the page
+  };
+
   // Filter out hint messages and cast to DisplayMessage type
   const displayMessages = messages
     .filter(message => message.role === 'user' || message.role === 'opponent') as DisplayMessage[];
+
+  // Determine if controls should be disabled
+  const isControlsDisabled = state.isLoading || state.isGeneratingSummary;
+
+  if (state.summary) {
+    return (
+      <GameSummary
+        score={state.summary.score}
+        feedback={state.summary.feedback}
+        improvements={state.summary.improvements}
+        onPlayAgain={onPlayAgain}
+      />
+    );
+  }
 
   return (
     <div 
@@ -143,10 +168,11 @@ const DebateGame: React.FC<DebateGameProps> = ({
         setCurrentArgument={setCurrentArgument}
         onSendArgument={onSendArgumentClick}
         onHintRequest={onHintRequestClick}
-        onEndGame={handleEndGame}
+        onEndDebate={onEndDebateClick}
         isLoading={state.isLoading}
         isGeneratingHint={state.isGeneratingHint}
         userPosition={userPosition}
+        isDisabled={isControlsDisabled}
       />
     </div>
   );

@@ -1,9 +1,9 @@
 import React from 'react';
-import { ArrowLeft, Trophy, Star } from 'lucide-react';
-import { DebateGame, Leaderboard, HomeScreen } from './components';
+import { ArrowLeft } from 'lucide-react';
+import { DebateGame, HomeScreen } from './components';
 import { GameProvider } from './contexts/GameContext';
 import { useGameContext } from './hooks/useGameContext';
-import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, PregeneratedQuestionSelection, TopicSelection } from './GameSetup';
+import { CategorySelection, AIPersonalitySelection, DifficultySelection, PositionSelection, TopicSelection } from './GameSetup';
 
 const steps = ['Category', 'Topic', 'Position', 'Opponent', 'Difficulty'];
 
@@ -24,15 +24,8 @@ function AppContent() {
     difficulty,
     selectedPersonality,
     userPosition,
-    score,
-    rationale,
-    recommendations,
-    username,
-    showUsernamePrompt,
     isDarkMode,
     handleStartChat,
-    handleEndGame,
-    handleUsernameSubmit,
     toggleDarkMode,
   } = useGameContext();
 
@@ -112,7 +105,7 @@ function AppContent() {
 
           {gameState === 'home' && (
             <HomeScreen 
-              username={username} 
+              username={''} 
               onStartDebate={handleStartDebateFromLeaderboard} 
               handleStartChat={handleStartChat}
             />
@@ -126,101 +119,11 @@ function AppContent() {
             <DebateGame
               topic={topic}
               difficulty={difficulty}
-              onEndGame={handleEndGame}
               aiPersonality={selectedPersonality}
               userPosition={userPosition}
               isDarkMode={isDarkMode}
               onToggleDarkMode={toggleDarkMode}
             />
-          )}
-          {gameState === 'end' && (
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-xl rounded-2xl p-8 transition-all duration-300">
-                <div className="text-center mb-8">
-                  <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 mb-2">Debate Complete!</h2>
-                  <div className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-6 mb-4">
-                    <p className="text-lg text-white/90 mb-2">Final Score</p>
-                    <p className="text-5xl font-bold text-white">{score}/10</p>
-                    <p className="text-sm text-white/80 mt-2">
-                      {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)} Mode
-                      <span className="mx-2">•</span>
-                      {difficulty === 'easy' ? '1.0x' : difficulty === 'medium' ? '1.1x' : '1.2x'} Multiplier
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-6 transition-all duration-300">
-                    <h3 className="text-xl font-semibold mb-3 flex items-center">
-                      <Trophy className="w-5 h-5 mr-2 text-purple-500" />
-                      Debate Analysis
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{rationale}</p>
-                  </div>
-
-                  <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-6 transition-all duration-300">
-                    <h3 className="text-xl font-semibold mb-3 flex items-center">
-                      <Star className="w-5 h-5 mr-2 text-purple-500" />
-                      Improvement Tips
-                    </h3>
-                    <ul className="space-y-2">
-                      {recommendations.split('\n').map((rec: string, index: number) => (
-                        <li key={index} className="flex items-start">
-                          <span className="inline-block w-6 h-6 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-sm font-semibold mr-3 mt-0.5 flex-shrink-0">
-                            {index + 1}
-                          </span>
-                          <span className="text-gray-700 dark:text-gray-300">{rec}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {showUsernamePrompt && (
-                    <div className="bg-gradient-to-r from-purple-500/10 to-indigo-500/10 rounded-xl p-6 border-2 border-purple-500/20">
-                      <h3 className="text-xl font-semibold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
-                        🎉 New High Score! 🎉
-                      </h3>
-                      <form onSubmit={handleUsernameSubmit} className="flex flex-col items-center">
-                        <input
-                          type="text"
-                          name="username"
-                          placeholder="Enter your username"
-                          className="w-full max-w-md px-4 py-2 rounded-xl border-2 border-purple-500/20 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 mb-4"
-                          required
-                        />
-                        <button 
-                          type="submit" 
-                          className="px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                        >
-                          Submit Score
-                        </button>
-                      </form>
-                    </div>
-                  )}
-
-                  <div className="flex justify-center pt-4">
-                    <button
-                      onClick={() => setGameState('home')}
-                      className="px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-semibold"
-                    >
-                      Play Again
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-          {gameState === 'leaderboard' && (
-            <div className="text-center">
-              <h2 className="text-xl sm:text-2xl font-semibold mb-4">Leaderboard</h2>
-              <Leaderboard username={username} onStartDebate={handleStartDebateFromLeaderboard} />
-              <button
-                onClick={() => setGameState('home')}
-                className="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 mt-4 text-sm"
-              >
-                Play Again
-              </button>
-            </div>
           )}
         </div>
       </div>

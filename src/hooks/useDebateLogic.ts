@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import { AIPersonality } from '../data/aiPersonalities';
 import { useMessageHandler } from './useMessageHandler';
-import { startDebate, continueDebate, generateHint, endDebate, evaluateArgument, ApiMessage } from '../api/openRouterApi';
+import { startDebate, continueDebate, generateHint, evaluateArgument } from '../api/openRouterApi';
 import modelConfig from '../../models.config.json';
+
+interface GameSummary {
+  score: number;
+  feedback: string;
+  improvements: string[];
+}
 
 export interface DebateState {
   isLoading: boolean;
   isGeneratingHint: boolean;
   audienceScore: { user: number; opponent: number };
-  isDebateEnded: boolean;
   isAiThinking: boolean;
   error: string | null;
+  summary: GameSummary | null;
+  isGeneratingSummary: boolean;
 }
 
 // Internal Message type for the debate logic
@@ -28,17 +35,17 @@ export const useDebateLogic = (
   topic: string,
   difficulty: 'easy' | 'medium' | 'hard',
   userPosition: 'for' | 'against',
-  aiPersonality: AIPersonality,
-  onEndGame: (result: { overallScore: number; rationale: string; recommendations: string }) => void
+  aiPersonality: AIPersonality
 ) => {
   const { messages, addMessage, updateMessageScore } = useMessageHandler();
   const [state, setState] = useState<DebateState>({
     isLoading: false,
     isGeneratingHint: false,
     audienceScore: { user: 50, opponent: 50 }, // Start at 50/50
-    isDebateEnded: false,
     isAiThinking: false,
     error: null,
+    summary: null,
+    isGeneratingSummary: false
   });
 
   // Calculate AI's position based on user's position
@@ -64,22 +71,36 @@ export const useDebateLogic = (
     }));
   };
 
-  const handleEndGame = async () => {
-    const userArguments = messages
-      .filter((message) => message.role === 'user')
-      .map((message) => message.content);
-    
+  const generateDebateSummary = async () => {
+    if (state.isGeneratingSummary) return;
+
+    updateState({ isGeneratingSummary: true, error: null });
+
     try {
-      const result = await endDebate(topic, userArguments, userPosition);
-      updateState({ isDebateEnded: true });
-      onEndGame(result);
+      // Mock summary generation for now
+      // This will be replaced with actual API call later
+      const mockSummary: GameSummary = {
+        score: state.audienceScore.user,
+        feedback: "You demonstrated strong logical reasoning and effectively supported your arguments with evidence. Your responses were clear and well-structured, though there's room for improvement in addressing counterarguments.",
+        improvements: [
+          "Focus more on directly addressing opponent's key points",
+          "Include more specific examples to support your arguments",
+          "Consider incorporating more diverse types of evidence"
+        ]
+      };
+
+      updateState({ summary: mockSummary });
+      return mockSummary;
     } catch (error) {
-      updateState({ error: 'Failed to end debate. Please try again.' });
+      updateState({ error: 'Failed to generate debate summary. Please try again.' });
+      return null;
+    } finally {
+      updateState({ isGeneratingSummary: false });
     }
   };
 
   // Convert internal messages to API format
-  const convertToApiMessages = (messages: Message[]): ApiMessage[] => {
+  const convertToApiMessages = (messages: Message[]) => {
     return messages.map(msg => {
       const { id, content, score } = msg;
       if (msg.role === 'system') return { role: 'system', content, id, score };
@@ -263,9 +284,9 @@ DEBATE PRINCIPLES:
   return {
     state,
     messages,
-    handleEndGame,
     handleSendArgument,
     handleHintRequest,
     initializeDebate,
+    generateDebateSummary,
   };
 };

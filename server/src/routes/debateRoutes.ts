@@ -75,7 +75,7 @@ router.post('/response', async (req, res) => {
     const { topic, position, messages, model } = req.body;
     const response = await OpenRouterService.generateCompletion(
       messages,
-      model
+      model || 'openai/gpt-3.5-turbo'
     );
     await DiagnosticLogger.log('[DebateRoutes] Generated response:', { response });
     res.json({ response });
@@ -136,45 +136,13 @@ router.post('/hint', async (req, res) => {
   try {
     await DiagnosticLogger.log('[DebateRoutes] Generating hint:', req.body);
     const { topic, position, model } = req.body;
-    const hint = await OpenRouterService.generateHint(topic, position, model);
+    const hint = await OpenRouterService.generateHint(topic, position, model || 'openai/gpt-3.5-turbo');
     await DiagnosticLogger.log('[DebateRoutes] Generated hint:', { hint });
     res.json({ hint });
   } catch (error) {
     await DiagnosticLogger.error('[DebateRoutes] Hint generation error:', error);
     res.status(500).json({ 
       error: 'Failed to generate hint',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    });
-  }
-});
-
-// Evaluate entire debate
-router.post('/evaluate-debate', async (req, res) => {
-  try {
-    await DiagnosticLogger.log('[DebateRoutes] Evaluating debate:', req.body);
-    const { topic, userArguments, position, model } = req.body;
-    
-    if (!topic || !userArguments || !position) {
-      const error = 'Missing required fields';
-      await DiagnosticLogger.error('[DebateRoutes] Debate evaluation error - missing fields:', {
-        topic, userArguments, position
-      });
-      return res.status(400).json({ error });
-    }
-
-    const evaluation = await OpenRouterService.evaluateDebate(
-      topic,
-      userArguments,
-      position,
-      model || 'openai/gpt-3.5-turbo' // Default model if not provided
-    );
-    
-    await DiagnosticLogger.log('[DebateRoutes] Debate evaluation result:', evaluation);
-    res.json(evaluation);
-  } catch (error) {
-    await DiagnosticLogger.error('[DebateRoutes] Debate evaluation error:', error);
-    res.status(500).json({ 
-      error: 'Failed to evaluate debate',
       details: error instanceof Error ? error.message : 'Unknown error'
     });
   }

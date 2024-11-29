@@ -1,0 +1,216 @@
+[
+  {
+    "timestamp": "2024-11-29T15:16:16.842Z",
+    "requestId": "61f6eaff-93b6-4d64-9b7d-8d590b919bec",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+        },
+        {
+          "role": "user",
+          "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-29T15:16:19.492Z",
+    "requestId": "61f6eaff-93b6-4d64-9b7d-8d590b919bec",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Here's my opening argument:\n\nThe concept of God's predetermined plan is incompatible with the notion of moral responsibility, which is essential to human society. If our choices are predetermined, then we cannot be held accountable for our actions, and morality becomes meaningless. Therefore, the idea of free will is necessary to maintain a sense of moral agency and accountability.",
+      "usage": {
+        "prompt_tokens": 246,
+        "completion_tokens": 70,
+        "total_tokens": 316
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-29T15:16:19.506Z",
+    "requestId": "7635272b-93cd-4be4-a913-a972ab91da1e",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are scoring the Assistant (AI)'s latest message in a debate on \"We have no free will because God’s plan is predetermined\".\n\nSCORING TARGET: Assistant (AI)'s message\n\nCurrent scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+        },
+        {
+          "role": "user",
+          "content": "Here's my opening argument:\n\nThe concept of God's predetermined plan is incompatible with the notion of moral responsibility, which is essential to human society. If our choices are predetermined, then we cannot be held accountable for our actions, and morality becomes meaningless. Therefore, the idea of free will is necessary to maintain a sense of moral agency and accountability."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-29T15:16:20.732Z",
+    "requestId": "7635272b-93cd-4be4-a913-a972ab91da1e",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "42\n",
+      "usage": {
+        "prompt_tokens": 555,
+        "completion_tokens": 3,
+        "total_tokens": 558
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-29T15:16:23.256Z",
+    "requestId": "1ec0af4d-c274-4789-9343-dafebcc14f7a",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are scoring the User (Player)'s latest message in a debate on \"We have no free will because God’s plan is predetermined\".\n\nSCORING TARGET: User (Player)'s message\n\nCurrent scores - User (Player): 58%, Assistant (AI): 42%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+        },
+        {
+          "role": "assistant",
+          "content": "Here's my opening argument:\n\nThe concept of God's predetermined plan is incompatible with the notion of moral responsibility, which is essential to human society. If our choices are predetermined, then we cannot be held accountable for our actions, and morality becomes meaningless. Therefore, the idea of free will is necessary to maintain a sense of moral agency and accountability."
+        },
+        {
+          "role": "user",
+          "content": "maybe"
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-29T15:16:24.408Z",
+    "requestId": "1ec0af4d-c274-4789-9343-dafebcc14f7a",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "58\n",
+      "usage": {
+        "prompt_tokens": 557,
+        "completion_tokens": 3,
+        "total_tokens": 560
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-29T15:16:24.423Z",
+    "requestId": "b50c2318-13ce-4f9b-8d1d-b602bbc1dd15",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+        },
+        {
+          "role": "assistant",
+          "content": "Here's my opening argument:\n\nThe concept of God's predetermined plan is incompatible with the notion of moral responsibility, which is essential to human society. If our choices are predetermined, then we cannot be held accountable for our actions, and morality becomes meaningless. Therefore, the idea of free will is necessary to maintain a sense of moral agency and accountability."
+        },
+        {
+          "role": "user",
+          "content": "maybe"
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-29T15:16:29.175Z",
+    "requestId": "b50c2318-13ce-4f9b-8d1d-b602bbc1dd15",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "You're not convinced? That's okay! Let me try to strengthen my argument. If God's plan is predetermined, then it would imply that God is responsible for our choices, not us. This would lead to a paradox where God is simultaneously all-good and all-powerful, yet allows evil to exist in the world. This contradicts the fundamental attributes of God, making the concept of predetermination untenable.",
+      "usage": {
+        "prompt_tokens": 261,
+        "completion_tokens": 83,
+        "total_tokens": 344
+      }
+    }
+  },
+  {
+    "timestamp": "2024-11-29T15:16:29.187Z",
+    "requestId": "a20110c7-8bdb-43c2-bf44-6c829bb2c2f7",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are scoring the Assistant (AI)'s latest message in a debate on \"We have no free will because God’s plan is predetermined\".\n\nSCORING TARGET: Assistant (AI)'s message\n\nCurrent scores - Assistant (AI): 42%, User (Player): 58%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+        },
+        {
+          "role": "user",
+          "content": "Here's my opening argument:\n\nThe concept of God's predetermined plan is incompatible with the notion of moral responsibility, which is essential to human society. If our choices are predetermined, then we cannot be held accountable for our actions, and morality becomes meaningless. Therefore, the idea of free will is necessary to maintain a sense of moral agency and accountability."
+        },
+        {
+          "role": "assistant",
+          "content": "maybe"
+        },
+        {
+          "role": "user",
+          "content": "You're not convinced? That's okay! Let me try to strengthen my argument. If God's plan is predetermined, then it would imply that God is responsible for our choices, not us. This would lead to a paradox where God is simultaneously all-good and all-powerful, yet allows evil to exist in the world. This contradicts the fundamental attributes of God, making the concept of predetermination untenable."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-11-29T15:16:30.412Z",
+    "requestId": "a20110c7-8bdb-43c2-bf44-6c829bb2c2f7",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "48\n",
+      "usage": {
+        "prompt_tokens": 641,
+        "completion_tokens": 3,
+        "total_tokens": 644
+      }
+    }
+  }
+]

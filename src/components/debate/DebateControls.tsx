@@ -6,10 +6,11 @@ interface DebateControlsProps {
   setCurrentArgument: (value: string) => void;
   onSendArgument: () => void;
   onHintRequest: () => void;
-  onEndGame: () => void;
+  onEndDebate: () => void;
   isLoading: boolean;
   isGeneratingHint: boolean;
   userPosition: 'for' | 'against';
+  isDisabled?: boolean;
 }
 
 export const DebateControls: React.FC<DebateControlsProps> = ({
@@ -17,13 +18,14 @@ export const DebateControls: React.FC<DebateControlsProps> = ({
   setCurrentArgument,
   onSendArgument,
   onHintRequest,
-  onEndGame,
+  onEndDebate,
   isLoading,
   isGeneratingHint,
   userPosition,
+  isDisabled = false,
 }) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey && !isDisabled) {
       e.preventDefault();
       onSendArgument();
     }
@@ -43,12 +45,13 @@ export const DebateControls: React.FC<DebateControlsProps> = ({
           onKeyDown={handleKeyDown}
           placeholder={`Type your argument here... (You are ${userPosition} this topic)`}
           rows={2}
+          disabled={isDisabled}
         />
         <div className="flex space-x-3 mt-3">
           <button
             data-testid="send-button"
             onClick={onSendArgument}
-            disabled={isLoading || currentArgument.trim() === ''}
+            disabled={isDisabled || isLoading || currentArgument.trim() === ''}
             className="flex-1 py-2.5 px-5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl disabled:opacity-50 text-base font-semibold shadow-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
           >
             <div className="flex items-center justify-center space-x-2">
@@ -59,7 +62,7 @@ export const DebateControls: React.FC<DebateControlsProps> = ({
           <button
             data-testid="hint-button"
             onClick={onHintRequest}
-            disabled={isGeneratingHint}
+            disabled={isDisabled || isGeneratingHint}
             className="flex-1 py-2.5 px-5 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white rounded-xl disabled:opacity-50 text-base font-semibold shadow-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
           >
             <div className="flex items-center justify-center space-x-2">
@@ -69,8 +72,9 @@ export const DebateControls: React.FC<DebateControlsProps> = ({
           </button>
           <button
             data-testid="end-button"
-            onClick={onEndGame}
-            className="flex-1 py-2.5 px-5 bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 text-white rounded-xl text-base font-semibold shadow-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+            onClick={onEndDebate}
+            disabled={isDisabled}
+            className="flex-1 py-2.5 px-5 bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 text-white rounded-xl text-base font-semibold shadow-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
           >
             <div className="flex items-center justify-center space-x-2">
               <Flag size={18} />

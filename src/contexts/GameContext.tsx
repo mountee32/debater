@@ -1,10 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { submitScore, getLeaderboard } from '../api/openRouterApi';
 import { AIPersonality } from '../data/aiPersonalities';
 import debateSubjectsData from '../data/debateSubjects.json';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
-type GameState = 'home' | 'select-category' | 'select-topic' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'end' | 'leaderboard' | 'select-pregenerated';
+type GameState = 'home' | 'select-category' | 'select-topic' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'select-pregenerated';
 type Position = 'for' | 'against';
 
 interface DebateSubject {
@@ -27,18 +26,6 @@ export interface GameContextType {
   setDifficulty: React.Dispatch<React.SetStateAction<Difficulty>>;
   userPosition: Position;
   setUserPosition: React.Dispatch<React.SetStateAction<Position>>;
-  score: number;
-  setScore: React.Dispatch<React.SetStateAction<number>>;
-  rationale: string;
-  setRationale: React.Dispatch<React.SetStateAction<string>>;
-  recommendations: string;
-  setRecommendations: React.Dispatch<React.SetStateAction<string>>;
-  username: string;
-  setUsername: React.Dispatch<React.SetStateAction<string>>;
-  showUsernamePrompt: boolean;
-  setShowUsernamePrompt: React.Dispatch<React.SetStateAction<boolean>>;
-  isHighScore: boolean;
-  setIsHighScore: React.Dispatch<React.SetStateAction<boolean>>;
   isDarkMode: boolean;
   setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
   availableSubjects: DebateSubject[];
@@ -50,8 +37,6 @@ export interface GameContextType {
   handleDifficultyChange: (newDifficulty: Difficulty) => void;
   handlePositionSelect: (position: Position) => void;
   handleSubjectSelect: (subject: string) => void;
-  handleEndGame: (result: { overallScore: number; rationale: string; recommendations: string }) => Promise<void>;
-  handleUsernameSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
   toggleDarkMode: () => void;
 }
 
@@ -64,21 +49,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [selectedPersonality, setSelectedPersonality] = useState<AIPersonality | null>(null);
   const [difficulty, setDifficulty] = useState<Difficulty>('medium');
   const [userPosition, setUserPosition] = useState<Position>('for');
-  const [score, setScore] = useState(0);
-  const [rationale, setRationale] = useState('');
-  const [recommendations, setRecommendations] = useState('');
-  const [username, setUsername] = useState('');
-  const [showUsernamePrompt, setShowUsernamePrompt] = useState(false);
-  const [isHighScore, setIsHighScore] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [availableSubjects, setAvailableSubjects] = useState<DebateSubject[]>([]);
 
   useEffect(() => {
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-
     const storedDarkMode = localStorage.getItem('darkMode');
     if (storedDarkMode) {
       setIsDarkMode(storedDarkMode === 'true');
@@ -126,36 +100,6 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setGameState('select-position');
   };
 
-  const handleEndGame = async (result: { overallScore: number; rationale: string; recommendations: string }) => {
-    const difficultyMultiplier = difficulty === 'easy' ? 1.0 : difficulty === 'medium' ? 1.1 : 1.2;
-    const adjustedScore = Math.round(result.overallScore * difficultyMultiplier);
-    setScore(adjustedScore);
-    setRationale(result.rationale);
-    setRecommendations(result.recommendations);
-    
-    const leaderboardData = await getLeaderboard();
-    const highScore = leaderboardData.length < 100 || adjustedScore > leaderboardData[leaderboardData.length - 1].score;
-
-    setIsHighScore(highScore);
-    setShowUsernamePrompt(highScore && !username);
-    setGameState('end');
-  };
-
-  const handleUsernameSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const newUsername = formData.get('username') as string;
-    if (newUsername) {
-      setUsername(newUsername);
-      localStorage.setItem('username', newUsername);
-      if (isHighScore) {
-        await submitScore(newUsername, score);
-      }
-      setShowUsernamePrompt(false);
-      setGameState('leaderboard');
-    }
-  };
-
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
     localStorage.setItem('darkMode', (!isDarkMode).toString());
@@ -174,18 +118,6 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setDifficulty,
     userPosition,
     setUserPosition,
-    score,
-    setScore,
-    rationale,
-    setRationale,
-    recommendations,
-    setRecommendations,
-    username,
-    setUsername,
-    showUsernamePrompt,
-    setShowUsernamePrompt,
-    isHighScore,
-    setIsHighScore,
     isDarkMode,
     setIsDarkMode,
     availableSubjects,
@@ -197,8 +129,6 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     handleDifficultyChange,
     handlePositionSelect,
     handleSubjectSelect,
-    handleEndGame,
-    handleUsernameSubmit,
     toggleDarkMode,
   };
 
