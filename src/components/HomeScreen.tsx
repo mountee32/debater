@@ -191,9 +191,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
                 
                 return (
                   <div key={subject.id} className="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0">
-                    <h3 className="font-semibold mb-4 text-lg text-gray-700 dark:text-gray-300">
-                      {subject.subject}
-                    </h3>
+                    <button
+                      onClick={() => onStartDebate(subject.subject)}
+                      className="w-full text-left group mb-4"
+                      aria-label={`Start debate about ${subject.subject}`}
+                    >
+                      <h3 className="font-semibold text-lg text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                        {subject.subject}
+                      </h3>
+                    </button>
                     <div className="flex flex-wrap gap-4">
                       {entries.length > 0 ? (
                         entries.map((player) => (
