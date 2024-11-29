@@ -11,7 +11,7 @@
       "fallback": "microsoft/wizardlm-2-7b"
     },
     "turnScoring": {
-      "name": "openai/gpt-4o-2024-11-20",
+      "name": "google/gemini-flash-1.5",
       "description": "Evaluates individual debate turns and provides quick feedback",
       "fallback": "microsoft/wizardlm-2-7b"
     },

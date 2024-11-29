@@ -1,0 +1,3 @@
+{"timestamp":"2024-11-29T07:19:24.695Z","model":"anthropic/claude-3-sonnet","operation":"message_scoring","request":}
+{"timestamp":"2024-11-29T07:19:39.671Z","model":"gryphe/mythomax-l2-13b","operation":"message_scoring","request":}
+{"timestamp":"2024-11-29T07:19:50.246Z","model":"google/gemini-flash-1.5","operation":"message_scoring","request":}
