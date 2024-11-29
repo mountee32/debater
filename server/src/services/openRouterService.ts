@@ -15,7 +15,7 @@ const headers = {
 interface Message {
   role: string;
   content: string;
-  id?: number;
+  id?: number; // Make id optional since API messages don't need it
 }
 
 interface APIResponse {
@@ -141,7 +141,11 @@ export class OpenRouterService {
 
     const systemMessage = {
       role: 'system',
-      content: `You are scoring a debate on "${topic}". Current scores - ${primaryLabel}: ${primaryScore}%, ${secondaryLabel}: ${secondaryScore}%.
+      content: `You are scoring the ${primaryLabel}'s latest message in a debate on "${topic}".
+
+SCORING TARGET: ${primaryLabel}'s message
+
+Current scores - ${primaryLabel}: ${primaryScore}%, ${secondaryLabel}: ${secondaryScore}%.
 
 SCORING PRINCIPLES:
 
