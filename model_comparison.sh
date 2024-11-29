@@ -27,168 +27,127 @@ extract_content() {
     sed 's/^[[:space:]]*//g'
 }
 
-# Function to log API response
-log_response() {
-    local model=$1
-    local operation=$2
-    local response=$3
-    local logfile="api_logs/${operation}.log"
-    
-    # Create log entry with token usage
-    echo "=== $operation: $model ===" >> "$logfile"
-    echo "Timestamp: $(date -u +"%Y-%m-%dT%H:%M:%S.%3NZ")" >> "$logfile"
-    echo "Response: $response" >> "$logfile"
-    
-    # Extract and log token usage
-    local usage=$(echo "$response" | grep -o '"usage":{[^}]*}' | sed 's/"usage"://' | tr -d '{}' | sed 's/"//g')
-    echo "Token Usage: $usage" >> "$logfile"
-    echo "----------------------------------------" >> "$logfile"
-}
+# Function to store result in array
+declare -A debate_results
+declare -A scoring_results
+declare -A hint_results
 
-# Function to test debate message generation
-test_debate_message() {
+# Function to make API request
+make_api_request() {
     local model=$1
-    echo "Testing debate message for $model..."
+    local messages=$2
+    local operation=$3
+    
+    echo "Testing $operation for $model..."
     
     response=$(curl -s 'https://openrouter.ai/api/v1/chat/completions' \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $OPENROUTER_API_KEY" \
       -H "HTTP-Referer: http://localhost:5173" \
       -H "X-Title: Model Comparison Test" \
-      -d '{
-        "model": "'"$model"'",
-        "messages": [
-          {
-            "role": "system",
-            "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
-          },
-          {
-            "role": "user",
-            "content": "The topic is: \"Jesus Christ'\''s resurrection is a historical fact that cannot be denied\". Start with a quick opening argument against the topic."
-          }
-        ],
-        "temperature": 0.7,
-        "max_tokens": 500
-      }')
+      -d "{
+        \"model\": \"$model\",
+        \"messages\": $messages,
+        \"temperature\": 0.7,
+        \"max_tokens\": 500
+      }")
     
-    # Log the response
-    mkdir -p api_logs
-    log_response "$model" "debate_message" "$response"
-    
-    echo -e "\n=== Debate Message Test: $model ===" >> "$OUTPUT_FILE"
-    echo "Timestamp: $TIMESTAMP" >> "$OUTPUT_FILE"
-    echo -e "\nResponse:" >> "$OUTPUT_FILE"
+    # Extract content
     content=$(extract_content "$response")
-    echo -e "$content" >> "$OUTPUT_FILE"
-    echo -e "\nToken Usage:" >> "$OUTPUT_FILE"
-    echo "$response" | grep -o '"usage":{[^}]*}' | sed 's/"usage"://' | tr -d '{}' | sed 's/"//g' | tr ',' '\n' | sed 's/^/  /' >> "$OUTPUT_FILE"
-    echo -e "\n----------------------------------------\n" >> "$OUTPUT_FILE"
+    
+    # Store result in appropriate array
+    case "$operation" in
+        "debate_message")
+            debate_results["$model"]="$content"
+            ;;
+        "message_scoring")
+            # Extract just the number if it's a scoring response
+            if [[ "$content" =~ ^[[:space:]]*([0-9]+)[[:space:]]*$ ]]; then
+                scoring_results["$model"]="${BASH_REMATCH[1]}"
+            else
+                scoring_results["$model"]="N/A (invalid format)"
+            fi
+            ;;
+        "hint_generation")
+            hint_results["$model"]="$content"
+            ;;
+    esac
 }
 
-# Function to test message scoring
-test_message_scoring() {
-    local model=$1
-    echo "Testing message scoring for $model..."
-    
-    response=$(curl -s 'https://openrouter.ai/api/v1/chat/completions' \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-      -H "HTTP-Referer: http://localhost:5173" \
-      -H "X-Title: Model Comparison Test" \
-      -d '{
-        "model": "'"$model"'",
-        "messages": [
-          {
-            "role": "system",
-            "content": "You are scoring a debate. Current scores - Assistant: 50%, User: 50%. Return ONLY a number between 0-100 representing the new score. No other text."
-          },
-          {
-            "role": "assistant",
-            "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians."
-          }
-        ],
-        "temperature": 0.7,
-        "max_tokens": 500
-      }')
-    
-    # Log the response
-    log_response "$model" "message_scoring" "$response"
-    
-    echo -e "\n=== Message Scoring Test: $model ===" >> "$OUTPUT_FILE"
-    echo "Timestamp: $TIMESTAMP" >> "$OUTPUT_FILE"
-    echo -e "\nResponse:" >> "$OUTPUT_FILE"
-    content=$(extract_content "$response")
-    echo -e "$content" >> "$OUTPUT_FILE"
-    echo -e "\nToken Usage:" >> "$OUTPUT_FILE"
-    echo "$response" | grep -o '"usage":{[^}]*}' | sed 's/"usage"://' | tr -d '{}' | sed 's/"//g' | tr ',' '\n' | sed 's/^/  /' >> "$OUTPUT_FILE"
-    echo -e "\n----------------------------------------\n" >> "$OUTPUT_FILE"
-}
-
-# Function to test hint generation
-test_hint_generation() {
-    local model=$1
-    echo "Testing hint generation for $model..."
-    
-    response=$(curl -s 'https://openrouter.ai/api/v1/chat/completions' \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-      -H "HTTP-Referer: http://localhost:5173" \
-      -H "X-Title: Model Comparison Test" \
-      -d '{
-        "model": "'"$model"'",
-        "messages": [
-          {
-            "role": "system",
-            "content": "You are an assistant providing hints for a debate. The topic is \"Jesus Christ'\''s resurrection is a historical fact that cannot be denied\". Provide a hint for the position \"for\"."
-          },
-          {
-            "role": "user",
-            "content": "Provide a helpful hint for debating the position \"for\" on this topic."
-          }
-        ],
-        "temperature": 0.7,
-        "max_tokens": 500
-      }')
-    
-    # Log the response
-    log_response "$model" "hint_generation" "$response"
-    
-    echo -e "\n=== Hint Generation Test: $model ===" >> "$OUTPUT_FILE"
-    echo "Timestamp: $TIMESTAMP" >> "$OUTPUT_FILE"
-    echo -e "\nResponse:" >> "$OUTPUT_FILE"
-    content=$(extract_content "$response")
-    echo -e "$content" >> "$OUTPUT_FILE"
-    echo -e "\nToken Usage:" >> "$OUTPUT_FILE"
-    echo "$response" | grep -o '"usage":{[^}]*}' | sed 's/"usage"://' | tr -d '{}' | sed 's/"//g' | tr ',' '\n' | sed 's/^/  /' >> "$OUTPUT_FILE"
-    echo -e "\n----------------------------------------\n" >> "$OUTPUT_FILE"
-}
-
-# Create header in output file
-cat > "$OUTPUT_FILE" << EOL
-LLM Model Comparison Results - Operation Type Testing
-=================================================
-Date: $TIMESTAMP
-
-This test compares different models across three types of operations:
-1. Debate Message Generation
-2. Message Scoring
-3. Hint Generation
-
-Models being tested:
-$(printf '%s\n' "${MODELS[@]}" | sed 's/^/- /')
-
-----------------------------------------
-
-EOL
-
-# Test each model for each operation type
+# Test each model
 for model in "${MODELS[@]}"; do
-    test_debate_message "$model"
+    # Test debate message
+    debate_messages='[
+        {"role": "system", "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."},
+        {"role": "user", "content": "The topic is: \"Jesus Christ'\''s resurrection is a historical fact that cannot be denied\". Start with a quick opening argument against the topic."}
+    ]'
+    make_api_request "$model" "$debate_messages" "debate_message"
     sleep 2
-    test_message_scoring "$model"
+
+    # Test message scoring
+    scoring_messages='[
+        {"role": "system", "content": "You are scoring a debate. Current scores - Assistant: 50%, User: 50%. Return ONLY a number between 0-100 representing the new score. No other text."},
+        {"role": "assistant", "content": "I disagree. The resurrection of Jesus Christ is a matter of faith, not historical fact, and its validity is disputed by scholars and historians."}
+    ]'
+    make_api_request "$model" "$scoring_messages" "message_scoring"
     sleep 2
-    test_hint_generation "$model"
+
+    # Test hint generation
+    hint_messages='[
+        {"role": "system", "content": "You are an assistant providing hints for a debate. The topic is \"Jesus Christ'\''s resurrection is a historical fact that cannot be denied\". Provide a hint for the position \"for\"."},
+        {"role": "user", "content": "Provide a helpful hint for debating the position \"for\" on this topic."}
+    ]'
+    make_api_request "$model" "$hint_messages" "hint_generation"
     sleep 2
 done
 
-echo "Testing complete. Results saved to $OUTPUT_FILE and logs saved to api_logs/"
+# Create output file
+{
+    echo "Model Comparison Results"
+    echo "======================="
+    echo "Date: $TIMESTAMP"
+    echo
+    echo "Models Tested:"
+    for model in "${MODELS[@]}"; do
+        echo "- ${model##*/}"
+    done
+    echo
+    
+    # Print Debate Messages section
+    echo "1. Debate Messages"
+    echo "-----------------"
+    for model in "${MODELS[@]}"; do
+        echo "${model##*/}:"
+        echo "${debate_results[$model]}"
+        echo
+    done
+    
+    # Print Message Scoring section
+    echo "2. Message Scoring (0-100)"
+    echo "-------------------------"
+    # Find longest model name for padding
+    max_len=0
+    for model in "${MODELS[@]}"; do
+        len=${#model}
+        [[ $len -gt $max_len ]] && max_len=$len
+    done
+    max_len=$((max_len - 4))  # Subtract 4 to account for removing prefix
+    
+    # Print scores with aligned columns
+    for model in "${MODELS[@]}"; do
+        printf "%-${max_len}s: %s\n" "${model##*/}" "${scoring_results[$model]}"
+    done
+    echo
+    
+    # Print Hint Generation section
+    echo "3. Hint Generation"
+    echo "-----------------"
+    for model in "${MODELS[@]}"; do
+        echo "${model##*/}:"
+        echo "${hint_results[$model]}"
+        echo
+    done
+    
+} > "$OUTPUT_FILE"
+
+echo "Testing complete. Results saved to $OUTPUT_FILE"
