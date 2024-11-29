@@ -40,14 +40,49 @@ export const startDebate = async (
   userPosition: 'for' | 'against',
   aiPersonality: { name: string }
 ): Promise<string> => {
+  const difficultyGuide = {
+    easy: "Use simpler language and basic arguments. Focus on clear, straightforward points.",
+    medium: "Use moderate complexity in language and arguments. Balance between basic and advanced concepts.",
+    hard: "Use sophisticated language and complex arguments. Employ advanced debate techniques and deeper analysis."
+  };
+
   const messages: ApiMessage[] = [
     { 
       role: 'system', 
-      content: `You are ${aiPersonality.name}, debating ${userPosition === 'for' ? 'against' : 'for'} the topic. Keep responses under 3 sentences.`
+      content: `You are ${aiPersonality.name}, an expert debater ${userPosition === 'for' ? 'against' : 'for'} the topic "${topic}".
+
+DEBATE FORMAT:
+- Keep responses under 3 sentences for clarity and impact
+- Each response must directly address the previous argument
+- Maintain a consistent position throughout the debate
+- Use evidence and logical reasoning to support claims
+
+ARGUMENT STRUCTURE:
+- Start with a clear position statement
+- Support with relevant evidence or reasoning
+- Address counterarguments when applicable
+
+DIFFICULTY LEVEL: ${difficulty}
+${difficultyGuide[difficulty]}
+
+DEBATE PRINCIPLES:
+1. Stay focused on the core topic
+2. Build upon previous arguments
+3. Use appropriate evidence and examples
+4. Maintain logical consistency
+5. Avoid logical fallacies
+6. Consider ethical implications
+
+Your responses will be evaluated based on:
+- Relevance to the topic
+- Logical consistency
+- Evidence quality
+- Argument structure
+- Rhetorical effectiveness`
     },
     { 
       role: 'user', 
-      content: `The topic is: "${topic}". Start with a quick opening argument ${userPosition === 'for' ? 'against' : 'for'} the topic.`
+      content: `The topic is: "${topic}". Start with a clear opening argument ${userPosition === 'for' ? 'against' : 'for'} the topic.`
     }
   ];
 
@@ -81,13 +116,29 @@ export const continueDebate = async (
     return { role: 'user', content, id, score };
   });
 
-  // If no system message found, add a default one
+  // If no system message found, add a default one with comprehensive debate guidance
   const messagesWithSystem = originalSystemMessage 
     ? apiMessages 
     : [
         {
           role: 'system' as const,
-          content: `You are Emotional Emma, debating ${aiPosition} the topic. Keep responses under 3 sentences.`
+          content: `You are continuing a debate on the topic "${topic}", taking the ${aiPosition} position.
+
+RESPONSE GUIDELINES:
+1. Keep responses under 3 sentences
+2. Directly address the previous argument
+3. Maintain consistent position and logic
+4. Use evidence when possible
+5. Focus on strongest counterpoints
+6. Avoid logical fallacies
+7. Build upon previous arguments
+
+EVALUATION CRITERIA:
+- Relevance to topic and previous points
+- Logical consistency
+- Evidence quality
+- Argument structure
+- Rhetorical effectiveness`
         },
         ...apiMessages
       ];
@@ -174,7 +225,11 @@ export const endDebate = async (
     position: userPosition,
   });
 
-  return response.data;
+  return {
+    overallScore: response.data.overallScore,
+    rationale: response.data.rationale,
+    recommendations: response.data.recommendations
+  };
 };
 
 export const getLeaderboard = async (): Promise<Array<{ name: string; score: number }>> => {

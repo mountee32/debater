@@ -15,7 +15,7 @@ const headers = {
 interface Message {
   role: string;
   content: string;
-  id?: number; // Make id optional since API messages don't need it
+  id?: number;
   score?: {
     score: number;
     previousScore: number;
@@ -33,11 +33,10 @@ interface APIResponse {
 export class OpenRouterService {
   static async generateCompletion(messages: Message[], model: string): Promise<string> {
     const maxRetries = 3;
-    const retryDelay = 1000; // 1 second
+    const retryDelay = 1000;
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
-        // Keep messages as they are - don't remap roles
         const cleanedMessages = messages.map(msg => ({
           role: msg.role,
           content: msg.content
@@ -78,16 +77,15 @@ export class OpenRouterService {
           headers: response.headers
         });
 
-        // Safeguard against empty or missing content
         const content = response.data?.choices?.[0]?.message?.content;
         if (!content) {
           const warning = 'Empty or missing content in OpenRouter response';
           await DiagnosticLogger.warn(warning, response.data);
-          return ''; // Return an empty string as a default value
+          return '';
         }
 
         return content.trim();
-      } catch (error: any) { // Explicitly cast error to any
+      } catch (error: any) {
         await DiagnosticLogger.error(`Attempt ${attempt} failed for OpenRouter API:`, error);
 
         if (attempt < maxRetries) {
@@ -106,7 +104,29 @@ export class OpenRouterService {
     const messages = [
       {
         role: 'system',
-        content: `Generate a debate topic related to ${category}.`
+        content: `You are a debate topic generator specializing in creating engaging, thought-provoking topics for structured debates.
+
+TOPIC REQUIREMENTS:
+1. Related to category: ${category}
+2. Controversial but not offensive
+3. Clear and concise phrasing
+4. Balanced - allows strong arguments on both sides
+5. Contemporary relevance
+6. Specific enough for focused debate
+7. Broad enough for multiple arguments
+
+FORMAT:
+- State the topic as a clear proposition
+- Avoid loaded language or bias
+- Use present tense
+- Keep under 15 words
+
+EXAMPLES:
+- "Social media does more harm than good to society"
+- "Artificial intelligence will benefit humanity more than harm it"
+- "Governments should implement universal basic income"
+
+Return ONLY the topic statement, no additional text.`
       },
       {
         role: 'user',
@@ -233,29 +253,89 @@ Example valid responses:
     const messages = [
       {
         role: 'system',
-        content: `You are an assistant providing hints for a debate. The topic is "${topic}". Provide a hint for the position "${position}".`
+        content: `You are a debate coach providing strategic hints for a debate on "${topic}". The debater is arguing ${position} the topic.
+
+HINT GUIDELINES:
+1. Focus on strengthening the ${position} position
+2. Suggest specific arguments or evidence
+3. Point out potential counterarguments to address
+4. Highlight strategic opportunities
+5. Keep hints concise and actionable
+
+HINT STRUCTURE:
+- Start with a clear strategic direction
+- Provide specific supporting details
+- Suggest how to counter opponent's likely responses
+
+HINT TYPES:
+- Evidence suggestions
+- Logical frameworks
+- Rhetorical techniques
+- Counter-argument preparation
+- Position strengthening
+
+Keep the hint under 2 sentences for clarity and impact.`
       },
       {
         role: 'user',
-        content: `Provide a helpful hint for debating the position "${position}" on the topic "${topic}".`
+        content: `Provide a strategic hint for arguing ${position} on the topic "${topic}".`
       }
     ];
 
     return this.generateCompletion(messages, model);
   }
 
-  static async evaluateDebate(topic: string, userArguments: string[], position: string, model: string): Promise<string> {
+  static async evaluateDebate(
+    topic: string, 
+    userArguments: string[], 
+    position: string, 
+    model: string
+  ): Promise<{ overallScore: number; rationale: string; recommendations: string }> {
     const messages = [
       {
         role: 'system',
-        content: `You are evaluating a debate on the topic "${topic}". The user has taken the position "${position}". Evaluate the user's arguments and provide feedback.`
+        content: `You are evaluating a completed debate on the topic "${topic}". The user argued ${position}.
+
+EVALUATION CRITERIA:
+1. Argument Quality
+   - Logical consistency
+   - Evidence usage
+   - Counterargument handling
+   - Position maintenance
+
+2. Debate Strategy
+   - Opening strength
+   - Point development
+   - Response effectiveness
+   - Closing impact
+
+3. Technical Skills
+   - Clarity of expression
+   - Rhetorical effectiveness
+   - Argument structure
+   - Evidence integration
+
+FORMAT RESPONSE EXACTLY:
+SCORE: [0-100]
+RATIONALE: [2-3 sentences explaining score]
+RECOMMENDATIONS: [3-4 bullet points for improvement]`
       },
       {
         role: 'user',
-        content: `Evaluate the following arguments: ${userArguments.join(' ')}`
+        content: `Here are all the user's arguments from the debate:\n${userArguments.join('\n')}`
       }
     ];
 
-    return this.generateCompletion(messages, model);
+    const response = await this.generateCompletion(messages, model);
+    
+    const scoreMatch = response.match(/SCORE:\s*(\d+)/);
+    const rationaleMatch = response.match(/RATIONALE:\s*([\s\S]*?)(?=RECOMMENDATIONS:|$)/);
+    const recommendationsMatch = response.match(/RECOMMENDATIONS:\s*([\s\S]*?)$/);
+
+    return {
+      overallScore: scoreMatch ? parseInt(scoreMatch[1]) : 50,
+      rationale: rationaleMatch ? rationaleMatch[1].trim() : 'No rationale provided',
+      recommendations: recommendationsMatch ? recommendationsMatch[1].trim() : 'No recommendations provided'
+    };
   }
 }

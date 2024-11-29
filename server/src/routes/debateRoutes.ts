@@ -153,12 +153,22 @@ router.post('/evaluate-debate', async (req, res) => {
   try {
     await DiagnosticLogger.log('[DebateRoutes] Evaluating debate:', req.body);
     const { topic, userArguments, position, model } = req.body;
+    
+    if (!topic || !userArguments || !position) {
+      const error = 'Missing required fields';
+      await DiagnosticLogger.error('[DebateRoutes] Debate evaluation error - missing fields:', {
+        topic, userArguments, position
+      });
+      return res.status(400).json({ error });
+    }
+
     const evaluation = await OpenRouterService.evaluateDebate(
       topic,
       userArguments,
       position,
-      model
+      model || 'openai/gpt-3.5-turbo' // Default model if not provided
     );
+    
     await DiagnosticLogger.log('[DebateRoutes] Debate evaluation result:', evaluation);
     res.json(evaluation);
   } catch (error) {

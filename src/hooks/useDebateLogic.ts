@@ -124,14 +124,42 @@ export const useDebateLogic = (
       });
       updateScores(playerScore, 'user');
 
-      // Ensure system message is included for AI context
+      // Enhanced system message for AI context
+      const difficultyGuide = {
+        easy: "Use simpler language and basic arguments. Focus on clear, straightforward points.",
+        medium: "Use moderate complexity in language and arguments. Balance between basic and advanced concepts.",
+        hard: "Use sophisticated language and complex arguments. Employ advanced debate techniques and deeper analysis."
+      };
+
       const systemMessage: Message = {
         id: 0,
         role: 'system',
-        content: `You are ${aiPersonality.name}, debating ${aiPosition} the topic. Keep responses under 3 sentences.`
+        content: `You are ${aiPersonality.name}, an expert debater ${aiPosition} the topic "${topic}".
+
+DEBATE FORMAT:
+- Keep responses under 3 sentences for clarity and impact
+- Each response must directly address the previous argument
+- Maintain a consistent position throughout the debate
+- Use evidence and logical reasoning to support claims
+
+ARGUMENT STRUCTURE:
+- Start with a clear position statement
+- Support with relevant evidence or reasoning
+- Address counterarguments when applicable
+
+DIFFICULTY LEVEL: ${difficulty}
+${difficultyGuide[difficulty]}
+
+DEBATE PRINCIPLES:
+1. Stay focused on the core topic
+2. Build upon previous arguments
+3. Use appropriate evidence and examples
+4. Maintain logical consistency
+5. Avoid logical fallacies
+6. Consider ethical implications`
       };
 
-      // Get AI's response with system context
+      // Get AI's response with enhanced system context
       const aiResponse = await continueDebate(
         topic, 
         [systemMessage, ...allMessages],
