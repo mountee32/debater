@@ -1,0 +1,889 @@
+[2024-11-29T13:24:10.235Z] Diagnostic logging initialized
+[2024-11-29T13:24:10.236Z] Middleware configured
+Data: {
+  "cors": {
+    "origin": "http://localhost:5173",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  }
+}
+[2024-11-29T13:24:10.236Z] Testing diagnostic logger
+Data: {
+  "test": "This is a test log entry",
+  "timestamp": "2024-11-29T13:24:10.236Z"
+}
+[2024-11-29T13:24:10.236Z] Routes configured
+Data: {
+  "endpoints": [
+    "/api/debate"
+  ]
+}
+[2024-11-29T13:24:10.238Z] Server running on port 3000
+[2024-11-29T13:24:10.238Z] Server configuration
+Data: {
+  "port": 3000,
+  "corsOrigin": "http://localhost:5173",
+  "diagnosticLogging": true
+}
+[2024-11-29T13:24:25.896Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Atheism is just another form of religion\". Start with a quick opening argument against the topic."
+    }
+  ]
+}
+[2024-11-29T13:24:25.897Z] Generating completion with request:
+Data: {
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Atheism is just another form of religion\". Start with a quick opening argument against the topic."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-29T13:24:30.495Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732886666-A7u7DVkthLchjyM6cS8a",
+    "provider": "DeepInfra",
+    "model": "meta-llama/llama-3-70b-instruct",
+    "object": "chat.completion",
+    "created": 1732886666,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism.",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 57,
+      "completion_tokens": 82,
+      "total_tokens": 139
+    }
+  }
+}
+[2024-11-29T13:24:30.496Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+}
+[2024-11-29T13:24:30.511Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-11-29T13:24:30.511Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-11-29T13:24:30.512Z] Evaluating argument:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "roleToScore": "opponent",
+  "messagesCount": 1,
+  "lastMessage": {
+    "id": 1,
+    "role": "opponent",
+    "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+  }
+}
+[2024-11-29T13:24:30.512Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring the Assistant (AI)'s latest message in a debate on \"Atheism is just another form of religion\".\n\nSCORING TARGET: Assistant (AI)'s message\n\nCurrent scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 2
+}
+[2024-11-29T13:24:30.512Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring the Assistant (AI)'s latest message in a debate on \"Atheism is just another form of religion\".\n\nSCORING TARGET: Assistant (AI)'s message\n\nCurrent scores - Assistant (AI): 50%, User (Player): 50%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    },
+    {
+      "role": "assistant",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-29T13:24:31.239Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732886670-05oEwfLxfwuqShD4zKYq",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1732886670,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "58\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 561,
+      "completion_tokens": 3,
+      "total_tokens": 564
+    }
+  }
+}
+[2024-11-29T13:24:31.240Z] Received evaluation response:
+Data: "58"
+[2024-11-29T13:24:31.240Z] Final calculated score:
+Data: {
+  "roleToScore": "opponent",
+  "rawScore": 58,
+  "boundedScore": 58,
+  "originalScore": 50
+}
+[2024-11-29T13:24:31.240Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 58
+}
+[2024-11-29T13:24:34.463Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "for",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism.",
+      "score": {
+        "score": 58,
+        "previousScore": 50
+      }
+    },
+    {
+      "id": 2,
+      "role": "user",
+      "content": "sometimes"
+    }
+  ],
+  "currentScores": {
+    "user": 42,
+    "opponent": 58
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-11-29T13:24:34.463Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 42,
+    "opponent": 58
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-11-29T13:24:34.463Z] Evaluating argument:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "for",
+  "currentScores": {
+    "user": 42,
+    "opponent": 58
+  },
+  "roleToScore": "user",
+  "messagesCount": 2,
+  "lastMessage": {
+    "id": 2,
+    "role": "user",
+    "content": "sometimes"
+  }
+}
+[2024-11-29T13:24:34.464Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring the User (Player)'s latest message in a debate on \"Atheism is just another form of religion\".\n\nSCORING TARGET: User (Player)'s message\n\nCurrent scores - User (Player): 42%, Assistant (AI): 58%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 3
+}
+[2024-11-29T13:24:34.464Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring the User (Player)'s latest message in a debate on \"Atheism is just another form of religion\".\n\nSCORING TARGET: User (Player)'s message\n\nCurrent scores - User (Player): 42%, Assistant (AI): 58%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    },
+    {
+      "role": "assistant",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-29T13:24:35.669Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732886674-kwtyp3ysDsCLDYnLadng",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1732886674,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 562,
+      "completion_tokens": 3,
+      "total_tokens": 565
+    }
+  }
+}
+[2024-11-29T13:24:35.670Z] Received evaluation response:
+Data: "45"
+[2024-11-29T13:24:35.670Z] Final calculated score:
+Data: {
+  "roleToScore": "user",
+  "rawScore": 45,
+  "boundedScore": 45,
+  "originalScore": 42
+}
+[2024-11-29T13:24:35.670Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
+}
+[2024-11-29T13:24:35.684Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    }
+  ]
+}
+[2024-11-29T13:24:35.684Z] Generating completion with request:
+Data: {
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-29T13:24:39.055Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732886676-Y9yVsh4HAGHr9s4sAOw6",
+    "provider": "DeepInfra",
+    "model": "meta-llama/llama-3-70b-instruct",
+    "object": "chat.completion",
+    "created": 1732886676,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 120,
+      "completion_tokens": 36,
+      "total_tokens": 156
+    }
+  }
+}
+[2024-11-29T13:24:39.056Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?"
+}
+[2024-11-29T13:24:39.069Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism.",
+      "score": {
+        "score": 58,
+        "previousScore": 50
+      }
+    },
+    {
+      "id": 3,
+      "role": "opponent",
+      "content": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?"
+    }
+  ],
+  "currentScores": {
+    "user": 42,
+    "opponent": 58
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-11-29T13:24:39.069Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 42,
+    "opponent": 58
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-11-29T13:24:39.069Z] Evaluating argument:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "currentScores": {
+    "user": 42,
+    "opponent": 58
+  },
+  "roleToScore": "opponent",
+  "messagesCount": 2,
+  "lastMessage": {
+    "id": 3,
+    "role": "opponent",
+    "content": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?"
+  }
+}
+[2024-11-29T13:24:39.069Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring the Assistant (AI)'s latest message in a debate on \"Atheism is just another form of religion\".\n\nSCORING TARGET: Assistant (AI)'s message\n\nCurrent scores - Assistant (AI): 58%, User (Player): 42%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 3
+}
+[2024-11-29T13:24:39.069Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring the Assistant (AI)'s latest message in a debate on \"Atheism is just another form of religion\".\n\nSCORING TARGET: Assistant (AI)'s message\n\nCurrent scores - Assistant (AI): 58%, User (Player): 42%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    },
+    {
+      "role": "assistant",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+    },
+    {
+      "role": "assistant",
+      "content": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-29T13:24:40.228Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732886679-X5iTX81LFEJ82Q7kNM4V",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1732886679,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "68\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 599,
+      "completion_tokens": 3,
+      "total_tokens": 602
+    }
+  }
+}
+[2024-11-29T13:24:40.229Z] Received evaluation response:
+Data: "68"
+[2024-11-29T13:24:40.229Z] Final calculated score:
+Data: {
+  "roleToScore": "opponent",
+  "rawScore": 68,
+  "boundedScore": 68,
+  "originalScore": 58
+}
+[2024-11-29T13:24:40.229Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 68
+}
+[2024-11-29T13:24:51.921Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "for",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism.",
+      "score": {
+        "score": 58,
+        "previousScore": 50
+      }
+    },
+    {
+      "id": 2,
+      "role": "user",
+      "content": "sometimes",
+      "score": {
+        "score": 45,
+        "previousScore": 42
+      }
+    },
+    {
+      "id": 3,
+      "role": "opponent",
+      "content": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?",
+      "score": {
+        "score": 68,
+        "previousScore": 58
+      }
+    },
+    {
+      "id": 4,
+      "role": "user",
+      "content": "it's at least a world view"
+    }
+  ],
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-11-29T13:24:51.921Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "for",
+  "messagesCount": 4,
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-11-29T13:24:51.921Z] Evaluating argument:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "for",
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "roleToScore": "user",
+  "messagesCount": 4,
+  "lastMessage": {
+    "id": 4,
+    "role": "user",
+    "content": "it's at least a world view"
+  }
+}
+[2024-11-29T13:24:51.921Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring the User (Player)'s latest message in a debate on \"Atheism is just another form of religion\".\n\nSCORING TARGET: User (Player)'s message\n\nCurrent scores - User (Player): 32%, Assistant (AI): 68%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 5
+}
+[2024-11-29T13:24:51.921Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring the User (Player)'s latest message in a debate on \"Atheism is just another form of religion\".\n\nSCORING TARGET: User (Player)'s message\n\nCurrent scores - User (Player): 32%, Assistant (AI): 68%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the User (Player)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    },
+    {
+      "role": "assistant",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    },
+    {
+      "role": "assistant",
+      "content": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?"
+    },
+    {
+      "role": "user",
+      "content": "it's at least a world view"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-29T13:24:53.175Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732886692-dgkbxIKqqIXO59CXwhHr",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1732886692,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "38\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 607,
+      "completion_tokens": 3,
+      "total_tokens": 610
+    }
+  }
+}
+[2024-11-29T13:24:53.176Z] Received evaluation response:
+Data: "38"
+[2024-11-29T13:24:53.176Z] Final calculated score:
+Data: {
+  "roleToScore": "user",
+  "rawScore": 38,
+  "boundedScore": 38,
+  "originalScore": 32
+}
+[2024-11-29T13:24:53.176Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 38
+}
+[2024-11-29T13:24:53.229Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "assistant",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    },
+    {
+      "role": "assistant",
+      "content": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?"
+    },
+    {
+      "role": "user",
+      "content": "it's at least a world view"
+    }
+  ]
+}
+[2024-11-29T13:24:53.229Z] Generating completion with request:
+Data: {
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, debating against the topic. Keep responses under 3 sentences."
+    },
+    {
+      "role": "user",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    },
+    {
+      "role": "user",
+      "content": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?"
+    },
+    {
+      "role": "user",
+      "content": "it's at least a world view"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-29T13:24:56.469Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732886693-CP7kcuT2nrtGHGm6zadw",
+    "provider": "DeepInfra",
+    "model": "meta-llama/llama-3-70b-instruct",
+    "object": "chat.completion",
+    "created": 1732886693,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Exactly! And a worldview, by definition, is a set of beliefs and assumptions that shape one's understanding of the world, making atheism, in fact, a type of belief system.",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 173,
+      "completion_tokens": 38,
+      "total_tokens": 211
+    }
+  }
+}
+[2024-11-29T13:24:56.469Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Exactly! And a worldview, by definition, is a set of beliefs and assumptions that shape one's understanding of the world, making atheism, in fact, a type of belief system."
+}
+[2024-11-29T13:24:56.477Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "messages": [
+    {
+      "id": 1,
+      "role": "opponent",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism.",
+      "score": {
+        "score": 58,
+        "previousScore": 50
+      }
+    },
+    {
+      "id": 2,
+      "role": "user",
+      "content": "sometimes",
+      "score": {
+        "score": 45,
+        "previousScore": 42
+      }
+    },
+    {
+      "id": 3,
+      "role": "opponent",
+      "content": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?",
+      "score": {
+        "score": 68,
+        "previousScore": 58
+      }
+    },
+    {
+      "id": 5,
+      "role": "opponent",
+      "content": "Exactly! And a worldview, by definition, is a set of beliefs and assumptions that shape one's understanding of the world, making atheism, in fact, a type of belief system."
+    }
+  ],
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-11-29T13:24:56.477Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "messagesCount": 4,
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-11-29T13:24:56.477Z] Evaluating argument:
+Data: {
+  "topic": "Atheism is just another form of religion",
+  "position": "against",
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "roleToScore": "opponent",
+  "messagesCount": 4,
+  "lastMessage": {
+    "id": 5,
+    "role": "opponent",
+    "content": "Exactly! And a worldview, by definition, is a set of beliefs and assumptions that shape one's understanding of the world, making atheism, in fact, a type of belief system."
+  }
+}
+[2024-11-29T13:24:56.477Z] Sending evaluation request:
+Data: {
+  "systemMessage": "You are scoring the Assistant (AI)'s latest message in a debate on \"Atheism is just another form of religion\".\n\nSCORING TARGET: Assistant (AI)'s message\n\nCurrent scores - Assistant (AI): 68%, User (Player): 32%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62",
+  "messageCount": 5
+}
+[2024-11-29T13:24:56.477Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are scoring the Assistant (AI)'s latest message in a debate on \"Atheism is just another form of religion\".\n\nSCORING TARGET: Assistant (AI)'s message\n\nCurrent scores - Assistant (AI): 68%, User (Player): 32%.\n\nSCORING PRINCIPLES:\n\nMomentum Shifts\n- Series of strong arguments should compound for +10-15 points\n- Successfully countering main points causes +8-12 point shifts\n- Failing to address critical counterpoints results in -10-15 point penalties\n- Dropping previously made strong points causes -5-8 point penalties\n\nPoint Impact\n- Core topic arguments worth +5-8 points more than peripheral points\n- Novel arguments worth +3-5 points more than repeated points\n- Well-supported claims worth +5-7 points more than unsupported assertions\n- Direct rebuttals worth +7-10 points more than tangential responses\n\nDebate Flow\n- Building on previous strong points multiplies impact by 1.5x\n- Dropping/failing to defend points reduces score by 8-12 points\n- Successfully maintaining position against strong counterarguments adds 10-15 points\n- Contradicting own points reduces score by 12-15 points\n\nPosition Management\n- Maintaining consistent position: +5-8 points\n- Successfully defending position against pressure: +10-15 points\n- Partial agreement while defending core position: -3-5 points\n- Agreeing with opponent's core arguments: -15-20 points\n- Abandoning position entirely: -30-40 points\n\nCritical Moments\n- Defending against strong counterarguments: +10-15 points\n- Landing unanswered critical points: +12-18 points\n- Minor concessions while maintaining overall position: -5-10 points\n- Major concessions undermining core position: -15-25 points\n- Agreeing with opponent's main position: -25-35 points\n- Complete position reversal: -35-45 points\n\nRESPONSE FORMAT:\nReturn ONLY a number between 0-100 representing the Assistant (AI)'s new overall percentage score. No other text.\n\nExample valid responses:\n55\n48\n62"
+    },
+    {
+      "role": "assistant",
+      "content": "Here's my opening argument:\n\nAtheism is not a belief system, but rather a lack of belief in a deity or supernatural entity, making it fundamentally different from religion. Atheism doesn't provide a set of tenets, dogma, or rituals, unlike religions, which often have a clear doctrine and practices. To conflate the two is a false equivalence that misunderstands the nature of atheism."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    },
+    {
+      "role": "assistant",
+      "content": "But doesn't the assertion that there is no god or supernatural entity imply a belief in the natural world and the laws of physics, which is a type of belief system in itself?"
+    },
+    {
+      "role": "assistant",
+      "content": "Exactly! And a worldview, by definition, is a set of beliefs and assumptions that shape one's understanding of the world, making atheism, in fact, a type of belief system."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-11-29T13:24:58.302Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1732886696-OrChLinWpTZQpXuplRST",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1732886696,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Therefore, atheism is not simply the absence of belief in a god, but rather a positive assertion about the nature of reality. It's a worldview that prioritizes reason, evidence, and natural explanations over supernatural ones.\n\nFurthermore, many atheists share a common set of values, such as skepticism, critical thinking, and a commitment to secular ethics, which further supports the idea that atheism functions as a form of belief system.\n\nFinally, the claim that atheism is merely a lack of belief ignores the active role that atheists play in shaping public discourse and advocating for secular values. Their involvement in political and social movements demonstrates that atheism is not passive, but rather an active force in society.\n\nIn conclusion, while atheism doesn't involve the same kind of rituals or dogma as traditional religions, it nevertheless functions as a belief system with its own set of values, assumptions, and practices.\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 638,
+      "completion_tokens": 178,
+      "total_tokens": 816
+    }
+  }
+}
+[2024-11-29T13:24:58.303Z] Received evaluation response:
+Data: "Therefore, atheism is not simply the absence of belief in a god, but rather a positive assertion about the nature of reality. It's a worldview that prioritizes reason, evidence, and natural explanations over supernatural ones.\n\nFurthermore, many atheists share a common set of values, such as skepticism, critical thinking, and a commitment to secular ethics, which further supports the idea that atheism functions as a form of belief system.\n\nFinally, the claim that atheism is merely a lack of belief ignores the active role that atheists play in shaping public discourse and advocating for secular values. Their involvement in political and social movements demonstrates that atheism is not passive, but rather an active force in society.\n\nIn conclusion, while atheism doesn't involve the same kind of rituals or dogma as traditional religions, it nevertheless functions as a belief system with its own set of values, assumptions, and practices."
+[2024-11-29T13:24:58.303Z] WARNING: Failed to parse score from response:
+Data: {
+  "response": "Therefore, atheism is not simply the absence of belief in a god, but rather a positive assertion about the nature of reality. It's a worldview that prioritizes reason, evidence, and natural explanations over supernatural ones.\n\nFurthermore, many atheists share a common set of values, such as skepticism, critical thinking, and a commitment to secular ethics, which further supports the idea that atheism functions as a form of belief system.\n\nFinally, the claim that atheism is merely a lack of belief ignores the active role that atheists play in shaping public discourse and advocating for secular values. Their involvement in political and social movements demonstrates that atheism is not passive, but rather an active force in society.\n\nIn conclusion, while atheism doesn't involve the same kind of rituals or dogma as traditional religions, it nevertheless functions as a belief system with its own set of values, assumptions, and practices.",
+  "parsedValue": null
+}
+[2024-11-29T13:24:58.303Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 68
+}

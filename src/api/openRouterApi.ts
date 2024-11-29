@@ -5,6 +5,11 @@ const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:300
 interface Message {
   role: string;
   content: string;
+  id?: number;
+  score?: {
+    score: number;
+    previousScore: number;
+  };
 }
 
 export const startDebate = async (
@@ -36,10 +41,30 @@ export const continueDebate = async (
   messages: Message[],
   aiPosition: 'for' | 'against'
 ): Promise<string> => {
+  // Find the original system message to maintain personality
+  const originalSystemMessage = messages.find(m => m.role === 'system');
+  
+  // Filter out any score or id properties and map roles
+  const cleanedMessages = messages.map(msg => ({
+    role: msg.role === 'opponent' ? 'assistant' : msg.role,
+    content: msg.content
+  }));
+
+  // If no system message found, add a default one
+  const messagesWithSystem = originalSystemMessage 
+    ? cleanedMessages 
+    : [
+        {
+          role: 'system',
+          content: `You are Emotional Emma, debating ${aiPosition} the topic. Keep responses under 3 sentences.`
+        },
+        ...cleanedMessages
+      ];
+
   const response = await axios.post(`${API_BASE_URL}/response`, {
     topic,
     position: aiPosition,
-    messages,
+    messages: messagesWithSystem,
   });
 
   return response.data.response;

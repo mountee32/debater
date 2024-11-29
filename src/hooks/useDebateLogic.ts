@@ -16,7 +16,7 @@ export interface DebateState {
 // Import Message type from useMessageHandler
 type Message = {
   id: number;
-  role: 'user' | 'opponent' | 'hint';
+  role: 'user' | 'opponent' | 'hint' | 'system';
   content: string;
   score?: {
     score: number;
@@ -111,8 +111,20 @@ export const useDebateLogic = (
       });
       updateScores(playerScore, 'user');
 
-      // Get AI's response
-      const aiResponse = await continueDebate(topic, messages, aiPosition);
+      // Ensure system message is included for AI context
+      const systemMessage = {
+        id: 0,
+        role: 'system',
+        content: `You are ${aiPersonality.name}, debating ${aiPosition} the topic. Keep responses under 3 sentences.`
+      };
+
+      // Get AI's response with system context
+      const aiResponse = await continueDebate(
+        topic, 
+        [systemMessage, ...messages, userMessage],
+        aiPosition
+      );
+      
       const aiMessageId = userMessageId + 1; // Assign unique ID for the AI's message
       addMessage('opponent', aiResponse);
 

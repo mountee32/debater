@@ -6,8 +6,8 @@ interface MessageScore {
 }
 
 interface Message {
-  id: number; // Add id property to uniquely identify messages
-  role: 'user' | 'opponent' | 'hint';
+  id: number;
+  role: 'user' | 'opponent' | 'hint' | 'system';
   content: string;
   score?: MessageScore;
 }
@@ -15,7 +15,11 @@ interface Message {
 export const useMessageHandler = () => {
   const [messages, setMessages] = useState<Message[]>([]);
 
-  const addMessage = useCallback((role: 'user' | 'opponent' | 'hint', content: string, score?: MessageScore) => {
+  const addMessage = useCallback((
+    role: 'user' | 'opponent' | 'hint' | 'system', 
+    content: string, 
+    score?: MessageScore
+  ) => {
     setMessages(prevMessages => [
       ...prevMessages,
       { 
