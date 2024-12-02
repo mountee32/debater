@@ -1,0 +1,79 @@
+{
+  "id": "ec3ea6ea",
+  "startTime": "2024-12-02T15:43:52.502Z",
+  "gameSetup": {
+    "topic": "We have no free will because God’s plan is predetermined",
+    "difficulty": 1,
+    "participants": [
+      {
+        "id": "user",
+        "name": "User",
+        "avatar": "user.svg",
+        "role": "debater"
+      },
+      {
+        "id": "opponent",
+        "name": "Logical Larry",
+        "avatar": "/assets/business_man.svg",
+        "role": "debater"
+      }
+    ]
+  },
+  "events": [
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T15:45:36.127Z",
+      "speakerId": "user",
+      "content": "sometimes"
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T15:45:37.542Z",
+      "participantId": "user",
+      "newScore": 3
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T15:45:41.381Z",
+      "speakerId": "opponent",
+      "content": "While it's true that sometimes people may feel constrained by external factors, this does not negate the existence of free will. \n\n1. **Choice Amidst Constraints**: Even in difficult situations, individuals can make choices based on their values and desires. For instance, someone may choose to act kindly despite facing adversity.\n\n2. **Personal Agency**: The concept of personal agency suggests that individuals can influence their outcomes, regardless of external circumstances. This is evident in stories of people overcoming significant challenges through their choices.\n\n3. **Moral Responsibility**: If we accept that sometimes our choices are limited, it still does not mean we lack free will entirely. We can still be held accountable for our actions, as they stem from our decisions, even in tough situations."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T15:45:42.489Z",
+      "participantId": "opponent",
+      "newScore": 68
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T15:46:23.335Z",
+      "speakerId": "system",
+      "content": "Emphasize the concept of divine omniscience, arguing that if God knows everything that will happen, then our choices are already known and thus predetermined. Be prepared to counter the idea of free will by explaining how human perception of choice can coexist with divine foreknowledge, but ultimately does not negate the predetermined nature of God's plan."
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T15:46:24.745Z",
+      "speakerId": "user",
+      "content": "Emphasize the concept of divine omniscience, arguing that if God knows everything that will happen, then our choices are already known and thus predetermined. Be prepared to counter the idea of free will by explaining how human perception of choice can coexist with divine foreknowledge, but ultimately does not negate the predetermined nature of God's plan."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T15:46:25.918Z",
+      "participantId": "user",
+      "newScore": 83
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T15:46:30.203Z",
+      "speakerId": "opponent",
+      "content": "The concept of divine omniscience indeed raises questions about free will, but it does not necessarily lead to the conclusion that our choices are predetermined. \n\n1. **Foreknowledge vs. Determinism**: Just because God knows what will happen does not mean He causes it to happen. Knowledge of an event does not equate to control over that event; for example, a teacher may know a student will pass a test, but that does not mean the student did not choose to study and prepare.\n\n2. **Human Experience of Choice**: People experience making choices in their lives, which suggests that free will is an integral part of human existence. This experience can coexist with divine foreknowledge, as individuals can still act according to their own desires and intentions.\n\n3. **Moral Agency**: If our choices were entirely predetermined, moral responsibility would be undermined. The very notion of ethics relies on the idea that individuals can choose between right and wrong, which is incompatible with a strictly predetermined"
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T15:46:31.300Z",
+      "participantId": "opponent",
+      "newScore": 83
+    }
+  ],
+  "endTime": "2024-12-02T15:46:34.304Z"
+}

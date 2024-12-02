@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { OpenRouterService } from '../services/openRouterService';
 import { ApiLogger } from '../services/apiLogger';
 import DiagnosticLogger from '../utils/diagnosticLogger';
+import { ConversationRecorder } from '../services/conversationRecorder';
 import { rateLimit } from 'express-rate-limit';
 
 const router = Router();
@@ -14,6 +15,107 @@ const apiLimiter = rateLimit({
 });
 
 router.use(apiLimiter);
+
+// Start new conversation
+router.post('/start-conversation', async (req, res) => {
+  try {
+    await DiagnosticLogger.log('[DebateRoutes] Starting new conversation:', req.body);
+    const { topic, difficulty, participants } = req.body;
+
+    if (!topic || !difficulty || !participants) {
+      const error = 'Missing required fields';
+      await DiagnosticLogger.error('[DebateRoutes] Start conversation error:', error);
+      return res.status(400).json({ error });
+    }
+
+    const conversationId = await ConversationRecorder.startNewConversation({
+      topic,
+      difficulty,
+      participants
+    });
+
+    await DiagnosticLogger.log('[DebateRoutes] Started conversation:', { conversationId });
+    res.json({ conversationId });
+  } catch (error) {
+    await DiagnosticLogger.error('[DebateRoutes] Start conversation error:', error);
+    res.status(500).json({
+      error: 'Failed to start conversation',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Record message
+router.post('/record-message', async (req, res) => {
+  try {
+    await DiagnosticLogger.log('[DebateRoutes] Recording message:', req.body);
+    const { conversationId, participantId, message } = req.body;
+
+    if (!conversationId || !participantId || !message) {
+      const error = 'Missing required fields';
+      await DiagnosticLogger.error('[DebateRoutes] Record message error:', error);
+      return res.status(400).json({ error });
+    }
+
+    await ConversationRecorder.recordMessage(participantId, message);
+    await DiagnosticLogger.log('[DebateRoutes] Recorded message');
+    res.json({ success: true });
+  } catch (error) {
+    await DiagnosticLogger.error('[DebateRoutes] Record message error:', error);
+    res.status(500).json({
+      error: 'Failed to record message',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Record score
+router.post('/record-score', async (req, res) => {
+  try {
+    await DiagnosticLogger.log('[DebateRoutes] Recording score:', req.body);
+    const { conversationId, participantId, score } = req.body;
+
+    if (!conversationId || !participantId || score === undefined) {
+      const error = 'Missing required fields';
+      await DiagnosticLogger.error('[DebateRoutes] Record score error:', error);
+      return res.status(400).json({ error });
+    }
+
+    await ConversationRecorder.recordScore(participantId, score);
+    await DiagnosticLogger.log('[DebateRoutes] Recorded score');
+    res.json({ success: true });
+  } catch (error) {
+    await DiagnosticLogger.error('[DebateRoutes] Record score error:', error);
+    res.status(500).json({
+      error: 'Failed to record score',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// End conversation
+router.post('/end-conversation', async (req, res) => {
+  try {
+    await DiagnosticLogger.log('[DebateRoutes] Ending conversation:', req.body);
+    const { conversationId } = req.body;
+
+    if (!conversationId) {
+      const error = 'Missing conversationId';
+      await DiagnosticLogger.error('[DebateRoutes] End conversation error:', error);
+      return res.status(400).json({ error });
+    }
+
+    const endedConversationId = await ConversationRecorder.endConversation();
+    await DiagnosticLogger.log('[DebateRoutes] Ended conversation:', { endedConversationId });
+    res.json({ conversationId: endedConversationId });
+  } catch (error) {
+    await DiagnosticLogger.error('[DebateRoutes] End conversation error:', error);
+    res.status(500).json({
+      error: 'Failed to end conversation',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
 
 // Test logging endpoint
 router.post('/test-log', async (req, res) => {

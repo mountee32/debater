@@ -18,6 +18,7 @@ export interface DebateState {
   error: string | null;
   summary: GameSummary | null;
   isGeneratingSummary: boolean;
+  conversationId: string | null;
 }
 
 // Internal Message type for the debate logic
@@ -45,7 +46,8 @@ export const useDebateLogic = (
     isAiThinking: false,
     error: null,
     summary: null,
-    isGeneratingSummary: false
+    isGeneratingSummary: false,
+    conversationId: null
   });
 
   // Calculate AI's position based on user's position
@@ -55,20 +57,41 @@ export const useDebateLogic = (
     setState(prev => ({ ...prev, ...updates }));
   };
 
-  const updateScores = (newScore: number, role: 'user' | 'opponent') => {
+  const updateScores = async (newScore: number, role: 'user' | 'opponent') => {
     // Ensure the score is within bounds
     const boundedScore = Math.min(Math.max(newScore, 0), 100);
     
+    const newScores = role === 'user' ? {
+      user: boundedScore,
+      opponent: 100 - boundedScore
+    } : {
+      user: 100 - boundedScore,
+      opponent: boundedScore
+    };
+
     setState(prev => ({
       ...prev,
-      audienceScore: role === 'user' ? {
-        user: boundedScore,
-        opponent: 100 - boundedScore
-      } : {
-        user: 100 - boundedScore,
-        opponent: boundedScore
-      }
+      audienceScore: newScores
     }));
+
+    // Record score update through API if conversation is active
+    if (state.conversationId) {
+      try {
+        await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-score`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            conversationId: state.conversationId,
+            participantId: role,
+            score: boundedScore
+          })
+        });
+      } catch (error) {
+        console.error('Failed to record score:', error);
+      }
+    }
   };
 
   const generateDebateSummary = async () => {
@@ -88,6 +111,23 @@ export const useDebateLogic = (
           "Consider incorporating more diverse types of evidence"
         ]
       };
+
+      // End conversation through API if active
+      if (state.conversationId) {
+        try {
+          await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/end-conversation`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              conversationId: state.conversationId
+            })
+          });
+        } catch (error) {
+          console.error('Failed to end conversation:', error);
+        }
+      }
 
       updateState({ summary: mockSummary });
       return mockSummary;
@@ -120,6 +160,25 @@ export const useDebateLogic = (
       const userMessageId = messages.length + 1;
       addMessage('user', currentArgument);
 
+      // Record user message through API if conversation is active
+      if (state.conversationId) {
+        try {
+          await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              conversationId: state.conversationId,
+              participantId: 'user',
+              message: currentArgument
+            })
+          });
+        } catch (error) {
+          console.error('Failed to record message:', error);
+        }
+      }
+
       // Create message object
       const userMessage: Message = {
         id: userMessageId,
@@ -144,7 +203,7 @@ export const useDebateLogic = (
         score: playerScore,
         previousScore: currentUserScore
       });
-      updateScores(playerScore, 'user');
+      await updateScores(playerScore, 'user');
 
       // Enhanced system message for AI context
       const difficultyGuide = {
@@ -192,6 +251,25 @@ DEBATE PRINCIPLES:
       const aiMessageId = userMessageId + 1;
       addMessage('opponent', aiResponse);
 
+      // Record AI message through API if conversation is active
+      if (state.conversationId) {
+        try {
+          await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              conversationId: state.conversationId,
+              participantId: 'opponent',
+              message: aiResponse
+            })
+          });
+        } catch (error) {
+          console.error('Failed to record message:', error);
+        }
+      }
+
       // Get current AI score after player's score has been updated
       const currentAiScore = state.audienceScore.opponent;
 
@@ -219,7 +297,7 @@ DEBATE PRINCIPLES:
         score: aiScore,
         previousScore: currentAiScore
       });
-      updateScores(aiScore, 'opponent');
+      await updateScores(aiScore, 'opponent');
 
     } catch (error) {
       updateState({ error: 'Failed to get AI response. Please try again.' });
@@ -235,6 +313,26 @@ DEBATE PRINCIPLES:
 
     try {
       const hint = await generateHint(topic, messages, difficulty, userPosition);
+      
+      // Record hint through API if conversation is active
+      if (state.conversationId && hint) {
+        try {
+          await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              conversationId: state.conversationId,
+              participantId: 'system',
+              message: hint
+            })
+          });
+        } catch (error) {
+          console.error('Failed to record hint:', error);
+        }
+      }
+      
       return hint;
     } catch (error) {
       updateState({ error: 'Failed to generate hint. Please try again.' });
@@ -248,11 +346,63 @@ DEBATE PRINCIPLES:
     updateState({ isLoading: true, isAiThinking: true, error: null });
 
     try {
+      // Start conversation through API
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/start-conversation`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            topic,
+            difficulty: difficulty === 'easy' ? 1 : difficulty === 'medium' ? 5 : 10,
+            participants: [
+              {
+                id: 'user',
+                name: 'User',
+                avatar: 'user.svg',
+                role: 'debater'
+              },
+              {
+                id: 'opponent',
+                name: aiPersonality.name,
+                avatar: aiPersonality.avatarUrl,
+                role: 'debater'
+              }
+            ]
+          })
+        });
+        
+        const data = await response.json();
+        updateState({ conversationId: data.conversationId });
+      } catch (error) {
+        console.error('Failed to start conversation:', error);
+      }
+
       // Get AI's initial response
       const aiResponse = await startDebate(topic, difficulty, userPosition, aiPersonality);
       const currentAiScore = state.audienceScore.opponent;
       const aiMessageId = messages.length + 1;
       addMessage('opponent', aiResponse);
+
+      // Record AI's initial message through API
+      if (state.conversationId) {
+        try {
+          await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              conversationId: state.conversationId,
+              participantId: 'opponent',
+              message: aiResponse
+            })
+          });
+        } catch (error) {
+          console.error('Failed to record message:', error);
+        }
+      }
 
       // Create message object
       const aiMessage: Message = {
@@ -276,7 +426,7 @@ DEBATE PRINCIPLES:
         score: aiScore,
         previousScore: currentAiScore
       });
-      updateScores(aiScore, 'opponent');
+      await updateScores(aiScore, 'opponent');
 
     } catch (error) {
       updateState({ error: 'Failed to start debate. Please try again.' });
