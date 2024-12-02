@@ -1,0 +1,270 @@
+[
+  {
+    "timestamp": "2024-12-02T16:47:32.090Z",
+    "requestId": "1239dfe6-aa81-4962-b873-c5840459fa74",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-4o-mini",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a debate topic generator specializing in creating engaging, thought-provoking topics for structured debates.\n\nTOPIC REQUIREMENTS:\n1. Related to category: technology\n2. Controversial but not offensive\n3. Clear and concise phrasing\n4. Balanced - allows strong arguments on both sides\n5. Contemporary relevance\n6. Difficulty level: medium\nBalance complexity with accessibility, suitable for teenagers with some debate experience.\n\nFORMAT:\n- State the topic as a clear proposition\n- Avoid loaded language or bias\n- Use present tense\n- Keep under 15 words\n\nEXAMPLES:\n- Easy: \"Schools should have longer lunch breaks\"\n- Medium: \"Social media does more harm than good to society\"\n- Hard: \"Artificial intelligence will fundamentally alter human consciousness\"\n\nReturn ONLY the topic statement, no additional text."
+        },
+        {
+          "role": "user",
+          "content": "Generate a concise, controversial debate topic."
+        }
+      ],
+      "temperature": 0.5,
+      "max_tokens": 350
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:32.102Z",
+    "requestId": "1239dfe6-aa81-4962-b873-c5840459fa74",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "content": "AI Ethics",
+      "usage": {}
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:32.107Z",
+    "requestId": "c4364529-9c77-41fd-b459-0129613f4e2f",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-4o-mini",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Hello!"
+        }
+      ],
+      "temperature": 0.5,
+      "max_tokens": 350
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:32.109Z",
+    "requestId": "c4364529-9c77-41fd-b459-0129613f4e2f",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "content": "Hello there!",
+      "usage": {}
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:32.112Z",
+    "requestId": "0be17e96-89c2-42d4-a6ea-9d2e90e6d459",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-4o-mini",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Hello!"
+        }
+      ],
+      "temperature": 0.5,
+      "max_tokens": 350
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:32.115Z",
+    "requestId": "0be17e96-89c2-42d4-a6ea-9d2e90e6d459",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "content": "",
+      "usage": {}
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:32.118Z",
+    "requestId": "25d3e7f5-81a8-46f8-9848-7c52e59b6d50",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-4o-mini",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Hello!"
+        }
+      ],
+      "temperature": 0.5,
+      "max_tokens": 350
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:33.134Z",
+    "requestId": "86cdf16d-627a-47f1-a6e1-7bb61479af00",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-4o-mini",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "Hello!"
+        }
+      ],
+      "temperature": 0.5,
+      "max_tokens": 350
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:33.136Z",
+    "requestId": "86cdf16d-627a-47f1-a6e1-7bb61479af00",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "content": "Success!",
+      "usage": {}
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:33.139Z",
+    "requestId": "00297b1d-3eb6-4b88-bfa4-c22e70f470f9",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this for argument: \"Hello!\""
+        }
+      ],
+      "temperature": 0.5,
+      "max_tokens": 350
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:33.141Z",
+    "requestId": "00297b1d-3eb6-4b88-bfa4-c22e70f470f9",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "content": "85",
+      "usage": {}
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:33.144Z",
+    "requestId": "39c25062-2b06-4e45-a222-4293175acd07",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this for argument: \"Hello!\""
+        }
+      ],
+      "temperature": 0.5,
+      "max_tokens": 350
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:33.145Z",
+    "requestId": "39c25062-2b06-4e45-a222-4293175acd07",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "content": "invalid",
+      "usage": {}
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:33.148Z",
+    "requestId": "67afb779-57b7-45d6-b247-b32ca8ae3e71",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-4o-mini",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a debate coach providing strategic hints for a debate on \"AI Ethics\". The debater is arguing for the topic.\n\nHINT GUIDELINES:\n1. Focus on strengthening the for position\n2. Suggest specific arguments or evidence\n3. Point out potential counterarguments to address\n4. Highlight strategic opportunities\n5. Adapt to medium difficulty level\nBalance between basic and advanced strategies, with moderate complexity.\n\nHINT STRUCTURE:\n- Start with a clear strategic direction\n- Provide specific supporting details\n- Suggest how to counter opponent's likely responses\n\nKeep the hint under 2 sentences for clarity and impact."
+        },
+        {
+          "role": "user",
+          "content": "Provide a strategic hint for arguing for on the topic \"AI Ethics\"."
+        }
+      ],
+      "temperature": 0.5,
+      "max_tokens": 350
+    }
+  },
+  {
+    "timestamp": "2024-12-02T16:47:33.150Z",
+    "requestId": "67afb779-57b7-45d6-b247-b32ca8ae3e71",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "content": "Consider this approach...",
+      "usage": {}
+    }
+  }
+]

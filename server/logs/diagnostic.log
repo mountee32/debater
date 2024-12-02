@@ -697,3 +697,4439 @@ Data: {
 }
 [2024-12-02T16:39:26.793Z] [HighScoreManager] Added new high score for Andy
 [2024-12-02T16:39:26.793Z] [DebateRoutes] Added high score
+[2024-12-02T16:42:13.523Z] Generating topic:
+Data: {
+  "category": "technology",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "medium"
+}
+[2024-12-02T16:42:13.527Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate topic generator specializing in creating engaging, thought-provoking topics for structured debates.\n\nTOPIC REQUIREMENTS:\n1. Related to category: technology\n2. Controversial but not offensive\n3. Clear and concise phrasing\n4. Balanced - allows strong arguments on both sides\n5. Contemporary relevance\n6. Difficulty level: medium\nBalance complexity with accessibility, suitable for teenagers with some debate experience.\n\nFORMAT:\n- State the topic as a clear proposition\n- Avoid loaded language or bias\n- Use present tense\n- Keep under 15 words\n\nEXAMPLES:\n- Easy: \"Schools should have longer lunch breaks\"\n- Medium: \"Social media does more harm than good to society\"\n- Hard: \"Artificial intelligence will fundamentally alter human consciousness\"\n\nReturn ONLY the topic statement, no additional text."
+    },
+    {
+      "role": "user",
+      "content": "Generate a concise, controversial debate topic."
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:42:13.548Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "AI Ethics"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:42:13.557Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:42:13.561Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Hello there!"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:42:13.566Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:42:13.569Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": ""
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:42:13.572Z] WARNING: Empty or missing content in OpenRouter response
+Data: {
+  "choices": [
+    {
+      "message": {
+        "content": ""
+      }
+    }
+  ]
+}
+[2024-12-02T16:42:13.574Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:42:13.589Z] ERROR: Attempt 1 failed for OpenRouter API:
+Error: Network error
+Stack: Error: Network error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/services/openRouterService.test.ts:58:21)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:42:14.591Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:42:14.594Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Success!"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:42:14.598Z] Evaluating argument:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "currentScores": {
+    "user": 70,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "medium"
+}
+[2024-12-02T16:42:14.598Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Hello!\""
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:42:14.601Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "85"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:42:14.604Z] Evaluating argument:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "currentScores": {
+    "user": 70,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "medium"
+}
+[2024-12-02T16:42:14.604Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Hello!\""
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:42:14.606Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "invalid"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:42:14.608Z] WARNING: Invalid score format, defaulting to 50:
+Data: "invalid"
+[2024-12-02T16:42:14.610Z] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "medium"
+}
+[2024-12-02T16:42:14.610Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate coach providing strategic hints for a debate on \"AI Ethics\". The debater is arguing for the topic.\n\nHINT GUIDELINES:\n1. Focus on strengthening the for position\n2. Suggest specific arguments or evidence\n3. Point out potential counterarguments to address\n4. Highlight strategic opportunities\n5. Adapt to medium difficulty level\nBalance between basic and advanced strategies, with moderate complexity.\n\nHINT STRUCTURE:\n- Start with a clear strategic direction\n- Provide specific supporting details\n- Suggest how to counter opponent's likely responses\n\nKeep the hint under 2 sentences for clarity and impact."
+    },
+    {
+      "role": "user",
+      "content": "Provide a strategic hint for arguing for on the topic \"AI Ethics\"."
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:42:14.613Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Consider this approach..."
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:42:15.108Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "AI Ethics",
+  "difficulty": 1,
+  "participants": [
+    {
+      "id": "user",
+      "name": "User",
+      "avatar": "user.svg",
+      "role": "debater"
+    },
+    {
+      "id": "opponent",
+      "name": "AI",
+      "avatar": "ai.svg",
+      "role": "debater"
+    }
+  ],
+  "subjectId": "SCI001",
+  "position": "for",
+  "skill": "easy"
+}
+[2024-12-02T16:42:15.113Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T16:42:15.113Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T16:42:15.116Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T16:42:15.117Z] [ConversationRecorder] Created new conversation object: {"id":"76839d88","startTime":"2024-12-02T16:42:15.116Z","gameSetup":{"topic":"AI Ethics","difficulty":1,"participants":[{"id":"user","name":"User","avatar":"user.svg","role":"debater"},{"id":"opponent","name":"AI","avatar":"ai.svg","role":"debater"}],"subjectId":"SCI001","position":"for","skill":"easy"},"events":[]}
+[2024-12-02T16:42:15.118Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T16:42:15.118Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T16:42:15.119Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T16:42:15.120Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-76839d88.json
+[2024-12-02T16:42:15.121Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "76839d88",
+  "startTime": "2024-12-02T16:42:15.116Z",
+  "gameSetup": {
+    "topic": "AI E...
+[2024-12-02T16:42:15.122Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-76839d88.json
+[2024-12-02T16:42:15.122Z] [ConversationRecorder] Started new conversation: 76839d88
+[2024-12-02T16:42:15.122Z] [DebateRoutes] Started conversation:
+Data: {
+  "conversationId": "76839d88"
+}
+[2024-12-02T16:42:15.140Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "AI Ethics",
+  "difficulty": 1,
+  "participants": []
+}
+[2024-12-02T16:42:15.140Z] ERROR: [DebateRoutes] Start conversation error:
+Error Data: "Missing required fields"
+[2024-12-02T16:42:15.149Z] [DebateRoutes] Adding high score:
+Data: {
+  "username": "testUser",
+  "score": 95,
+  "subjectId": "SCI001",
+  "position": "for",
+  "skill": "easy",
+  "conversationId": "test123"
+}
+[2024-12-02T16:42:15.152Z] [HighScoreManager] Added new high score for testUser
+[2024-12-02T16:42:15.152Z] [DebateRoutes] Added high score
+[2024-12-02T16:42:15.159Z] [DebateRoutes] Adding high score:
+Data: {
+  "username": "testUser",
+  "score": 95
+}
+[2024-12-02T16:42:15.160Z] ERROR: [DebateRoutes] Add high score error:
+Error Data: "Missing required fields"
+[2024-12-02T16:42:15.172Z] [DebateRoutes] Generating topic:
+Data: {
+  "category": "technology",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:42:15.173Z] [DebateRoutes] Generated topic:
+Data: {
+  "topic": "AI Ethics"
+}
+[2024-12-02T16:42:15.182Z] [DebateRoutes] Generating topic:
+Data: {
+  "category": "technology"
+}
+[2024-12-02T16:42:15.182Z] ERROR: [DebateRoutes] Topic generation error:
+Error Data: {
+  "category": "technology"
+}
+[2024-12-02T16:42:15.189Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:42:15.189Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "AI safety is crucial..."
+}
+[2024-12-02T16:42:15.195Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ]
+}
+[2024-12-02T16:42:15.195Z] ERROR: [DebateRoutes] Response generation error:
+Error Data: "Missing required model parameter"
+[2024-12-02T16:42:15.206Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "AI has risks and benefits."
+    }
+  ],
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:42:15.206Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:42:15.206Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 85
+}
+[2024-12-02T16:42:15.222Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "AI has risks and benefits."
+    }
+  ],
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:42:15.222Z] ERROR: [DebateRoutes] Evaluation error - missing fields:
+Error Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "AI has risks and benefits."
+    }
+  ],
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:42:15.242Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:42:15.242Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Consider discussing safety measures..."
+}
+[2024-12-02T16:42:15.250Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for"
+}
+[2024-12-02T16:42:15.251Z] ERROR: [DebateRoutes] Hint generation error:
+Error Data: "Missing required model parameter"
+[2024-12-02T16:47:32.082Z] Generating topic:
+Data: {
+  "category": "technology",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "medium"
+}
+[2024-12-02T16:47:32.085Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate topic generator specializing in creating engaging, thought-provoking topics for structured debates.\n\nTOPIC REQUIREMENTS:\n1. Related to category: technology\n2. Controversial but not offensive\n3. Clear and concise phrasing\n4. Balanced - allows strong arguments on both sides\n5. Contemporary relevance\n6. Difficulty level: medium\nBalance complexity with accessibility, suitable for teenagers with some debate experience.\n\nFORMAT:\n- State the topic as a clear proposition\n- Avoid loaded language or bias\n- Use present tense\n- Keep under 15 words\n\nEXAMPLES:\n- Easy: \"Schools should have longer lunch breaks\"\n- Medium: \"Social media does more harm than good to society\"\n- Hard: \"Artificial intelligence will fundamentally alter human consciousness\"\n\nReturn ONLY the topic statement, no additional text."
+    },
+    {
+      "role": "user",
+      "content": "Generate a concise, controversial debate topic."
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:47:32.101Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "AI Ethics"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:47:32.107Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:47:32.109Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Hello there!"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:47:32.112Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:47:32.114Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": ""
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:47:32.117Z] WARNING: Empty or missing content in OpenRouter response
+Data: {
+  "choices": [
+    {
+      "message": {
+        "content": ""
+      }
+    }
+  ]
+}
+[2024-12-02T16:47:32.118Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:47:32.132Z] ERROR: Attempt 1 failed for OpenRouter API:
+Error: Network error
+Stack: Error: Network error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/services/openRouterService.test.ts:58:21)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:47:33.133Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:47:33.135Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Success!"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:47:33.138Z] Evaluating argument:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "currentScores": {
+    "user": 70,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "medium"
+}
+[2024-12-02T16:47:33.139Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Hello!\""
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:47:33.140Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "85"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:47:33.143Z] Evaluating argument:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "currentScores": {
+    "user": 70,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "medium"
+}
+[2024-12-02T16:47:33.143Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Hello!\""
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:47:33.145Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "invalid"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:47:33.147Z] WARNING: Invalid score format, defaulting to 50:
+Data: "invalid"
+[2024-12-02T16:47:33.148Z] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "medium"
+}
+[2024-12-02T16:47:33.148Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate coach providing strategic hints for a debate on \"AI Ethics\". The debater is arguing for the topic.\n\nHINT GUIDELINES:\n1. Focus on strengthening the for position\n2. Suggest specific arguments or evidence\n3. Point out potential counterarguments to address\n4. Highlight strategic opportunities\n5. Adapt to medium difficulty level\nBalance between basic and advanced strategies, with moderate complexity.\n\nHINT STRUCTURE:\n- Start with a clear strategic direction\n- Provide specific supporting details\n- Suggest how to counter opponent's likely responses\n\nKeep the hint under 2 sentences for clarity and impact."
+    },
+    {
+      "role": "user",
+      "content": "Provide a strategic hint for arguing for on the topic \"AI Ethics\"."
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:47:33.149Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Consider this approach..."
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:47:33.363Z] [DebateRoutes] Generating topic:
+Data: {
+  "category": "technology",
+  "model": "test-model"
+}
+[2024-12-02T16:47:33.366Z] [DebateRoutes] Generated topic:
+Data: {}
+[2024-12-02T16:47:33.390Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "AI Ethics",
+  "difficulty": 1,
+  "participants": [
+    {
+      "id": "user",
+      "name": "User",
+      "avatar": "user.svg",
+      "role": "debater"
+    },
+    {
+      "id": "opponent",
+      "name": "AI",
+      "avatar": "ai.svg",
+      "role": "debater"
+    }
+  ],
+  "subjectId": "SCI001",
+  "position": "for",
+  "skill": "easy"
+}
+[2024-12-02T16:47:33.390Z] [DebateRoutes] Started conversation:
+Data: {
+  "conversationId": "test-conv-id"
+}
+[2024-12-02T16:47:33.399Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "AI Ethics",
+  "difficulty": 1,
+  "participants": [
+    {
+      "id": "user",
+      "name": "User",
+      "avatar": "user.svg",
+      "role": "debater"
+    },
+    {
+      "id": "opponent",
+      "name": "AI",
+      "avatar": "ai.svg",
+      "role": "debater"
+    }
+  ],
+  "subjectId": "SCI001",
+  "position": "for",
+  "skill": "easy"
+}
+[2024-12-02T16:47:33.416Z] ERROR: [DebateRoutes] Start conversation error:
+Error: Service error
+Stack: Error: Service error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:72:82)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:47:33.424Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1",
+  "message": "Test message"
+}
+[2024-12-02T16:47:33.424Z] [DebateRoutes] Recorded message
+[2024-12-02T16:47:33.432Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "test-conv"
+}
+[2024-12-02T16:47:33.433Z] ERROR: [DebateRoutes] Record message error:
+Error Data: "Missing required fields"
+[2024-12-02T16:47:33.440Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1",
+  "score": 85
+}
+[2024-12-02T16:47:33.440Z] [DebateRoutes] Recorded score
+[2024-12-02T16:47:33.447Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1"
+}
+[2024-12-02T16:47:33.447Z] ERROR: [DebateRoutes] Record score error:
+Error Data: "Missing required fields"
+[2024-12-02T16:47:33.454Z] [DebateRoutes] Ending conversation:
+Data: {
+  "conversationId": "test-conv"
+}
+[2024-12-02T16:47:33.454Z] [DebateRoutes] Ended conversation:
+Data: {
+  "conversationId": "test-conv",
+  "isHighScore": true
+}
+[2024-12-02T16:47:33.461Z] [DebateRoutes] Ending conversation:
+Data: {}
+[2024-12-02T16:47:33.461Z] ERROR: [DebateRoutes] End conversation error:
+Error Data: "Missing conversationId"
+[2024-12-02T16:47:33.467Z] [DebateRoutes] Testing logger
+[2024-12-02T16:47:33.473Z] [DebateRoutes] Testing logger
+[2024-12-02T16:47:33.474Z] ERROR: [DebateRoutes] Logger test error:
+Error: Logging failed
+Stack: Error: Logging failed
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:186:61)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:47:33.481Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "hard"
+}
+[2024-12-02T16:47:33.481Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Response with difficulty"
+}
+[2024-12-02T16:47:33.489Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:47:33.489Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Default difficulty response"
+}
+[2024-12-02T16:47:33.501Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:47:33.502Z] ERROR: [DebateRoutes] Response generation error:
+Error: API error
+Stack: Error: API error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:256:77)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:47:33.509Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Test argument"
+    }
+  ],
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "hard"
+}
+[2024-12-02T16:47:33.509Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "hard"
+}
+[2024-12-02T16:47:33.509Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 85
+}
+[2024-12-02T16:47:33.514Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Test argument"
+    }
+  ],
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:47:33.514Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:47:33.515Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 80
+}
+[2024-12-02T16:47:33.521Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "hard"
+}
+[2024-12-02T16:47:33.521Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Hard difficulty hint"
+}
+[2024-12-02T16:47:33.541Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:47:33.541Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Default difficulty hint"
+}
+[2024-12-02T16:49:38.869Z] Generating topic:
+Data: {
+  "category": "technology",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "medium"
+}
+[2024-12-02T16:49:38.871Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate topic generator specializing in creating engaging, thought-provoking topics for structured debates.\n\nTOPIC REQUIREMENTS:\n1. Related to category: technology\n2. Controversial but not offensive\n3. Clear and concise phrasing\n4. Balanced - allows strong arguments on both sides\n5. Contemporary relevance\n6. Difficulty level: medium\nBalance complexity with accessibility, suitable for teenagers with some debate experience.\n\nFORMAT:\n- State the topic as a clear proposition\n- Avoid loaded language or bias\n- Use present tense\n- Keep under 15 words\n\nEXAMPLES:\n- Easy: \"Schools should have longer lunch breaks\"\n- Medium: \"Social media does more harm than good to society\"\n- Hard: \"Artificial intelligence will fundamentally alter human consciousness\"\n\nReturn ONLY the topic statement, no additional text."
+    },
+    {
+      "role": "user",
+      "content": "Generate a concise, controversial debate topic."
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:49:38.887Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "AI Ethics"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:49:38.895Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:49:38.897Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Hello there!"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:49:38.901Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:49:38.904Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": ""
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:49:38.906Z] WARNING: Empty or missing content in OpenRouter response
+Data: {
+  "choices": [
+    {
+      "message": {
+        "content": ""
+      }
+    }
+  ]
+}
+[2024-12-02T16:49:38.907Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:49:38.919Z] ERROR: Attempt 1 failed for OpenRouter API:
+Error: Network error
+Stack: Error: Network error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/services/openRouterService.test.ts:58:21)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:49:39.286Z] [DebateRoutes] Generating topic:
+Data: {
+  "category": "technology",
+  "model": "test-model"
+}
+[2024-12-02T16:49:39.288Z] [DebateRoutes] Generated topic:
+Data: {}
+[2024-12-02T16:49:39.304Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "AI Ethics",
+  "difficulty": 1,
+  "participants": [
+    {
+      "id": "user",
+      "name": "User",
+      "avatar": "user.svg",
+      "role": "debater"
+    },
+    {
+      "id": "opponent",
+      "name": "AI",
+      "avatar": "ai.svg",
+      "role": "debater"
+    }
+  ],
+  "subjectId": "SCI001",
+  "position": "for",
+  "skill": "easy"
+}
+[2024-12-02T16:49:39.304Z] [DebateRoutes] Started conversation:
+Data: {
+  "conversationId": "test-conv-id"
+}
+[2024-12-02T16:49:39.313Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "AI Ethics",
+  "difficulty": 1,
+  "participants": [
+    {
+      "id": "user",
+      "name": "User",
+      "avatar": "user.svg",
+      "role": "debater"
+    },
+    {
+      "id": "opponent",
+      "name": "AI",
+      "avatar": "ai.svg",
+      "role": "debater"
+    }
+  ],
+  "subjectId": "SCI001",
+  "position": "for",
+  "skill": "easy"
+}
+[2024-12-02T16:49:39.328Z] ERROR: [DebateRoutes] Start conversation error:
+Error: Service error
+Stack: Error: Service error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:72:82)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:49:39.335Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1",
+  "message": "Test message"
+}
+[2024-12-02T16:49:39.335Z] [DebateRoutes] Recorded message
+[2024-12-02T16:49:39.341Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "test-conv"
+}
+[2024-12-02T16:49:39.341Z] ERROR: [DebateRoutes] Record message error:
+Error Data: "Missing required fields"
+[2024-12-02T16:49:39.347Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1",
+  "score": 85
+}
+[2024-12-02T16:49:39.348Z] [DebateRoutes] Recorded score
+[2024-12-02T16:49:39.354Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1"
+}
+[2024-12-02T16:49:39.354Z] ERROR: [DebateRoutes] Record score error:
+Error Data: "Missing required fields"
+[2024-12-02T16:49:39.367Z] [DebateRoutes] Ending conversation:
+Data: {
+  "conversationId": "test-conv"
+}
+[2024-12-02T16:49:39.367Z] [DebateRoutes] Ended conversation:
+Data: {
+  "conversationId": "test-conv",
+  "isHighScore": true
+}
+[2024-12-02T16:49:39.373Z] [DebateRoutes] Ending conversation:
+Data: {}
+[2024-12-02T16:49:39.373Z] ERROR: [DebateRoutes] End conversation error:
+Error Data: "Missing conversationId"
+[2024-12-02T16:49:39.382Z] [DebateRoutes] Testing logger
+[2024-12-02T16:49:39.390Z] [DebateRoutes] Testing logger
+[2024-12-02T16:49:39.391Z] ERROR: [DebateRoutes] Logger test error:
+Error: Logging failed
+Stack: Error: Logging failed
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:186:61)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:49:39.396Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "hard"
+}
+[2024-12-02T16:49:39.396Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Response with difficulty"
+}
+[2024-12-02T16:49:39.402Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:49:39.402Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Default difficulty response"
+}
+[2024-12-02T16:49:39.407Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:49:39.408Z] ERROR: [DebateRoutes] Response generation error:
+Error: API error
+Stack: Error: API error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:256:77)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:49:39.414Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Test argument"
+    }
+  ],
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "hard"
+}
+[2024-12-02T16:49:39.414Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "hard"
+}
+[2024-12-02T16:49:39.415Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 85
+}
+[2024-12-02T16:49:39.419Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Test argument"
+    }
+  ],
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:49:39.420Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:49:39.420Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 80
+}
+[2024-12-02T16:49:39.426Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "hard"
+}
+[2024-12-02T16:49:39.426Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Hard difficulty hint"
+}
+[2024-12-02T16:49:39.431Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:49:39.432Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Default difficulty hint"
+}
+[2024-12-02T16:49:39.921Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:49:39.923Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Success!"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:49:39.926Z] Evaluating argument:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "currentScores": {
+    "user": 70,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "medium"
+}
+[2024-12-02T16:49:39.927Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Hello!\""
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:49:39.929Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "85"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:49:39.931Z] Evaluating argument:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "currentScores": {
+    "user": 70,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "medium"
+}
+[2024-12-02T16:49:39.932Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Hello!\""
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:49:39.933Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "invalid"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:49:39.935Z] WARNING: Invalid score format, defaulting to 50:
+Data: "invalid"
+[2024-12-02T16:49:39.936Z] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "medium"
+}
+[2024-12-02T16:49:39.936Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate coach providing strategic hints for a debate on \"AI Ethics\". The debater is arguing for the topic.\n\nHINT GUIDELINES:\n1. Focus on strengthening the for position\n2. Suggest specific arguments or evidence\n3. Point out potential counterarguments to address\n4. Highlight strategic opportunities\n5. Adapt to medium difficulty level\nBalance between basic and advanced strategies, with moderate complexity.\n\nHINT STRUCTURE:\n- Start with a clear strategic direction\n- Provide specific supporting details\n- Suggest how to counter opponent's likely responses\n\nKeep the hint under 2 sentences for clarity and impact."
+    },
+    {
+      "role": "user",
+      "content": "Provide a strategic hint for arguing for on the topic \"AI Ethics\"."
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:49:39.938Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Consider this approach..."
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:53:38.707Z] Generating topic:
+Data: {
+  "category": "technology",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "medium"
+}
+[2024-12-02T16:53:38.710Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate topic generator specializing in creating engaging, thought-provoking topics for structured debates.\n\nTOPIC REQUIREMENTS:\n1. Related to category: technology\n2. Controversial but not offensive\n3. Clear and concise phrasing\n4. Balanced - allows strong arguments on both sides\n5. Contemporary relevance\n6. Difficulty level: medium\nBalance complexity with accessibility, suitable for teenagers with some debate experience.\n\nFORMAT:\n- State the topic as a clear proposition\n- Avoid loaded language or bias\n- Use present tense\n- Keep under 15 words\n\nEXAMPLES:\n- Easy: \"Schools should have longer lunch breaks\"\n- Medium: \"Social media does more harm than good to society\"\n- Hard: \"Artificial intelligence will fundamentally alter human consciousness\"\n\nReturn ONLY the topic statement, no additional text."
+    },
+    {
+      "role": "user",
+      "content": "Generate a concise, controversial debate topic."
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:53:38.728Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "AI Ethics"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:53:38.735Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:53:38.738Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Hello there!"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:53:38.742Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:53:38.745Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": ""
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:53:38.748Z] WARNING: Empty or missing content in OpenRouter response
+Data: {
+  "choices": [
+    {
+      "message": {
+        "content": ""
+      }
+    }
+  ]
+}
+[2024-12-02T16:53:38.750Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:53:38.766Z] ERROR: Attempt 1 failed for OpenRouter API:
+Error: Network error
+Stack: Error: Network error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/services/openRouterService.test.ts:58:21)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:53:39.046Z] [DebateRoutes] Generating topic:
+Data: {
+  "category": "technology",
+  "model": "test-model"
+}
+[2024-12-02T16:53:39.047Z] [DebateRoutes] Generated topic:
+Data: {}
+[2024-12-02T16:53:39.065Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "AI Ethics",
+  "difficulty": 1,
+  "participants": [
+    {
+      "id": "user",
+      "name": "User",
+      "avatar": "user.svg",
+      "role": "debater"
+    },
+    {
+      "id": "opponent",
+      "name": "AI",
+      "avatar": "ai.svg",
+      "role": "debater"
+    }
+  ],
+  "subjectId": "SCI001",
+  "position": "for",
+  "skill": "easy"
+}
+[2024-12-02T16:53:39.066Z] [DebateRoutes] Started conversation:
+Data: {
+  "conversationId": "test-conv-id"
+}
+[2024-12-02T16:53:39.074Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "AI Ethics",
+  "difficulty": 1,
+  "participants": [
+    {
+      "id": "user",
+      "name": "User",
+      "avatar": "user.svg",
+      "role": "debater"
+    },
+    {
+      "id": "opponent",
+      "name": "AI",
+      "avatar": "ai.svg",
+      "role": "debater"
+    }
+  ],
+  "subjectId": "SCI001",
+  "position": "for",
+  "skill": "easy"
+}
+[2024-12-02T16:53:39.088Z] ERROR: [DebateRoutes] Start conversation error:
+Error: Service error
+Stack: Error: Service error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:72:82)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:53:39.094Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1",
+  "message": "Test message"
+}
+[2024-12-02T16:53:39.095Z] [DebateRoutes] Recorded message
+[2024-12-02T16:53:39.101Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "test-conv"
+}
+[2024-12-02T16:53:39.101Z] ERROR: [DebateRoutes] Record message error:
+Error Data: "Missing required fields"
+[2024-12-02T16:53:39.108Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1",
+  "score": 85
+}
+[2024-12-02T16:53:39.108Z] [DebateRoutes] Recorded score
+[2024-12-02T16:53:39.115Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1"
+}
+[2024-12-02T16:53:39.115Z] ERROR: [DebateRoutes] Record score error:
+Error Data: "Missing required fields"
+[2024-12-02T16:53:39.128Z] [DebateRoutes] Ending conversation:
+Data: {
+  "conversationId": "test-conv"
+}
+[2024-12-02T16:53:39.128Z] [DebateRoutes] Ended conversation:
+Data: {
+  "conversationId": "test-conv",
+  "isHighScore": true
+}
+[2024-12-02T16:53:39.135Z] [DebateRoutes] Ending conversation:
+Data: {}
+[2024-12-02T16:53:39.135Z] ERROR: [DebateRoutes] End conversation error:
+Error Data: "Missing conversationId"
+[2024-12-02T16:53:39.142Z] [DebateRoutes] Testing logger
+[2024-12-02T16:53:39.148Z] [DebateRoutes] Testing logger
+[2024-12-02T16:53:39.149Z] ERROR: [DebateRoutes] Logger test error:
+Error: Logging failed
+Stack: Error: Logging failed
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:186:61)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:53:39.155Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "hard"
+}
+[2024-12-02T16:53:39.156Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Response with difficulty"
+}
+[2024-12-02T16:53:39.162Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:53:39.162Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Default difficulty response"
+}
+[2024-12-02T16:53:39.169Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:53:39.170Z] ERROR: [DebateRoutes] Response generation error:
+Error: API error
+Stack: Error: API error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:256:77)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:53:39.176Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Test argument"
+    }
+  ],
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "hard"
+}
+[2024-12-02T16:53:39.176Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "hard"
+}
+[2024-12-02T16:53:39.176Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 85
+}
+[2024-12-02T16:53:39.183Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Test argument"
+    }
+  ],
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:53:39.183Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:53:39.183Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 80
+}
+[2024-12-02T16:53:39.187Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "hard"
+}
+[2024-12-02T16:53:39.188Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Hard difficulty hint"
+}
+[2024-12-02T16:53:39.194Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:53:39.194Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Default difficulty hint"
+}
+[2024-12-02T16:53:39.780Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:53:39.782Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Success!"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:53:39.785Z] Evaluating argument:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "currentScores": {
+    "user": 70,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "medium"
+}
+[2024-12-02T16:53:39.785Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Hello!\""
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:53:39.787Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "85"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:53:39.788Z] Evaluating argument:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "currentScores": {
+    "user": 70,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "medium"
+}
+[2024-12-02T16:53:39.788Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Hello!\""
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:53:39.790Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "invalid"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:53:39.791Z] WARNING: Invalid score format, defaulting to 50:
+Data: "invalid"
+[2024-12-02T16:53:39.792Z] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "medium"
+}
+[2024-12-02T16:53:39.792Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate coach providing strategic hints for a debate on \"AI Ethics\". The debater is arguing for the topic.\n\nHINT GUIDELINES:\n1. Focus on strengthening the for position\n2. Suggest specific arguments or evidence\n3. Point out potential counterarguments to address\n4. Highlight strategic opportunities\n5. Adapt to medium difficulty level\nBalance between basic and advanced strategies, with moderate complexity.\n\nHINT STRUCTURE:\n- Start with a clear strategic direction\n- Provide specific supporting details\n- Suggest how to counter opponent's likely responses\n\nKeep the hint under 2 sentences for clarity and impact."
+    },
+    {
+      "role": "user",
+      "content": "Provide a strategic hint for arguing for on the topic \"AI Ethics\"."
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:53:39.794Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Consider this approach..."
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:55:53.454Z] Generating topic:
+Data: {
+  "category": "technology",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "medium"
+}
+[2024-12-02T16:55:53.457Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate topic generator specializing in creating engaging, thought-provoking topics for structured debates.\n\nTOPIC REQUIREMENTS:\n1. Related to category: technology\n2. Controversial but not offensive\n3. Clear and concise phrasing\n4. Balanced - allows strong arguments on both sides\n5. Contemporary relevance\n6. Difficulty level: medium\nBalance complexity with accessibility, suitable for teenagers with some debate experience.\n\nFORMAT:\n- State the topic as a clear proposition\n- Avoid loaded language or bias\n- Use present tense\n- Keep under 15 words\n\nEXAMPLES:\n- Easy: \"Schools should have longer lunch breaks\"\n- Medium: \"Social media does more harm than good to society\"\n- Hard: \"Artificial intelligence will fundamentally alter human consciousness\"\n\nReturn ONLY the topic statement, no additional text."
+    },
+    {
+      "role": "user",
+      "content": "Generate a concise, controversial debate topic."
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:55:53.474Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "AI Ethics"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:55:53.483Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:55:53.488Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Hello there!"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:55:53.493Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:55:53.496Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": ""
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:55:53.499Z] WARNING: Empty or missing content in OpenRouter response
+Data: {
+  "choices": [
+    {
+      "message": {
+        "content": ""
+      }
+    }
+  ]
+}
+[2024-12-02T16:55:53.501Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:55:53.521Z] ERROR: Attempt 1 failed for OpenRouter API:
+Error: Network error
+Stack: Error: Network error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/services/openRouterService.test.ts:58:21)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:55:53.858Z] [DebateRoutes] Generating topic:
+Data: {
+  "category": "technology",
+  "model": "test-model"
+}
+[2024-12-02T16:55:53.860Z] [DebateRoutes] Generated topic:
+Data: {}
+[2024-12-02T16:55:53.883Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "AI Ethics",
+  "difficulty": 1,
+  "participants": [
+    {
+      "id": "user",
+      "name": "User",
+      "avatar": "user.svg",
+      "role": "debater"
+    },
+    {
+      "id": "opponent",
+      "name": "AI",
+      "avatar": "ai.svg",
+      "role": "debater"
+    }
+  ],
+  "subjectId": "SCI001",
+  "position": "for",
+  "skill": "easy"
+}
+[2024-12-02T16:55:53.884Z] [DebateRoutes] Started conversation:
+Data: {
+  "conversationId": "test-conv-id"
+}
+[2024-12-02T16:55:53.895Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "AI Ethics",
+  "difficulty": 1,
+  "participants": [
+    {
+      "id": "user",
+      "name": "User",
+      "avatar": "user.svg",
+      "role": "debater"
+    },
+    {
+      "id": "opponent",
+      "name": "AI",
+      "avatar": "ai.svg",
+      "role": "debater"
+    }
+  ],
+  "subjectId": "SCI001",
+  "position": "for",
+  "skill": "easy"
+}
+[2024-12-02T16:55:53.920Z] ERROR: [DebateRoutes] Start conversation error:
+Error: Service error
+Stack: Error: Service error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:72:82)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:55:53.931Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1",
+  "message": "Test message"
+}
+[2024-12-02T16:55:53.931Z] [DebateRoutes] Recorded message
+[2024-12-02T16:55:53.939Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "test-conv"
+}
+[2024-12-02T16:55:53.939Z] ERROR: [DebateRoutes] Record message error:
+Error Data: "Missing required fields"
+[2024-12-02T16:55:53.949Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1",
+  "score": 85
+}
+[2024-12-02T16:55:53.949Z] [DebateRoutes] Recorded score
+[2024-12-02T16:55:53.957Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "test-conv",
+  "participantId": "user1"
+}
+[2024-12-02T16:55:53.957Z] ERROR: [DebateRoutes] Record score error:
+Error Data: "Missing required fields"
+[2024-12-02T16:55:53.964Z] [DebateRoutes] Ending conversation:
+Data: {
+  "conversationId": "test-conv"
+}
+[2024-12-02T16:55:53.965Z] [DebateRoutes] Ended conversation:
+Data: {
+  "conversationId": "test-conv",
+  "isHighScore": true
+}
+[2024-12-02T16:55:53.972Z] [DebateRoutes] Ending conversation:
+Data: {}
+[2024-12-02T16:55:53.972Z] ERROR: [DebateRoutes] End conversation error:
+Error Data: "Missing conversationId"
+[2024-12-02T16:55:53.981Z] [DebateRoutes] Testing logger
+[2024-12-02T16:55:53.992Z] [DebateRoutes] Testing logger
+[2024-12-02T16:55:53.993Z] ERROR: [DebateRoutes] Logger test error:
+Error: Logging failed
+Stack: Error: Logging failed
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:186:61)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:55:54.000Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "hard"
+}
+[2024-12-02T16:55:54.000Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Response with difficulty"
+}
+[2024-12-02T16:55:54.008Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:55:54.008Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Default difficulty response"
+}
+[2024-12-02T16:55:54.023Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debater."
+    },
+    {
+      "role": "user",
+      "content": "What about AI safety?"
+    }
+  ],
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:55:54.024Z] ERROR: [DebateRoutes] Response generation error:
+Error: API error
+Stack: Error: API error
+    at Object.<anonymous> (/home/vscode/debater/server/src/__tests__/routes/debateRoutes.test.ts:256:77)
+    at Promise.then.completed (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/home/vscode/debater/server/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:252:3)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:126:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at _runTestsForDescribeBlock (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:121:9)
+    at run (/home/vscode/debater/server/node_modules/jest-circus/build/run.js:71:3)
+    at runAndTransformResultsToJestFormat (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at jestAdapter (/home/vscode/debater/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at runTestInternal (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:367:16)
+    at runTest (/home/vscode/debater/server/node_modules/jest-runner/build/runTest.js:444:34)
+    at Object.worker (/home/vscode/debater/server/node_modules/jest-runner/build/testWorker.js:106:12)
+[2024-12-02T16:55:54.031Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Test argument"
+    }
+  ],
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "hard"
+}
+[2024-12-02T16:55:54.032Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "hard"
+}
+[2024-12-02T16:55:54.032Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 85
+}
+[2024-12-02T16:55:54.038Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Test argument"
+    }
+  ],
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:55:54.038Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 75,
+    "opponent": 70
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T16:55:54.038Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 80
+}
+[2024-12-02T16:55:54.043Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "hard"
+}
+[2024-12-02T16:55:54.043Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Hard difficulty hint"
+}
+[2024-12-02T16:55:54.051Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini"
+}
+[2024-12-02T16:55:54.051Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Default difficulty hint"
+}
+[2024-12-02T16:55:54.524Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:55:54.526Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Success!"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:55:54.529Z] Evaluating argument:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "currentScores": {
+    "user": 70,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "medium"
+}
+[2024-12-02T16:55:54.529Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Hello!\""
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:55:54.531Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "85"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:55:54.533Z] Evaluating argument:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "currentScores": {
+    "user": 70,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "medium"
+}
+[2024-12-02T16:55:54.534Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"AI Ethics\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 70, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Hello!\""
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:55:54.536Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "invalid"
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:55:54.537Z] WARNING: Invalid score format, defaulting to 50:
+Data: "invalid"
+[2024-12-02T16:55:54.539Z] Generating hint:
+Data: {
+  "topic": "AI Ethics",
+  "position": "for",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "medium"
+}
+[2024-12-02T16:55:54.539Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate coach providing strategic hints for a debate on \"AI Ethics\". The debater is arguing for the topic.\n\nHINT GUIDELINES:\n1. Focus on strengthening the for position\n2. Suggest specific arguments or evidence\n3. Point out potential counterarguments to address\n4. Highlight strategic opportunities\n5. Adapt to medium difficulty level\nBalance between basic and advanced strategies, with moderate complexity.\n\nHINT STRUCTURE:\n- Start with a clear strategic direction\n- Provide specific supporting details\n- Suggest how to counter opponent's likely responses\n\nKeep the hint under 2 sentences for clarity and impact."
+    },
+    {
+      "role": "user",
+      "content": "Provide a strategic hint for arguing for on the topic \"AI Ethics\"."
+    }
+  ],
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
+}
+[2024-12-02T16:55:54.541Z] Received API response:
+Data: {
+  "data": {
+    "choices": [
+      {
+        "message": {
+          "content": "Consider this approach..."
+        }
+      }
+    ]
+  }
+}
+[2024-12-02T16:56:04.906Z] [DebateRoutes] Starting new conversation:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "difficulty": 1,
+  "participants": [
+    {
+      "id": "user",
+      "name": "User",
+      "avatar": "user.svg",
+      "role": "debater"
+    },
+    {
+      "id": "opponent",
+      "name": "Logical Larry",
+      "avatar": "/assets/business_man.svg",
+      "role": "debater"
+    }
+  ],
+  "subjectId": "REL003",
+  "position": "for",
+  "skill": "easy"
+}
+[2024-12-02T16:56:04.907Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T16:56:04.907Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T16:56:04.907Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T16:56:04.908Z] [ConversationRecorder] Created new conversation object: {"id":"a127d4bb","startTime":"2024-12-02T16:56:04.908Z","gameSetup":{"topic":"All religions are equally valid paths to the same truth","difficulty":1,"participants":[{"id":"user","name":"User","avatar":"user.svg","role":"debater"},{"id":"opponent","name":"Logical Larry","avatar":"/assets/business_man.svg","role":"debater"}],"subjectId":"REL003","position":"for","skill":"easy"},"events":[]}
+[2024-12-02T16:56:04.908Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T16:56:04.908Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T16:56:04.909Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T16:56:04.909Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T16:56:04.910Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T16:56:04.911Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T16:56:04.911Z] [ConversationRecorder] Started new conversation: a127d4bb
+[2024-12-02T16:56:04.911Z] [DebateRoutes] Started conversation:
+Data: {
+  "conversationId": "a127d4bb"
+}
+[2024-12-02T16:56:04.927Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, A methodical debater who relies on structured reasoning and empirical evidence. You are debating against the topic \"All religions are equally valid paths to the same truth\".\n\nDIFFICULTY ADAPTATION (easy):\n- Vocabulary Level: simple technical terms\n- Argument Complexity: basic step-by-step reasoning\n- Response Length: short, focused points\n- Example Types: simple statistics, everyday observations\n\nPERSONALITY TRAITS:\n- Argument Style: systematic and evidence-based\n- Vocabulary: simple technical terms\n- Example Types: simple statistics, everyday observations\n- Debate Strategy: structured logical progression\n\nBEHAVIORAL GUIDELINES:\n- Always cite specific data points or studies\n- Break down complex arguments into logical steps\n- Maintain emotional distance while presenting facts\n- Address counterarguments with empirical evidence\n\nLANGUAGE STYLE:\n- Tone: formal and analytical\n- Complexity: Adapted for easy difficulty\n- Preferred Phrases: empirical evidence suggests, statistical analysis shows, logical conclusion, research indicates\n- Phrases to Avoid: I feel that, maybe, sort of, kind of\n\nDEBATE APPROACH:\n- Opening Style: Begin with a clear thesis supported by data\n- Counter-Argument Style: Methodically deconstruct opposing arguments with evidence\n- Evidence Preference: Peer-reviewed studies and statistical data\n- Persuasion Techniques: Syllogistic reasoning, Statistical analysis, Causal chains, Empirical evidence\n\nRESPONSE FORMAT:\n- Keep responses short, focused points\n- Maintain basic step-by-step reasoning\n- Use simple technical terms\n- Focus on simple statistics and everyday observations\n\nYour responses should reflect your personality while adapting to the easy difficulty level."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"All religions are equally valid paths to the same truth\". Start with a clear opening argument against the topic."
+    }
+  ],
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:04.927Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, A methodical debater who relies on structured reasoning and empirical evidence. You are debating against the topic \"All religions are equally valid paths to the same truth\".\n\nDIFFICULTY ADAPTATION (easy):\n- Vocabulary Level: simple technical terms\n- Argument Complexity: basic step-by-step reasoning\n- Response Length: short, focused points\n- Example Types: simple statistics, everyday observations\n\nPERSONALITY TRAITS:\n- Argument Style: systematic and evidence-based\n- Vocabulary: simple technical terms\n- Example Types: simple statistics, everyday observations\n- Debate Strategy: structured logical progression\n\nBEHAVIORAL GUIDELINES:\n- Always cite specific data points or studies\n- Break down complex arguments into logical steps\n- Maintain emotional distance while presenting facts\n- Address counterarguments with empirical evidence\n\nLANGUAGE STYLE:\n- Tone: formal and analytical\n- Complexity: Adapted for easy difficulty\n- Preferred Phrases: empirical evidence suggests, statistical analysis shows, logical conclusion, research indicates\n- Phrases to Avoid: I feel that, maybe, sort of, kind of\n\nDEBATE APPROACH:\n- Opening Style: Begin with a clear thesis supported by data\n- Counter-Argument Style: Methodically deconstruct opposing arguments with evidence\n- Evidence Preference: Peer-reviewed studies and statistical data\n- Persuasion Techniques: Syllogistic reasoning, Statistical analysis, Causal chains, Empirical evidence\n\nRESPONSE FORMAT:\n- Keep responses short, focused points\n- Maintain basic step-by-step reasoning\n- Use simple technical terms\n- Focus on simple statistics and everyday observations\n\nYour responses should reflect your personality while adapting to the easy difficulty level."
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"All religions are equally valid paths to the same truth\". Start with a clear opening argument against the topic."
+    }
+  ],
+  "temperature": 0.3,
+  "max_tokens": 200,
+  "difficulty": "easy",
+  "configUsed": {
+    "temperature": 0.3,
+    "maxTokens": 200,
+    "scoreMultiplier": 1.5
+  }
+}
+[2024-12-02T16:56:09.650Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733158565-EQS4YrMevsjrLE0gHqBi",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1733158565,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "length",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 377,
+      "completion_tokens": 200,
+      "total_tokens": 577
+    }
+  }
+}
+[2024-12-02T16:56:09.652Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions"
+}
+[2024-12-02T16:56:09.678Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:09.678Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:09.679Z] Evaluating argument:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:09.679Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"All religions are equally valid paths to the same truth\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: easy\nBe more lenient with scoring. Focus on basic argument structure and clarity.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions\""
+    }
+  ],
+  "temperature": 0.3,
+  "max_tokens": 200,
+  "difficulty": "easy",
+  "configUsed": {
+    "temperature": 0.3,
+    "maxTokens": 200,
+    "scoreMultiplier": 1.5
+  }
+}
+[2024-12-02T16:56:10.327Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733158569-x4RoJyiKKTFChEgKzB1S",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733158569,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "65\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 408,
+      "completion_tokens": 3,
+      "total_tokens": 411
+    }
+  }
+}
+[2024-12-02T16:56:10.329Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 98
+}
+[2024-12-02T16:56:14.262Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "a127d4bb",
+  "participantId": "user",
+  "message": "maybe"
+}
+[2024-12-02T16:56:14.262Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T16:56:14.263Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T16:56:14.264Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T16:56:14.264Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T16:56:14.264Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T16:56:14.266Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T16:56:14.266Z] [ConversationRecorder] Recorded message from user
+[2024-12-02T16:56:14.266Z] [DebateRoutes] Recorded message
+[2024-12-02T16:56:14.277Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "maybe",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 2,
+    "opponent": 98
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:14.278Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 2,
+    "opponent": 98
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:14.278Z] Evaluating argument:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "maybe",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 2,
+    "opponent": 98
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:14.278Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"All religions are equally valid paths to the same truth\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: easy\nBe more lenient with scoring. Focus on basic argument structure and clarity.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 2, opponent: 98\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"maybe\""
+    }
+  ],
+  "temperature": 0.3,
+  "max_tokens": 200,
+  "difficulty": "easy",
+  "configUsed": {
+    "temperature": 0.3,
+    "maxTokens": 200,
+    "scoreMultiplier": 1.5
+  }
+}
+[2024-12-02T16:56:15.321Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733158573-e2MUyXGEB82kogOnYVo8",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733158573,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "2\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 209,
+      "completion_tokens": 2,
+      "total_tokens": 211
+    }
+  }
+}
+[2024-12-02T16:56:15.322Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 3
+}
+[2024-12-02T16:56:15.334Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "a127d4bb",
+  "participantId": "user",
+  "score": 3
+}
+[2024-12-02T16:56:15.334Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T16:56:15.334Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T16:56:15.336Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T16:56:15.336Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T16:56:15.336Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T16:56:15.337Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T16:56:15.337Z] [ConversationRecorder] Recorded score for user: 3
+[2024-12-02T16:56:15.337Z] [DebateRoutes] Recorded score
+[2024-12-02T16:56:15.350Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, a debater against the topic \"All religions are equally valid paths to the same truth\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
+      "id": 0
+    },
+    {
+      "role": "assistant",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "maybe",
+      "id": 2
+    }
+  ],
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:15.350Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, a debater against the topic \"All religions are equally valid paths to the same truth\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+    },
+    {
+      "role": "assistant",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions"
+    },
+    {
+      "role": "user",
+      "content": "maybe"
+    }
+  ],
+  "temperature": 0.3,
+  "max_tokens": 200,
+  "difficulty": "easy",
+  "configUsed": {
+    "temperature": 0.3,
+    "maxTokens": 200,
+    "scoreMultiplier": 1.5
+  }
+}
+[2024-12-02T16:56:19.180Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733158575-iabYGpseuMTQL2Mjkppv",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1733158575,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "length",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 384,
+      "completion_tokens": 200,
+      "total_tokens": 584
+    }
+  }
+}
+[2024-12-02T16:56:19.181Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical"
+}
+[2024-12-02T16:56:19.190Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "a127d4bb",
+  "participantId": "opponent",
+  "message": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical"
+}
+[2024-12-02T16:56:19.190Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T16:56:19.190Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T16:56:19.192Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T16:56:19.192Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T16:56:19.192Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T16:56:19.193Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T16:56:19.193Z] [ConversationRecorder] Recorded message from opponent
+[2024-12-02T16:56:19.193Z] [DebateRoutes] Recorded message
+[2024-12-02T16:56:19.209Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "maybe",
+      "id": 2
+    },
+    {
+      "role": "user",
+      "content": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical",
+      "id": 3
+    }
+  ],
+  "currentScores": {
+    "user": 2,
+    "opponent": 98
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:19.209Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messagesCount": 3,
+  "currentScores": {
+    "user": 2,
+    "opponent": 98
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:19.209Z] Evaluating argument:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "maybe",
+      "id": 2
+    },
+    {
+      "role": "user",
+      "content": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical",
+      "id": 3
+    }
+  ],
+  "currentScores": {
+    "user": 2,
+    "opponent": 98
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent",
+  "difficulty": "easy"
+}
+[2024-12-02T16:56:19.210Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"All religions are equally valid paths to the same truth\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: easy\nBe more lenient with scoring. Focus on basic argument structure and clarity.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 2, opponent: 98\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical\""
+    }
+  ],
+  "temperature": 0.3,
+  "max_tokens": 200,
+  "difficulty": "easy",
+  "configUsed": {
+    "temperature": 0.3,
+    "maxTokens": 200,
+    "scoreMultiplier": 1.5
+  }
+}
+[2024-12-02T16:56:20.301Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733158578-Lwb8oxG7CgPSEVlAGZnk",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733158578,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 403,
+      "completion_tokens": 3,
+      "total_tokens": 406
+    }
+  }
+}
+[2024-12-02T16:56:20.303Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 68
+}
+[2024-12-02T16:56:20.312Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "a127d4bb",
+  "participantId": "opponent",
+  "score": 68
+}
+[2024-12-02T16:56:20.312Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T16:56:20.312Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T16:56:20.313Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T16:56:20.313Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T16:56:20.314Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T16:56:20.316Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T16:56:20.316Z] [ConversationRecorder] Recorded score for opponent: 68
+[2024-12-02T16:56:20.316Z] [DebateRoutes] Recorded score
+[2024-12-02T17:07:36.437Z] [DebateRoutes] Generating hint:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "maybe",
+      "id": 2,
+      "score": {
+        "score": 3,
+        "previousScore": 2
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical",
+      "id": 3,
+      "score": {
+        "score": 68,
+        "previousScore": 98
+      }
+    }
+  ],
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "easy"
+}
+[2024-12-02T17:07:36.437Z] Generating hint:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "for",
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "easy"
+}
+[2024-12-02T17:07:36.437Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a debate coach providing strategic hints for a debate on \"All religions are equally valid paths to the same truth\". The debater is arguing for the topic.\n\nHINT GUIDELINES:\n1. Focus on strengthening the for position\n2. Suggest specific arguments or evidence\n3. Point out potential counterarguments to address\n4. Highlight strategic opportunities\n5. Adapt to easy difficulty level\nProvide clear, straightforward hints with simple examples and basic strategies.\n\nHINT STRUCTURE:\n- Start with a clear strategic direction\n- Provide specific supporting details\n- Suggest how to counter opponent's likely responses\n\nKeep the hint under 2 sentences for clarity and impact."
+    },
+    {
+      "role": "user",
+      "content": "Provide a strategic hint for arguing for on the topic \"All religions are equally valid paths to the same truth\"."
+    }
+  ],
+  "temperature": 0.3,
+  "max_tokens": 200,
+  "difficulty": "easy",
+  "configUsed": {
+    "temperature": 0.3,
+    "maxTokens": 200,
+    "scoreMultiplier": 1.5
+  }
+}
+[2024-12-02T17:07:38.619Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733159256-e1Lg9IASfrZnbYbSairQ",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1733159256,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 166,
+      "completion_tokens": 62,
+      "total_tokens": 228
+    }
+  }
+}
+[2024-12-02T17:07:38.621Z] [DebateRoutes] Generated hint:
+Data: {
+  "hint": "Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents."
+}
+[2024-12-02T17:07:38.630Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "a127d4bb",
+  "participantId": "system",
+  "message": "Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents."
+}
+[2024-12-02T17:07:38.630Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T17:07:38.630Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T17:07:38.631Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T17:07:38.632Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:38.632Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T17:07:38.633Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:38.633Z] [ConversationRecorder] Recorded message from system
+[2024-12-02T17:07:38.633Z] [DebateRoutes] Recorded message
+[2024-12-02T17:07:41.426Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "a127d4bb",
+  "participantId": "user",
+  "message": "Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents."
+}
+[2024-12-02T17:07:41.426Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T17:07:41.426Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T17:07:41.427Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T17:07:41.427Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:41.428Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T17:07:41.428Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:41.428Z] [ConversationRecorder] Recorded message from user
+[2024-12-02T17:07:41.428Z] [DebateRoutes] Recorded message
+[2024-12-02T17:07:41.438Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "maybe",
+      "id": 2,
+      "score": {
+        "score": 3,
+        "previousScore": 2
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical",
+      "id": 3,
+      "score": {
+        "score": 68,
+        "previousScore": 98
+      }
+    },
+    {
+      "role": "user",
+      "content": "Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents.",
+      "id": 4
+    }
+  ],
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "easy"
+}
+[2024-12-02T17:07:41.438Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "for",
+  "messagesCount": 4,
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "easy"
+}
+[2024-12-02T17:07:41.438Z] Evaluating argument:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "maybe",
+      "id": 2,
+      "score": {
+        "score": 3,
+        "previousScore": 2
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical",
+      "id": 3,
+      "score": {
+        "score": 68,
+        "previousScore": 98
+      }
+    },
+    {
+      "role": "user",
+      "content": "Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents.",
+      "id": 4
+    }
+  ],
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user",
+  "difficulty": "easy"
+}
+[2024-12-02T17:07:41.438Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"All religions are equally valid paths to the same truth\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: easy\nBe more lenient with scoring. Focus on basic argument structure and clarity.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 32, opponent: 68\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents.\""
+    }
+  ],
+  "temperature": 0.3,
+  "max_tokens": 200,
+  "difficulty": "easy",
+  "configUsed": {
+    "temperature": 0.3,
+    "maxTokens": 200,
+    "scoreMultiplier": 1.5
+  }
+}
+[2024-12-02T17:07:42.059Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733159261-L3aoqsDH4IxK9I3zaE6t",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733159261,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 269,
+      "completion_tokens": 3,
+      "total_tokens": 272
+    }
+  }
+}
+[2024-12-02T17:07:42.061Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 68
+}
+[2024-12-02T17:07:42.072Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "a127d4bb",
+  "participantId": "user",
+  "score": 68
+}
+[2024-12-02T17:07:42.072Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T17:07:42.072Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T17:07:42.074Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T17:07:42.074Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:42.074Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T17:07:42.075Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:42.075Z] [ConversationRecorder] Recorded score for user: 68
+[2024-12-02T17:07:42.075Z] [DebateRoutes] Recorded score
+[2024-12-02T17:07:42.091Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, a debater against the topic \"All religions are equally valid paths to the same truth\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
+      "id": 0
+    },
+    {
+      "role": "assistant",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "maybe",
+      "id": 2,
+      "score": {
+        "score": 3,
+        "previousScore": 2
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical",
+      "id": 3,
+      "score": {
+        "score": 68,
+        "previousScore": 98
+      }
+    },
+    {
+      "role": "user",
+      "content": "Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents.",
+      "id": 4
+    }
+  ],
+  "model": "openai/gpt-4o-mini",
+  "difficulty": "easy"
+}
+[2024-12-02T17:07:42.091Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, a debater against the topic \"All religions are equally valid paths to the same truth\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+    },
+    {
+      "role": "assistant",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions"
+    },
+    {
+      "role": "user",
+      "content": "maybe"
+    },
+    {
+      "role": "assistant",
+      "content": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical"
+    },
+    {
+      "role": "user",
+      "content": "Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents."
+    }
+  ],
+  "temperature": 0.3,
+  "max_tokens": 200,
+  "difficulty": "easy",
+  "configUsed": {
+    "temperature": 0.3,
+    "maxTokens": 200,
+    "scoreMultiplier": 1.5
+  }
+}
+[2024-12-02T17:07:45.921Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733159262-WcPBEpLI7YK3VRXGrANd",
+    "provider": "OpenAI",
+    "model": "openai/gpt-4o-mini",
+    "object": "chat.completion",
+    "created": 1733159262,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "length",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "While many religions share common moral values like compassion and justice, this does not mean they are equally valid paths to the same truth. \n\n1. **Different Foundations**: Common values do not imply that the underlying beliefs and teachings are the same. For example, the concept of justice in Christianity may involve divine judgment, while in Buddhism, it may focus on karma and personal responsibility. These differing foundations lead to different understandings of truth.\n\n2. **Cultural Contexts**: While cultural contexts shape beliefs, it does not validate all paths as equally true. Just because a belief is shaped by culture does not mean it is correct; some beliefs can be harmful or misguided, such as practices that violate human rights. \n\n3. **Objective Truth**: The existence of shared moral values can indicate a universal human experience, but it does not equate to all religions leading to the same ultimate truth. Objective truth exists beyond subjective interpretations, and conflicting religious claims cannot all be valid.\n\nIn conclusion, while",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": "fp_0705bf87c0",
+    "usage": {
+      "prompt_tokens": 654,
+      "completion_tokens": 200,
+      "total_tokens": 854
+    }
+  }
+}
+[2024-12-02T17:07:45.923Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "While many religions share common moral values like compassion and justice, this does not mean they are equally valid paths to the same truth. \n\n1. **Different Foundations**: Common values do not imply that the underlying beliefs and teachings are the same. For example, the concept of justice in Christianity may involve divine judgment, while in Buddhism, it may focus on karma and personal responsibility. These differing foundations lead to different understandings of truth.\n\n2. **Cultural Contexts**: While cultural contexts shape beliefs, it does not validate all paths as equally true. Just because a belief is shaped by culture does not mean it is correct; some beliefs can be harmful or misguided, such as practices that violate human rights. \n\n3. **Objective Truth**: The existence of shared moral values can indicate a universal human experience, but it does not equate to all religions leading to the same ultimate truth. Objective truth exists beyond subjective interpretations, and conflicting religious claims cannot all be valid.\n\nIn conclusion, while"
+}
+[2024-12-02T17:07:45.933Z] [DebateRoutes] Recording message:
+Data: {
+  "conversationId": "a127d4bb",
+  "participantId": "opponent",
+  "message": "While many religions share common moral values like compassion and justice, this does not mean they are equally valid paths to the same truth. \n\n1. **Different Foundations**: Common values do not imply that the underlying beliefs and teachings are the same. For example, the concept of justice in Christianity may involve divine judgment, while in Buddhism, it may focus on karma and personal responsibility. These differing foundations lead to different understandings of truth.\n\n2. **Cultural Contexts**: While cultural contexts shape beliefs, it does not validate all paths as equally true. Just because a belief is shaped by culture does not mean it is correct; some beliefs can be harmful or misguided, such as practices that violate human rights. \n\n3. **Objective Truth**: The existence of shared moral values can indicate a universal human experience, but it does not equate to all religions leading to the same ultimate truth. Objective truth exists beyond subjective interpretations, and conflicting religious claims cannot all be valid.\n\nIn conclusion, while"
+}
+[2024-12-02T17:07:45.933Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T17:07:45.933Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T17:07:45.934Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T17:07:45.934Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:45.934Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T17:07:45.935Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:45.935Z] [ConversationRecorder] Recorded message from opponent
+[2024-12-02T17:07:45.935Z] [DebateRoutes] Recorded message
+[2024-12-02T17:07:45.941Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "maybe",
+      "id": 2,
+      "score": {
+        "score": 3,
+        "previousScore": 2
+      }
+    },
+    {
+      "role": "user",
+      "content": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical",
+      "id": 3,
+      "score": {
+        "score": 68,
+        "previousScore": 98
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents.",
+      "id": 4
+    },
+    {
+      "role": "user",
+      "content": "While many religions share common moral values like compassion and justice, this does not mean they are equally valid paths to the same truth. \n\n1. **Different Foundations**: Common values do not imply that the underlying beliefs and teachings are the same. For example, the concept of justice in Christianity may involve divine judgment, while in Buddhism, it may focus on karma and personal responsibility. These differing foundations lead to different understandings of truth.\n\n2. **Cultural Contexts**: While cultural contexts shape beliefs, it does not validate all paths as equally true. Just because a belief is shaped by culture does not mean it is correct; some beliefs can be harmful or misguided, such as practices that violate human rights. \n\n3. **Objective Truth**: The existence of shared moral values can indicate a universal human experience, but it does not equate to all religions leading to the same ultimate truth. Objective truth exists beyond subjective interpretations, and conflicting religious claims cannot all be valid.\n\nIn conclusion, while",
+      "id": 5
+    }
+  ],
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent",
+  "difficulty": "easy"
+}
+[2024-12-02T17:07:45.942Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messagesCount": 5,
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent",
+  "difficulty": "easy"
+}
+[2024-12-02T17:07:45.942Z] Evaluating argument:
+Data: {
+  "topic": "All religions are equally valid paths to the same truth",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "The claim that \"all religions are equally valid paths to the same truth\" lacks empirical support and logical consistency. \n\n1. **Diverse Beliefs**: Different religions have fundamentally different beliefs about the nature of reality, morality, and the divine. For example, Christianity teaches about the Trinity, while Buddhism does not recognize a personal god. These conflicting beliefs cannot all be true simultaneously.\n\n2. **Statistical Evidence**: A study by the Pew Research Center shows that 84% of the world's population identifies with a religious group, yet these groups often have exclusive truth claims. For instance, many religions assert that their path is the only way to achieve salvation or enlightenment.\n\n3. **Historical Context**: Religions have developed in different cultural and historical contexts, leading to varied interpretations of truth. For example, the concept of sin in Christianity differs significantly from the idea of karma in Hinduism. This suggests that truth is not universally agreed upon.\n\nIn conclusion, the evidence indicates that not all religions",
+      "id": 1,
+      "score": {
+        "score": 98,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "maybe",
+      "id": 2,
+      "score": {
+        "score": 3,
+        "previousScore": 2
+      }
+    },
+    {
+      "role": "user",
+      "content": "While it's understandable to consider multiple perspectives, the idea that all religions are equally valid paths to the same truth still faces significant challenges. \n\n1. **Contradictory Claims**: Many religions make exclusive truth claims that directly contradict one another. For example, Islam teaches that Muhammad is the final prophet, while Christianity believes in Jesus as the central figure of faith. These opposing views cannot be reconciled as equally valid.\n\n2. **Moral Implications**: If all religions are equally valid, it raises ethical concerns about accountability and moral standards. For instance, some religions may justify practices that others deem harmful or unjust, leading to a moral relativism that can undermine societal cohesion.\n\n3. **Philosophical Consistency**: The principle of non-contradiction states that contradictory statements cannot both be true at the same time. If one religion claims a specific truth, and another denies it, they cannot both be valid paths to the same truth.\n\nIn summary, the contradictions and ethical",
+      "id": 3,
+      "score": {
+        "score": 68,
+        "previousScore": 98
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Emphasize the common moral values found across major religions, such as compassion and justice, to illustrate that they all guide followers toward a shared understanding of truth. Be prepared to counter the argument that some religions are inherently superior by highlighting that differing cultural contexts shape beliefs, making each path valid for its adherents.",
+      "id": 4
+    },
+    {
+      "role": "user",
+      "content": "While many religions share common moral values like compassion and justice, this does not mean they are equally valid paths to the same truth. \n\n1. **Different Foundations**: Common values do not imply that the underlying beliefs and teachings are the same. For example, the concept of justice in Christianity may involve divine judgment, while in Buddhism, it may focus on karma and personal responsibility. These differing foundations lead to different understandings of truth.\n\n2. **Cultural Contexts**: While cultural contexts shape beliefs, it does not validate all paths as equally true. Just because a belief is shaped by culture does not mean it is correct; some beliefs can be harmful or misguided, such as practices that violate human rights. \n\n3. **Objective Truth**: The existence of shared moral values can indicate a universal human experience, but it does not equate to all religions leading to the same ultimate truth. Objective truth exists beyond subjective interpretations, and conflicting religious claims cannot all be valid.\n\nIn conclusion, while",
+      "id": 5
+    }
+  ],
+  "currentScores": {
+    "user": 32,
+    "opponent": 68
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent",
+  "difficulty": "easy"
+}
+[2024-12-02T17:07:45.942Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"All religions are equally valid paths to the same truth\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: easy\nBe more lenient with scoring. Focus on basic argument structure and clarity.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 32, opponent: 68\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"While many religions share common moral values like compassion and justice, this does not mean they are equally valid paths to the same truth. \n\n1. **Different Foundations**: Common values do not imply that the underlying beliefs and teachings are the same. For example, the concept of justice in Christianity may involve divine judgment, while in Buddhism, it may focus on karma and personal responsibility. These differing foundations lead to different understandings of truth.\n\n2. **Cultural Contexts**: While cultural contexts shape beliefs, it does not validate all paths as equally true. Just because a belief is shaped by culture does not mean it is correct; some beliefs can be harmful or misguided, such as practices that violate human rights. \n\n3. **Objective Truth**: The existence of shared moral values can indicate a universal human experience, but it does not equate to all religions leading to the same ultimate truth. Objective truth exists beyond subjective interpretations, and conflicting religious claims cannot all be valid.\n\nIn conclusion, while\""
+    }
+  ],
+  "temperature": 0.3,
+  "max_tokens": 200,
+  "difficulty": "easy",
+  "configUsed": {
+    "temperature": 0.3,
+    "maxTokens": 200,
+    "scoreMultiplier": 1.5
+  }
+}
+[2024-12-02T17:07:47.062Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733159265-etH0XjlPAuODWDuvAlqI",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733159265,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "55\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 407,
+      "completion_tokens": 3,
+      "total_tokens": 410
+    }
+  }
+}
+[2024-12-02T17:07:47.064Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 83
+}
+[2024-12-02T17:07:47.070Z] [DebateRoutes] Recording score:
+Data: {
+  "conversationId": "a127d4bb",
+  "participantId": "opponent",
+  "score": 83
+}
+[2024-12-02T17:07:47.070Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T17:07:47.070Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T17:07:47.071Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T17:07:47.071Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:47.071Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T17:07:47.072Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:47.072Z] [ConversationRecorder] Recorded score for opponent: 83
+[2024-12-02T17:07:47.072Z] [DebateRoutes] Recorded score
+[2024-12-02T17:07:47.426Z] [DebateRoutes] Ending conversation:
+Data: {
+  "conversationId": "a127d4bb"
+}
+[2024-12-02T17:07:47.426Z] [ConversationRecorder] Current directory: /home/vscode/debater/server
+[2024-12-02T17:07:47.427Z] [ConversationRecorder] Log directory path: /home/vscode/debater/server/logs/conversations
+[2024-12-02T17:07:47.427Z] [ConversationRecorder] Write permissions verified
+[2024-12-02T17:07:47.427Z] [ConversationRecorder] Attempting to save conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:47.427Z] [ConversationRecorder] Conversation content prepared: {
+  "id": "a127d4bb",
+  "startTime": "2024-12-02T16:56:04.908Z",
+  "gameSetup": {
+    "topic": "All ...
+[2024-12-02T17:07:47.428Z] [ConversationRecorder] Successfully saved conversation to /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-a127d4bb.json
+[2024-12-02T17:07:47.429Z] [DebateRoutes] Ended conversation:
+Data: {
+  "conversationId": "a127d4bb",
+  "isHighScore": true
+}
+[2024-12-02T17:07:52.722Z] [DebateRoutes] Adding high score:
+Data: {
+  "username": "Me",
+  "score": 17,
+  "subjectId": "REL003",
+  "position": "for",
+  "skill": "easy",
+  "conversationId": "a127d4bb"
+}
+[2024-12-02T17:07:52.723Z] [HighScoreManager] Added new high score for Me
+[2024-12-02T17:07:52.723Z] [DebateRoutes] Added high score

@@ -129,14 +129,6 @@
       "skill": "medium"
     },
     {
-      "id": 17,
-      "username": "LabCoat",
-      "score": 11,
-      "subjectId": "SCI001",
-      "position": "for",
-      "skill": "easy"
-    },
-    {
       "id": 18,
       "username": "BillNye",
       "score": 17,
@@ -441,6 +433,23 @@
       "skill": "hard"
     },
     {
+      "id": 59,
+      "username": "testUser",
+      "score": 95,
+      "subjectId": "SCI001",
+      "position": "for",
+      "skill": "easy",
+      "conversationId": "test123"
+    },
+    {
+      "id": 17,
+      "username": "LabCoat",
+      "score": 11,
+      "subjectId": "SCI001",
+      "position": "for",
+      "skill": "easy"
+    },
+    {
       "id": 58,
       "username": "Andy",
       "score": 32,
@@ -448,6 +457,15 @@
       "position": "against",
       "skill": "easy",
       "conversationId": "3194447a"
+    },
+    {
+      "id": 60,
+      "username": "Me",
+      "score": 17,
+      "subjectId": "REL003",
+      "position": "for",
+      "skill": "easy",
+      "conversationId": "a127d4bb"
     },
     {
       "id": 46,
