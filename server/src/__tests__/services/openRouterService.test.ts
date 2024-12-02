@@ -99,6 +99,52 @@ describe('OpenRouterService', () => {
       expect(mockedAxios.post).toHaveBeenCalledTimes(3);
       expect(mockedDiagnosticLogger.error).toHaveBeenCalledTimes(3);
     });
+
+    it('should handle malformed API response', async () => {
+      const mockResponse = {
+        data: {
+          choices: null // Malformed response
+        }
+      };
+
+      mockedAxios.post.mockResolvedValueOnce(mockResponse);
+      mockedApiLogger.logRequest.mockResolvedValueOnce('test-request-id');
+
+      const result = await OpenRouterService.generateCompletion(mockMessages, mockModel);
+
+      expect(result).toBe('');
+      expect(mockedDiagnosticLogger.warn).toHaveBeenCalled();
+    });
+
+    it('should filter out empty messages', async () => {
+      const messagesWithEmpty = [
+        { role: 'system', content: 'You are a helpful assistant' },
+        { role: 'user', content: '  ' }, // Empty message
+        { role: 'user', content: 'Hello' }
+      ];
+
+      const mockResponse = {
+        data: {
+          choices: [{ message: { content: 'Response' } }]
+        }
+      };
+
+      mockedAxios.post.mockResolvedValueOnce(mockResponse);
+      mockedApiLogger.logRequest.mockResolvedValueOnce('test-request-id');
+
+      await OpenRouterService.generateCompletion(messagesWithEmpty, mockModel);
+
+      expect(mockedAxios.post).toHaveBeenCalledWith(
+        expect.any(String),
+        expect.objectContaining({
+          messages: expect.arrayContaining([
+            expect.objectContaining({ content: 'You are a helpful assistant' }),
+            expect.objectContaining({ content: 'Hello' })
+          ])
+        }),
+        expect.any(Object)
+      );
+    });
   });
 
   describe('generateTopic', () => {
@@ -122,6 +168,63 @@ describe('OpenRouterService', () => {
         ]),
         model
       );
+    });
+  });
+
+  describe('generateHint', () => {
+    const mockTopic = 'Should AI be regulated?';
+    const mockPosition = 'for';
+    const mockModel = 'gpt-3.5-turbo';
+
+    it('should generate a hint successfully', async () => {
+      const mockHint = 'Focus on AI safety concerns and potential risks to society.';
+      
+      jest.spyOn(OpenRouterService, 'generateCompletion')
+        .mockResolvedValueOnce(mockHint);
+
+      const result = await OpenRouterService.generateHint(mockTopic, mockPosition, mockModel);
+
+      expect(result).toBe(mockHint);
+      expect(OpenRouterService.generateCompletion).toHaveBeenCalledWith(
+        expect.arrayContaining([
+          expect.objectContaining({
+            role: 'system',
+            content: expect.stringContaining(mockTopic)
+          }),
+          expect.objectContaining({
+            role: 'user',
+            content: expect.stringContaining(mockPosition)
+          })
+        ]),
+        mockModel
+      );
+      expect(mockedDiagnosticLogger.log).toHaveBeenCalledWith(
+        'Generating hint:',
+        expect.objectContaining({
+          topic: mockTopic,
+          position: mockPosition,
+          model: mockModel
+        })
+      );
+    });
+
+    it('should handle empty hint response', async () => {
+      jest.spyOn(OpenRouterService, 'generateCompletion')
+        .mockResolvedValueOnce('');
+
+      const result = await OpenRouterService.generateHint(mockTopic, mockPosition, mockModel);
+
+      expect(result).toBe('');
+    });
+
+    it('should propagate errors from generateCompletion', async () => {
+      const error = new Error('API error');
+      jest.spyOn(OpenRouterService, 'generateCompletion')
+        .mockRejectedValueOnce(error);
+
+      await expect(OpenRouterService.generateHint(mockTopic, mockPosition, mockModel))
+        .rejects
+        .toThrow('API error');
     });
   });
 
@@ -191,6 +294,49 @@ describe('OpenRouterService', () => {
       );
 
       expect(result).toBe(100);
+    });
+
+    it('should throw error when no message to evaluate', async () => {
+      await expect(OpenRouterService.evaluateArgument(
+        mockParams.topic,
+        mockParams.position,
+        [], // Empty messages array
+        mockParams.currentScores,
+        mockParams.model,
+        mockParams.roleToScore
+      )).rejects.toThrow('No message to evaluate');
+    });
+  });
+
+  describe('getLeaderboard', () => {
+    it('should fetch leaderboard successfully', async () => {
+      const mockLeaderboard = [
+        { name: 'Player1', score: 100 },
+        { name: 'Player2', score: 90 }
+      ];
+
+      mockedAxios.get.mockResolvedValueOnce({ data: { leaderboard: mockLeaderboard } });
+
+      const result = await OpenRouterService.getLeaderboard();
+
+      expect(result).toEqual(mockLeaderboard);
+      expect(mockedAxios.get).toHaveBeenCalledWith(expect.stringContaining('/leaderboard'));
+    });
+  });
+
+  describe('submitScore', () => {
+    it('should submit score successfully', async () => {
+      const name = 'Player1';
+      const score = 100;
+
+      mockedAxios.post.mockResolvedValueOnce({});
+
+      await OpenRouterService.submitScore(name, score);
+
+      expect(mockedAxios.post).toHaveBeenCalledWith(
+        expect.stringContaining('/submit-score'),
+        { name, score }
+      );
     });
   });
 });

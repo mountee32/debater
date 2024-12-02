@@ -690,5 +690,217 @@
         "total_tokens": 240
       }
     }
+  },
+  {
+    "timestamp": "2024-12-02T13:43:07.512Z",
+    "requestId": "870e6b3f-4aa5-439e-9a78-430b1852fc7b",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this for argument: \"hi\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T13:43:08.853Z",
+    "requestId": "870e6b3f-4aa5-439e-9a78-430b1852fc7b",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "2\n",
+      "usage": {
+        "prompt_tokens": 190,
+        "completion_tokens": 2,
+        "total_tokens": 192
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T13:43:08.869Z",
+    "requestId": "914eb683-a37a-4b48-915f-07490bb3d6e1",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+        },
+        {
+          "role": "assistant",
+          "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency."
+        },
+        {
+          "role": "user",
+          "content": "sometimes"
+        },
+        {
+          "role": "assistant",
+          "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes."
+        },
+        {
+          "role": "user",
+          "content": "hi"
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T13:43:09.782Z",
+    "requestId": "914eb683-a37a-4b48-915f-07490bb3d6e1",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Hello! If you have any questions or would like to continue our debate on free will and predetermination, feel free to share your thoughts.",
+      "usage": {
+        "prompt_tokens": 304,
+        "completion_tokens": 28,
+        "total_tokens": 332
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T13:43:09.793Z",
+    "requestId": "e0380bed-2d2f-4fef-b085-7e18e94c9f81",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"Hello! If you have any questions or would like to continue our debate on free will and predetermination, feel free to share your thoughts.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T13:43:10.833Z",
+    "requestId": "e0380bed-2d2f-4fef-b085-7e18e94c9f81",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "20\n",
+      "usage": {
+        "prompt_tokens": 216,
+        "completion_tokens": 3,
+        "total_tokens": 219
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T13:43:17.621Z",
+    "requestId": "5e0bfa3a-e120-4259-b18c-8abcb4126c39",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Devil's Advocate Dan, an expert debater for the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+        },
+        {
+          "role": "user",
+          "content": "The topic is: \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Start with a clear opening argument for the topic."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T13:43:18.903Z",
+    "requestId": "5e0bfa3a-e120-4259-b18c-8abcb4126c39",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Jesus Christ's resurrection is a historical fact that cannot be denied due to the multiple accounts in the Gospels, which were written by various authors, providing consistent details of the event. Additionally, the rapid growth of Christianity following the resurrection further supports its historical validity.",
+      "usage": {
+        "prompt_tokens": 247,
+        "completion_tokens": 52,
+        "total_tokens": 299
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T13:43:18.916Z",
+    "requestId": "5a9c78a2-2031-450f-8d6b-476d368bcdb6",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Jesus Christ's resurrection is a historical fact that cannot be denied\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this for argument: \"Jesus Christ's resurrection is a historical fact that cannot be denied due to the multiple accounts in the Gospels, which were written by various authors, providing consistent details of the event. Additionally, the rapid growth of Christianity following the resurrection further supports its historical validity.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T13:43:19.510Z",
+    "requestId": "5a9c78a2-2031-450f-8d6b-476d368bcdb6",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "65\n",
+      "usage": {
+        "prompt_tokens": 241,
+        "completion_tokens": 3,
+        "total_tokens": 244
+      }
+    }
   }
 ]
