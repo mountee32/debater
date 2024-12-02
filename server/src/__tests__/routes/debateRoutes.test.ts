@@ -16,6 +16,90 @@ describe('Debate Routes', () => {
     jest.clearAllMocks();
   });
 
+  describe('POST /api/debate/start-conversation', () => {
+    it('should start a conversation successfully', async () => {
+      const mockRequest = {
+        topic: 'AI Ethics',
+        difficulty: 1,
+        participants: [
+          {
+            id: 'user',
+            name: 'User',
+            avatar: 'user.svg',
+            role: 'debater'
+          },
+          {
+            id: 'opponent',
+            name: 'AI',
+            avatar: 'ai.svg',
+            role: 'debater'
+          }
+        ],
+        subjectId: 'SCI001',
+        position: 'for',
+        skill: 'easy'
+      };
+
+      const response = await request(app)
+        .post('/api/debate/start-conversation')
+        .send(mockRequest);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('conversationId');
+    });
+
+    it('should handle missing required fields', async () => {
+      const mockRequest = {
+        topic: 'AI Ethics',
+        difficulty: 1,
+        participants: []
+        // Missing subjectId, position, skill
+      };
+
+      const response = await request(app)
+        .post('/api/debate/start-conversation')
+        .send(mockRequest);
+
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error', 'Missing required fields');
+    });
+  });
+
+  describe('POST /api/debate/add-high-score', () => {
+    it('should add high score successfully', async () => {
+      const mockRequest = {
+        username: 'testUser',
+        score: 95,
+        subjectId: 'SCI001',
+        position: 'for',
+        skill: 'easy',
+        conversationId: 'test123'
+      };
+
+      const response = await request(app)
+        .post('/api/debate/add-high-score')
+        .send(mockRequest);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({ success: true });
+    });
+
+    it('should handle missing required fields', async () => {
+      const mockRequest = {
+        username: 'testUser',
+        score: 95
+        // Missing subjectId, position, skill, conversationId
+      };
+
+      const response = await request(app)
+        .post('/api/debate/add-high-score')
+        .send(mockRequest);
+
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error', 'Missing required fields');
+    });
+  });
+
   describe('POST /api/debate/topic', () => {
     it('should generate a topic successfully', async () => {
       const mockRequest = {

@@ -30,13 +30,15 @@ export interface GameContextType {
   setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
   availableSubjects: DebateSubject[];
   setAvailableSubjects: React.Dispatch<React.SetStateAction<DebateSubject[]>>;
+  currentSubjectId: string;
+  setCurrentSubjectId: React.Dispatch<React.SetStateAction<string>>;
   handleStartChat: () => void;
   handleCategorySelect: (selectedCategory: string) => void;
   handleTopicSubmit: () => void;
   handlePersonalitySelect: (personality: AIPersonality) => void;
   handleDifficultyChange: (newDifficulty: Difficulty) => void;
   handlePositionSelect: (position: Position) => void;
-  handleSubjectSelect: (subject: string) => void;
+  handleSubjectSelect: (subject: string, subjectId: string) => void;
   toggleDarkMode: () => void;
 }
 
@@ -51,6 +53,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [userPosition, setUserPosition] = useState<Position>('for');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [availableSubjects, setAvailableSubjects] = useState<DebateSubject[]>([]);
+  const [currentSubjectId, setCurrentSubjectId] = useState<string>('');
 
   useEffect(() => {
     const storedDarkMode = localStorage.getItem('darkMode');
@@ -77,6 +80,13 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   };
 
   const handleTopicSubmit = () => {
+    // For custom topics, try to find a matching subject ID
+    const matchingSubject = debateSubjectsData.subjects.find(
+      subject => subject.subject.toLowerCase() === topic.toLowerCase()
+    );
+    if (matchingSubject) {
+      setCurrentSubjectId(matchingSubject.id);
+    }
     setGameState('select-position');
   };
 
@@ -95,8 +105,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setGameState('select-personality');
   };
 
-  const handleSubjectSelect = (subject: string) => {
+  const handleSubjectSelect = (subject: string, subjectId: string) => {
     setTopic(subject);
+    setCurrentSubjectId(subjectId);
     setGameState('select-position');
   };
 
@@ -122,6 +133,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setIsDarkMode,
     availableSubjects,
     setAvailableSubjects,
+    currentSubjectId,
+    setCurrentSubjectId,
     handleStartChat,
     handleCategorySelect,
     handleTopicSubmit,

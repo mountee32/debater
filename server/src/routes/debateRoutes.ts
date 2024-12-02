@@ -3,6 +3,7 @@ import { OpenRouterService } from '../services/openRouterService';
 import { ApiLogger } from '../services/apiLogger';
 import DiagnosticLogger from '../utils/diagnosticLogger';
 import { ConversationRecorder } from '../services/conversationRecorder';
+import { HighScoreManager } from '../services/highScoreManager';
 import { rateLimit } from 'express-rate-limit';
 
 const router = Router();
@@ -20,9 +21,9 @@ router.use(apiLimiter);
 router.post('/start-conversation', async (req, res) => {
   try {
     await DiagnosticLogger.log('[DebateRoutes] Starting new conversation:', req.body);
-    const { topic, difficulty, participants } = req.body;
+    const { topic, difficulty, participants, subjectId, position, skill } = req.body;
 
-    if (!topic || !difficulty || !participants) {
+    if (!topic || !difficulty || !participants || !subjectId || !position || !skill) {
       const error = 'Missing required fields';
       await DiagnosticLogger.error('[DebateRoutes] Start conversation error:', error);
       return res.status(400).json({ error });
@@ -31,7 +32,10 @@ router.post('/start-conversation', async (req, res) => {
     const conversationId = await ConversationRecorder.startNewConversation({
       topic,
       difficulty,
-      participants
+      participants,
+      subjectId,
+      position,
+      skill
     });
 
     await DiagnosticLogger.log('[DebateRoutes] Started conversation:', { conversationId });
@@ -105,13 +109,45 @@ router.post('/end-conversation', async (req, res) => {
       return res.status(400).json({ error });
     }
 
-    const endedConversationId = await ConversationRecorder.endConversation();
-    await DiagnosticLogger.log('[DebateRoutes] Ended conversation:', { endedConversationId });
-    res.json({ conversationId: endedConversationId });
+    const result = await ConversationRecorder.endConversation();
+    await DiagnosticLogger.log('[DebateRoutes] Ended conversation:', result);
+    res.json(result);
   } catch (error) {
     await DiagnosticLogger.error('[DebateRoutes] End conversation error:', error);
     res.status(500).json({
       error: 'Failed to end conversation',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Add high score
+router.post('/add-high-score', async (req, res) => {
+  try {
+    await DiagnosticLogger.log('[DebateRoutes] Adding high score:', req.body);
+    const { username, score, subjectId, position, skill, conversationId } = req.body;
+
+    if (!username || score === undefined || !subjectId || !position || !skill || !conversationId) {
+      const error = 'Missing required fields';
+      await DiagnosticLogger.error('[DebateRoutes] Add high score error:', error);
+      return res.status(400).json({ error });
+    }
+
+    await HighScoreManager.addHighScore(
+      username,
+      score,
+      subjectId,
+      skill,
+      position,
+      conversationId
+    );
+
+    await DiagnosticLogger.log('[DebateRoutes] Added high score');
+    res.json({ success: true });
+  } catch (error) {
+    await DiagnosticLogger.error('[DebateRoutes] Add high score error:', error);
+    res.status(500).json({
+      error: 'Failed to add high score',
       details: error instanceof Error ? error.message : 'Unknown error'
     });
   }

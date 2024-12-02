@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Trophy, Star, RotateCcw } from 'lucide-react';
 
 interface GameSummaryProps {
@@ -6,14 +6,63 @@ interface GameSummaryProps {
   feedback: string;
   improvements: string[];
   onPlayAgain: () => void;
+  isHighScore?: boolean;
+  conversationId?: string;
+  subjectId?: string;
+  position?: 'for' | 'against';
+  skill?: 'easy' | 'medium' | 'hard';
 }
 
 export const GameSummary: React.FC<GameSummaryProps> = ({
   score,
   feedback,
   improvements,
-  onPlayAgain
+  onPlayAgain,
+  isHighScore,
+  conversationId,
+  subjectId,
+  position,
+  skill
 }) => {
+  const [username, setUsername] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [highScoreSubmitted, setHighScoreSubmitted] = useState(false);
+
+  const handleSubmitHighScore = async () => {
+    if (!username.trim() || !conversationId || !subjectId || !position || !skill) return;
+
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/add-high-score`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username.trim(),
+          score,
+          subjectId,
+          position,
+          skill,
+          conversationId
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit high score');
+      }
+
+      setHighScoreSubmitted(true);
+    } catch (err) {
+      setError('Failed to submit high score. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-xl rounded-2xl p-8 transition-all duration-300">
@@ -33,6 +82,48 @@ export const GameSummary: React.FC<GameSummaryProps> = ({
             </div>
           </div>
         </div>
+
+        {isHighScore && !highScoreSubmitted && (
+          <div className="bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700 rounded-xl p-6 mb-6 transition-all duration-300">
+            <h3 className="text-xl font-semibold mb-3 flex items-center text-yellow-800 dark:text-yellow-200">
+              <Trophy className="w-5 h-5 mr-2" />
+              New High Score!
+            </h3>
+            <p className="text-yellow-700 dark:text-yellow-300 mb-4">
+              Congratulations! You've achieved a high score. Enter your name to be added to the leaderboard.
+            </p>
+            <div className="flex gap-3">
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Enter your name"
+                className="flex-1 px-4 py-2 rounded-lg border border-yellow-300 dark:border-yellow-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                maxLength={20}
+              />
+              <button
+                onClick={handleSubmitHighScore}
+                disabled={!username.trim() || isSubmitting}
+                className="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </div>
+            {error && (
+              <p className="mt-2 text-red-600 dark:text-red-400 text-sm">
+                {error}
+              </p>
+            )}
+          </div>
+        )}
+
+        {highScoreSubmitted && (
+          <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 rounded-xl p-6 mb-6 transition-all duration-300">
+            <p className="text-green-700 dark:text-green-300 text-center font-semibold">
+              High score submitted successfully! 🎉
+            </p>
+          </div>
+        )}
 
         <div className="space-y-6">
           <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-6 transition-all duration-300">

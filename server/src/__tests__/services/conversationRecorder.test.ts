@@ -51,14 +51,11 @@ describe('ConversationRecorder', () => {
         name: 'Player 2',
         avatar: 'avatar2.svg',
         role: 'debater' as const
-      },
-      {
-        id: 'judge1',
-        name: 'Judge',
-        avatar: 'judge.svg',
-        role: 'judge' as const
       }
-    ]
+    ],
+    subjectId: 'TEST001',
+    position: 'for' as const,
+    skill: 'medium' as const
   };
 
   beforeEach(() => {
@@ -76,13 +73,27 @@ describe('ConversationRecorder', () => {
   });
 
   describe('startNewConversation', () => {
-    it('should start a new conversation', () => {
+    it('should start a new conversation with required fields', () => {
       const conversationId = ConversationRecorder.startNewConversation(mockGameSetup);
 
       expect(conversationId).toBe(mockConversationId);
-      expect(console.log).toHaveBeenCalledWith(
-        `[ConversationRecorder] Started new conversation: ${mockConversationId}`
-      );
+      expect(mockedFs.promises.writeFile).toHaveBeenCalled();
+      const savedData = JSON.parse(mockedFs.promises.writeFile.mock.calls[0][1]);
+      expect(savedData.gameSetup).toEqual(expect.objectContaining({
+        subjectId: 'TEST001',
+        position: 'for',
+        skill: 'medium'
+      }));
+    });
+
+    it('should throw error if required fields are missing', () => {
+      const invalidGameSetup = {
+        ...mockGameSetup,
+        subjectId: undefined
+      };
+
+      expect(() => ConversationRecorder.startNewConversation(invalidGameSetup as any))
+        .toThrow('Missing required fields');
     });
 
     it('should create conversations directory if it does not exist', () => {
@@ -164,12 +175,15 @@ describe('ConversationRecorder', () => {
       ConversationRecorder.startNewConversation(mockGameSetup);
     });
 
-    it('should end conversation successfully', async () => {
+    it('should end conversation and check for high score', async () => {
       mockedFs.promises.writeFile.mockResolvedValueOnce(undefined);
 
-      const conversationId = await ConversationRecorder.endConversation();
+      const result = await ConversationRecorder.endConversation();
 
-      expect(conversationId).toBe(mockConversationId);
+      expect(result).toEqual({
+        conversationId: mockConversationId,
+        isHighScore: expect.any(Boolean)
+      });
       expect(mockedFs.promises.writeFile).toHaveBeenCalled();
       const savedData = JSON.parse(mockedFs.promises.writeFile.mock.calls[0][1]);
       expect(savedData.endTime).toBe(mockDate.toISOString());

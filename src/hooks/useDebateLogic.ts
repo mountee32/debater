@@ -8,6 +8,7 @@ interface GameSummary {
   score: number;
   feedback: string;
   improvements: string[];
+  isHighScore?: boolean;
 }
 
 export interface DebateState {
@@ -36,7 +37,8 @@ export const useDebateLogic = (
   topic: string,
   difficulty: 'easy' | 'medium' | 'hard',
   userPosition: 'for' | 'against',
-  aiPersonality: AIPersonality
+  aiPersonality: AIPersonality,
+  subjectId: string
 ) => {
   const { messages, addMessage, updateMessageScore } = useMessageHandler();
   const [state, setState] = useState<DebateState>({
@@ -115,7 +117,7 @@ export const useDebateLogic = (
       // End conversation through API if active
       if (state.conversationId) {
         try {
-          await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/end-conversation`, {
+          const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/end-conversation`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -124,6 +126,11 @@ export const useDebateLogic = (
               conversationId: state.conversationId
             })
           });
+          
+          const result = await response.json();
+          if (result.isHighScore) {
+            mockSummary.isHighScore = true;
+          }
         } catch (error) {
           console.error('Failed to end conversation:', error);
         }
@@ -369,7 +376,10 @@ DEBATE PRINCIPLES:
                 avatar: aiPersonality.avatarUrl,
                 role: 'debater'
               }
-            ]
+            ],
+            subjectId,
+            position: userPosition,
+            skill: difficulty
           })
         });
         

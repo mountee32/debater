@@ -27,10 +27,13 @@ function AppContent() {
     isDarkMode,
     handleStartChat,
     toggleDarkMode,
+    currentSubjectId,
+    setCurrentSubjectId,
   } = useGameContext();
 
-  const handleStartDebateFromLeaderboard = (subject: string) => {
+  const handleStartDebateFromLeaderboard = (subject: string, subjectId: string) => {
     setTopic(subject);
+    setCurrentSubjectId(subjectId);
     setGameState('select-position');
   };
 
@@ -123,6 +126,7 @@ function AppContent() {
               userPosition={userPosition}
               isDarkMode={isDarkMode}
               onToggleDarkMode={toggleDarkMode}
+              subjectId={currentSubjectId}
             />
           )}
         </div>

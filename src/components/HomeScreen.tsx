@@ -5,7 +5,7 @@ import debateSubjects from '../data/debateSubjects.json';
 
 interface HomeScreenProps {
   username: string;
-  onStartDebate: (subject: string) => void;
+  onStartDebate: (subject: string, subjectId: string) => void;
   handleStartChat: () => void;
 }
 
@@ -112,6 +112,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
     setSelectedSkill(skill);
   }, []);
 
+  const handleSubjectClick = useCallback((subject: DebateSubject) => {
+    onStartDebate(subject.subject, subject.id);
+  }, [onStartDebate]);
+
   return (
     <div className="max-w-6xl mx-auto px-4">
       <div className="text-center mb-12 mt-8">
@@ -192,7 +196,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
                 return (
                   <div key={subject.id} className="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0">
                     <button
-                      onClick={() => onStartDebate(subject.subject)}
+                      onClick={() => handleSubjectClick(subject)}
                       className="w-full text-left group mb-4"
                       aria-label={`Start debate about ${subject.subject}`}
                     >
@@ -205,7 +209,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
                         entries.map((player) => (
                           <div
                             key={player.id}
-                            onClick={() => onStartDebate(subject.subject)}
+                            onClick={() => handleSubjectClick(subject)}
                             className="flex items-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 
                               rounded-full px-5 py-2.5 shadow-sm hover:shadow-md transition-all duration-300 
                               transform hover:-translate-y-0.5 cursor-pointer select-none group
@@ -230,7 +234,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ username, onStartDebate, handle
                         ))
                       ) : (
                         <button
-                          onClick={() => onStartDebate(subject.subject)}
+                          onClick={() => handleSubjectClick(subject)}
                           className="flex items-center bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/30 dark:to-gray-700/30 
                             rounded-full px-5 py-2.5 shadow-sm hover:shadow-md transition-all duration-300 
                             transform hover:-translate-y-0.5 cursor-pointer select-none group

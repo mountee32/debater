@@ -15,6 +15,7 @@ interface DebateGameProps {
   userPosition: 'for' | 'against';
   isDarkMode: boolean;
   onToggleDarkMode: () => void;
+  subjectId: string;
 }
 
 interface DisplayMessage {
@@ -33,7 +34,8 @@ const DebateGame: React.FC<DebateGameProps> = ({
   aiPersonality, 
   userPosition,
   isDarkMode,
-  onToggleDarkMode
+  onToggleDarkMode,
+  subjectId
 }) => {
   const [currentArgument, setCurrentArgument] = React.useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -47,7 +49,7 @@ const DebateGame: React.FC<DebateGameProps> = ({
     handleHintRequest,
     initializeDebate,
     generateDebateSummary,
-  } = useDebateLogic(topic, difficulty, userPosition, aiPersonality);
+  } = useDebateLogic(topic, difficulty, userPosition, aiPersonality, subjectId);
 
   const { timeLeft } = useTimer(300, async () => {
     return Promise.resolve();
@@ -102,6 +104,11 @@ const DebateGame: React.FC<DebateGameProps> = ({
         feedback={state.summary.feedback}
         improvements={state.summary.improvements}
         onPlayAgain={onPlayAgain}
+        isHighScore={state.summary.isHighScore}
+        conversationId={state.conversationId || undefined}
+        subjectId={subjectId}
+        position={userPosition}
+        skill={difficulty}
       />
     );
   }

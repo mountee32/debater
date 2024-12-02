@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import DiagnosticLogger from '../utils/diagnosticLogger';
+import { HighScoreManager } from './highScoreManager';
 
 interface Participant {
   id: string;
@@ -14,6 +15,9 @@ interface GameSetup {
   topic: string;
   difficulty: number;
   participants: Participant[];
+  subjectId: string;
+  position: 'for' | 'against';
+  skill: 'easy' | 'medium' | 'hard';
 }
 
 type EventType = 'message' | 'score';
@@ -179,21 +183,40 @@ export class ConversationRecorder {
     }
   }
 
-  static async endConversation() {
+  static async endConversation(): Promise<{ conversationId: string; isHighScore: boolean }> {
     try {
       if (!this.currentConversation) {
         throw new Error('No active conversation');
       }
 
       this.currentConversation.endTime = new Date().toISOString();
+      
+      // Get the final score from events
+      const scoreEvents = this.currentConversation.events.filter(
+        (event): event is ScoreEvent => event.type === 'score'
+      );
+      const finalScore = scoreEvents.length > 0 
+        ? scoreEvents[scoreEvents.length - 1].newScore 
+        : 0;
+      
+      // Save one last time to ensure we have the end time
       await this.saveConversation();
       
       const conversationId = this.currentConversation.id;
+      const { subjectId, position, skill } = this.currentConversation.gameSetup;
+
+      // Check if this is a high score
+      const isHighScore = await HighScoreManager.checkAndUpdateHighScore(
+        finalScore,
+        subjectId,
+        skill,
+        position,
+        conversationId
+      );
+
       this.currentConversation = null;
       
-      console.log('Ended conversation:', conversationId);
-      await DiagnosticLogger.log(`[ConversationRecorder] Ended conversation: ${conversationId}`);
-      return conversationId;
+      return { conversationId, isHighScore };
     } catch (error) {
       console.error('Error ending conversation:', error);
       await DiagnosticLogger.error('[ConversationRecorder] Error ending conversation:', error);
