@@ -1,22 +1,13 @@
 {
   "entries": [
     {
-      "id": 58,
-      "username": "Andy",
+      "id": 1,
+      "username": "Pandy",
       "score": 32,
-      "subjectId": "REL003",
-      "position": "against",
-      "skill": "easy",
-      "conversationId": "3194447a"
-    },
-    {
-      "id": 60,
-      "username": "Me",
-      "score": 17,
-      "subjectId": "REL003",
+      "subjectId": "REL001",
       "position": "for",
       "skill": "easy",
-      "conversationId": "a127d4bb"
+      "conversationId": "7187bf2c"
     }
   ]
 }

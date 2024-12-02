@@ -1,0 +1,26 @@
+{
+  "id": "9870b277",
+  "startTime": "2024-12-02T21:58:10.829Z",
+  "gameSetup": {
+    "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+    "difficulty": 1,
+    "participants": [
+      {
+        "id": "user",
+        "name": "User",
+        "avatar": "user.svg",
+        "role": "debater"
+      },
+      {
+        "id": "opponent",
+        "name": "Emotional Emma",
+        "avatar": "/assets/girl_young.svg",
+        "role": "debater"
+      }
+    ],
+    "subjectId": "REL001",
+    "position": "for",
+    "skill": "easy"
+  },
+  "events": []
+}

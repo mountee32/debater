@@ -93,6 +93,29 @@ export const startDebate = async (
   const aiPosition = userPosition === 'for' ? 'against' : 'for';
   const systemPrompt = generatePersonalityPrompt(aiPersonality, topic, aiPosition, difficulty);
 
+  // First, start a new conversation
+  const startResponse = await axios.post(`${API_BASE_URL}/start-conversation`, {
+    topic,
+    difficulty: difficulty === 'easy' ? 1 : difficulty === 'medium' ? 5 : 10,
+    participants: [
+      {
+        id: 'user',
+        name: 'User',
+        avatar: 'user.svg',
+        role: 'debater'
+      },
+      {
+        id: 'opponent',
+        name: aiPersonality.name,
+        avatar: aiPersonality.avatarUrl,
+        role: 'debater'
+      }
+    ],
+    subjectId: 'REL002', // This should be dynamic based on the topic category
+    position: userPosition,
+    skill: difficulty
+  });
+
   const messages: ApiMessage[] = [
     { 
       role: 'system', 
@@ -104,12 +127,19 @@ export const startDebate = async (
     }
   ];
 
+  // Then, get the initial response
   const response = await axios.post(`${API_BASE_URL}/response`, {
     topic,
     position: aiPosition,
     messages,
-    model: modelConfig.models.opponent.name,  // Use model from config
+    model: modelConfig.models.opponent.name,
     difficulty
+  });
+
+  // Record the AI's response
+  await axios.post(`${API_BASE_URL}/record-message`, {
+    participantId: 'opponent',
+    message: response.data.response
   });
 
   return response.data.response;
@@ -160,8 +190,14 @@ EVALUATION CRITERIA:
     topic,
     position: aiPosition,
     messages: messagesWithSystem,
-    model: modelConfig.models.opponent.name,  // Use model from config
+    model: modelConfig.models.opponent.name,
     difficulty
+  });
+
+  // Record the AI's response
+  await axios.post(`${API_BASE_URL}/record-message`, {
+    participantId: 'opponent',
+    message: response.data.response
   });
 
   return response.data.response;
@@ -210,6 +246,12 @@ export const evaluateArgument = async (
     difficulty
   });
 
+  // Record the score
+  await axios.post(`${API_BASE_URL}/record-score`, {
+    participantId: roleToScore,
+    score: response.data.score
+  });
+
   return response.data.score;
 };
 
@@ -226,8 +268,14 @@ export const generateHint = async (
     topic,
     position: userPosition,
     messages: apiMessages,
-    model: modelConfig.models.hint.name,  // Use model from config
+    model: modelConfig.models.hint.name,
     difficulty
+  });
+
+  // Record the hint as a system message
+  await axios.post(`${API_BASE_URL}/record-message`, {
+    participantId: 'system',
+    message: response.data.hint
   });
 
   return response.data.hint;

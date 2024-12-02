@@ -1,0 +1,124 @@
+{
+  "id": "7187bf2c",
+  "startTime": "2024-12-02T21:47:05.396Z",
+  "gameSetup": {
+    "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+    "difficulty": 1,
+    "participants": [
+      {
+        "id": "user",
+        "name": "User",
+        "avatar": "user.svg",
+        "role": "debater"
+      },
+      {
+        "id": "opponent",
+        "name": "Emotional Emma",
+        "avatar": "/assets/girl_young.svg",
+        "role": "debater"
+      }
+    ],
+    "subjectId": "REL002",
+    "position": "for",
+    "skill": "easy"
+  },
+  "events": [
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T21:47:11.427Z",
+      "speakerId": "opponent",
+      "content": "Imagine sitting around a family dinner, sharing stories about loved ones who have passed away. We all have our own beliefs about what happens after we die, and those beliefs can bring us comfort. My grandmother used to tell me stories about how she felt her husband was still with her after he passed. Those stories were her way of keeping his memory alive, just like many people keep the stories of Jesus alive.\n\nNow, when we talk about Jesus' resurrection, it’s important to remember that this is a deeply personal belief for many. But just like my grandmother’s stories, it’s rooted in faith and not something everyone experiences the same way. People have different beliefs based on their own experiences and backgrounds. \n\nSo, while some may feel strongly that the resurrection is a historical fact, others see it as a beautiful story that gives hope and meaning. It’s essential to respect those different perspectives and understand how they shape our human experience. After all, what matters most is how these beliefs impact our lives and"
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T21:47:12.488Z",
+      "participantId": "opponent",
+      "newScore": 60
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T21:47:52.622Z",
+      "speakerId": "user",
+      "content": "there's more written evidence for jesus than julias ceasar, would you say he likely didnt exist?"
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T21:47:53.783Z",
+      "participantId": "user",
+      "newScore": 83
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T21:47:53.793Z",
+      "participantId": "user",
+      "newScore": 83
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T21:47:55.885Z",
+      "speakerId": "opponent",
+      "content": "While it's true that there are more writings about Jesus than Julius Caesar, the existence of a historical figure doesn't automatically confirm miraculous events like resurrection. Many historical figures have been surrounded by myths and legends that grow over time, and Jesus is no exception. We should consider the context of these writings and recognize that belief in Jesus' resurrection is still a matter of faith, not universally accepted historical fact."
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T21:47:55.895Z",
+      "speakerId": "opponent",
+      "content": "While it's true that there are more writings about Jesus than Julius Caesar, the existence of a historical figure doesn't automatically confirm miraculous events like resurrection. Many historical figures have been surrounded by myths and legends that grow over time, and Jesus is no exception. We should consider the context of these writings and recognize that belief in Jesus' resurrection is still a matter of faith, not universally accepted historical fact."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T21:47:56.938Z",
+      "participantId": "opponent",
+      "newScore": 83
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T21:47:56.947Z",
+      "participantId": "opponent",
+      "newScore": 83
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T21:48:25.689Z",
+      "speakerId": "user",
+      "content": "what would be the motivation for his followers who were eye witnesses to stick to their stories and die for it?"
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T21:48:26.911Z",
+      "participantId": "user",
+      "newScore": 68
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T21:48:26.922Z",
+      "participantId": "user",
+      "newScore": 68
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T21:48:28.977Z",
+      "speakerId": "opponent",
+      "content": "It's understandable to wonder about the motivations of Jesus' followers, but people can be deeply committed to their beliefs for various reasons, including personal conviction, social pressure, or a desire for community. Many individuals throughout history have died for causes they believed in, even if those causes were based on faith rather than objective truth. This doesn't necessarily prove the resurrection happened; it simply shows the power of belief and the human need for meaning."
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-02T21:48:28.987Z",
+      "speakerId": "opponent",
+      "content": "It's understandable to wonder about the motivations of Jesus' followers, but people can be deeply committed to their beliefs for various reasons, including personal conviction, social pressure, or a desire for community. Many individuals throughout history have died for causes they believed in, even if those causes were based on faith rather than objective truth. This doesn't necessarily prove the resurrection happened; it simply shows the power of belief and the human need for meaning."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T21:48:30.141Z",
+      "participantId": "opponent",
+      "newScore": 68
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-02T21:48:30.151Z",
+      "participantId": "opponent",
+      "newScore": 68
+    }
+  ],
+  "endTime": "2024-12-02T21:48:36.248Z"
+}

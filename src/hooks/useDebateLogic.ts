@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { AIPersonality } from '../data/aiPersonalities';
 import { useMessageHandler } from './useMessageHandler';
 import { startDebate, continueDebate, generateHint, evaluateArgument } from '../api/openRouterApi';
@@ -23,6 +23,10 @@ export const useDebateLogic = (
     isGeneratingSummary: false,
     conversationId: null
   });
+
+  // Use refs to prevent duplicate API calls
+  const recordingMessage = useRef(false);
+  const recordingScore = useRef(false);
 
   // Calculate AI's position based on user's position
   const aiPosition = userPosition === 'for' ? 'against' : 'for';
@@ -54,6 +58,52 @@ export const useDebateLogic = (
     setState(prev => ({ ...prev, ...updates }));
   };
 
+  const recordMessage = async (participantId: string, message: string) => {
+    if (recordingMessage.current || !state.conversationId) return;
+    recordingMessage.current = true;
+    
+    try {
+      await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          conversationId: state.conversationId,
+          participantId,
+          message
+        })
+      });
+    } catch (error) {
+      console.error('Failed to record message:', error);
+    } finally {
+      recordingMessage.current = false;
+    }
+  };
+
+  const recordScore = async (participantId: string, score: number) => {
+    if (recordingScore.current || !state.conversationId) return;
+    recordingScore.current = true;
+    
+    try {
+      await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-score`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          conversationId: state.conversationId,
+          participantId,
+          score
+        })
+      });
+    } catch (error) {
+      console.error('Failed to record score:', error);
+    } finally {
+      recordingScore.current = false;
+    }
+  };
+
   const updateScores = async (newScore: number, role: 'user' | 'opponent') => {
     const boundedScore = Math.min(Math.max(newScore, 0), 100);
     
@@ -70,23 +120,7 @@ export const useDebateLogic = (
       audienceScore: newScores
     }));
 
-    if (state.conversationId) {
-      try {
-        await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-score`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            conversationId: state.conversationId,
-            participantId: role,
-            score: boundedScore
-          })
-        });
-      } catch (error) {
-        console.error('Failed to record score:', error);
-      }
-    }
+    await recordScore(role, boundedScore);
   };
 
   const generateDebateSummary = async (): Promise<void> => {
@@ -152,24 +186,7 @@ export const useDebateLogic = (
       const currentUserScore = state.audienceScore.user;
       const userMessageId = messages.length + 1;
       addMessage('user', currentArgument);
-
-      if (state.conversationId) {
-        try {
-          await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              conversationId: state.conversationId,
-              participantId: 'user',
-              message: currentArgument
-            })
-          });
-        } catch (error) {
-          console.error('Failed to record message:', error);
-        }
-      }
+      await recordMessage('user', currentArgument);
 
       const userMessage: Message = {
         id: userMessageId,
@@ -239,24 +256,7 @@ DEBATE PRINCIPLES:
       
       const aiMessageId = userMessageId + 1;
       addMessage('opponent', aiResponse);
-
-      if (state.conversationId) {
-        try {
-          await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              conversationId: state.conversationId,
-              participantId: 'opponent',
-              message: aiResponse
-            })
-          });
-        } catch (error) {
-          console.error('Failed to record message:', error);
-        }
-      }
+      await recordMessage('opponent', aiResponse);
 
       const currentAiScore = state.audienceScore.opponent;
 
@@ -300,21 +300,7 @@ DEBATE PRINCIPLES:
       const hint = await generateHint(topic, messages, difficulty, userPosition);
       
       if (state.conversationId && hint) {
-        try {
-          await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              conversationId: state.conversationId,
-              participantId: 'system',
-              message: hint
-            })
-          });
-        } catch (error) {
-          console.error('Failed to record hint:', error);
-        }
+        await recordMessage('system', hint);
       }
       
       return hint;
@@ -327,66 +313,27 @@ DEBATE PRINCIPLES:
   };
 
   const initializeDebate = async () => {
+    if (state.conversationId) return; // Prevent duplicate initialization
+    
     updateState({ isLoading: true, isAiThinking: true, error: null });
 
     try {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/start-conversation`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            topic,
-            difficulty: difficulty === 'easy' ? 1 : difficulty === 'medium' ? 5 : 10,
-            participants: [
-              {
-                id: 'user',
-                name: 'User',
-                avatar: 'user.svg',
-                role: 'debater'
-              },
-              {
-                id: 'opponent',
-                name: aiPersonality.name,
-                avatar: aiPersonality.avatarUrl,
-                role: 'debater'
-              }
-            ],
-            subjectId,
-            position: userPosition,
-            skill: difficulty
-          })
-        });
-        
-        const data = await response.json();
-        updateState({ conversationId: data.conversationId });
-      } catch (error) {
-        console.error('Failed to start conversation:', error);
-      }
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/start-conversation`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(gameSetup)
+      });
+      
+      const data = await response.json();
+      updateState({ conversationId: data.conversationId });
 
       const aiResponse = await startDebate(topic, difficulty, userPosition, aiPersonality);
       const currentAiScore = state.audienceScore.opponent;
       const aiMessageId = messages.length + 1;
       addMessage('opponent', aiResponse);
-
-      if (state.conversationId) {
-        try {
-          await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              conversationId: state.conversationId,
-              participantId: 'opponent',
-              message: aiResponse
-            })
-          });
-        } catch (error) {
-          console.error('Failed to record message:', error);
-        }
-      }
+      await recordMessage('opponent', aiResponse);
 
       const aiMessage: Message = {
         id: aiMessageId,

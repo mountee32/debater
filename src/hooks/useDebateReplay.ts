@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { AIPersonality } from '../data/aiPersonalities';
 import { DebateState, Message, GameSetup, DebateHookResult } from '../types/debate';
 
@@ -26,6 +26,20 @@ const logPerformance = (action: string, startTime: number) => {
   console.log(`[ReplayPerformance] ${action} took ${duration.toFixed(2)}ms`);
 };
 
+// Helper function to determine message role
+const getMessageRole = (speakerId: string): 'user' | 'opponent' | 'system' | 'hint' => {
+  switch (speakerId) {
+    case 'user':
+      return 'user';
+    case 'opponent':
+      return 'opponent';
+    case 'system':
+      return 'hint';
+    default:
+      return 'opponent';
+  }
+};
+
 export const useDebateReplay = (
   conversationId: string,
   aiPersonality: AIPersonality
@@ -43,6 +57,17 @@ export const useDebateReplay = (
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [conversation, setConversation] = useState<Conversation | null>(null);
+  const [visibleMessages, setVisibleMessages] = useState<Message[]>([]);
+  const [processedEvents, setProcessedEvents] = useState<ConversationEvent[]>([]);
+  const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
+
+  // Cleanup function
+  const cleanup = () => {
+    timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
+    timeoutsRef.current = [];
+    setMessages([]);
+    setVisibleMessages([]);
+  };
 
   // Fetch replay data
   useEffect(() => {
@@ -78,71 +103,41 @@ export const useDebateReplay = (
           endTime: data.endTime
         });
 
-        setConversation(data);
+        // Sort events by timestamp
+        const sortedEvents = [...data.events].sort((a, b) => 
+          new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+        );
 
-        // Convert events to messages and scores
-        const conversionStartTime = performance.now();
-        const convertedMessages: Message[] = [];
-        let currentScore = { user: 50, opponent: 50 };
+        // Filter out duplicate events
+        const uniqueEvents = sortedEvents.filter((event, index, self) =>
+          index === self.findIndex((e) => 
+            e.type === event.type && 
+            e.timestamp === event.timestamp && 
+            e.content === event.content &&
+            e.speakerId === event.speakerId
+          )
+        );
 
-        data.events.forEach((event, index) => {
-          if (event.type === 'message' && event.speakerId && event.content) {
-            console.log('[ReplayDebug] Processing message event:', {
-              index,
-              speakerId: event.speakerId,
-              contentLength: event.content.length
-            });
+        console.log('[ReplayDebug] Events sorted and deduplicated:', 
+          uniqueEvents.map(e => ({
+            type: e.type,
+            timestamp: e.timestamp,
+            speakerId: e.speakerId,
+            participantId: e.participantId
+          }))
+        );
 
-            convertedMessages.push({
-              id: index + 1,
-              role: event.speakerId === 'user' ? 'user' : 'opponent',
-              content: event.content
-            });
-          } else if (event.type === 'score' && event.participantId && event.newScore !== undefined) {
-            console.log('[ReplayDebug] Processing score event:', {
-              index,
-              participantId: event.participantId,
-              newScore: event.newScore
-            });
+        setConversation({ ...data, events: uniqueEvents });
+        setProcessedEvents(uniqueEvents);
+        
+        // Initialize with empty messages
+        setMessages([]);
+        setVisibleMessages([]);
 
-            // Update scores
-            if (event.participantId === 'user') {
-              currentScore = {
-                user: event.newScore,
-                opponent: 100 - event.newScore
-              };
-            } else {
-              currentScore = {
-                user: 100 - event.newScore,
-                opponent: event.newScore
-              };
-            }
-
-            // Update the last message's score if it exists
-            if (convertedMessages.length > 0) {
-              const lastMessage = convertedMessages[convertedMessages.length - 1];
-              lastMessage.score = {
-                score: event.participantId === 'user' ? event.newScore : 100 - event.newScore,
-                previousScore: event.participantId === 'user' ? 
-                  (lastMessage.score?.score || 50) : 
-                  (100 - (lastMessage.score?.score || 50))
-              };
-            }
-          }
-        });
-
-        logPerformance('Event conversion', conversionStartTime);
-
-        console.log('[ReplayDebug] Conversion complete:', {
-          messageCount: convertedMessages.length,
-          finalScore: currentScore
-        });
-
-        setMessages(convertedMessages);
         setState(prev => ({
           ...prev,
           isLoading: false,
-          audienceScore: currentScore
+          audienceScore: { user: 50, opponent: 50 }
         }));
 
         logPerformance('Total replay initialization', startTime);
@@ -159,8 +154,127 @@ export const useDebateReplay = (
       }
     };
 
+    cleanup();
     fetchReplay();
+
+    return cleanup;
   }, [conversationId]);
+
+  // Process events with timing
+  useEffect(() => {
+    if (!processedEvents.length || state.isLoading) return;
+
+    const startTime = new Date(processedEvents[0].timestamp).getTime();
+    let currentMessages: Message[] = [];
+    let currentScore = { user: 50, opponent: 50 };
+    let isProcessing = true;
+
+    const processNextEvent = (index: number) => {
+      if (!isProcessing || index >= processedEvents.length) {
+        // If we've reached the end of events and have an endTime, show summary
+        if (conversation?.endTime && index >= processedEvents.length) {
+          const finalScore = currentScore.user;
+          setState(prev => ({
+            ...prev,
+            summary: {
+              score: finalScore,
+              feedback: "You demonstrated strong logical reasoning and effectively supported your arguments with evidence. Your responses were clear and well-structured, though there's room for improvement in addressing counterarguments.",
+              improvements: [
+                "Focus more on directly addressing opponent's key points",
+                "Include more specific examples to support your arguments",
+                "Consider incorporating more diverse types of evidence"
+              ]
+            }
+          }));
+        }
+        return;
+      }
+
+      const event = processedEvents[index];
+      const eventTime = new Date(event.timestamp).getTime();
+      const delay = index === 0 ? 0 : eventTime - new Date(processedEvents[index - 1].timestamp).getTime();
+
+      console.log(`[ReplayDebug] Processing event ${index}:`, {
+        type: event.type,
+        delay,
+        timestamp: event.timestamp
+      });
+
+      const timeout = setTimeout(() => {
+        if (event.type === 'message' && event.speakerId && event.content) {
+          const role = getMessageRole(event.speakerId);
+          // Skip system messages that aren't hints
+          if (role === 'system') return;
+
+          const newMessage: Message = {
+            id: index + 1,
+            role,
+            content: event.content,
+            score: currentMessages.length > 0 ? currentMessages[currentMessages.length - 1].score : undefined
+          };
+
+          currentMessages = [...currentMessages, newMessage];
+          setMessages([...currentMessages]);
+          setVisibleMessages([...currentMessages]);
+
+          console.log('[ReplayDebug] Added message:', {
+            role: newMessage.role,
+            timestamp: event.timestamp
+          });
+
+        } else if (event.type === 'score' && event.participantId && event.newScore !== undefined) {
+          if (event.participantId === 'user') {
+            currentScore = {
+              user: event.newScore,
+              opponent: 100 - event.newScore
+            };
+          } else {
+            currentScore = {
+              user: 100 - event.newScore,
+              opponent: event.newScore
+            };
+          }
+
+          setState(prev => ({
+            ...prev,
+            audienceScore: currentScore
+          }));
+
+          // Update the last message's score if it exists
+          if (currentMessages.length > 0) {
+            const lastMessage = currentMessages[currentMessages.length - 1];
+            lastMessage.score = {
+              score: event.participantId === 'user' ? event.newScore : 100 - event.newScore,
+              previousScore: event.participantId === 'user' ? 
+                (lastMessage.score?.score || 50) : 
+                (100 - (lastMessage.score?.score || 50))
+            };
+            setMessages([...currentMessages]);
+            setVisibleMessages([...currentMessages]);
+
+            console.log('[ReplayDebug] Updated score:', {
+              participantId: event.participantId,
+              newScore: event.newScore,
+              timestamp: event.timestamp
+            });
+          }
+        }
+
+        // Process next event
+        processNextEvent(index + 1);
+      }, delay);
+
+      timeoutsRef.current.push(timeout);
+    };
+
+    processNextEvent(0);
+
+    // Cleanup function
+    return () => {
+      isProcessing = false;
+      cleanup();
+    };
+  }, [processedEvents, state.isLoading, conversation]);
 
   // These functions are no-ops in replay mode
   const handleSendArgument = async (currentArgument: string) => {
@@ -182,7 +296,7 @@ export const useDebateReplay = (
 
   return {
     state,
-    messages,
+    messages: visibleMessages,
     handleSendArgument,
     handleHintRequest,
     initializeDebate,

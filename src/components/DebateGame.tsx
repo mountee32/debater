@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Loader } from 'lucide-react';
 import { AIPersonality } from '../data/aiPersonalities';
 import { useDebateLogic } from '../hooks/useDebateLogic';
@@ -45,6 +45,7 @@ const DebateGame: React.FC<DebateGameProps> = (props) => {
   const { isDarkMode, onToggleDarkMode, aiPersonality } = props;
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const debateInitializedRef = useRef(false);
+  const [currentArgument, setCurrentArgument] = useState('');
 
   // Use either live debate logic or replay logic based on mode
   const debateHook = props.isReplayMode
@@ -189,16 +190,18 @@ const DebateGame: React.FC<DebateGameProps> = (props) => {
           ))}
           {state.isAiThinking && (
             <div className="flex items-start space-x-3 mb-3">
-              <div className="w-9 h-9 rounded-xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex-shrink-0 shadow-lg">
-                <img
-                  src={aiPersonality.avatarUrl}
-                  alt={`${aiPersonality.name} avatar`}
-                  className="w-full h-full object-cover"
-                  data-testid="thinking-avatar"
-                />
-              </div>
-              <div className="inline-block p-3 rounded-xl bg-white/50 dark:bg-gray-800/50 shadow-lg">
-                <Loader className="animate-spin" size={18} />
+              <div className="flex items-start space-x-3">
+                <div className="w-9 h-9 rounded-xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex-shrink-0 shadow-lg">
+                  <img
+                    src={aiPersonality.avatarUrl}
+                    alt={`${aiPersonality.name} avatar`}
+                    className="w-full h-full object-cover"
+                    data-testid="thinking-avatar"
+                  />
+                </div>
+                <div className="inline-block p-3 rounded-xl bg-white/50 dark:bg-gray-800/50 shadow-lg">
+                  <Loader className="animate-spin" size={18} />
+                </div>
               </div>
             </div>
           )}
@@ -223,8 +226,8 @@ const DebateGame: React.FC<DebateGameProps> = (props) => {
         userPosition={gameParams.userPosition}
         isDisabled={isControlsDisabled}
         isReplayMode={props.isReplayMode}
-        currentArgument=""
-        setCurrentArgument={() => {}}
+        currentArgument={currentArgument}
+        setCurrentArgument={setCurrentArgument}
       />
     </div>
   );
