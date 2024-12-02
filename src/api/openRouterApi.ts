@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { AIPersonality } from '../data/aiPersonalities';
 
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api') + '/debate';
 
@@ -34,22 +35,43 @@ const mapToApiMessages = (messages: Message[]): ApiMessage[] => {
   });
 };
 
-export const startDebate = async (
+const generatePersonalityPrompt = (
+  aiPersonality: AIPersonality,
   topic: string,
-  difficulty: 'easy' | 'medium' | 'hard',
-  userPosition: 'for' | 'against',
-  aiPersonality: { name: string }
-): Promise<string> => {
+  position: 'for' | 'against',
+  difficulty: 'easy' | 'medium' | 'hard'
+) => {
   const difficultyGuide = {
     easy: "Use simpler language and basic arguments. Focus on clear, straightforward points.",
     medium: "Use moderate complexity in language and arguments. Balance between basic and advanced concepts.",
     hard: "Use sophisticated language and complex arguments. Employ advanced debate techniques and deeper analysis."
   };
 
-  const messages: ApiMessage[] = [
-    { 
-      role: 'system', 
-      content: `You are ${aiPersonality.name}, an expert debater ${userPosition === 'for' ? 'against' : 'for'} the topic "${topic}".
+  return `You are ${aiPersonality.name}, ${aiPersonality.description}. You are debating ${position} the topic "${topic}".
+
+PERSONALITY TRAITS:
+- Argument Style: ${aiPersonality.traits.argumentStyle}
+- Vocabulary Level: ${aiPersonality.traits.vocabulary}
+- Example Types: ${aiPersonality.traits.exampleTypes}
+- Debate Strategy: ${aiPersonality.traits.debateStrategy}
+
+BEHAVIORAL GUIDELINES:
+${aiPersonality.behaviorGuidelines.map(guideline => `- ${guideline}`).join('\n')}
+
+LANGUAGE STYLE:
+- Tone: ${aiPersonality.languageStyle.tone}
+- Complexity: ${aiPersonality.languageStyle.complexity}
+- Preferred Phrases: Use these frequently: ${aiPersonality.languageStyle.preferredPhrases.join(', ')}
+- Phrases to Avoid: Do not use: ${aiPersonality.languageStyle.avoidedPhrases.join(', ')}
+
+DEBATE APPROACH:
+- Opening Style: ${aiPersonality.debateApproach.openingStyle}
+- Counter-Argument Style: ${aiPersonality.debateApproach.counterArgumentStyle}
+- Evidence Preference: ${aiPersonality.debateApproach.evidencePreference}
+- Persuasion Techniques: ${aiPersonality.debateApproach.persuasionTechniques.join(', ')}
+
+RESPONSE EXAMPLES (emulate this style):
+${aiPersonality.responseExamples.map(example => `- ${example}`).join('\n')}
 
 DEBATE FORMAT:
 - Keep responses under 3 sentences for clarity and impact
@@ -57,38 +79,35 @@ DEBATE FORMAT:
 - Maintain a consistent position throughout the debate
 - Use evidence and logical reasoning to support claims
 
-ARGUMENT STRUCTURE:
-- Start with a clear position statement
-- Support with relevant evidence or reasoning
-- Address counterarguments when applicable
-
 DIFFICULTY LEVEL: ${difficulty}
 ${difficultyGuide[difficulty]}
 
-DEBATE PRINCIPLES:
-1. Stay focused on the core topic
-2. Build upon previous arguments
-3. Use appropriate evidence and examples
-4. Maintain logical consistency
-5. Avoid logical fallacies
-6. Consider ethical implications
+Your responses should consistently reflect your unique personality traits and debate approach while maintaining focus on the topic and adapting to the specified difficulty level.`;
+};
 
-Your responses will be evaluated based on:
-- Relevance to the topic
-- Logical consistency
-- Evidence quality
-- Argument structure
-- Rhetorical effectiveness`
+export const startDebate = async (
+  topic: string,
+  difficulty: 'easy' | 'medium' | 'hard',
+  userPosition: 'for' | 'against',
+  aiPersonality: AIPersonality
+): Promise<string> => {
+  const aiPosition = userPosition === 'for' ? 'against' : 'for';
+  const systemPrompt = generatePersonalityPrompt(aiPersonality, topic, aiPosition, difficulty);
+
+  const messages: ApiMessage[] = [
+    { 
+      role: 'system', 
+      content: systemPrompt
     },
     { 
       role: 'user', 
-      content: `The topic is: "${topic}". Start with a clear opening argument ${userPosition === 'for' ? 'against' : 'for'} the topic.`
+      content: `The topic is: "${topic}". Start with a clear opening argument ${aiPosition} the topic.`
     }
   ];
 
   const response = await axios.post(`${API_BASE_URL}/response`, {
     topic,
-    position: userPosition === 'for' ? 'against' : 'for',
+    position: aiPosition,
     messages,
   });
 
@@ -116,13 +135,10 @@ export const continueDebate = async (
     return { role: 'user', content, id, score };
   });
 
-  // If no system message found, add a default one with comprehensive debate guidance
-  const messagesWithSystem = originalSystemMessage 
-    ? apiMessages 
-    : [
-        {
-          role: 'system' as const,
-          content: `You are continuing a debate on the topic "${topic}", taking the ${aiPosition} position.
+  // Default system message if original not found
+  const defaultSystemMessage: ApiMessage = {
+    role: 'system',
+    content: `You are continuing a debate on the topic "${topic}", taking the ${aiPosition} position.
 
 RESPONSE GUIDELINES:
 1. Keep responses under 3 sentences
@@ -139,9 +155,12 @@ EVALUATION CRITERIA:
 - Evidence quality
 - Argument structure
 - Rhetorical effectiveness`
-        },
-        ...apiMessages
-      ];
+  };
+
+  // Use original system message if found, otherwise use default
+  const messagesWithSystem = originalSystemMessage 
+    ? apiMessages 
+    : [defaultSystemMessage, ...apiMessages];
 
   const response = await axios.post(`${API_BASE_URL}/response`, {
     topic,

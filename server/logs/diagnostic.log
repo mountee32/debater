@@ -1,5 +1,5 @@
-[2024-12-02T11:01:54.765Z] Diagnostic logging initialized
-[2024-12-02T11:01:54.766Z] Middleware configured
+[2024-12-02T13:52:17.529Z] Diagnostic logging initialized
+[2024-12-02T13:52:17.530Z] Middleware configured
 Data: {
   "cors": {
     "origin": "http://localhost:5173",
@@ -9,64 +9,64 @@ Data: {
     ]
   }
 }
-[2024-12-02T11:01:54.767Z] Routes configured
+[2024-12-02T13:52:17.531Z] Routes configured
 Data: {
   "endpoints": [
     "/api/debate"
   ]
 }
-[2024-12-02T11:01:54.767Z] Testing diagnostic logger
+[2024-12-02T13:52:17.531Z] Testing diagnostic logger
 Data: {
   "test": "This is a test log entry",
-  "timestamp": "2024-12-02T11:01:54.767Z"
+  "timestamp": "2024-12-02T13:52:17.531Z"
 }
-[2024-12-02T11:01:54.768Z] Server running on port 3000
-[2024-12-02T11:01:54.768Z] Server configuration
+[2024-12-02T13:52:17.533Z] Server running on port 3000
+[2024-12-02T13:52:17.533Z] Server configuration
 Data: {
   "port": 3000,
   "corsOrigin": "http://localhost:5173",
   "diagnosticLogging": true
 }
-[2024-12-02T11:06:53.149Z] [DebateRoutes] Generating response:
+[2024-12-02T13:52:31.580Z] [DebateRoutes] Generating response:
 Data: {
-  "topic": "Artificial intelligence should be strictly regulated",
-  "position": "against",
+  "topic": "Space exploration funding should be increased",
+  "position": "for",
   "messages": [
     {
       "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Artificial intelligence should be strictly regulated\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+      "content": "You are Emotional Emma, an expert debater for the topic \"Space exploration funding should be increased\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
     },
     {
       "role": "user",
-      "content": "The topic is: \"Artificial intelligence should be strictly regulated\". Start with a clear opening argument against the topic."
+      "content": "The topic is: \"Space exploration funding should be increased\". Start with a clear opening argument for the topic."
     }
   ]
 }
-[2024-12-02T11:06:53.149Z] Generating completion with request:
+[2024-12-02T13:52:31.580Z] Generating completion with request:
 Data: {
   "model": "openai/gpt-3.5-turbo",
   "messages": [
     {
       "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Artificial intelligence should be strictly regulated\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+      "content": "You are Emotional Emma, an expert debater for the topic \"Space exploration funding should be increased\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
     },
     {
       "role": "user",
-      "content": "The topic is: \"Artificial intelligence should be strictly regulated\". Start with a clear opening argument against the topic."
+      "content": "The topic is: \"Space exploration funding should be increased\". Start with a clear opening argument for the topic."
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T11:06:54.540Z] Received API response:
+[2024-12-02T13:52:35.480Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733137613-PIe8ka06HBYSeHf7ppcj",
+    "id": "gen-1733147552-OXFJ08Uzmv1JrHMqx2my",
     "provider": "OpenAI",
     "model": "openai/gpt-3.5-turbo",
     "object": "chat.completion",
-    "created": 1733137613,
+    "created": 1733147552,
     "choices": [
       {
         "logprobs": null,
@@ -74,1145 +74,31 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas.",
+          "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
           "refusal": ""
         }
       }
     ],
     "system_fingerprint": null,
-    "usage": {
-      "prompt_tokens": 234,
-      "completion_tokens": 45,
-      "total_tokens": 279
-    }
-  }
-}
-[2024-12-02T11:06:54.541Z] [DebateRoutes] Generated response:
-Data: {
-  "response": "Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas."
-}
-[2024-12-02T11:06:54.556Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Artificial intelligence should be strictly regulated",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas.",
-      "id": 1
-    }
-  ],
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:06:54.556Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "Artificial intelligence should be strictly regulated",
-  "position": "against",
-  "messagesCount": 1,
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:06:54.556Z] Evaluating argument:
-Data: {
-  "topic": "Artificial intelligence should be strictly regulated",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas.",
-      "id": 1
-    }
-  ],
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:06:54.557Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Artificial intelligence should be strictly regulated\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this against argument: \"Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas.\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:06:55.639Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733137614-PGhpzwgxdePjPpErkzvd",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733137614,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "65\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 224,
-      "completion_tokens": 3,
-      "total_tokens": 227
-    }
-  }
-}
-[2024-12-02T11:06:55.640Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 65
-}
-[2024-12-02T11:17:49.057Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "against",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Governments should implement universal basic income\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"Governments should implement universal basic income\". Start with a clear opening argument against the topic."
-    }
-  ]
-}
-[2024-12-02T11:17:49.057Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Governments should implement universal basic income\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"Governments should implement universal basic income\". Start with a clear opening argument against the topic."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:17:50.327Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733138269-0OTPjXpNgaDlCQdKVuuo",
-    "provider": "OpenAI",
-    "model": "openai/gpt-3.5-turbo",
-    "object": "chat.completion",
-    "created": 1733138269,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": null,
-    "usage": {
-      "prompt_tokens": 235,
-      "completion_tokens": 45,
-      "total_tokens": 280
-    }
-  }
-}
-[2024-12-02T11:17:50.328Z] [DebateRoutes] Generated response:
-Data: {
-  "response": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run."
-}
-[2024-12-02T11:17:50.336Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
-      "id": 1
-    }
-  ],
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:17:50.337Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "against",
-  "messagesCount": 1,
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:17:50.337Z] Evaluating argument:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
-      "id": 1
-    }
-  ],
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:17:50.337Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Governments should implement universal basic income\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this against argument: \"Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:17:51.474Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733138270-ocafpMb3eY6GlWrXHuWD",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733138270,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "65\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 228,
-      "completion_tokens": 3,
-      "total_tokens": 231
-    }
-  }
-}
-[2024-12-02T11:17:51.475Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 65
-}
-[2024-12-02T11:18:38.234Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "for",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.",
-      "id": 2
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T11:18:38.234Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "for",
-  "messagesCount": 2,
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T11:18:38.234Z] Evaluating argument:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "for",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.",
-      "id": 2
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T11:18:38.234Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Governments should implement universal basic income\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this for argument: \"Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:18:39.396Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733138318-ajP2Oa8RTV1FN8TQfiHR",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733138318,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "68\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 241,
-      "completion_tokens": 3,
-      "total_tokens": 244
-    }
-  }
-}
-[2024-12-02T11:18:39.397Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 68
-}
-[2024-12-02T11:18:39.409Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "against",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Governments should implement universal basic income\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
-      "id": 0
-    },
-    {
-      "role": "assistant",
-      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.",
-      "id": 2
-    }
-  ]
-}
-[2024-12-02T11:18:39.409Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Governments should implement universal basic income\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
-    },
-    {
-      "role": "assistant",
-      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run."
-    },
-    {
-      "role": "user",
-      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:18:40.637Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733138319-GCvNeruJzYIOWqeZUC2r",
-    "provider": "OpenAI",
-    "model": "openai/gpt-3.5-turbo",
-    "object": "chat.completion",
-    "created": 1733138319,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": null,
-    "usage": {
-      "prompt_tokens": 286,
-      "completion_tokens": 56,
-      "total_tokens": 342
-    }
-  }
-}
-[2024-12-02T11:18:40.638Z] [DebateRoutes] Generated response:
-Data: {
-  "response": "While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending."
-}
-[2024-12-02T11:18:40.644Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.",
-      "id": 2
-    },
-    {
-      "role": "user",
-      "content": "While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending.",
-      "id": 3
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:18:40.644Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "against",
-  "messagesCount": 3,
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:18:40.644Z] Evaluating argument:
-Data: {
-  "topic": "Governments should implement universal basic income",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.",
-      "id": 2
-    },
-    {
-      "role": "user",
-      "content": "While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending.",
-      "id": 3
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:18:40.644Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Governments should implement universal basic income\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this against argument: \"While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending.\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:18:41.748Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733138320-YQWAIxCGO7mSETGKeNcP",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733138320,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "45\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 240,
-      "completion_tokens": 3,
-      "total_tokens": 243
-    }
-  }
-}
-[2024-12-02T11:18:41.749Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 45
-}
-[2024-12-02T11:52:10.890Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "against",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Consciousness is a fundamental aspect of reality\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"Consciousness is a fundamental aspect of reality\". Start with a clear opening argument against the topic."
-    }
-  ]
-}
-[2024-12-02T11:52:10.890Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Consciousness is a fundamental aspect of reality\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"Consciousness is a fundamental aspect of reality\". Start with a clear opening argument against the topic."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:52:13.693Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733140332-spdRbyrVnxFp2fT0ryG5",
-    "provider": "OpenAI",
-    "model": "openai/gpt-3.5-turbo",
-    "object": "chat.completion",
-    "created": 1733140332,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": null,
-    "usage": {
-      "prompt_tokens": 238,
-      "completion_tokens": 39,
-      "total_tokens": 277
-    }
-  }
-}
-[2024-12-02T11:52:13.694Z] [DebateRoutes] Generated response:
-Data: {
-  "response": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes."
-}
-[2024-12-02T11:52:13.705Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
-      "id": 1
-    }
-  ],
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:52:13.705Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "against",
-  "messagesCount": 1,
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:52:13.705Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Consciousness is a fundamental aspect of reality\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this against argument: \"Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:52:13.705Z] Evaluating argument:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
-      "id": 1
-    }
-  ],
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:52:14.788Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733140333-xHuPEh6f1yOg5OeDEII8",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733140333,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "65\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 222,
-      "completion_tokens": 3,
-      "total_tokens": 225
-    }
-  }
-}
-[2024-12-02T11:52:14.789Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 65
-}
-[2024-12-02T11:52:18.898Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "for",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "sometimes",
-      "id": 2
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T11:52:18.898Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "for",
-  "messagesCount": 2,
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T11:52:18.898Z] Evaluating argument:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "for",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "sometimes",
-      "id": 2
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T11:52:18.898Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Consciousness is a fundamental aspect of reality\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this for argument: \"sometimes\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:52:19.992Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733140338-zl0IyXmdQ3ESWHFMj1Ci",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733140338,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "20\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 186,
-      "completion_tokens": 3,
-      "total_tokens": 189
-    }
-  }
-}
-[2024-12-02T11:52:19.993Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 20
-}
-[2024-12-02T11:52:20.006Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "against",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Consciousness is a fundamental aspect of reality\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
-      "id": 0
-    },
-    {
-      "role": "assistant",
-      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "sometimes",
-      "id": 2
-    }
-  ]
-}
-[2024-12-02T11:52:20.006Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Consciousness is a fundamental aspect of reality\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
-    },
-    {
-      "role": "assistant",
-      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes."
-    },
-    {
-      "role": "user",
-      "content": "sometimes"
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:52:21.062Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733140340-BVZAWuMDr9RaUPQmktch",
-    "provider": "OpenAI",
-    "model": "openai/gpt-3.5-turbo",
-    "object": "chat.completion",
-    "created": 1733140340,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": null,
-    "usage": {
-      "prompt_tokens": 224,
-      "completion_tokens": 49,
-      "total_tokens": 273
-    }
-  }
-}
-[2024-12-02T11:52:21.063Z] [DebateRoutes] Generated response:
-Data: {
-  "response": "Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality."
-}
-[2024-12-02T11:52:21.069Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "sometimes",
-      "id": 2
-    },
-    {
-      "role": "user",
-      "content": "Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality.",
-      "id": 3
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:52:21.070Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "against",
-  "messagesCount": 3,
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:52:21.070Z] Evaluating argument:
-Data: {
-  "topic": "Consciousness is a fundamental aspect of reality",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "sometimes",
-      "id": 2
-    },
-    {
-      "role": "user",
-      "content": "Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality.",
-      "id": 3
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T11:52:21.070Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Consciousness is a fundamental aspect of reality\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this against argument: \"Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality.\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:52:21.637Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733140341-qfOAad6pg3FnVm1n9A3T",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733140341,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "48\n",
-          "refusal": ""
-        }
-      }
-    ],
     "usage": {
       "prompt_tokens": 232,
-      "completion_tokens": 3,
-      "total_tokens": 235
+      "completion_tokens": 26,
+      "total_tokens": 258
     }
   }
 }
-[2024-12-02T11:52:21.638Z] [DebateRoutes] Evaluation result:
+[2024-12-02T13:52:35.481Z] [DebateRoutes] Generated response:
 Data: {
-  "score": 48
+  "response": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields."
 }
-[2024-12-02T11:53:48.065Z] [DebateRoutes] Generating response:
+[2024-12-02T13:52:35.495Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "against",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
-    }
-  ]
-}
-[2024-12-02T11:53:48.065Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:53:49.366Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733140428-9WA4LfSQAByXRMwTJDvM",
-    "provider": "OpenAI",
-    "model": "openai/gpt-3.5-turbo",
-    "object": "chat.completion",
-    "created": 1733140428,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": null,
-    "usage": {
-      "prompt_tokens": 243,
-      "completion_tokens": 57,
-      "total_tokens": 300
-    }
-  }
-}
-[2024-12-02T11:53:49.367Z] [DebateRoutes] Generated response:
-Data: {
-  "response": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency."
-}
-[2024-12-02T11:53:49.377Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "against",
+  "topic": "Space exploration funding should be increased",
+  "position": "for",
   "messages": [
     {
       "role": "user",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
       "id": 1
     }
   ],
@@ -1223,10 +109,10 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T11:53:49.378Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T13:52:35.496Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "against",
+  "topic": "Space exploration funding should be increased",
+  "position": "for",
   "messagesCount": 1,
   "currentScores": {
     "user": 50,
@@ -1235,14 +121,14 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T11:53:49.378Z] Evaluating argument:
+[2024-12-02T13:52:35.496Z] Evaluating argument:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "against",
+  "topic": "Space exploration funding should be increased",
+  "position": "for",
   "messages": [
     {
       "role": "user",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
       "id": 1
     }
   ],
@@ -1253,31 +139,145 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T11:53:49.378Z] Generating completion with request:
+[2024-12-02T13:52:35.496Z] Generating completion with request:
 Data: {
   "model": "google/gemini-flash-1.5",
   "messages": [
     {
       "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Space exploration funding should be increased\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
     },
     {
       "role": "user",
-      "content": "Evaluate this against argument: \"As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.\""
+      "content": "Evaluate this for argument: \"Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.\""
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T11:53:50.463Z] Received API response:
+[2024-12-02T13:52:36.183Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733140429-SmB7I33cT2uev6j5nJks",
+    "id": "gen-1733147555-KPVKgmtbV1Mwxg84pUg8",
     "provider": "Google",
     "model": "google/gemini-flash-1.5",
     "object": "chat.completion",
-    "created": 1733140429,
+    "created": 1733147555,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "65\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 208,
+      "completion_tokens": 3,
+      "total_tokens": 211
+    }
+  }
+}
+[2024-12-02T13:52:36.184Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 65
+}
+[2024-12-02T13:54:24.933Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Space exploration funding should be increased",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T13:54:24.933Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Space exploration funding should be increased",
+  "position": "against",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T13:54:24.933Z] Evaluating argument:
+Data: {
+  "topic": "Space exploration funding should be increased",
+  "position": "against",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T13:54:24.933Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Space exploration funding should be increased\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"on a cost benefit analysis there are better ways to spend the money to help more of human kind\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T13:54:26.253Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733147665-QPi3WPTD6WwrhryJZ2Cg",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733147665,
     "choices": [
       {
         "logprobs": null,
@@ -1291,185 +291,71 @@ Data: {
       }
     ],
     "usage": {
-      "prompt_tokens": 243,
+      "prompt_tokens": 202,
       "completion_tokens": 3,
-      "total_tokens": 246
+      "total_tokens": 205
     }
   }
 }
-[2024-12-02T11:53:50.464Z] [DebateRoutes] Evaluation result:
+[2024-12-02T13:54:26.254Z] [DebateRoutes] Evaluation result:
 Data: {
   "score": 45
 }
-[2024-12-02T11:53:53.905Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T13:54:26.266Z] [DebateRoutes] Generating response:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
+  "topic": "Space exploration funding should be increased",
   "position": "for",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
-      "id": 1,
-      "score": {
-        "score": 45,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "sometimes",
-      "id": 2
-    }
-  ],
-  "currentScores": {
-    "user": 55,
-    "opponent": 45
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T11:53:53.905Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "for",
-  "messagesCount": 2,
-  "currentScores": {
-    "user": 55,
-    "opponent": 45
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T11:53:53.905Z] Evaluating argument:
-Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "for",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
-      "id": 1,
-      "score": {
-        "score": 45,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "sometimes",
-      "id": 2
-    }
-  ],
-  "currentScores": {
-    "user": 55,
-    "opponent": 45
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T11:53:53.905Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
   "messages": [
     {
       "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 55, opponent: 45\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this for argument: \"sometimes\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T11:53:54.926Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733140433-76wC91N0bHtkGkWIW1DO",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733140433,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "20\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 190,
-      "completion_tokens": 3,
-      "total_tokens": 193
-    }
-  }
-}
-[2024-12-02T11:53:54.927Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 20
-}
-[2024-12-02T11:53:54.937Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "against",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
+      "content": "You are Emotional Emma, an expert debater for the topic \"Space exploration funding should be increased\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
       "id": 0
     },
     {
       "role": "assistant",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
       "id": 1,
       "score": {
-        "score": 45,
+        "score": 65,
         "previousScore": 50
       }
     },
     {
       "role": "user",
-      "content": "sometimes",
+      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind",
       "id": 2
     }
   ]
 }
-[2024-12-02T11:53:54.938Z] Generating completion with request:
+[2024-12-02T13:54:26.266Z] Generating completion with request:
 Data: {
   "model": "openai/gpt-3.5-turbo",
   "messages": [
     {
       "role": "system",
-      "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+      "content": "You are Emotional Emma, an expert debater for the topic \"Space exploration funding should be increased\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
     },
     {
       "role": "assistant",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency."
+      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields."
     },
     {
       "role": "user",
-      "content": "sometimes"
+      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind"
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T11:53:55.932Z] Received API response:
+[2024-12-02T13:54:27.446Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733140435-eyocwTSiyHPmX31pk71G",
+    "id": "gen-1733147666-J4ByompFp05p8bMbVtyO",
     "provider": "OpenAI",
     "model": "openai/gpt-3.5-turbo",
     "object": "chat.completion",
-    "created": 1733140435,
+    "created": 1733147666,
     "choices": [
       {
         "logprobs": null,
@@ -1477,124 +363,124 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
+          "content": "While there are other important causes, investing in space exploration can lead to long-term benefits such as new technologies, job creation, and potential solutions to global challenges like climate change.",
           "refusal": ""
         }
       }
     ],
     "system_fingerprint": null,
     "usage": {
-      "prompt_tokens": 245,
-      "completion_tokens": 50,
-      "total_tokens": 295
+      "prompt_tokens": 226,
+      "completion_tokens": 35,
+      "total_tokens": 261
     }
   }
 }
-[2024-12-02T11:53:55.933Z] [DebateRoutes] Generated response:
+[2024-12-02T13:54:27.447Z] [DebateRoutes] Generated response:
 Data: {
-  "response": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes."
+  "response": "While there are other important causes, investing in space exploration can lead to long-term benefits such as new technologies, job creation, and potential solutions to global challenges like climate change."
 }
-[2024-12-02T11:53:55.943Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T13:54:27.454Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "against",
+  "topic": "Space exploration funding should be increased",
+  "position": "for",
   "messages": [
     {
       "role": "user",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
       "id": 1,
       "score": {
-        "score": 45,
+        "score": 65,
         "previousScore": 50
       }
     },
     {
       "role": "assistant",
-      "content": "sometimes",
+      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind",
       "id": 2
     },
     {
       "role": "user",
-      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
+      "content": "While there are other important causes, investing in space exploration can lead to long-term benefits such as new technologies, job creation, and potential solutions to global challenges like climate change.",
       "id": 3
     }
   ],
   "currentScores": {
-    "user": 55,
-    "opponent": 45
+    "user": 35,
+    "opponent": 65
   },
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T11:53:55.943Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T13:54:27.454Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "against",
+  "topic": "Space exploration funding should be increased",
+  "position": "for",
   "messagesCount": 3,
   "currentScores": {
-    "user": 55,
-    "opponent": 45
+    "user": 35,
+    "opponent": 65
   },
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T11:53:55.943Z] Evaluating argument:
+[2024-12-02T13:54:27.454Z] Evaluating argument:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "against",
+  "topic": "Space exploration funding should be increased",
+  "position": "for",
   "messages": [
     {
       "role": "user",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
       "id": 1,
       "score": {
-        "score": 45,
+        "score": 65,
         "previousScore": 50
       }
     },
     {
       "role": "assistant",
-      "content": "sometimes",
+      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind",
       "id": 2
     },
     {
       "role": "user",
-      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
+      "content": "While there are other important causes, investing in space exploration can lead to long-term benefits such as new technologies, job creation, and potential solutions to global challenges like climate change.",
       "id": 3
     }
   ],
   "currentScores": {
-    "user": 55,
-    "opponent": 45
+    "user": 35,
+    "opponent": 65
   },
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T11:53:55.943Z] Generating completion with request:
+[2024-12-02T13:54:27.455Z] Generating completion with request:
 Data: {
   "model": "google/gemini-flash-1.5",
   "messages": [
     {
       "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 55, opponent: 45\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Space exploration funding should be increased\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
     },
     {
       "role": "user",
-      "content": "Evaluate this against argument: \"Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.\""
+      "content": "Evaluate this for argument: \"While there are other important causes, investing in space exploration can lead to long-term benefits such as new technologies, job creation, and potential solutions to global challenges like climate change.\""
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T11:53:57.024Z] Received API response:
+[2024-12-02T13:54:28.062Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733140435-sfevbAM3a5yOJgiomQGU",
+    "id": "gen-1733147667-iliJP8cwjRibMXJiprIx",
     "provider": "Google",
     "model": "google/gemini-flash-1.5",
     "object": "chat.completion",
-    "created": 1733140435,
+    "created": 1733147667,
     "choices": [
       {
         "logprobs": null,
@@ -1602,253 +488,62 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "65\n",
+          "content": "60\n",
           "refusal": ""
         }
       }
     ],
     "usage": {
-      "prompt_tokens": 237,
+      "prompt_tokens": 218,
       "completion_tokens": 3,
-      "total_tokens": 240
+      "total_tokens": 221
     }
   }
 }
-[2024-12-02T11:53:57.025Z] [DebateRoutes] Evaluation result:
+[2024-12-02T13:54:28.064Z] [DebateRoutes] Evaluation result:
 Data: {
-  "score": 65
+  "score": 60
 }
-[2024-12-02T13:43:07.509Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T14:02:54.920Z] [DebateRoutes] Generating response:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "for",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
-      "id": 1,
-      "score": {
-        "score": 45,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "sometimes",
-      "id": 2,
-      "score": {
-        "score": 20,
-        "previousScore": 55
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
-      "id": 3,
-      "score": {
-        "score": 65,
-        "previousScore": 45
-      }
-    },
-    {
-      "role": "user",
-      "content": "hi",
-      "id": 4
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T13:43:07.510Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "for",
-  "messagesCount": 4,
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T13:43:07.511Z] Evaluating argument:
-Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "for",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
-      "id": 1,
-      "score": {
-        "score": 45,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "sometimes",
-      "id": 2,
-      "score": {
-        "score": 20,
-        "previousScore": 55
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
-      "id": 3,
-      "score": {
-        "score": 65,
-        "previousScore": 45
-      }
-    },
-    {
-      "role": "user",
-      "content": "hi",
-      "id": 4
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T13:43:07.511Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this for argument: \"hi\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T13:43:08.853Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733146987-YPB2tIiq5h9zDm1HQabG",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733146987,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "2\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 190,
-      "completion_tokens": 2,
-      "total_tokens": 192
-    }
-  }
-}
-[2024-12-02T13:43:08.857Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 2
-}
-[2024-12-02T13:43:08.869Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
+  "topic": "Life has an inherent, objective meaning",
   "position": "against",
   "messages": [
     {
       "role": "system",
-      "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
-      "id": 0
-    },
-    {
-      "role": "assistant",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
-      "id": 1,
-      "score": {
-        "score": 45,
-        "previousScore": 50
-      }
+      "content": "You are Logical Larry, A methodical debater who relies on structured reasoning and empirical evidence. You are debating against the topic \"Life has an inherent, objective meaning\".\n\nPERSONALITY TRAITS:\n- Argument Style: systematic and evidence-based\n- Vocabulary Level: precise technical and academic terms\n- Example Types: statistical data and peer-reviewed research\n- Debate Strategy: structured logical progression\n\nBEHAVIORAL GUIDELINES:\n- Always cite specific data points or studies\n- Break down complex arguments into logical steps\n- Maintain emotional distance while presenting facts\n- Address counterarguments with empirical evidence\n\nLANGUAGE STYLE:\n- Tone: formal and analytical\n- Complexity: high\n- Preferred Phrases: Use these frequently: empirical evidence suggests, statistical analysis shows, logical conclusion, research indicates\n- Phrases to Avoid: Do not use: I feel that, maybe, sort of, kind of\n\nDEBATE APPROACH:\n- Opening Style: Begin with a clear thesis supported by data\n- Counter-Argument Style: Methodically deconstruct opposing arguments with evidence\n- Evidence Preference: Peer-reviewed studies and statistical data\n- Persuasion Techniques: Syllogistic reasoning, Statistical analysis, Causal chains, Empirical evidence\n\nRESPONSE EXAMPLES (emulate this style):\n- Research from MIT (2023) demonstrates that 73% of cases support this position.\n- This argument fails to account for three critical factors: firstly...\n- The logical conclusion, based on the available evidence, indicates...\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nYour responses should consistently reflect your unique personality traits and debate approach while maintaining focus on the topic and adapting to the specified difficulty level."
     },
     {
       "role": "user",
-      "content": "sometimes",
-      "id": 2,
-      "score": {
-        "score": 20,
-        "previousScore": 55
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
-      "id": 3,
-      "score": {
-        "score": 65,
-        "previousScore": 45
-      }
-    },
-    {
-      "role": "user",
-      "content": "hi",
-      "id": 4
+      "content": "The topic is: \"Life has an inherent, objective meaning\". Start with a clear opening argument against the topic."
     }
   ]
 }
-[2024-12-02T13:43:08.869Z] Generating completion with request:
+[2024-12-02T14:02:54.920Z] Generating completion with request:
 Data: {
   "model": "openai/gpt-3.5-turbo",
   "messages": [
     {
       "role": "system",
-      "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
-    },
-    {
-      "role": "assistant",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency."
+      "content": "You are Logical Larry, A methodical debater who relies on structured reasoning and empirical evidence. You are debating against the topic \"Life has an inherent, objective meaning\".\n\nPERSONALITY TRAITS:\n- Argument Style: systematic and evidence-based\n- Vocabulary Level: precise technical and academic terms\n- Example Types: statistical data and peer-reviewed research\n- Debate Strategy: structured logical progression\n\nBEHAVIORAL GUIDELINES:\n- Always cite specific data points or studies\n- Break down complex arguments into logical steps\n- Maintain emotional distance while presenting facts\n- Address counterarguments with empirical evidence\n\nLANGUAGE STYLE:\n- Tone: formal and analytical\n- Complexity: high\n- Preferred Phrases: Use these frequently: empirical evidence suggests, statistical analysis shows, logical conclusion, research indicates\n- Phrases to Avoid: Do not use: I feel that, maybe, sort of, kind of\n\nDEBATE APPROACH:\n- Opening Style: Begin with a clear thesis supported by data\n- Counter-Argument Style: Methodically deconstruct opposing arguments with evidence\n- Evidence Preference: Peer-reviewed studies and statistical data\n- Persuasion Techniques: Syllogistic reasoning, Statistical analysis, Causal chains, Empirical evidence\n\nRESPONSE EXAMPLES (emulate this style):\n- Research from MIT (2023) demonstrates that 73% of cases support this position.\n- This argument fails to account for three critical factors: firstly...\n- The logical conclusion, based on the available evidence, indicates...\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nYour responses should consistently reflect your unique personality traits and debate approach while maintaining focus on the topic and adapting to the specified difficulty level."
     },
     {
       "role": "user",
-      "content": "sometimes"
-    },
-    {
-      "role": "assistant",
-      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes."
-    },
-    {
-      "role": "user",
-      "content": "hi"
+      "content": "The topic is: \"Life has an inherent, objective meaning\". Start with a clear opening argument against the topic."
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T13:43:09.781Z] Received API response:
+[2024-12-02T14:02:56.334Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733146989-iJzTMlwGasdjDDik43dk",
+    "id": "gen-1733148174-Wi7EpmNHUaBC75lx4grp",
     "provider": "OpenAI",
     "model": "openai/gpt-3.5-turbo",
     "object": "chat.completion",
-    "created": 1733146989,
+    "created": 1733148174,
     "choices": [
       {
         "logprobs": null,
@@ -1856,255 +551,31 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "Hello! If you have any questions or would like to continue our debate on free will and predetermination, feel free to share your thoughts.",
+          "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
           "refusal": ""
         }
       }
     ],
     "system_fingerprint": null,
     "usage": {
-      "prompt_tokens": 304,
-      "completion_tokens": 28,
-      "total_tokens": 332
+      "prompt_tokens": 432,
+      "completion_tokens": 53,
+      "total_tokens": 485
     }
   }
 }
-[2024-12-02T13:43:09.785Z] [DebateRoutes] Generated response:
+[2024-12-02T14:02:56.335Z] [DebateRoutes] Generated response:
 Data: {
-  "response": "Hello! If you have any questions or would like to continue our debate on free will and predetermination, feel free to share your thoughts."
+  "response": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life."
 }
-[2024-12-02T13:43:09.792Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T14:02:56.348Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
+  "topic": "Life has an inherent, objective meaning",
   "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
-      "id": 1,
-      "score": {
-        "score": 45,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "sometimes",
-      "id": 2,
-      "score": {
-        "score": 20,
-        "previousScore": 55
-      }
-    },
-    {
-      "role": "user",
-      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
-      "id": 3,
-      "score": {
-        "score": 65,
-        "previousScore": 45
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "hi",
-      "id": 4
-    },
-    {
-      "role": "user",
-      "content": "Hello! If you have any questions or would like to continue our debate on free will and predetermination, feel free to share your thoughts.",
-      "id": 5
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T13:43:09.792Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "against",
-  "messagesCount": 5,
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T13:43:09.792Z] Evaluating argument:
-Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
-      "id": 1,
-      "score": {
-        "score": 45,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "sometimes",
-      "id": 2,
-      "score": {
-        "score": 20,
-        "previousScore": 55
-      }
-    },
-    {
-      "role": "user",
-      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
-      "id": 3,
-      "score": {
-        "score": 65,
-        "previousScore": 45
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "hi",
-      "id": 4
-    },
-    {
-      "role": "user",
-      "content": "Hello! If you have any questions or would like to continue our debate on free will and predetermination, feel free to share your thoughts.",
-      "id": 5
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T13:43:09.792Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this against argument: \"Hello! If you have any questions or would like to continue our debate on free will and predetermination, feel free to share your thoughts.\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T13:43:10.832Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733146989-D4SeES8SiUGhu7hCxiy6",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733146989,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "20\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 216,
-      "completion_tokens": 3,
-      "total_tokens": 219
-    }
-  }
-}
-[2024-12-02T13:43:10.834Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 20
-}
-[2024-12-02T13:43:17.621Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
-  "position": "for",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Devil's Advocate Dan, an expert debater for the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Start with a clear opening argument for the topic."
-    }
-  ]
-}
-[2024-12-02T13:43:17.621Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Devil's Advocate Dan, an expert debater for the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Start with a clear opening argument for the topic."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T13:43:18.903Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733146997-9EHSiOl4Phi6UaoYLkRg",
-    "provider": "OpenAI",
-    "model": "openai/gpt-3.5-turbo",
-    "object": "chat.completion",
-    "created": 1733146997,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "Jesus Christ's resurrection is a historical fact that cannot be denied due to the multiple accounts in the Gospels, which were written by various authors, providing consistent details of the event. Additionally, the rapid growth of Christianity following the resurrection further supports its historical validity.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": null,
-    "usage": {
-      "prompt_tokens": 247,
-      "completion_tokens": 52,
-      "total_tokens": 299
-    }
-  }
-}
-[2024-12-02T13:43:18.904Z] [DebateRoutes] Generated response:
-Data: {
-  "response": "Jesus Christ's resurrection is a historical fact that cannot be denied due to the multiple accounts in the Gospels, which were written by various authors, providing consistent details of the event. Additionally, the rapid growth of Christianity following the resurrection further supports its historical validity."
-}
-[2024-12-02T13:43:18.915Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
-  "position": "for",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Jesus Christ's resurrection is a historical fact that cannot be denied due to the multiple accounts in the Gospels, which were written by various authors, providing consistent details of the event. Additionally, the rapid growth of Christianity following the resurrection further supports its historical validity.",
+      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
       "id": 1
     }
   ],
@@ -2115,10 +586,10 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T13:43:18.915Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T14:02:56.348Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
-  "position": "for",
+  "topic": "Life has an inherent, objective meaning",
+  "position": "against",
   "messagesCount": 1,
   "currentScores": {
     "user": 50,
@@ -2127,14 +598,14 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T13:43:18.915Z] Evaluating argument:
+[2024-12-02T14:02:56.348Z] Evaluating argument:
 Data: {
-  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
-  "position": "for",
+  "topic": "Life has an inherent, objective meaning",
+  "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "Jesus Christ's resurrection is a historical fact that cannot be denied due to the multiple accounts in the Gospels, which were written by various authors, providing consistent details of the event. Additionally, the rapid growth of Christianity following the resurrection further supports its historical validity.",
+      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
       "id": 1
     }
   ],
@@ -2145,31 +616,31 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T13:43:18.915Z] Generating completion with request:
+[2024-12-02T14:02:56.348Z] Generating completion with request:
 Data: {
   "model": "google/gemini-flash-1.5",
   "messages": [
     {
       "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Jesus Christ's resurrection is a historical fact that cannot be denied\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Life has an inherent, objective meaning\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
     },
     {
       "role": "user",
-      "content": "Evaluate this for argument: \"Jesus Christ's resurrection is a historical fact that cannot be denied due to the multiple accounts in the Gospels, which were written by various authors, providing consistent details of the event. Additionally, the rapid growth of Christianity following the resurrection further supports its historical validity.\""
+      "content": "Evaluate this against argument: \"Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.\""
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T13:43:19.510Z] Received API response:
+[2024-12-02T14:02:57.571Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733146998-AO91mKkr4oAlhjtVastC",
+    "id": "gen-1733148175-5jZie7SxZUwpDzyUbJvf",
     "provider": "Google",
     "model": "google/gemini-flash-1.5",
     "object": "chat.completion",
-    "created": 1733146998,
+    "created": 1733148175,
     "choices": [
       {
         "logprobs": null,
@@ -2183,13 +654,330 @@ Data: {
       }
     ],
     "usage": {
-      "prompt_tokens": 241,
+      "prompt_tokens": 234,
       "completion_tokens": 3,
-      "total_tokens": 244
+      "total_tokens": 237
     }
   }
 }
-[2024-12-02T13:43:19.512Z] [DebateRoutes] Evaluation result:
+[2024-12-02T14:02:57.572Z] [DebateRoutes] Evaluation result:
 Data: {
   "score": 65
+}
+[2024-12-02T14:04:06.594Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Life has an inherent, objective meaning",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "but how does that aurgument make you feel?",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T14:04:06.594Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Life has an inherent, objective meaning",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T14:04:06.594Z] Evaluating argument:
+Data: {
+  "topic": "Life has an inherent, objective meaning",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "but how does that aurgument make you feel?",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T14:04:06.594Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Life has an inherent, objective meaning\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"but how does that aurgument make you feel?\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T14:04:07.364Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733148246-JqTDb2B1ICi1ansxavtz",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733148246,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "20\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 194,
+      "completion_tokens": 3,
+      "total_tokens": 197
+    }
+  }
+}
+[2024-12-02T14:04:07.365Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 20
+}
+[2024-12-02T14:04:07.377Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Life has an inherent, objective meaning",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Life has an inherent, objective meaning\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
+      "id": 0
+    },
+    {
+      "role": "assistant",
+      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "but how does that aurgument make you feel?",
+      "id": 2
+    }
+  ]
+}
+[2024-12-02T14:04:07.377Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Life has an inherent, objective meaning\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+    },
+    {
+      "role": "assistant",
+      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life."
+    },
+    {
+      "role": "user",
+      "content": "but how does that aurgument make you feel?"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T14:04:08.582Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733148247-W7izSXg1apuJQZjMJmBW",
+    "provider": "OpenAI",
+    "model": "openai/gpt-3.5-turbo",
+    "object": "chat.completion",
+    "created": 1733148247,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Feelings are subjective and personal, but in a logical debate, we focus on evidence and reasoning rather than emotions. The lack of universal agreement on the meaning of life supports the idea that it is not inherently objective.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": null,
+    "usage": {
+      "prompt_tokens": 246,
+      "completion_tokens": 43,
+      "total_tokens": 289
+    }
+  }
+}
+[2024-12-02T14:04:08.584Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Feelings are subjective and personal, but in a logical debate, we focus on evidence and reasoning rather than emotions. The lack of universal agreement on the meaning of life supports the idea that it is not inherently objective."
+}
+[2024-12-02T14:04:08.591Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Life has an inherent, objective meaning",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "but how does that aurgument make you feel?",
+      "id": 2
+    },
+    {
+      "role": "user",
+      "content": "Feelings are subjective and personal, but in a logical debate, we focus on evidence and reasoning rather than emotions. The lack of universal agreement on the meaning of life supports the idea that it is not inherently objective.",
+      "id": 3
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T14:04:08.591Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Life has an inherent, objective meaning",
+  "position": "against",
+  "messagesCount": 3,
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T14:04:08.591Z] Evaluating argument:
+Data: {
+  "topic": "Life has an inherent, objective meaning",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "but how does that aurgument make you feel?",
+      "id": 2
+    },
+    {
+      "role": "user",
+      "content": "Feelings are subjective and personal, but in a logical debate, we focus on evidence and reasoning rather than emotions. The lack of universal agreement on the meaning of life supports the idea that it is not inherently objective.",
+      "id": 3
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T14:04:08.591Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Life has an inherent, objective meaning\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"Feelings are subjective and personal, but in a logical debate, we focus on evidence and reasoning rather than emotions. The lack of universal agreement on the meaning of life supports the idea that it is not inherently objective.\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T14:04:09.171Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733148248-rGaCPyLNljvKbtgvf8yL",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733148248,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 226,
+      "completion_tokens": 3,
+      "total_tokens": 229
+    }
+  }
+}
+[2024-12-02T14:04:09.172Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
 }

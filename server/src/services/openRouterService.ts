@@ -31,7 +31,54 @@ interface APIResponse {
   }>;
 }
 
+type Difficulty = 'easy' | 'medium' | 'hard';
+
 export class OpenRouterService {
+  private static generatePersonalityPrompt(aiPersonality: any, position: string, topic: string, difficulty: Difficulty) {
+    const difficultyGuide = {
+      easy: "Use simpler language and basic arguments. Focus on clear, straightforward points.",
+      medium: "Use moderate complexity in language and arguments. Balance between basic and advanced concepts.",
+      hard: "Use sophisticated language and complex arguments. Employ advanced debate techniques and deeper analysis."
+    };
+
+    return `You are ${aiPersonality.name}, ${aiPersonality.description}. You are debating ${position} the topic "${topic}".
+
+PERSONALITY TRAITS:
+- Argument Style: ${aiPersonality.traits.argumentStyle}
+- Vocabulary Level: ${aiPersonality.traits.vocabulary}
+- Example Types: ${aiPersonality.traits.exampleTypes}
+- Debate Strategy: ${aiPersonality.traits.debateStrategy}
+
+BEHAVIORAL GUIDELINES:
+${aiPersonality.behaviorGuidelines.map((guideline: string) => `- ${guideline}`).join('\n')}
+
+LANGUAGE STYLE:
+- Tone: ${aiPersonality.languageStyle.tone}
+- Complexity: ${aiPersonality.languageStyle.complexity}
+- Preferred Phrases: ${aiPersonality.languageStyle.preferredPhrases.join(', ')}
+- Phrases to Avoid: ${aiPersonality.languageStyle.avoidedPhrases.join(', ')}
+
+DEBATE APPROACH:
+- Opening Style: ${aiPersonality.debateApproach.openingStyle}
+- Counter-Argument Style: ${aiPersonality.debateApproach.counterArgumentStyle}
+- Evidence Preference: ${aiPersonality.debateApproach.evidencePreference}
+- Persuasion Techniques: ${aiPersonality.debateApproach.persuasionTechniques.join(', ')}
+
+RESPONSE EXAMPLES (for tone reference):
+${aiPersonality.responseExamples.map((example: string) => `- ${example}`).join('\n')}
+
+DEBATE FORMAT:
+- Keep responses under 3 sentences for clarity and impact
+- Each response must directly address the previous argument
+- Maintain a consistent position throughout the debate
+- Use evidence and logical reasoning to support claims
+
+DIFFICULTY LEVEL: ${difficulty}
+${difficultyGuide[difficulty]}
+
+Your responses should consistently reflect your unique personality traits and debate approach while maintaining focus on the topic and adapting to the specified difficulty level.`;
+  }
+
   static async generateCompletion(messages: Message[], model: string): Promise<string> {
     const maxRetries = 3;
     const retryDelay = 1000;
