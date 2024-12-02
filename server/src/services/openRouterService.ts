@@ -227,10 +227,17 @@ Evaluate the latest argument and return ONLY a number between 0-100.`
       model
     );
 
-    const score = parseInt(scoreResponse);
-    if (isNaN(score) || score < 0 || score > 100) {
-      throw new Error('Invalid score returned from evaluation');
+    // Parse and normalize score
+    let score = parseInt(scoreResponse);
+    
+    // Handle invalid scores
+    if (isNaN(score)) {
+      await DiagnosticLogger.warn('Invalid score format, defaulting to 50:', scoreResponse);
+      score = 50;
     }
+
+    // Bound score between 0 and 100
+    score = Math.max(0, Math.min(100, score));
 
     return score;
   }

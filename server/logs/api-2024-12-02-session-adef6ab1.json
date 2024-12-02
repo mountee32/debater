@@ -1,0 +1,206 @@
+[
+  {
+    "timestamp": "2024-12-02T10:51:00.200Z",
+    "requestId": "a7d22d0a-d739-4b7f-9909-63e2c5b9577a",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+        },
+        {
+          "role": "user",
+          "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:51:01.720Z",
+    "requestId": "a7d22d0a-d739-4b7f-9909-63e2c5b9577a",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.",
+      "usage": {
+        "prompt_tokens": 242,
+        "completion_tokens": 53,
+        "total_tokens": 295
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:51:01.736Z",
+    "requestId": "6a15d52b-8392-400d-9bbb-b966afda5574",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:51:02.318Z",
+    "requestId": "6a15d52b-8392-400d-9bbb-b966afda5574",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "65\n",
+      "usage": {
+        "prompt_tokens": 242,
+        "completion_tokens": 3,
+        "total_tokens": 245
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:51:07.515Z",
+    "requestId": "15049136-79e7-45e2-b643-582826aecc43",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this for argument: \"maybe\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:51:11.317Z",
+    "requestId": "15049136-79e7-45e2-b643-582826aecc43",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "20\n",
+      "usage": {
+        "prompt_tokens": 190,
+        "completion_tokens": 3,
+        "total_tokens": 193
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:51:11.329Z",
+    "requestId": "60ecf0a2-0d31-4c43-8832-dbe5c134e990",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+        },
+        {
+          "role": "assistant",
+          "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan."
+        },
+        {
+          "role": "user",
+          "content": "maybe"
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:51:12.473Z",
+    "requestId": "60ecf0a2-0d31-4c43-8832-dbe5c134e990",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Our ability to make choices and decisions is evident in our daily lives. We choose what to eat, what to wear, and how to spend our time, demonstrating our free will in action. This autonomy in decision-making indicates that we are not solely bound by a predetermined plan.",
+      "usage": {
+        "prompt_tokens": 240,
+        "completion_tokens": 55,
+        "total_tokens": 295
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:51:12.482Z",
+    "requestId": "532e50a5-035d-42c0-abe3-8f48a1071e2c",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"Our ability to make choices and decisions is evident in our daily lives. We choose what to eat, what to wear, and how to spend our time, demonstrating our free will in action. This autonomy in decision-making indicates that we are not solely bound by a predetermined plan.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:51:13.541Z",
+    "requestId": "532e50a5-035d-42c0-abe3-8f48a1071e2c",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "45\n",
+      "usage": {
+        "prompt_tokens": 244,
+        "completion_tokens": 3,
+        "total_tokens": 247
+      }
+    }
+  }
+]

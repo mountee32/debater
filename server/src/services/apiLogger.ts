@@ -46,7 +46,9 @@ interface ApiLog {
 }
 
 export class ApiLogger {
-  private static logDir = path.join('/home/vscode/debater/server/logs');
+  private static logDir = process.env.NODE_ENV === 'test' 
+    ? path.join(process.cwd(), 'logs')
+    : path.join('/home/vscode/debater/server/logs');
   private static currentSessionId: string = '';
   private static logs: ApiLog[] = [];
 
@@ -133,6 +135,7 @@ export class ApiLogger {
   static startNewSession() {
     this.currentSessionId = uuidv4().slice(0, 8); // Use first 8 characters of UUID for shorter filenames
     this.logs = []; // Clear in-memory logs for new session
+    this.ensureLogDir(); // Ensure log directory exists when starting new session
     console.log(`[ApiLogger] Started new session: ${this.currentSessionId}`);
   }
 

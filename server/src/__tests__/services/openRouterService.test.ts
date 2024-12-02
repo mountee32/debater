@@ -173,7 +173,7 @@ describe('OpenRouterService', () => {
         mockParams.roleToScore
       );
 
-      expect(result).toBe(mockParams.currentScores.user);
+      expect(result).toBe(50);
       expect(mockedDiagnosticLogger.warn).toHaveBeenCalled();
     });
 

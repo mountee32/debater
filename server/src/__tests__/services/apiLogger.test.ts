@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { ApiLogger } from '../../services/apiLogger';
 
@@ -30,7 +31,9 @@ describe('ApiLogger', () => {
   const mockDate = new Date('2024-01-01T12:00:00Z');
   const mockSessionId = 'test-ses';
   const mockRequestId = 'test-req';
-  const logDir = '/home/andy/debater/server/logs';
+  const logDir = process.env.NODE_ENV === 'test' 
+    ? path.join(process.cwd(), 'logs')
+    : path.join('/home/vscode/debater/server/logs');
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -42,6 +45,8 @@ describe('ApiLogger', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
     // Mock fs.existsSync to return true
     (mockedFs.existsSync as jest.Mock).mockReturnValue(true);
+    // Set NODE_ENV to test
+    process.env.NODE_ENV = 'test';
   });
 
   describe('startNewSession', () => {
@@ -107,7 +112,8 @@ describe('ApiLogger', () => {
 
       mockedFs.promises.writeFile.mockRejectedValueOnce(error);
 
-      await ApiLogger.logRequest(endpoint, method, mockRequest);
+      await expect(ApiLogger.logRequest(endpoint, method, mockRequest))
+        .rejects.toThrow('Write error');
 
       expect(console.error).toHaveBeenCalledWith(
         '[ApiLogger] Error writing log:',
@@ -156,7 +162,8 @@ describe('ApiLogger', () => {
 
       mockedFs.promises.writeFile.mockRejectedValueOnce(error);
 
-      await ApiLogger.logResponse(mockRequestId, endpoint, method, mockResponse);
+      await expect(ApiLogger.logResponse(mockRequestId, endpoint, method, mockResponse))
+        .rejects.toThrow('Write error');
 
       expect(console.error).toHaveBeenCalledWith(
         '[ApiLogger] Error writing log:',
