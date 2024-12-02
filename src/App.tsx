@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { DebateGame, HomeScreen } from './components';
 import { GameProvider } from './contexts/GameContext';
 import { useGameContext } from './hooks/useGameContext';
@@ -16,6 +17,7 @@ function App() {
 }
 
 function AppContent() {
+  const navigate = useNavigate();
   const {
     gameState,
     setGameState,
@@ -101,12 +103,12 @@ function AppContent() {
     );
   };
 
-  const renderDebateGame = () => {
-    if (gameState === 'replaying') {
+  const renderDebateGame = (conversationId?: string) => {
+    if (conversationId) {
       return (
         <DebateGame
           isReplayMode={true}
-          conversationId={replayConversationId}
+          conversationId={conversationId}
           isDarkMode={isDarkMode}
           onToggleDarkMode={toggleDarkMode}
           aiPersonality={selectedPersonality!}
@@ -135,21 +137,35 @@ function AppContent() {
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
       <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300 bg-opacity-50 dark:bg-opacity-50" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'4\' height=\'4\' viewBox=\'0 0 4 4\'%3E%3Cpath fill=\'%239C92AC\' fill-opacity=\'0.4\' d=\'M1 3h1v1H1V3zm2-2h1v1H3V1z\'%3E%3C/path%3E%3C/svg%3E")'}}>
         <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6">
-          {gameState !== 'replaying' && <WizardSteps />}
-
-          {gameState === 'home' && (
-            <HomeScreen 
-              username={''} 
-              onStartDebate={handleStartDebateFromLeaderboard} 
-              handleStartChat={handleStartChat}
-            />
-          )}
-          {gameState === 'select-category' && <CategorySelection />}
-          {gameState === 'select-topic' && <TopicSelection />}
-          {gameState === 'select-position' && <PositionSelection />}
-          {gameState === 'select-personality' && <AIPersonalitySelection />}
-          {gameState === 'select-difficulty' && <DifficultySelection />}
-          {renderDebateGame()}
+          <Routes>
+            <Route path="/replay/:conversationId" element={
+              <DebateGame
+                isReplayMode={true}
+                conversationId={replayConversationId}
+                isDarkMode={isDarkMode}
+                onToggleDarkMode={toggleDarkMode}
+                aiPersonality={selectedPersonality!}
+              />
+            } />
+            <Route path="/" element={
+              <>
+                {gameState !== 'replaying' && <WizardSteps />}
+                {gameState === 'home' && (
+                  <HomeScreen 
+                    username={''} 
+                    onStartDebate={handleStartDebateFromLeaderboard} 
+                    handleStartChat={handleStartChat}
+                  />
+                )}
+                {gameState === 'select-category' && <CategorySelection />}
+                {gameState === 'select-topic' && <TopicSelection />}
+                {gameState === 'select-position' && <PositionSelection />}
+                {gameState === 'select-personality' && <AIPersonalitySelection />}
+                {gameState === 'select-difficulty' && <DifficultySelection />}
+                {renderDebateGame()}
+              </>
+            } />
+          </Routes>
         </div>
       </div>
     </div>

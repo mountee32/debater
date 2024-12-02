@@ -19,6 +19,13 @@ interface Conversation {
   events: ConversationEvent[];
 }
 
+// Helper function to log performance metrics
+const logPerformance = (action: string, startTime: number) => {
+  const endTime = performance.now();
+  const duration = endTime - startTime;
+  console.log(`[ReplayPerformance] ${action} took ${duration.toFixed(2)}ms`);
+};
+
 export const useDebateReplay = (
   conversationId: string,
   aiPersonality: AIPersonality
@@ -40,32 +47,64 @@ export const useDebateReplay = (
   // Fetch replay data
   useEffect(() => {
     const fetchReplay = async () => {
+      const startTime = performance.now();
+      console.log('[ReplayDebug] Starting conversation replay fetch:', {
+        conversationId,
+        aiPersonality: aiPersonality.name
+      });
+
       try {
         setState(prev => ({ ...prev, isLoading: true, error: null }));
         
-        const response = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/replay/${conversationId}`
-        );
+        const apiUrl = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/replay/${conversationId}`;
+        console.log('[ReplayDebug] Fetching from URL:', apiUrl);
+        
+        const fetchStartTime = performance.now();
+        const response = await fetch(apiUrl);
+        logPerformance('API fetch', fetchStartTime);
         
         if (!response.ok) {
-          throw new Error('Failed to fetch replay data');
+          throw new Error(`Failed to fetch replay data: ${response.status} ${response.statusText}`);
         }
 
+        const parseStartTime = performance.now();
         const data: Conversation = await response.json();
+        logPerformance('JSON parsing', parseStartTime);
+
+        console.log('[ReplayDebug] Received conversation data:', {
+          id: data.id,
+          eventCount: data.events.length,
+          startTime: data.startTime,
+          endTime: data.endTime
+        });
+
         setConversation(data);
 
         // Convert events to messages and scores
+        const conversionStartTime = performance.now();
         const convertedMessages: Message[] = [];
         let currentScore = { user: 50, opponent: 50 };
 
         data.events.forEach((event, index) => {
           if (event.type === 'message' && event.speakerId && event.content) {
+            console.log('[ReplayDebug] Processing message event:', {
+              index,
+              speakerId: event.speakerId,
+              contentLength: event.content.length
+            });
+
             convertedMessages.push({
               id: index + 1,
               role: event.speakerId === 'user' ? 'user' : 'opponent',
               content: event.content
             });
           } else if (event.type === 'score' && event.participantId && event.newScore !== undefined) {
+            console.log('[ReplayDebug] Processing score event:', {
+              index,
+              participantId: event.participantId,
+              newScore: event.newScore
+            });
+
             // Update scores
             if (event.participantId === 'user') {
               currentScore = {
@@ -92,6 +131,13 @@ export const useDebateReplay = (
           }
         });
 
+        logPerformance('Event conversion', conversionStartTime);
+
+        console.log('[ReplayDebug] Conversion complete:', {
+          messageCount: convertedMessages.length,
+          finalScore: currentScore
+        });
+
         setMessages(convertedMessages);
         setState(prev => ({
           ...prev,
@@ -99,12 +145,17 @@ export const useDebateReplay = (
           audienceScore: currentScore
         }));
 
+        logPerformance('Total replay initialization', startTime);
+
       } catch (error) {
+        console.error('[ReplayError] Failed to load replay:', error);
         setState(prev => ({
           ...prev,
           isLoading: false,
-          error: 'Failed to load replay data'
+          error: error instanceof Error ? error.message : 'Failed to load replay data'
         }));
+
+        logPerformance('Failed replay attempt', startTime);
       }
     };
 
@@ -112,10 +163,22 @@ export const useDebateReplay = (
   }, [conversationId]);
 
   // These functions are no-ops in replay mode
-  const handleSendArgument = async (currentArgument: string) => {};
-  const handleHintRequest = async () => null;
-  const initializeDebate = async () => {};
-  const generateDebateSummary = async () => {};
+  const handleSendArgument = async (currentArgument: string) => {
+    console.log('[ReplayDebug] Attempted to send argument in replay mode:', currentArgument);
+  };
+  
+  const handleHintRequest = async () => {
+    console.log('[ReplayDebug] Attempted to request hint in replay mode');
+    return null;
+  };
+  
+  const initializeDebate = async () => {
+    console.log('[ReplayDebug] Attempted to initialize debate in replay mode');
+  };
+  
+  const generateDebateSummary = async () => {
+    console.log('[ReplayDebug] Attempted to generate summary in replay mode');
+  };
 
   return {
     state,

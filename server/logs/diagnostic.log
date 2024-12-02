@@ -1,0 +1,150 @@
+[2024-12-02T20:59:57.128Z] Diagnostic logging initialized
+[2024-12-02T20:59:57.128Z] Starting server initialization...
+[2024-12-02T20:59:57.129Z] Middleware configured
+Data: {
+  "cors": {
+    "origin": [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:5175"
+    ],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  }
+}
+[2024-12-02T20:59:57.130Z] Routes configured
+Data: {
+  "endpoints": [
+    "/api/debate"
+  ]
+}
+[2024-12-02T20:59:57.130Z] Testing diagnostic logger
+Data: {
+  "test": "This is a test log entry",
+  "timestamp": "2024-12-02T20:59:57.130Z"
+}
+[2024-12-02T20:59:57.131Z] Server running on port 3000
+[2024-12-02T20:59:57.132Z] Server configuration
+Data: {
+  "port": 3000,
+  "corsOrigin": [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:5175"
+  ],
+  "diagnosticLogging": true
+}
+[2024-12-02T21:00:16.097Z] [DebateRoutes] [l2peqx] Replay request received:
+Data: {
+  "conversationId": "3194447a",
+  "timestamp": "2024-12-02T21:00:16.097Z",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.95.3 Chrome/128.0.6613.186 Electron/32.2.1 Safari/537.36",
+  "clientIp": "::ffff:127.0.0.1"
+}
+[2024-12-02T21:00:16.098Z] [ConversationRecorder] Beginning conversation retrieval for ID: 3194447a
+[2024-12-02T21:00:16.098Z] [ConversationRecorder] Found 3 conversation files
+[2024-12-02T21:00:16.098Z] [ConversationRecorder] Reading conversation from: /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-3194447a.json
+[2024-12-02T21:00:16.098Z] [ConversationRecorder] Conversation file size: 1913 bytes
+[2024-12-02T21:00:16.100Z] [ConversationRecorder] Conversation validation results:
+Data: {
+  "hasId": true,
+  "hasStartTime": true,
+  "hasGameSetup": true,
+  "hasEvents": true,
+  "eventCount": 4,
+  "messageEvents": 2,
+  "scoreEvents": 2
+}
+[2024-12-02T21:00:16.100Z] [ConversationRecorder] Conversation retrieval completed:
+Data: {
+  "retrievalTimeMs": 2.459074,
+  "fileSizeBytes": 1913,
+  "totalEvents": 4,
+  "messageCount": 2,
+  "scoreCount": 2
+}
+[2024-12-02T21:00:16.100Z] [DebateRoutes] [l2peqx] Conversation retrieval metrics:
+Data: {
+  "retrievalTimeMs": 2.728241,
+  "found": true
+}
+[2024-12-02T21:00:16.100Z] [DebateRoutes] [l2peqx] Conversation metrics:
+Data: {
+  "totalEvents": 4,
+  "messageEvents": 2,
+  "scoreEvents": 2,
+  "durationMs": 14099,
+  "topic": "All religions are equally valid paths to the same truth",
+  "difficulty": 1,
+  "participantCount": 2
+}
+[2024-12-02T21:00:16.101Z] [DebateRoutes] [l2peqx] Replay response metrics:
+Data: {
+  "responseSizeBytes": 1569,
+  "totalProcessingTimeMs": 3.224776,
+  "memoryUsage": {
+    "rss": 57573376,
+    "heapTotal": 8622080,
+    "heapUsed": 7640360,
+    "external": 2121824,
+    "arrayBuffers": 22764
+  }
+}
+[2024-12-02T21:00:16.108Z] [DebateRoutes] [6akujc] Replay request received:
+Data: {
+  "conversationId": "3194447a",
+  "timestamp": "2024-12-02T21:00:16.108Z",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.95.3 Chrome/128.0.6613.186 Electron/32.2.1 Safari/537.36",
+  "clientIp": "::ffff:127.0.0.1"
+}
+[2024-12-02T21:00:16.108Z] [ConversationRecorder] Beginning conversation retrieval for ID: 3194447a
+[2024-12-02T21:00:16.109Z] [ConversationRecorder] Found 3 conversation files
+[2024-12-02T21:00:16.109Z] [ConversationRecorder] Reading conversation from: /home/vscode/debater/server/logs/conversations/2024-12-02-conversation-3194447a.json
+[2024-12-02T21:00:16.109Z] [ConversationRecorder] Conversation file size: 1913 bytes
+[2024-12-02T21:00:16.109Z] [ConversationRecorder] Conversation validation results:
+Data: {
+  "hasId": true,
+  "hasStartTime": true,
+  "hasGameSetup": true,
+  "hasEvents": true,
+  "eventCount": 4,
+  "messageEvents": 2,
+  "scoreEvents": 2
+}
+[2024-12-02T21:00:16.109Z] [ConversationRecorder] Conversation retrieval completed:
+Data: {
+  "retrievalTimeMs": 1.142377,
+  "fileSizeBytes": 1913,
+  "totalEvents": 4,
+  "messageCount": 2,
+  "scoreCount": 2
+}
+[2024-12-02T21:00:16.109Z] [DebateRoutes] [6akujc] Conversation retrieval metrics:
+Data: {
+  "retrievalTimeMs": 1.210979,
+  "found": true
+}
+[2024-12-02T21:00:16.110Z] [DebateRoutes] [6akujc] Conversation metrics:
+Data: {
+  "totalEvents": 4,
+  "messageEvents": 2,
+  "scoreEvents": 2,
+  "durationMs": 14099,
+  "topic": "All religions are equally valid paths to the same truth",
+  "difficulty": 1,
+  "participantCount": 2
+}
+[2024-12-02T21:00:16.110Z] [DebateRoutes] [6akujc] Replay response metrics:
+Data: {
+  "responseSizeBytes": 1569,
+  "totalProcessingTimeMs": 1.519739,
+  "memoryUsage": {
+    "rss": 58011648,
+    "heapTotal": 8622080,
+    "heapUsed": 7838056,
+    "external": 2136969,
+    "arrayBuffers": 37869
+  }
+}

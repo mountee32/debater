@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { AIPersonality } from '../data/aiPersonalities';
+import { useParams, useNavigate } from 'react-router-dom';
+import { AIPersonality, aiPersonalities } from '../data/aiPersonalities';
 import debateSubjectsData from '../data/debateSubjects.json';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
@@ -41,13 +42,19 @@ export interface GameContextType {
   handleDifficultyChange: (newDifficulty: Difficulty) => void;
   handlePositionSelect: (position: Position) => void;
   handleSubjectSelect: (subject: string, subjectId: string) => void;
-  handleWatchReplay: (entry: { id: number; username: string; score: number; subjectId: string; position: Position; skill: Difficulty }) => void;
+  handleWatchReplay: (entry: { id: number; username: string; score: number; subjectId: string; position: Position; skill: Difficulty; conversationId?: string }) => void;
   toggleDarkMode: () => void;
 }
 
 export const GameContext = createContext<GameContextType | undefined>(undefined);
 
+// Default personality for replay mode
+const defaultPersonality = aiPersonalities.find(p => p.id === 'logical_larry') || aiPersonalities[0];
+
 export function GameProvider({ children }: { children: React.ReactNode }) {
+  const navigate = useNavigate();
+  const { conversationId } = useParams();
+
   const [gameState, setGameState] = useState<GameState>('home');
   const [topic, setTopic] = useState('');
   const [category, setCategory] = useState<string>('');
@@ -58,6 +65,15 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [availableSubjects, setAvailableSubjects] = useState<DebateSubject[]>([]);
   const [currentSubjectId, setCurrentSubjectId] = useState<string>('');
   const [replayConversationId, setReplayConversationId] = useState<string>('');
+
+  // Initialize replay mode if conversationId is present in URL
+  useEffect(() => {
+    if (conversationId) {
+      setReplayConversationId(conversationId);
+      setSelectedPersonality(defaultPersonality);
+      setGameState('replaying');
+    }
+  }, [conversationId]);
 
   useEffect(() => {
     const storedDarkMode = localStorage.getItem('darkMode');
@@ -115,12 +131,18 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setGameState('select-position');
   };
 
-  const handleWatchReplay = (entry: { id: number; username: string; score: number; subjectId: string; position: Position; skill: Difficulty }) => {
-    setReplayConversationId(entry.id.toString());
+  const handleWatchReplay = (entry: { id: number; username: string; score: number; subjectId: string; position: Position; skill: Difficulty; conversationId?: string }) => {
+    if (!entry.conversationId) {
+      console.error('No conversation ID available for replay');
+      return;
+    }
+    setReplayConversationId(entry.conversationId);
     setUserPosition(entry.position);
     setDifficulty(entry.skill);
     setCurrentSubjectId(entry.subjectId);
+    setSelectedPersonality(defaultPersonality);
     setGameState('replaying');
+    navigate(`/replay/${entry.conversationId}`);
   };
 
   const toggleDarkMode = () => {

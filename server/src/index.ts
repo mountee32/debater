@@ -4,10 +4,20 @@ import debateRoutes from './routes/debateRoutes';
 import { env } from './config/env';
 import DiagnosticLogger from './utils/diagnosticLogger';
 
+// Load environment configuration first
+console.log('Loading environment configuration...');
+const envConfig = env;
+console.log('Environment loaded:', {
+  ENABLE_DIAGNOSTIC_LOGGING: envConfig.ENABLE_DIAGNOSTIC_LOGGING
+});
+
 const app = express();
 
+// Initialize diagnostic logging after environment is loaded
+DiagnosticLogger.initialize();
+
 // Starting server initialization
-console.log('Starting server initialization...');
+DiagnosticLogger.log('Starting server initialization...');
 
 // Configure CORS to allow multiple frontend ports
 const corsOptions = {
@@ -44,12 +54,24 @@ DiagnosticLogger.log('Testing diagnostic logger', {
 });
 
 // Start server
-const port = env.PORT || 3000;
-app.listen(port, () => {
+const port = envConfig.PORT || 3000;
+
+// Check if port is in use before starting
+const server = app.listen(port, () => {
   DiagnosticLogger.log('Server running on port ' + port);
   DiagnosticLogger.log('Server configuration', {
     port: port,
     corsOrigin: corsOptions.origin,
-    diagnosticLogging: env.ENABLE_DIAGNOSTIC_LOGGING
+    diagnosticLogging: envConfig.ENABLE_DIAGNOSTIC_LOGGING
   });
+}).on('error', (error: any) => {
+  if (error.code === 'EADDRINUSE') {
+    DiagnosticLogger.error('Port already in use:', error);
+    console.error(`Port ${port} is already in use. Please kill the existing process or use a different port.`);
+    process.exit(1);
+  } else {
+    DiagnosticLogger.error('Server startup error:', error);
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
 });

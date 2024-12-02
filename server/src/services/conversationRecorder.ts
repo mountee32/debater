@@ -225,20 +225,66 @@ export class ConversationRecorder {
   }
 
   static async getConversation(conversationId: string): Promise<Conversation | null> {
+    const startTime = process.hrtime();
+    
     try {
+      await DiagnosticLogger.log(`[ConversationRecorder] Beginning conversation retrieval for ID: ${conversationId}`);
+      
       const files = await fs.promises.readdir(this.logDir);
+      await DiagnosticLogger.log(`[ConversationRecorder] Found ${files.length} conversation files`);
+      
       const conversationFile = files.find(file => file.includes(`conversation-${conversationId}`));
       
       if (!conversationFile) {
+        await DiagnosticLogger.log(`[ConversationRecorder] No conversation found with ID: ${conversationId}`);
         return null;
       }
 
       const filePath = path.join(this.logDir, conversationFile);
+      await DiagnosticLogger.log(`[ConversationRecorder] Reading conversation from: ${filePath}`);
+      
+      // Get file stats for size information
+      const stats = await fs.promises.stat(filePath);
+      await DiagnosticLogger.log(`[ConversationRecorder] Conversation file size: ${stats.size} bytes`);
+
       const content = await fs.promises.readFile(filePath, 'utf8');
-      return JSON.parse(content);
+      const conversation = JSON.parse(content);
+
+      // Validate conversation structure
+      const validationResults = {
+        hasId: Boolean(conversation.id),
+        hasStartTime: Boolean(conversation.startTime),
+        hasGameSetup: Boolean(conversation.gameSetup),
+        hasEvents: Array.isArray(conversation.events),
+        eventCount: conversation.events?.length || 0,
+        messageEvents: conversation.events?.filter((e: ConversationEvent) => e.type === 'message').length || 0,
+        scoreEvents: conversation.events?.filter((e: ConversationEvent) => e.type === 'score').length || 0
+      };
+
+      await DiagnosticLogger.log('[ConversationRecorder] Conversation validation results:', validationResults);
+
+      // Calculate and log performance metrics
+      const [seconds, nanoseconds] = process.hrtime(startTime);
+      const totalTime = seconds * 1000 + nanoseconds / 1000000; // Convert to milliseconds
+      
+      await DiagnosticLogger.log(`[ConversationRecorder] Conversation retrieval completed:`, {
+        retrievalTimeMs: totalTime,
+        fileSizeBytes: stats.size,
+        totalEvents: validationResults.eventCount,
+        messageCount: validationResults.messageEvents,
+        scoreCount: validationResults.scoreEvents
+      });
+
+      return conversation;
     } catch (error) {
-      console.error('Error reading conversation:', error);
-      await DiagnosticLogger.error('[ConversationRecorder] Error reading conversation:', error);
+      const [seconds, nanoseconds] = process.hrtime(startTime);
+      const totalTime = seconds * 1000 + nanoseconds / 1000000;
+      
+      await DiagnosticLogger.error('[ConversationRecorder] Error reading conversation:', {
+        error,
+        conversationId,
+        retrievalTimeMs: totalTime
+      });
       throw error;
     }
   }

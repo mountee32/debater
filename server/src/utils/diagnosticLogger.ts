@@ -1,9 +1,10 @@
 import fs from 'fs';
 import path from 'path';
+import { env } from '../config/env';
 
 class DiagnosticLogger {
   private static logFile = path.join('/home/vscode/debater/server/logs', 'diagnostic.log');
-  private static enabled = process.env.ENABLE_DIAGNOSTIC_LOGGING === 'true';
+  private static enabled = env.ENABLE_DIAGNOSTIC_LOGGING;
 
   static initialize() {
     console.log('Initializing DiagnosticLogger...');
