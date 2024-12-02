@@ -136,7 +136,8 @@ export const useDebateLogic = (
         allMessages,
         state.audienceScore,
         modelConfig.models.turnScoring.name,
-        'user'
+        'user',
+        difficulty
       );
 
       updateMessageScore(userMessageId, {
@@ -155,7 +156,7 @@ export const useDebateLogic = (
       const systemMessage: Message = {
         id: 0,
         role: 'system',
-        content: `You are ${aiPersonality.name}, an expert debater ${aiPosition} the topic "${topic}".
+        content: `You are ${aiPersonality.name}, a debater ${aiPosition} the topic "${topic}".
 
 DEBATE FORMAT:
 - Keep responses under 3 sentences for clarity and impact
@@ -184,7 +185,8 @@ DEBATE PRINCIPLES:
       const aiResponse = await continueDebate(
         topic, 
         [systemMessage, ...allMessages],
-        aiPosition
+        aiPosition,
+        difficulty
       );
       
       const aiMessageId = userMessageId + 1;
@@ -209,7 +211,8 @@ DEBATE PRINCIPLES:
         updatedMessages,
         state.audienceScore,
         modelConfig.models.turnScoring.name,
-        'opponent'
+        'opponent',
+        difficulty
       );
 
       updateMessageScore(aiMessageId, {
@@ -265,7 +268,8 @@ DEBATE PRINCIPLES:
         [aiMessage],
         state.audienceScore,
         modelConfig.models.turnScoring.name,
-        'opponent'
+        'opponent',
+        difficulty
       );
 
       updateMessageScore(aiMessageId, {

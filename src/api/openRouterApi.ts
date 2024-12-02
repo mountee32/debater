@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { AIPersonality } from '../data/aiPersonalities';
+import modelConfig from '../../models.config.json';
 
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api') + '/debate';
 
@@ -107,6 +108,7 @@ export const startDebate = async (
     topic,
     position: aiPosition,
     messages,
+    model: modelConfig.models.opponent.name,  // Use model from config
     difficulty
   });
 
@@ -158,6 +160,7 @@ EVALUATION CRITERIA:
     topic,
     position: aiPosition,
     messages: messagesWithSystem,
+    model: modelConfig.models.opponent.name,  // Use model from config
     difficulty
   });
 
@@ -223,6 +226,7 @@ export const generateHint = async (
     topic,
     position: userPosition,
     messages: apiMessages,
+    model: modelConfig.models.hint.name,  // Use model from config
     difficulty
   });
 

@@ -73,10 +73,17 @@ router.post('/response', async (req, res) => {
   try {
     await DiagnosticLogger.log('[DebateRoutes] Generating response:', req.body);
     const { topic, position, messages, model, difficulty } = req.body;
+
+    if (!model) {
+      const error = 'Missing required model parameter';
+      await DiagnosticLogger.error('[DebateRoutes] Response generation error:', error);
+      return res.status(400).json({ error });
+    }
+
     const response = await OpenRouterService.generateCompletion(
       messages,
-      model || 'openai/gpt-3.5-turbo',
-      difficulty || 'medium'  // Pass difficulty parameter
+      model,
+      difficulty || 'medium'
     );
     await DiagnosticLogger.log('[DebateRoutes] Generated response:', { response });
     res.json({ response });
@@ -120,7 +127,7 @@ router.post('/evaluate', async (req, res) => {
       currentScores,
       model,
       roleToScore,
-      difficulty || 'medium'  // Pass difficulty parameter
+      difficulty || 'medium'
     );
 
     await DiagnosticLogger.log('[DebateRoutes] Evaluation result:', { score });
@@ -139,11 +146,18 @@ router.post('/hint', async (req, res) => {
   try {
     await DiagnosticLogger.log('[DebateRoutes] Generating hint:', req.body);
     const { topic, position, model, difficulty } = req.body;
+
+    if (!model) {
+      const error = 'Missing required model parameter';
+      await DiagnosticLogger.error('[DebateRoutes] Hint generation error:', error);
+      return res.status(400).json({ error });
+    }
+
     const hint = await OpenRouterService.generateHint(
       topic, 
       position, 
-      model || 'openai/gpt-3.5-turbo',
-      difficulty || 'medium'  // Pass difficulty parameter
+      model,
+      difficulty || 'medium'
     );
     await DiagnosticLogger.log('[DebateRoutes] Generated hint:', { hint });
     res.json({ hint });

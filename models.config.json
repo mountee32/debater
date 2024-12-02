@@ -1,9 +1,9 @@
 {
   "models": {
     "opponent": {
-      "name": "google/gemini-flash-1.5",
+      "name": "openai/gpt-4o-mini",
       "description": "Primary model for generating debate responses and arguments",
-      "fallback": "google/gemini-flash-1.5"
+      "fallback": "openai/gpt-4o-mini"
     },
     "hint": {
       "name": "openai/gpt-4o-mini",

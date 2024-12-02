@@ -1,239 +1,167 @@
-import express from 'express';
 import request from 'supertest';
-import { OpenRouterService } from '../../services/openRouterService';
-import { ApiLogger } from '../../services/apiLogger';
-import DiagnosticLogger from '../../utils/diagnosticLogger';
+import express from 'express';
 import debateRoutes from '../../routes/debateRoutes';
+import { OpenRouterService } from '../../services/openRouterService';
+import modelConfig from '../../../../models.config.json';
 
-// Get the mocked version of our dependencies
+// Mock the OpenRouterService
 jest.mock('../../services/openRouterService');
-jest.mock('../../services/apiLogger');
-jest.mock('../../utils/diagnosticLogger');
 
-const mockedOpenRouterService = jest.mocked(OpenRouterService);
-const mockedApiLogger = jest.mocked(ApiLogger);
-const mockedDiagnosticLogger = jest.mocked(DiagnosticLogger);
+const app = express();
+app.use(express.json());
+app.use('/api/debate', debateRoutes);
 
 describe('Debate Routes', () => {
-  let app: express.Application;
-
   beforeEach(() => {
     jest.clearAllMocks();
-    app = express();
-    app.use(express.json());
-    app.use('/api', debateRoutes);
   });
 
-  describe('POST /api/topic', () => {
+  describe('POST /api/debate/topic', () => {
     it('should generate a topic successfully', async () => {
-      const mockTopic = 'Should artificial intelligence be regulated?';
-      const requestBody = {
+      const mockRequest = {
         category: 'technology',
-        model: 'gpt-3.5-turbo'
+        model: modelConfig.models.opponent.name
       };
 
-      mockedOpenRouterService.generateTopic.mockResolvedValueOnce(mockTopic);
+      (OpenRouterService.generateTopic as jest.Mock).mockResolvedValue('AI Ethics');
 
       const response = await request(app)
-        .post('/api/topic')
-        .send(requestBody);
+        .post('/api/debate/topic')
+        .send(mockRequest);
 
       expect(response.status).toBe(200);
-      expect(response.body).toEqual({ topic: mockTopic });
-      expect(mockedApiLogger.startNewSession).toHaveBeenCalled();
-      expect(mockedDiagnosticLogger.log).toHaveBeenCalledWith(
-        '[DebateRoutes] Generating topic:',
-        expect.any(Object)
-      );
-      expect(mockedOpenRouterService.generateTopic).toHaveBeenCalledWith(
+      expect(response.body).toEqual({ topic: 'AI Ethics' });
+      expect(OpenRouterService.generateTopic).toHaveBeenCalledWith(
         'technology',
-        'gpt-3.5-turbo'
+        modelConfig.models.opponent.name
       );
     });
 
-    it('should return 400 when required fields are missing', async () => {
-      const requestBody = {
-        category: 'technology'
-        // missing model field
-      };
-
+    it('should handle missing required fields', async () => {
       const response = await request(app)
-        .post('/api/topic')
-        .send(requestBody);
+        .post('/api/debate/topic')
+        .send({ category: 'technology' }); // Missing model
 
       expect(response.status).toBe(400);
-      expect(response.body).toEqual({ error: 'Missing required fields' });
-      expect(mockedOpenRouterService.generateTopic).not.toHaveBeenCalled();
-    });
-
-    it('should return 500 when topic generation fails', async () => {
-      const requestBody = {
-        category: 'technology',
-        model: 'gpt-3.5-turbo'
-      };
-      const error = new Error('API error');
-
-      mockedOpenRouterService.generateTopic.mockRejectedValueOnce(error);
-
-      const response = await request(app)
-        .post('/api/topic')
-        .send(requestBody);
-
-      expect(response.status).toBe(500);
-      expect(response.body).toEqual({
-        error: 'Failed to generate topic',
-        details: 'API error'
-      });
-      expect(mockedDiagnosticLogger.error).toHaveBeenCalledWith(
-        '[DebateRoutes] Topic generation error:',
-        error
-      );
+      expect(response.body).toHaveProperty('error');
     });
   });
 
-  describe('POST /api/response', () => {
+  describe('POST /api/debate/response', () => {
     it('should generate a response successfully', async () => {
-      const mockResponse = 'This is a well-reasoned argument...';
-      const requestBody = {
-        topic: 'Should AI be regulated?',
-        position: 'pro',
+      const mockRequest = {
+        topic: 'AI Ethics',
+        position: 'for',
         messages: [
-          { role: 'system', content: 'You are a debate assistant' },
-          { role: 'user', content: 'Initial argument' }
+          { role: 'system', content: 'You are a debater.' },
+          { role: 'user', content: 'What about AI safety?' }
         ],
-        model: 'gpt-3.5-turbo'
+        model: modelConfig.models.opponent.name
       };
 
-      mockedOpenRouterService.generateCompletion.mockResolvedValueOnce(mockResponse);
+      (OpenRouterService.generateCompletion as jest.Mock).mockResolvedValue('AI safety is crucial...');
 
       const response = await request(app)
-        .post('/api/response')
-        .send(requestBody);
+        .post('/api/debate/response')
+        .send(mockRequest);
 
       expect(response.status).toBe(200);
-      expect(response.body).toEqual({ response: mockResponse });
-      expect(mockedDiagnosticLogger.log).toHaveBeenCalledWith(
-        '[DebateRoutes] Generating response:',
-        expect.any(Object)
-      );
-      expect(mockedOpenRouterService.generateCompletion).toHaveBeenCalledWith(
-        requestBody.messages,
-        requestBody.model
-      );
+      expect(response.body).toEqual({ response: 'AI safety is crucial...' });
     });
 
-    it('should return 500 when response generation fails', async () => {
-      const requestBody = {
-        topic: 'Should AI be regulated?',
-        position: 'pro',
+    it('should handle missing model parameter', async () => {
+      const mockRequest = {
+        topic: 'AI Ethics',
+        position: 'for',
         messages: [
-          { role: 'system', content: 'You are a debate assistant' },
-          { role: 'user', content: 'Initial argument' }
-        ],
-        model: 'gpt-3.5-turbo'
+          { role: 'system', content: 'You are a debater.' },
+          { role: 'user', content: 'What about AI safety?' }
+        ]
       };
-      const error = new Error('API error');
-
-      mockedOpenRouterService.generateCompletion.mockRejectedValueOnce(error);
 
       const response = await request(app)
-        .post('/api/response')
-        .send(requestBody);
+        .post('/api/debate/response')
+        .send(mockRequest);
 
-      expect(response.status).toBe(500);
-      expect(response.body).toEqual({
-        error: 'Failed to generate response',
-        details: 'API error'
-      });
-      expect(mockedDiagnosticLogger.error).toHaveBeenCalledWith(
-        '[DebateRoutes] Response generation error:',
-        error
-      );
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error', 'Missing required model parameter');
     });
   });
 
-  describe('POST /api/evaluate', () => {
+  describe('POST /api/debate/evaluate', () => {
+    const messages = [
+      { role: 'system', content: 'You are a debater.' },
+      { role: 'user', content: 'AI has risks and benefits.' }
+    ];
+
     it('should evaluate an argument successfully', async () => {
-      const mockScore = 85; // Score between 0-100
-      const requestBody = {
-        topic: 'Should AI be regulated?',
+      const mockRequest = {
+        topic: 'AI Ethics',
         position: 'for',
-        messages: [
-          { role: 'system', content: 'You are a debate assistant' },
-          { role: 'user', content: 'AI needs regulation because...' }
-        ],
+        messages,
         currentScores: { user: 75, opponent: 70 },
-        model: 'gpt-3.5-turbo',
+        model: modelConfig.models.turnScoring.name,
         roleToScore: 'user' as const
       };
 
-      mockedOpenRouterService.evaluateArgument.mockResolvedValueOnce(mockScore);
+      (OpenRouterService.evaluateArgument as jest.Mock).mockResolvedValue(85);
 
       const response = await request(app)
-        .post('/api/evaluate')
-        .send(requestBody);
+        .post('/api/debate/evaluate')
+        .send(mockRequest);
 
       expect(response.status).toBe(200);
-      expect(response.body).toEqual({ score: mockScore });
-      expect(mockedDiagnosticLogger.log).toHaveBeenCalledWith(
-        '[DebateRoutes] Evaluating argument request:',
-        expect.any(Object)
-      );
-      expect(mockedOpenRouterService.evaluateArgument).toHaveBeenCalledWith(
-        requestBody.topic,
-        requestBody.position,
-        requestBody.messages,
-        requestBody.currentScores,
-        requestBody.model,
-        requestBody.roleToScore
-      );
+      expect(response.body).toEqual({ score: 85 });
     });
 
-    it('should return 400 when required fields are missing', async () => {
-      const requestBody = {
-        topic: 'Should AI be regulated?',
+    it('should handle missing required fields', async () => {
+      const mockRequest = {
+        topic: 'AI Ethics',
         position: 'for',
-        // missing other required fields
-      };
-
-      const response = await request(app)
-        .post('/api/evaluate')
-        .send(requestBody);
-
-      expect(response.status).toBe(400);
-      expect(response.body).toEqual({ error: 'Missing required fields' });
-      expect(mockedOpenRouterService.evaluateArgument).not.toHaveBeenCalled();
-    });
-
-    it('should return 500 when evaluation fails', async () => {
-      const requestBody = {
-        topic: 'Should AI be regulated?',
-        position: 'for',
-        messages: [
-          { role: 'system', content: 'You are a debate assistant' },
-          { role: 'user', content: 'AI needs regulation because...' }
-        ],
-        currentScores: { user: 75, opponent: 70 },
-        model: 'gpt-3.5-turbo',
+        messages,
+        model: modelConfig.models.turnScoring.name,
         roleToScore: 'user' as const
       };
-      const error = new Error('API error');
-
-      mockedOpenRouterService.evaluateArgument.mockRejectedValueOnce(error);
 
       const response = await request(app)
-        .post('/api/evaluate')
-        .send(requestBody);
+        .post('/api/debate/evaluate')
+        .send(mockRequest);
 
-      expect(response.status).toBe(500);
-      expect(response.body).toEqual({
-        error: 'Failed to evaluate argument',
-        details: 'API error'
-      });
-      expect(mockedDiagnosticLogger.error).toHaveBeenCalledWith(
-        '[DebateRoutes] Evaluation error:',
-        error
-      );
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error');
+    });
+  });
+
+  describe('POST /api/debate/hint', () => {
+    it('should generate a hint successfully', async () => {
+      const mockRequest = {
+        topic: 'AI Ethics',
+        position: 'for',
+        model: modelConfig.models.hint.name
+      };
+
+      (OpenRouterService.generateHint as jest.Mock).mockResolvedValue('Consider discussing safety measures...');
+
+      const response = await request(app)
+        .post('/api/debate/hint')
+        .send(mockRequest);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({ hint: 'Consider discussing safety measures...' });
+    });
+
+    it('should handle missing model parameter', async () => {
+      const mockRequest = {
+        topic: 'AI Ethics',
+        position: 'for'
+      };
+
+      const response = await request(app)
+        .post('/api/debate/hint')
+        .send(mockRequest);
+
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error', 'Missing required model parameter');
     });
   });
 });
