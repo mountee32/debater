@@ -1,0 +1,206 @@
+[
+  {
+    "timestamp": "2024-12-02T10:40:49.560Z",
+    "requestId": "a004f224-7306-4236-a409-4f152aec394c",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"Free will exists and is not predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+        },
+        {
+          "role": "user",
+          "content": "The topic is: \"Free will exists and is not predetermined\". Start with a clear opening argument against the topic."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:40:50.735Z",
+    "requestId": "a004f224-7306-4236-a409-4f152aec394c",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.",
+      "usage": {
+        "prompt_tokens": 234,
+        "completion_tokens": 34,
+        "total_tokens": 268
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:40:50.750Z",
+    "requestId": "f5e5f0d3-92c2-4690-a59e-4b16a43ef79a",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Free will exists and is not predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:40:51.856Z",
+    "requestId": "f5e5f0d3-92c2-4690-a59e-4b16a43ef79a",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "65\n",
+      "usage": {
+        "prompt_tokens": 217,
+        "completion_tokens": 3,
+        "total_tokens": 220
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:40:56.448Z",
+    "requestId": "7462e535-e9c3-4b68-b2e6-f4abbd4cee40",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Free will exists and is not predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this for argument: \"sometimes\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:40:57.484Z",
+    "requestId": "7462e535-e9c3-4b68-b2e6-f4abbd4cee40",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "20\n",
+      "usage": {
+        "prompt_tokens": 185,
+        "completion_tokens": 3,
+        "total_tokens": 188
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:40:57.497Z",
+    "requestId": "9b3f10a7-783b-4dbd-b19d-1d1c8370c3a9",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"Free will exists and is not predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+        },
+        {
+          "role": "assistant",
+          "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free."
+        },
+        {
+          "role": "user",
+          "content": "sometimes"
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:40:58.656Z",
+    "requestId": "9b3f10a7-783b-4dbd-b19d-1d1c8370c3a9",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Even if some choices feel spontaneous, they can still be traced back to underlying factors that shape our decisions. The illusion of free will may arise from our limited awareness of these influences.",
+      "usage": {
+        "prompt_tokens": 217,
+        "completion_tokens": 36,
+        "total_tokens": 253
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:40:58.665Z",
+    "requestId": "69fa0deb-2996-4a31-b35b-6d61ecbe7419",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Free will exists and is not predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"Even if some choices feel spontaneous, they can still be traced back to underlying factors that shape our decisions. The illusion of free will may arise from our limited awareness of these influences.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T10:40:59.720Z",
+    "requestId": "69fa0deb-2996-4a31-b35b-6d61ecbe7419",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "45\n",
+      "usage": {
+        "prompt_tokens": 219,
+        "completion_tokens": 3,
+        "total_tokens": 222
+      }
+    }
+  }
+]

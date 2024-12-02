@@ -1,72 +1,44 @@
-[2024-11-29T17:39:19.380Z] Diagnostic logging initialized
-[2024-11-29T17:39:19.383Z] Middleware configured
+[2024-12-02T10:40:39.266Z] Diagnostic logging initialized
+[2024-12-02T10:40:49.559Z] [DebateRoutes] Generating response:
 Data: {
-  "cors": {
-    "origin": "http://localhost:5173",
-    "methods": [
-      "GET",
-      "POST"
-    ]
-  }
-}
-[2024-11-29T17:39:19.383Z] Routes configured
-Data: {
-  "endpoints": [
-    "/api/debate"
-  ]
-}
-[2024-11-29T17:39:19.384Z] Testing diagnostic logger
-Data: {
-  "test": "This is a test log entry",
-  "timestamp": "2024-11-29T17:39:19.384Z"
-}
-[2024-11-29T17:39:19.385Z] Server running on port 3000
-[2024-11-29T17:39:19.385Z] Server configuration
-Data: {
-  "port": 3000,
-  "corsOrigin": "http://localhost:5173",
-  "diagnosticLogging": true
-}
-[2024-11-29T17:41:05.834Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
-  "position": "for",
+  "topic": "Free will exists and is not predetermined",
+  "position": "against",
   "messages": [
     {
       "role": "system",
-      "content": "You are Historical Helen, an expert debater for the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+      "content": "You are Logical Larry, an expert debater against the topic \"Free will exists and is not predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
     },
     {
       "role": "user",
-      "content": "The topic is: \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Start with a clear opening argument for the topic."
+      "content": "The topic is: \"Free will exists and is not predetermined\". Start with a clear opening argument against the topic."
     }
   ]
 }
-[2024-11-29T17:41:05.834Z] Generating completion with request:
+[2024-12-02T10:40:49.560Z] Generating completion with request:
 Data: {
   "model": "openai/gpt-3.5-turbo",
   "messages": [
     {
       "role": "system",
-      "content": "You are Historical Helen, an expert debater for the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+      "content": "You are Logical Larry, an expert debater against the topic \"Free will exists and is not predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
     },
     {
       "role": "user",
-      "content": "The topic is: \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Start with a clear opening argument for the topic."
+      "content": "The topic is: \"Free will exists and is not predetermined\". Start with a clear opening argument against the topic."
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-11-29T17:41:07.257Z] Received API response:
+[2024-12-02T10:40:50.735Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1732902066-oyjOM266F5l9ySNSHTqT",
+    "id": "gen-1733136049-VoopQ6xi0brog6s3YwFC",
     "provider": "OpenAI",
     "model": "openai/gpt-3.5-turbo",
     "object": "chat.completion",
-    "created": 1732902066,
+    "created": 1733136049,
     "choices": [
       {
         "logprobs": null,
@@ -74,31 +46,31 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "Jesus Christ's resurrection is a historical fact supported by multiple accounts in the New Testament, including eyewitness testimonies of his disciples and followers. The transformation of these individuals from fearful and disheartened to bold proclaimers of Christ's resurrection is compelling evidence of the event's reality.",
+          "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.",
           "refusal": ""
         }
       }
     ],
     "system_fingerprint": null,
     "usage": {
-      "prompt_tokens": 245,
-      "completion_tokens": 55,
-      "total_tokens": 300
+      "prompt_tokens": 234,
+      "completion_tokens": 34,
+      "total_tokens": 268
     }
   }
 }
-[2024-11-29T17:41:07.258Z] [DebateRoutes] Generated response:
+[2024-12-02T10:40:50.736Z] [DebateRoutes] Generated response:
 Data: {
-  "response": "Jesus Christ's resurrection is a historical fact supported by multiple accounts in the New Testament, including eyewitness testimonies of his disciples and followers. The transformation of these individuals from fearful and disheartened to bold proclaimers of Christ's resurrection is compelling evidence of the event's reality."
+  "response": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free."
 }
-[2024-11-29T17:41:07.266Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T10:40:50.750Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
-  "position": "for",
+  "topic": "Free will exists and is not predetermined",
+  "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "Jesus Christ's resurrection is a historical fact supported by multiple accounts in the New Testament, including eyewitness testimonies of his disciples and followers. The transformation of these individuals from fearful and disheartened to bold proclaimers of Christ's resurrection is compelling evidence of the event's reality.",
+      "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.",
       "id": 1
     }
   ],
@@ -109,10 +81,10 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-11-29T17:41:07.266Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T10:40:50.750Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
-  "position": "for",
+  "topic": "Free will exists and is not predetermined",
+  "position": "against",
   "messagesCount": 1,
   "currentScores": {
     "user": 50,
@@ -121,83 +93,14 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-11-29T17:41:07.271Z] ERROR: [DebateRoutes] Evaluation error:
-Error: openRouterService_1.OpenRouterService.evaluateArgument is not a function
-Stack: TypeError: openRouterService_1.OpenRouterService.evaluateArgument is not a function
-    at /home/andy/debater/server/src/routes/debateRoutes.ts:114:43
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[2024-11-29T17:43:32.061Z] [DebateRoutes] Generating response:
+[2024-12-02T10:40:50.750Z] Evaluating argument:
 Data: {
-  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
-  "position": "for",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Historical Helen, an expert debater for the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Start with a clear opening argument for the topic."
-    }
-  ]
-}
-[2024-11-29T17:43:32.061Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Historical Helen, an expert debater for the topic \"Jesus Christ's resurrection is a historical fact that cannot be denied\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"Jesus Christ's resurrection is a historical fact that cannot be denied\". Start with a clear opening argument for the topic."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-11-29T17:43:33.247Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1732902212-7RMiY6xKkn5lHqQ7vMLM",
-    "provider": "OpenAI",
-    "model": "openai/gpt-3.5-turbo",
-    "object": "chat.completion",
-    "created": 1732902212,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "The resurrection of Jesus Christ is a foundational belief in Christianity, supported by historical accounts such as those in the New Testament and by early Christian writings like those of St. Paul. The emergence of Christianity itself, a movement centered on the belief in Jesus' resurrection, further underscores its historical significance that cannot be dismissed.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": null,
-    "usage": {
-      "prompt_tokens": 245,
-      "completion_tokens": 62,
-      "total_tokens": 307
-    }
-  }
-}
-[2024-11-29T17:43:33.248Z] [DebateRoutes] Generated response:
-Data: {
-  "response": "The resurrection of Jesus Christ is a foundational belief in Christianity, supported by historical accounts such as those in the New Testament and by early Christian writings like those of St. Paul. The emergence of Christianity itself, a movement centered on the belief in Jesus' resurrection, further underscores its historical significance that cannot be dismissed."
-}
-[2024-11-29T17:43:33.254Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
-  "position": "for",
+  "topic": "Free will exists and is not predetermined",
+  "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "The resurrection of Jesus Christ is a foundational belief in Christianity, supported by historical accounts such as those in the New Testament and by early Christian writings like those of St. Paul. The emergence of Christianity itself, a movement centered on the belief in Jesus' resurrection, further underscores its historical significance that cannot be dismissed.",
+      "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.",
       "id": 1
     }
   ],
@@ -208,20 +111,368 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-11-29T17:43:33.254Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T10:40:50.750Z] Generating completion with request:
 Data: {
-  "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Free will exists and is not predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T10:40:51.856Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733136050-atem4dBNxrUywOHVmOEU",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733136050,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "65\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 217,
+      "completion_tokens": 3,
+      "total_tokens": 220
+    }
+  }
+}
+[2024-12-02T10:40:51.857Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 65
+}
+[2024-12-02T10:40:56.448Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Free will exists and is not predetermined",
   "position": "for",
-  "messagesCount": 1,
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "sometimes",
+      "id": 2
+    }
+  ],
   "currentScores": {
-    "user": 50,
-    "opponent": 50
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T10:40:56.448Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Free will exists and is not predetermined",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T10:40:56.448Z] Evaluating argument:
+Data: {
+  "topic": "Free will exists and is not predetermined",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "sometimes",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T10:40:56.448Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Free will exists and is not predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"sometimes\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T10:40:57.484Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733136056-35rz5ZVHOXtVKPxWleMB",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733136056,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "20\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 185,
+      "completion_tokens": 3,
+      "total_tokens": 188
+    }
+  }
+}
+[2024-12-02T10:40:57.485Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 20
+}
+[2024-12-02T10:40:57.496Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Free will exists and is not predetermined",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Free will exists and is not predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
+      "id": 0
+    },
+    {
+      "role": "assistant",
+      "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "sometimes",
+      "id": 2
+    }
+  ]
+}
+[2024-12-02T10:40:57.497Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Free will exists and is not predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+    },
+    {
+      "role": "assistant",
+      "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T10:40:58.656Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733136057-hSPVv883a6ZtTYqo0Exx",
+    "provider": "OpenAI",
+    "model": "openai/gpt-3.5-turbo",
+    "object": "chat.completion",
+    "created": 1733136057,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Even if some choices feel spontaneous, they can still be traced back to underlying factors that shape our decisions. The illusion of free will may arise from our limited awareness of these influences.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": null,
+    "usage": {
+      "prompt_tokens": 217,
+      "completion_tokens": 36,
+      "total_tokens": 253
+    }
+  }
+}
+[2024-12-02T10:40:58.657Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Even if some choices feel spontaneous, they can still be traced back to underlying factors that shape our decisions. The illusion of free will may arise from our limited awareness of these influences."
+}
+[2024-12-02T10:40:58.665Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Free will exists and is not predetermined",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "sometimes",
+      "id": 2
+    },
+    {
+      "role": "user",
+      "content": "Even if some choices feel spontaneous, they can still be traced back to underlying factors that shape our decisions. The illusion of free will may arise from our limited awareness of these influences.",
+      "id": 3
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
   },
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-11-29T17:43:33.255Z] ERROR: [DebateRoutes] Evaluation error:
-Error: openRouterService_1.OpenRouterService.evaluateArgument is not a function
-Stack: TypeError: openRouterService_1.OpenRouterService.evaluateArgument is not a function
-    at /home/andy/debater/server/src/routes/debateRoutes.ts:114:43
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-12-02T10:40:58.665Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Free will exists and is not predetermined",
+  "position": "against",
+  "messagesCount": 3,
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T10:40:58.665Z] Evaluating argument:
+Data: {
+  "topic": "Free will exists and is not predetermined",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Free will is an illusion. Our choices and actions are influenced by a multitude of factors like genetics, environment, and past experiences, making them predetermined rather than truly free.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "sometimes",
+      "id": 2
+    },
+    {
+      "role": "user",
+      "content": "Even if some choices feel spontaneous, they can still be traced back to underlying factors that shape our decisions. The illusion of free will may arise from our limited awareness of these influences.",
+      "id": 3
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T10:40:58.665Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Free will exists and is not predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"Even if some choices feel spontaneous, they can still be traced back to underlying factors that shape our decisions. The illusion of free will may arise from our limited awareness of these influences.\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T10:40:59.719Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733136058-KT1631Tho10eX1McLgea",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733136058,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 219,
+      "completion_tokens": 3,
+      "total_tokens": 222
+    }
+  }
+}
+[2024-12-02T10:40:59.721Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
+}

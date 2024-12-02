@@ -175,6 +175,66 @@ Keep the hint under 2 sentences for clarity and impact.`
     return this.generateCompletion(messages, model);
   }
 
+  static async evaluateArgument(
+    topic: string,
+    position: string,
+    messages: Message[],
+    currentScores: { [key: string]: number },
+    model: string,
+    roleToScore: string
+  ): Promise<number> {
+    await DiagnosticLogger.log('Evaluating argument:', { 
+      topic, position, messages, currentScores, model, roleToScore 
+    });
+
+    const lastMessage = messages[messages.length - 1];
+    if (!lastMessage || !lastMessage.content) {
+      throw new Error('No message to evaluate');
+    }
+
+    const systemPrompt = {
+      role: 'system',
+      content: `You are an expert debate judge evaluating arguments on the topic: "${topic}".
+      
+SCORING CRITERIA:
+1. Relevance to topic
+2. Logical reasoning
+3. Evidence/examples used
+4. Clarity of expression
+5. Response to counterarguments
+6. Persuasiveness
+
+SCORING SCALE:
+0-20: Poor - Irrelevant, illogical, or unclear
+21-40: Fair - Basic argument with significant flaws
+41-60: Good - Clear argument with some supporting evidence
+61-80: Very Good - Strong argument with solid evidence
+81-100: Excellent - Exceptional argument with compelling evidence
+
+Current scores: ${Object.entries(currentScores).map(([role, score]) => 
+  `${role}: ${score}`).join(', ')}
+
+Evaluate the latest argument and return ONLY a number between 0-100.`
+    };
+
+    const userPrompt = {
+      role: 'user',
+      content: `Evaluate this ${position} argument: "${lastMessage.content}"`
+    };
+
+    const scoreResponse = await this.generateCompletion(
+      [systemPrompt, userPrompt],
+      model
+    );
+
+    const score = parseInt(scoreResponse);
+    if (isNaN(score) || score < 0 || score > 100) {
+      throw new Error('Invalid score returned from evaluation');
+    }
+
+    return score;
+  }
+
   static async getLeaderboard(): Promise<Array<{ name: string; score: number }>> {
     const response = await axios.get(`${API_BASE_URL}/leaderboard`);
     return response.data.leaderboard;

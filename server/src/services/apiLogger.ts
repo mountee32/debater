@@ -46,7 +46,7 @@ interface ApiLog {
 }
 
 export class ApiLogger {
-  private static logDir = path.join('/home/andy/debater/server/logs');
+  private static logDir = path.join('/home/vscode/debater/server/logs');
   private static currentSessionId: string = '';
   private static logs: ApiLog[] = [];
 

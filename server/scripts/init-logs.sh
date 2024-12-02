@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Define log directory
-LOG_DIR="/home/andy/debater/server/logs"
+# Define log directory relative to script location
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+LOG_DIR="$SCRIPT_DIR/../logs"
 
 # Create logs directory if it doesn't exist
 echo "Creating logs directory at: $LOG_DIR"

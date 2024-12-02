@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 class DiagnosticLogger {
-  private static logFile = path.join('/home/andy/debater/server/logs', 'diagnostic.log');
+  private static logFile = path.join('/home/vscode/debater/server/logs', 'diagnostic.log');
   private static enabled = process.env.ENABLE_DIAGNOSTIC_LOGGING === 'true';
 
   static initialize() {
