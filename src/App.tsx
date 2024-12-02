@@ -29,6 +29,7 @@ function AppContent() {
     toggleDarkMode,
     currentSubjectId,
     setCurrentSubjectId,
+    replayConversationId,
   } = useGameContext();
 
   const handleStartDebateFromLeaderboard = (subject: string, subjectId: string) => {
@@ -100,11 +101,41 @@ function AppContent() {
     );
   };
 
+  const renderDebateGame = () => {
+    if (gameState === 'replaying') {
+      return (
+        <DebateGame
+          isReplayMode={true}
+          conversationId={replayConversationId}
+          isDarkMode={isDarkMode}
+          onToggleDarkMode={toggleDarkMode}
+          aiPersonality={selectedPersonality!}
+        />
+      );
+    }
+
+    if (gameState === 'playing' && selectedPersonality) {
+      return (
+        <DebateGame
+          topic={topic}
+          difficulty={difficulty}
+          aiPersonality={selectedPersonality}
+          userPosition={userPosition}
+          isDarkMode={isDarkMode}
+          onToggleDarkMode={toggleDarkMode}
+          subjectId={currentSubjectId}
+        />
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
       <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300 bg-opacity-50 dark:bg-opacity-50" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'4\' height=\'4\' viewBox=\'0 0 4 4\'%3E%3Cpath fill=\'%239C92AC\' fill-opacity=\'0.4\' d=\'M1 3h1v1H1V3zm2-2h1v1H3V1z\'%3E%3C/path%3E%3C/svg%3E")'}}>
         <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6">
-          <WizardSteps />
+          {gameState !== 'replaying' && <WizardSteps />}
 
           {gameState === 'home' && (
             <HomeScreen 
@@ -118,17 +149,7 @@ function AppContent() {
           {gameState === 'select-position' && <PositionSelection />}
           {gameState === 'select-personality' && <AIPersonalitySelection />}
           {gameState === 'select-difficulty' && <DifficultySelection />}
-          {gameState === 'playing' && selectedPersonality && (
-            <DebateGame
-              topic={topic}
-              difficulty={difficulty}
-              aiPersonality={selectedPersonality}
-              userPosition={userPosition}
-              isDarkMode={isDarkMode}
-              onToggleDarkMode={toggleDarkMode}
-              subjectId={currentSubjectId}
-            />
-          )}
+          {renderDebateGame()}
         </div>
       </div>
     </div>

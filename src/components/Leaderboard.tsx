@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Book, Globe, Atom, Lightbulb, Trophy, Medal, CheckCircle, Circle, CircleDot } from 'lucide-react';
+import { Book, Globe, Atom, Lightbulb, Trophy, Medal, CheckCircle, Circle, CircleDot, Eye, Play, AlertCircle } from 'lucide-react';
 import leaderboardData from '../data/leaderboard.json';
 import debateSubjects from '../data/debateSubjects.json';
 
 interface LeaderboardProps {
   username: string;
-  onStartDebate: (subject: string) => void;
+  onStartDebate: (entry: EnrichedLeaderboardEntry) => void;
+  onWatchReplay: (entry: EnrichedLeaderboardEntry) => void;
 }
 
 interface LeaderboardEntry {
@@ -15,6 +16,7 @@ interface LeaderboardEntry {
   subjectId: string;
   position: 'for' | 'against';
   skill: 'easy' | 'medium' | 'hard';
+  conversationId?: string;
 }
 
 interface DebateSubject {
@@ -48,42 +50,40 @@ const skillColors: { [key: string]: string } = {
   'hard': 'from-red-500 to-red-600'
 };
 
-const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) => {
-  const [leaderboardEntries, setLeaderboardEntries] = useState<EnrichedLeaderboardEntry[]>([]);
+const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate, onWatchReplay }) => {
   const [selectedEntry, setSelectedEntry] = useState<EnrichedLeaderboardEntry | null>(null);
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<string>('Politics');
+  const [selectedCategory, setSelectedCategory] = useState<string>('Religion');
   const [selectedSkill, setSelectedSkill] = useState<'easy' | 'medium' | 'hard'>('easy');
 
-  useEffect(() => {
-    fetchLeaderboard();
+  // Group subjects by category
+  const subjectsByCategory = React.useMemo(() => {
+    const grouped: Record<string, DebateSubject[]> = {};
+    debateSubjects.subjects.forEach(subject => {
+      if (!grouped[subject.category]) {
+        grouped[subject.category] = [];
+      }
+      grouped[subject.category].push(subject);
+    });
+    return grouped;
   }, []);
 
-  const fetchLeaderboard = () => {
-    const subjectMap = new Map(
-      debateSubjects.subjects.map(subject => [subject.id, subject])
-    );
+  // Get high scores for a subject
+  const getHighScores = (subjectId: string, skill: 'easy' | 'medium' | 'hard'): EnrichedLeaderboardEntry[] => {
+    const subject = debateSubjects.subjects.find(s => s.id === subjectId);
+    if (!subject) return [];
 
-    const enrichedEntries = leaderboardData.entries
-      .map(entry => {
-        const subjectDetails = subjectMap.get(entry.subjectId);
-        if (!subjectDetails) return null;
+    const entries = (leaderboardData.entries as LeaderboardEntry[])
+      .filter(entry => entry.subjectId === subjectId && entry.skill === skill)
+      .map(entry => ({
+        ...entry,
+        subject: subject.subject,
+        category: subject.category
+      }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5);
 
-        return {
-          ...entry,
-          subject: subjectDetails.subject,
-          category: subjectDetails.category
-        };
-      })
-      .filter((entry): entry is EnrichedLeaderboardEntry => entry !== null)
-      .sort((a, b) => b.score - a.score);
-
-    setLeaderboardEntries(enrichedEntries);
-  };
-
-  const truncateSubject = (subject: string, maxLength: number) => {
-    if (subject.length <= maxLength) return subject;
-    return `${subject.substring(0, maxLength)}...`;
+    return entries;
   };
 
   const handleEntryClick = (entry: EnrichedLeaderboardEntry) => {
@@ -93,7 +93,14 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
 
   const handleStartDebate = () => {
     if (selectedEntry) {
-      onStartDebate(selectedEntry.subject);
+      onStartDebate(selectedEntry);
+    }
+    setShowPopup(false);
+  };
+
+  const handleWatchReplay = () => {
+    if (selectedEntry && selectedEntry.conversationId) {
+      onWatchReplay(selectedEntry);
     }
     setShowPopup(false);
   };
@@ -106,25 +113,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
     setSelectedSkill(skill);
   };
 
-  const filteredEntries = leaderboardEntries.filter(entry => 
-    entry.category === selectedCategory && entry.skill === selectedSkill
-  );
-
-  const categories = [...new Set(leaderboardEntries.map(entry => entry.category))];
-  const skills: ('easy' | 'medium' | 'hard')[] = ['easy', 'medium', 'hard'];
-
-  const getRankIcon = (index: number) => {
-    switch (index) {
-      case 0:
-        return <Trophy data-testid="trophy-icon" className="text-yellow-500 w-5 h-5" />;
-      case 1:
-        return <Medal data-testid="silver-medal-icon" className="text-gray-400 w-5 h-5" />;
-      case 2:
-        return <Medal data-testid="bronze-medal-icon" className="text-amber-600 w-5 h-5" />;
-      default:
-        return null;
-    }
-  };
+  const categories = Object.keys(subjectsByCategory);
 
   return (
     <div className="mt-8 relative flex flex-col items-center">
@@ -155,7 +144,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
           </div>
 
           <div className="flex justify-center gap-3">
-            {skills.map(skill => (
+            {['easy', 'medium', 'hard'].map(skill => (
               <button
                 key={skill}
                 className={`
@@ -165,7 +154,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:shadow-md'
                   }
                 `}
-                onClick={() => handleSkillFilter(skill)}
+                onClick={() => handleSkillFilter(skill as 'easy' | 'medium' | 'hard')}
               >
                 {skillIcons[skill]}
                 <span className="font-medium capitalize">{skill}</span>
@@ -174,54 +163,69 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
           </div>
         </div>
 
-        <div className="overflow-x-auto w-full">
-          <table className="w-full">
-            <thead>
-              <tr className="bg-gray-50 dark:bg-gray-700">
-                <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Rank</th>
-                <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Score</th>
-                <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Name</th>
-                <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Subject</th>
-                <th className="p-4 text-left font-semibold text-gray-600 dark:text-gray-200">Position</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredEntries.map((entry, index) => (
-                <tr
-                  key={entry.id}
-                  className={`
-                    border-b border-gray-100 dark:border-gray-700 transition-colors duration-200
-                    ${username === entry.username ? 'bg-indigo-50 dark:bg-indigo-900/20' : 'hover:bg-gray-50 dark:hover:bg-gray-700/50'}
-                    cursor-pointer
-                  `}
-                  onClick={() => handleEntryClick(entry)}
-                >
-                  <td className="p-4 flex items-center gap-2">
-                    {getRankIcon(index)}
-                    <span className="text-gray-600 dark:text-gray-300">{index + 1}</span>
-                  </td>
-                  <td className="p-4">
-                    <span className="font-semibold text-indigo-600 dark:text-indigo-400">{entry.score}</span>
-                  </td>
-                  <td className="p-4 font-medium text-gray-700 dark:text-gray-200">{entry.username}</td>
-                  <td className="p-4 text-gray-600 dark:text-gray-300">
-                    <span title={entry.subject} className="cursor-help">
-                      {truncateSubject(entry.subject, 50)}
-                    </span>
-                  </td>
-                  <td className="p-4 text-gray-600 dark:text-gray-300">
-                    <span className={`px-2 py-1 rounded-full text-sm ${
-                      entry.position === 'for' 
-                        ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
-                        : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
-                    }`}>
-                      {entry.position}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="p-6">
+          <div className="space-y-8">
+            {subjectsByCategory[selectedCategory]?.map(subject => {
+              const highScores = getHighScores(subject.id, selectedSkill);
+              
+              return (
+                <div key={subject.id} className="border-b border-gray-200 dark:border-gray-700 pb-6 last:border-0">
+                  <h3 className="font-semibold text-lg text-gray-700 dark:text-gray-300 mb-4">
+                    {subject.subject}
+                  </h3>
+                  <div className="flex flex-wrap gap-4">
+                    {highScores.length > 0 ? (
+                      highScores.map((entry, index) => (
+                        <div
+                          key={entry.id}
+                          onClick={() => handleEntryClick(entry)}
+                          className="flex items-center bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 
+                            rounded-full px-5 py-2.5 shadow-sm hover:shadow-md transition-all duration-300 
+                            transform hover:-translate-y-0.5 cursor-pointer select-none group
+                            border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
+                          role="button"
+                          tabIndex={0}
+                        >
+                          {index === 0 && (
+                            <Trophy className="w-5 h-5 text-yellow-500 mr-2" />
+                          )}
+                          <span className="font-medium text-gray-800 dark:text-gray-200">
+                            {entry.username}
+                          </span>
+                          <div className="ml-3 px-2.5 py-1 bg-white/80 dark:bg-gray-900/50 rounded-full">
+                            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                              {entry.score}
+                            </span>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <button
+                        onClick={() => onStartDebate({
+                          id: 0,
+                          username: '',
+                          score: 0,
+                          subjectId: subject.id,
+                          position: 'for',
+                          skill: selectedSkill,
+                          subject: subject.subject,
+                          category: subject.category
+                        })}
+                        className="flex items-center bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/30 dark:to-gray-700/30 
+                          rounded-full px-5 py-2.5 shadow-sm hover:shadow-md transition-all duration-300 
+                          transform hover:-translate-y-0.5 cursor-pointer select-none group
+                          border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
+                      >
+                        <span className="font-medium text-gray-600 dark:text-gray-400">
+                          Be the first to debate this topic!
+                        </span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -233,20 +237,44 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ username, onStartDebate }) =>
         >
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-100">
             <div className="p-6">
-              <h3 id="dialog-title" className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Ready to Debate?</h3>
+              <h3 id="dialog-title" className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+                High Score Entry
+              </h3>
               <p className="mb-6 text-gray-600 dark:text-gray-300">{selectedEntry.subject}</p>
-              <div className="flex justify-end gap-3">
+              <div className="flex flex-col gap-3">
                 <button
-                  className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+                  className={`w-full px-4 py-3 rounded-lg flex items-center justify-center gap-2 ${
+                    selectedEntry.conversationId
+                      ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white hover:from-purple-600 hover:to-indigo-600'
+                      : 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+                  } transition-all duration-200`}
+                  onClick={handleWatchReplay}
+                  disabled={!selectedEntry.conversationId}
+                >
+                  {selectedEntry.conversationId ? (
+                    <>
+                      <Eye size={20} />
+                      Watch Replay
+                    </>
+                  ) : (
+                    <>
+                      <AlertCircle size={20} />
+                      Replay Not Available
+                    </>
+                  )}
+                </button>
+                <button
+                  className="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-green-500 to-teal-500 text-white hover:from-green-600 hover:to-teal-600 transition-all duration-200 flex items-center justify-center gap-2"
+                  onClick={handleStartDebate}
+                >
+                  <Play size={20} />
+                  Play Subject
+                </button>
+                <button
+                  className="w-full px-4 py-3 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
                   onClick={() => setShowPopup(false)}
                 >
                   Cancel
-                </button>
-                <button
-                  className="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:from-indigo-600 hover:to-purple-600 transition-all duration-200 transform hover:-translate-y-0.5"
-                  onClick={handleStartDebate}
-                >
-                  Start Debate
                 </button>
               </div>
             </div>

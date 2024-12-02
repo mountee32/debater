@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Sun, Moon } from 'lucide-react';
+import { Clock, Sun, Moon, Play, Eye } from 'lucide-react';
 
 interface DebateHeaderProps {
   topic: string;
@@ -13,6 +13,7 @@ interface DebateHeaderProps {
   aiName: string;
   isDarkMode: boolean;
   onToggleDarkMode: () => void;
+  isReplayMode?: boolean;
 }
 
 export const DebateHeader: React.FC<DebateHeaderProps> = ({
@@ -24,6 +25,7 @@ export const DebateHeader: React.FC<DebateHeaderProps> = ({
   aiName,
   isDarkMode,
   onToggleDarkMode,
+  isReplayMode
 }) => {
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -53,11 +55,20 @@ export const DebateHeader: React.FC<DebateHeaderProps> = ({
               data-testid="timer"
               className="flex items-center bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-xl text-sm shadow-lg"
             >
-              <Clock size={14} className="text-white mr-2" />
+              {isReplayMode ? (
+                <Eye size={14} className="text-white mr-2" />
+              ) : (
+                <Clock size={14} className="text-white mr-2" />
+              )}
               <span className="font-semibold text-white">
                 {formatTime(timeLeft)}
               </span>
             </div>
+            {isReplayMode && (
+              <span className="ml-3 text-white/80 text-sm font-medium">
+                Replay Mode
+              </span>
+            )}
           </div>
           <h1 
             data-testid="debate-topic"

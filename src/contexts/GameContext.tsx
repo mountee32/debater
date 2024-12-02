@@ -3,7 +3,7 @@ import { AIPersonality } from '../data/aiPersonalities';
 import debateSubjectsData from '../data/debateSubjects.json';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
-type GameState = 'home' | 'select-category' | 'select-topic' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'select-pregenerated';
+type GameState = 'home' | 'select-category' | 'select-topic' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'select-pregenerated' | 'replaying';
 type Position = 'for' | 'against';
 
 interface DebateSubject {
@@ -32,6 +32,8 @@ export interface GameContextType {
   setAvailableSubjects: React.Dispatch<React.SetStateAction<DebateSubject[]>>;
   currentSubjectId: string;
   setCurrentSubjectId: React.Dispatch<React.SetStateAction<string>>;
+  replayConversationId: string;
+  setReplayConversationId: React.Dispatch<React.SetStateAction<string>>;
   handleStartChat: () => void;
   handleCategorySelect: (selectedCategory: string) => void;
   handleTopicSubmit: () => void;
@@ -39,6 +41,7 @@ export interface GameContextType {
   handleDifficultyChange: (newDifficulty: Difficulty) => void;
   handlePositionSelect: (position: Position) => void;
   handleSubjectSelect: (subject: string, subjectId: string) => void;
+  handleWatchReplay: (entry: { id: number; username: string; score: number; subjectId: string; position: Position; skill: Difficulty }) => void;
   toggleDarkMode: () => void;
 }
 
@@ -54,6 +57,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [availableSubjects, setAvailableSubjects] = useState<DebateSubject[]>([]);
   const [currentSubjectId, setCurrentSubjectId] = useState<string>('');
+  const [replayConversationId, setReplayConversationId] = useState<string>('');
 
   useEffect(() => {
     const storedDarkMode = localStorage.getItem('darkMode');
@@ -111,6 +115,14 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setGameState('select-position');
   };
 
+  const handleWatchReplay = (entry: { id: number; username: string; score: number; subjectId: string; position: Position; skill: Difficulty }) => {
+    setReplayConversationId(entry.id.toString());
+    setUserPosition(entry.position);
+    setDifficulty(entry.skill);
+    setCurrentSubjectId(entry.subjectId);
+    setGameState('replaying');
+  };
+
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
     localStorage.setItem('darkMode', (!isDarkMode).toString());
@@ -135,6 +147,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setAvailableSubjects,
     currentSubjectId,
     setCurrentSubjectId,
+    replayConversationId,
+    setReplayConversationId,
     handleStartChat,
     handleCategorySelect,
     handleTopicSubmit,
@@ -142,6 +156,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     handleDifficultyChange,
     handlePositionSelect,
     handleSubjectSelect,
+    handleWatchReplay,
     toggleDarkMode,
   };
 

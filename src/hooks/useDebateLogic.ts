@@ -3,35 +3,7 @@ import { AIPersonality } from '../data/aiPersonalities';
 import { useMessageHandler } from './useMessageHandler';
 import { startDebate, continueDebate, generateHint, evaluateArgument } from '../api/openRouterApi';
 import modelConfig from '../../models.config.json';
-
-interface GameSummary {
-  score: number;
-  feedback: string;
-  improvements: string[];
-  isHighScore?: boolean;
-}
-
-export interface DebateState {
-  isLoading: boolean;
-  isGeneratingHint: boolean;
-  audienceScore: { user: number; opponent: number };
-  isAiThinking: boolean;
-  error: string | null;
-  summary: GameSummary | null;
-  isGeneratingSummary: boolean;
-  conversationId: string | null;
-}
-
-// Internal Message type for the debate logic
-type Message = {
-  id: number;
-  role: 'user' | 'opponent' | 'hint' | 'system';
-  content: string;
-  score?: {
-    score: number;
-    previousScore: number;
-  };
-};
+import { DebateState, Message, GameSummary, DebateHookResult, GameSetup } from '../types/debate';
 
 export const useDebateLogic = (
   topic: string,
@@ -39,12 +11,12 @@ export const useDebateLogic = (
   userPosition: 'for' | 'against',
   aiPersonality: AIPersonality,
   subjectId: string
-) => {
+): DebateHookResult => {
   const { messages, addMessage, updateMessageScore } = useMessageHandler();
   const [state, setState] = useState<DebateState>({
     isLoading: false,
     isGeneratingHint: false,
-    audienceScore: { user: 50, opponent: 50 }, // Start at 50/50
+    audienceScore: { user: 50, opponent: 50 },
     isAiThinking: false,
     error: null,
     summary: null,
@@ -55,12 +27,34 @@ export const useDebateLogic = (
   // Calculate AI's position based on user's position
   const aiPosition = userPosition === 'for' ? 'against' : 'for';
 
+  // Create game setup object for live mode
+  const gameSetup: GameSetup = {
+    topic,
+    difficulty: difficulty === 'easy' ? 1 : difficulty === 'medium' ? 5 : 10,
+    participants: [
+      {
+        id: 'user',
+        name: 'User',
+        avatar: 'user.svg',
+        role: 'debater'
+      },
+      {
+        id: 'opponent',
+        name: aiPersonality.name,
+        avatar: aiPersonality.avatarUrl,
+        role: 'debater'
+      }
+    ],
+    subjectId,
+    position: userPosition,
+    skill: difficulty
+  };
+
   const updateState = (updates: Partial<DebateState>) => {
     setState(prev => ({ ...prev, ...updates }));
   };
 
   const updateScores = async (newScore: number, role: 'user' | 'opponent') => {
-    // Ensure the score is within bounds
     const boundedScore = Math.min(Math.max(newScore, 0), 100);
     
     const newScores = role === 'user' ? {
@@ -76,7 +70,6 @@ export const useDebateLogic = (
       audienceScore: newScores
     }));
 
-    // Record score update through API if conversation is active
     if (state.conversationId) {
       try {
         await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-score`, {
@@ -96,14 +89,12 @@ export const useDebateLogic = (
     }
   };
 
-  const generateDebateSummary = async () => {
+  const generateDebateSummary = async (): Promise<void> => {
     if (state.isGeneratingSummary) return;
 
     updateState({ isGeneratingSummary: true, error: null });
 
     try {
-      // Mock summary generation for now
-      // This will be replaced with actual API call later
       const mockSummary: GameSummary = {
         score: state.audienceScore.user,
         feedback: "You demonstrated strong logical reasoning and effectively supported your arguments with evidence. Your responses were clear and well-structured, though there's room for improvement in addressing counterarguments.",
@@ -114,7 +105,6 @@ export const useDebateLogic = (
         ]
       };
 
-      // End conversation through API if active
       if (state.conversationId) {
         try {
           const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/end-conversation`, {
@@ -137,16 +127,13 @@ export const useDebateLogic = (
       }
 
       updateState({ summary: mockSummary });
-      return mockSummary;
     } catch (error) {
       updateState({ error: 'Failed to generate debate summary. Please try again.' });
-      return null;
     } finally {
       updateState({ isGeneratingSummary: false });
     }
   };
 
-  // Convert internal messages to API format
   const convertToApiMessages = (messages: Message[]) => {
     return messages.map(msg => {
       const { id, content, score } = msg;
@@ -162,12 +149,10 @@ export const useDebateLogic = (
     updateState({ isLoading: true, isAiThinking: true, error: null });
 
     try {
-      // Add and evaluate player's message
       const currentUserScore = state.audienceScore.user;
       const userMessageId = messages.length + 1;
       addMessage('user', currentArgument);
 
-      // Record user message through API if conversation is active
       if (state.conversationId) {
         try {
           await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
@@ -186,7 +171,6 @@ export const useDebateLogic = (
         }
       }
 
-      // Create message object
       const userMessage: Message = {
         id: userMessageId,
         role: 'user',
@@ -212,7 +196,6 @@ export const useDebateLogic = (
       });
       await updateScores(playerScore, 'user');
 
-      // Enhanced system message for AI context
       const difficultyGuide = {
         easy: "Use simpler language and basic arguments. Focus on clear, straightforward points.",
         medium: "Use moderate complexity in language and arguments. Balance between basic and advanced concepts.",
@@ -247,7 +230,6 @@ DEBATE PRINCIPLES:
 6. Consider ethical implications`
       };
 
-      // Get AI's response with enhanced system context
       const aiResponse = await continueDebate(
         topic, 
         [systemMessage, ...allMessages],
@@ -258,7 +240,6 @@ DEBATE PRINCIPLES:
       const aiMessageId = userMessageId + 1;
       addMessage('opponent', aiResponse);
 
-      // Record AI message through API if conversation is active
       if (state.conversationId) {
         try {
           await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
@@ -277,10 +258,8 @@ DEBATE PRINCIPLES:
         }
       }
 
-      // Get current AI score after player's score has been updated
       const currentAiScore = state.audienceScore.opponent;
 
-      // Create message object
       const aiMessage: Message = {
         id: aiMessageId,
         role: 'opponent',
@@ -289,7 +268,6 @@ DEBATE PRINCIPLES:
 
       const updatedMessages = [...allMessages, aiMessage];
 
-      // Evaluate AI's response
       const aiScore = await evaluateArgument(
         topic,
         aiPosition,
@@ -313,15 +291,14 @@ DEBATE PRINCIPLES:
     }
   };
 
-  const handleHintRequest = async () => {
-    if (state.isGeneratingHint) return;
+  const handleHintRequest = async (): Promise<string | null> => {
+    if (state.isGeneratingHint) return null;
 
     updateState({ isGeneratingHint: true, isAiThinking: true, error: null });
 
     try {
       const hint = await generateHint(topic, messages, difficulty, userPosition);
       
-      // Record hint through API if conversation is active
       if (state.conversationId && hint) {
         try {
           await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
@@ -353,7 +330,6 @@ DEBATE PRINCIPLES:
     updateState({ isLoading: true, isAiThinking: true, error: null });
 
     try {
-      // Start conversation through API
       try {
         const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/start-conversation`, {
           method: 'POST',
@@ -389,13 +365,11 @@ DEBATE PRINCIPLES:
         console.error('Failed to start conversation:', error);
       }
 
-      // Get AI's initial response
       const aiResponse = await startDebate(topic, difficulty, userPosition, aiPersonality);
       const currentAiScore = state.audienceScore.opponent;
       const aiMessageId = messages.length + 1;
       addMessage('opponent', aiResponse);
 
-      // Record AI's initial message through API
       if (state.conversationId) {
         try {
           await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'}/debate/record-message`, {
@@ -414,14 +388,12 @@ DEBATE PRINCIPLES:
         }
       }
 
-      // Create message object
       const aiMessage: Message = {
         id: aiMessageId,
         role: 'opponent',
         content: aiResponse
       };
 
-      // Evaluate AI's initial message
       const aiScore = await evaluateArgument(
         topic,
         aiPosition,
@@ -452,5 +424,6 @@ DEBATE PRINCIPLES:
     handleHintRequest,
     initializeDebate,
     generateDebateSummary,
+    gameSetup
   };
 };
