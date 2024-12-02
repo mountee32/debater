@@ -1,5 +1,5 @@
-[2024-12-02T10:47:19.308Z] Diagnostic logging initialized
-[2024-12-02T10:47:19.304Z] Middleware configured
+[2024-12-02T11:01:54.765Z] Diagnostic logging initialized
+[2024-12-02T11:01:54.766Z] Middleware configured
 Data: {
   "cors": {
     "origin": "http://localhost:5173",
@@ -9,64 +9,64 @@ Data: {
     ]
   }
 }
-[2024-12-02T10:47:19.305Z] Routes configured
+[2024-12-02T11:01:54.767Z] Routes configured
 Data: {
   "endpoints": [
     "/api/debate"
   ]
 }
-[2024-12-02T10:47:19.305Z] Testing diagnostic logger
+[2024-12-02T11:01:54.767Z] Testing diagnostic logger
 Data: {
   "test": "This is a test log entry",
-  "timestamp": "2024-12-02T10:47:19.305Z"
+  "timestamp": "2024-12-02T11:01:54.767Z"
 }
-[2024-12-02T10:47:19.307Z] Server running on port 3000
-[2024-12-02T10:47:19.307Z] Server configuration
+[2024-12-02T11:01:54.768Z] Server running on port 3000
+[2024-12-02T11:01:54.768Z] Server configuration
 Data: {
   "port": 3000,
   "corsOrigin": "http://localhost:5173",
   "diagnosticLogging": true
 }
-[2024-12-02T10:51:00.198Z] [DebateRoutes] Generating response:
+[2024-12-02T11:06:53.149Z] [DebateRoutes] Generating response:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
+  "topic": "Artificial intelligence should be strictly regulated",
   "position": "against",
   "messages": [
     {
       "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+      "content": "You are Logical Larry, an expert debater against the topic \"Artificial intelligence should be strictly regulated\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
     },
     {
       "role": "user",
-      "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
+      "content": "The topic is: \"Artificial intelligence should be strictly regulated\". Start with a clear opening argument against the topic."
     }
   ]
 }
-[2024-12-02T10:51:00.199Z] Generating completion with request:
+[2024-12-02T11:06:53.149Z] Generating completion with request:
 Data: {
   "model": "openai/gpt-3.5-turbo",
   "messages": [
     {
       "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+      "content": "You are Logical Larry, an expert debater against the topic \"Artificial intelligence should be strictly regulated\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
     },
     {
       "role": "user",
-      "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
+      "content": "The topic is: \"Artificial intelligence should be strictly regulated\". Start with a clear opening argument against the topic."
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T10:51:01.720Z] Received API response:
+[2024-12-02T11:06:54.540Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733136660-QZ1c1O2s622UIUlHyb0g",
+    "id": "gen-1733137613-PIe8ka06HBYSeHf7ppcj",
     "provider": "OpenAI",
     "model": "openai/gpt-3.5-turbo",
     "object": "chat.completion",
-    "created": 1733136660,
+    "created": 1733137613,
     "choices": [
       {
         "logprobs": null,
@@ -74,31 +74,31 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.",
+          "content": "Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas.",
           "refusal": ""
         }
       }
     ],
     "system_fingerprint": null,
     "usage": {
-      "prompt_tokens": 242,
-      "completion_tokens": 53,
-      "total_tokens": 295
+      "prompt_tokens": 234,
+      "completion_tokens": 45,
+      "total_tokens": 279
     }
   }
 }
-[2024-12-02T10:51:01.721Z] [DebateRoutes] Generated response:
+[2024-12-02T11:06:54.541Z] [DebateRoutes] Generated response:
 Data: {
-  "response": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan."
+  "response": "Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas."
 }
-[2024-12-02T10:51:01.735Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T11:06:54.556Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
+  "topic": "Artificial intelligence should be strictly regulated",
   "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.",
+      "content": "Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas.",
       "id": 1
     }
   ],
@@ -109,9 +109,9 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T10:51:01.735Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T11:06:54.556Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
+  "topic": "Artificial intelligence should be strictly regulated",
   "position": "against",
   "messagesCount": 1,
   "currentScores": {
@@ -121,14 +121,14 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T10:51:01.735Z] Evaluating argument:
+[2024-12-02T11:06:54.556Z] Evaluating argument:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
+  "topic": "Artificial intelligence should be strictly regulated",
   "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.",
+      "content": "Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas.",
       "id": 1
     }
   ],
@@ -139,31 +139,31 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T10:51:01.735Z] Generating completion with request:
+[2024-12-02T11:06:54.557Z] Generating completion with request:
 Data: {
   "model": "google/gemini-flash-1.5",
   "messages": [
     {
       "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Artificial intelligence should be strictly regulated\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
     },
     {
       "role": "user",
-      "content": "Evaluate this against argument: \"I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.\""
+      "content": "Evaluate this against argument: \"Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas.\""
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T10:51:02.318Z] Received API response:
+[2024-12-02T11:06:55.639Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733136661-PR4WEiquZnNRnS7WiuYU",
+    "id": "gen-1733137614-PGhpzwgxdePjPpErkzvd",
     "provider": "Google",
     "model": "google/gemini-flash-1.5",
     "object": "chat.completion",
-    "created": 1733136661,
+    "created": 1733137614,
     "choices": [
       {
         "logprobs": null,
@@ -177,24 +177,184 @@ Data: {
       }
     ],
     "usage": {
-      "prompt_tokens": 242,
+      "prompt_tokens": 224,
       "completion_tokens": 3,
-      "total_tokens": 245
+      "total_tokens": 227
     }
   }
 }
-[2024-12-02T10:51:02.319Z] [DebateRoutes] Evaluation result:
+[2024-12-02T11:06:55.640Z] [DebateRoutes] Evaluation result:
 Data: {
   "score": 65
 }
-[2024-12-02T10:51:07.514Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T11:17:49.057Z] [DebateRoutes] Generating response:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
+  "topic": "Governments should implement universal basic income",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Governments should implement universal basic income\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Governments should implement universal basic income\". Start with a clear opening argument against the topic."
+    }
+  ]
+}
+[2024-12-02T11:17:49.057Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Governments should implement universal basic income\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Governments should implement universal basic income\". Start with a clear opening argument against the topic."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:17:50.327Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733138269-0OTPjXpNgaDlCQdKVuuo",
+    "provider": "OpenAI",
+    "model": "openai/gpt-3.5-turbo",
+    "object": "chat.completion",
+    "created": 1733138269,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": null,
+    "usage": {
+      "prompt_tokens": 235,
+      "completion_tokens": 45,
+      "total_tokens": 280
+    }
+  }
+}
+[2024-12-02T11:17:50.328Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run."
+}
+[2024-12-02T11:17:50.336Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Governments should implement universal basic income",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
+      "id": 1
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:17:50.337Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Governments should implement universal basic income",
+  "position": "against",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:17:50.337Z] Evaluating argument:
+Data: {
+  "topic": "Governments should implement universal basic income",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
+      "id": 1
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:17:50.337Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Governments should implement universal basic income\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:17:51.474Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733138270-ocafpMb3eY6GlWrXHuWD",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733138270,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "65\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 228,
+      "completion_tokens": 3,
+      "total_tokens": 231
+    }
+  }
+}
+[2024-12-02T11:17:51.475Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 65
+}
+[2024-12-02T11:18:38.234Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Governments should implement universal basic income",
   "position": "for",
   "messages": [
     {
       "role": "assistant",
-      "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.",
+      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
       "id": 1,
       "score": {
         "score": 65,
@@ -203,7 +363,7 @@ Data: {
     },
     {
       "role": "user",
-      "content": "maybe",
+      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.",
       "id": 2
     }
   ],
@@ -214,9 +374,9 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "user"
 }
-[2024-12-02T10:51:07.514Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T11:18:38.234Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
+  "topic": "Governments should implement universal basic income",
   "position": "for",
   "messagesCount": 2,
   "currentScores": {
@@ -226,14 +386,14 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "user"
 }
-[2024-12-02T10:51:07.514Z] Evaluating argument:
+[2024-12-02T11:18:38.234Z] Evaluating argument:
 Data: {
-  "topic": "We have no free will because God’s plan is predetermined",
+  "topic": "Governments should implement universal basic income",
   "position": "for",
   "messages": [
     {
       "role": "assistant",
-      "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.",
+      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
       "id": 1,
       "score": {
         "score": 65,
@@ -242,7 +402,7 @@ Data: {
     },
     {
       "role": "user",
-      "content": "maybe",
+      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.",
       "id": 2
     }
   ],
@@ -253,31 +413,985 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "user"
 }
-[2024-12-02T10:51:07.514Z] Generating completion with request:
+[2024-12-02T11:18:38.234Z] Generating completion with request:
 Data: {
   "model": "google/gemini-flash-1.5",
   "messages": [
     {
       "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Governments should implement universal basic income\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
     },
     {
       "role": "user",
-      "content": "Evaluate this for argument: \"maybe\""
+      "content": "Evaluate this for argument: \"Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.\""
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T10:51:11.317Z] Received API response:
+[2024-12-02T11:18:39.396Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733136668-XhYUvIYGOna96d3FTAxy",
+    "id": "gen-1733138318-ajP2Oa8RTV1FN8TQfiHR",
     "provider": "Google",
     "model": "google/gemini-flash-1.5",
     "object": "chat.completion",
-    "created": 1733136668,
+    "created": 1733138318,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "68\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 241,
+      "completion_tokens": 3,
+      "total_tokens": 244
+    }
+  }
+}
+[2024-12-02T11:18:39.397Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 68
+}
+[2024-12-02T11:18:39.409Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Governments should implement universal basic income",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Governments should implement universal basic income\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
+      "id": 0
+    },
+    {
+      "role": "assistant",
+      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.",
+      "id": 2
+    }
+  ]
+}
+[2024-12-02T11:18:39.409Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Governments should implement universal basic income\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+    },
+    {
+      "role": "assistant",
+      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run."
+    },
+    {
+      "role": "user",
+      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:18:40.637Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733138319-GCvNeruJzYIOWqeZUC2r",
+    "provider": "OpenAI",
+    "model": "openai/gpt-3.5-turbo",
+    "object": "chat.completion",
+    "created": 1733138319,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": null,
+    "usage": {
+      "prompt_tokens": 286,
+      "completion_tokens": 56,
+      "total_tokens": 342
+    }
+  }
+}
+[2024-12-02T11:18:40.638Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending."
+}
+[2024-12-02T11:18:40.644Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Governments should implement universal basic income",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.",
+      "id": 2
+    },
+    {
+      "role": "user",
+      "content": "While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending.",
+      "id": 3
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:18:40.644Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Governments should implement universal basic income",
+  "position": "against",
+  "messagesCount": 3,
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:18:40.644Z] Evaluating argument:
+Data: {
+  "topic": "Governments should implement universal basic income",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.",
+      "id": 2
+    },
+    {
+      "role": "user",
+      "content": "While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending.",
+      "id": 3
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:18:40.644Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Governments should implement universal basic income\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending.\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:18:41.748Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733138320-YQWAIxCGO7mSETGKeNcP",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733138320,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 240,
+      "completion_tokens": 3,
+      "total_tokens": 243
+    }
+  }
+}
+[2024-12-02T11:18:41.749Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
+}
+[2024-12-02T11:52:10.890Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Consciousness is a fundamental aspect of reality\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Consciousness is a fundamental aspect of reality\". Start with a clear opening argument against the topic."
+    }
+  ]
+}
+[2024-12-02T11:52:10.890Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Consciousness is a fundamental aspect of reality\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"Consciousness is a fundamental aspect of reality\". Start with a clear opening argument against the topic."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:52:13.693Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733140332-spdRbyrVnxFp2fT0ryG5",
+    "provider": "OpenAI",
+    "model": "openai/gpt-3.5-turbo",
+    "object": "chat.completion",
+    "created": 1733140332,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": null,
+    "usage": {
+      "prompt_tokens": 238,
+      "completion_tokens": 39,
+      "total_tokens": 277
+    }
+  }
+}
+[2024-12-02T11:52:13.694Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes."
+}
+[2024-12-02T11:52:13.705Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
+      "id": 1
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:52:13.705Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "against",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:52:13.705Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Consciousness is a fundamental aspect of reality\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:52:13.705Z] Evaluating argument:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
+      "id": 1
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:52:14.788Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733140333-xHuPEh6f1yOg5OeDEII8",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733140333,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "65\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 222,
+      "completion_tokens": 3,
+      "total_tokens": 225
+    }
+  }
+}
+[2024-12-02T11:52:14.789Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 65
+}
+[2024-12-02T11:52:18.898Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "sometimes",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T11:52:18.898Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T11:52:18.898Z] Evaluating argument:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "sometimes",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T11:52:18.898Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Consciousness is a fundamental aspect of reality\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"sometimes\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:52:19.992Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733140338-zl0IyXmdQ3ESWHFMj1Ci",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733140338,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "20\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 186,
+      "completion_tokens": 3,
+      "total_tokens": 189
+    }
+  }
+}
+[2024-12-02T11:52:19.993Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 20
+}
+[2024-12-02T11:52:20.006Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Consciousness is a fundamental aspect of reality\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
+      "id": 0
+    },
+    {
+      "role": "assistant",
+      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "sometimes",
+      "id": 2
+    }
+  ]
+}
+[2024-12-02T11:52:20.006Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Logical Larry, an expert debater against the topic \"Consciousness is a fundamental aspect of reality\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+    },
+    {
+      "role": "assistant",
+      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes."
+    },
+    {
+      "role": "user",
+      "content": "sometimes"
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:52:21.062Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733140340-BVZAWuMDr9RaUPQmktch",
+    "provider": "OpenAI",
+    "model": "openai/gpt-3.5-turbo",
+    "object": "chat.completion",
+    "created": 1733140340,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": null,
+    "usage": {
+      "prompt_tokens": 224,
+      "completion_tokens": 49,
+      "total_tokens": 273
+    }
+  }
+}
+[2024-12-02T11:52:21.063Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality."
+}
+[2024-12-02T11:52:21.069Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "sometimes",
+      "id": 2
+    },
+    {
+      "role": "user",
+      "content": "Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality.",
+      "id": 3
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:52:21.070Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "against",
+  "messagesCount": 3,
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:52:21.070Z] Evaluating argument:
+Data: {
+  "topic": "Consciousness is a fundamental aspect of reality",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
+      "id": 1,
+      "score": {
+        "score": 65,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "sometimes",
+      "id": 2
+    },
+    {
+      "role": "user",
+      "content": "Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality.",
+      "id": 3
+    }
+  ],
+  "currentScores": {
+    "user": 35,
+    "opponent": 65
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:52:21.070Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"Consciousness is a fundamental aspect of reality\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality.\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:52:21.637Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733140341-qfOAad6pg3FnVm1n9A3T",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733140341,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "48\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 232,
+      "completion_tokens": 3,
+      "total_tokens": 235
+    }
+  }
+}
+[2024-12-02T11:52:21.638Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 48
+}
+[2024-12-02T11:53:48.065Z] [DebateRoutes] Generating response:
+Data: {
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "against",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
+    }
+  ]
+}
+[2024-12-02T11:53:48.065Z] Generating completion with request:
+Data: {
+  "model": "openai/gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+    },
+    {
+      "role": "user",
+      "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:53:49.366Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733140428-9WA4LfSQAByXRMwTJDvM",
+    "provider": "OpenAI",
+    "model": "openai/gpt-3.5-turbo",
+    "object": "chat.completion",
+    "created": 1733140428,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+          "refusal": ""
+        }
+      }
+    ],
+    "system_fingerprint": null,
+    "usage": {
+      "prompt_tokens": 243,
+      "completion_tokens": 57,
+      "total_tokens": 300
+    }
+  }
+}
+[2024-12-02T11:53:49.367Z] [DebateRoutes] Generated response:
+Data: {
+  "response": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency."
+}
+[2024-12-02T11:53:49.377Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+      "id": 1
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:53:49.378Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "against",
+  "messagesCount": 1,
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:53:49.378Z] Evaluating argument:
+Data: {
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "against",
+  "messages": [
+    {
+      "role": "user",
+      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+      "id": 1
+    }
+  ],
+  "currentScores": {
+    "user": 50,
+    "opponent": 50
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "opponent"
+}
+[2024-12-02T11:53:49.378Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this against argument: \"As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:53:50.463Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733140429-SmB7I33cT2uev6j5nJks",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733140429,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "45\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 243,
+      "completion_tokens": 3,
+      "total_tokens": 246
+    }
+  }
+}
+[2024-12-02T11:53:50.464Z] [DebateRoutes] Evaluation result:
+Data: {
+  "score": 45
+}
+[2024-12-02T11:53:53.905Z] [DebateRoutes] Evaluating argument request:
+Data: {
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+      "id": 1,
+      "score": {
+        "score": 45,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "sometimes",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 55,
+    "opponent": 45
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T11:53:53.905Z] [DebateRoutes] Starting evaluation with:
+Data: {
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "for",
+  "messagesCount": 2,
+  "currentScores": {
+    "user": 55,
+    "opponent": 45
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T11:53:53.905Z] Evaluating argument:
+Data: {
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "for",
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+      "id": 1,
+      "score": {
+        "score": 45,
+        "previousScore": 50
+      }
+    },
+    {
+      "role": "user",
+      "content": "sometimes",
+      "id": 2
+    }
+  ],
+  "currentScores": {
+    "user": 55,
+    "opponent": 45
+  },
+  "model": "google/gemini-flash-1.5",
+  "roleToScore": "user"
+}
+[2024-12-02T11:53:53.905Z] Generating completion with request:
+Data: {
+  "model": "google/gemini-flash-1.5",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 55, opponent: 45\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+    },
+    {
+      "role": "user",
+      "content": "Evaluate this for argument: \"sometimes\""
+    }
+  ],
+  "temperature": 0.7,
+  "max_tokens": 500
+}
+[2024-12-02T11:53:54.926Z] Received API response:
+Data: {
+  "status": 200,
+  "data": {
+    "id": "gen-1733140433-76wC91N0bHtkGkWIW1DO",
+    "provider": "Google",
+    "model": "google/gemini-flash-1.5",
+    "object": "chat.completion",
+    "created": 1733140433,
     "choices": [
       {
         "logprobs": null,
@@ -297,65 +1411,65 @@ Data: {
     }
   }
 }
-[2024-12-02T10:51:11.318Z] [DebateRoutes] Evaluation result:
+[2024-12-02T11:53:54.927Z] [DebateRoutes] Evaluation result:
 Data: {
   "score": 20
 }
-[2024-12-02T10:51:11.328Z] [DebateRoutes] Generating response:
+[2024-12-02T11:53:54.937Z] [DebateRoutes] Generating response:
 Data: {
   "topic": "We have no free will because God’s plan is predetermined",
   "position": "against",
   "messages": [
     {
       "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
+      "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
       "id": 0
     },
     {
       "role": "assistant",
-      "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.",
+      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
       "id": 1,
       "score": {
-        "score": 65,
+        "score": 45,
         "previousScore": 50
       }
     },
     {
       "role": "user",
-      "content": "maybe",
+      "content": "sometimes",
       "id": 2
     }
   ]
 }
-[2024-12-02T10:51:11.329Z] Generating completion with request:
+[2024-12-02T11:53:54.938Z] Generating completion with request:
 Data: {
   "model": "openai/gpt-3.5-turbo",
   "messages": [
     {
       "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+      "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
     },
     {
       "role": "assistant",
-      "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan."
+      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency."
     },
     {
       "role": "user",
-      "content": "maybe"
+      "content": "sometimes"
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T10:51:12.473Z] Received API response:
+[2024-12-02T11:53:55.932Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733136671-00VHwDWaNrawnpB9cBKH",
+    "id": "gen-1733140435-eyocwTSiyHPmX31pk71G",
     "provider": "OpenAI",
     "model": "openai/gpt-3.5-turbo",
     "object": "chat.completion",
-    "created": 1733136671,
+    "created": 1733140435,
     "choices": [
       {
         "logprobs": null,
@@ -363,124 +1477,124 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "Our ability to make choices and decisions is evident in our daily lives. We choose what to eat, what to wear, and how to spend our time, demonstrating our free will in action. This autonomy in decision-making indicates that we are not solely bound by a predetermined plan.",
+          "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
           "refusal": ""
         }
       }
     ],
     "system_fingerprint": null,
     "usage": {
-      "prompt_tokens": 240,
-      "completion_tokens": 55,
+      "prompt_tokens": 245,
+      "completion_tokens": 50,
       "total_tokens": 295
     }
   }
 }
-[2024-12-02T10:51:12.474Z] [DebateRoutes] Generated response:
+[2024-12-02T11:53:55.933Z] [DebateRoutes] Generated response:
 Data: {
-  "response": "Our ability to make choices and decisions is evident in our daily lives. We choose what to eat, what to wear, and how to spend our time, demonstrating our free will in action. This autonomy in decision-making indicates that we are not solely bound by a predetermined plan."
+  "response": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes."
 }
-[2024-12-02T10:51:12.481Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T11:53:55.943Z] [DebateRoutes] Evaluating argument request:
 Data: {
   "topic": "We have no free will because God’s plan is predetermined",
   "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.",
+      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
       "id": 1,
       "score": {
-        "score": 65,
+        "score": 45,
         "previousScore": 50
       }
     },
     {
       "role": "assistant",
-      "content": "maybe",
+      "content": "sometimes",
       "id": 2
     },
     {
       "role": "user",
-      "content": "Our ability to make choices and decisions is evident in our daily lives. We choose what to eat, what to wear, and how to spend our time, demonstrating our free will in action. This autonomy in decision-making indicates that we are not solely bound by a predetermined plan.",
+      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
       "id": 3
     }
   ],
   "currentScores": {
-    "user": 35,
-    "opponent": 65
+    "user": 55,
+    "opponent": 45
   },
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T10:51:12.481Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T11:53:55.943Z] [DebateRoutes] Starting evaluation with:
 Data: {
   "topic": "We have no free will because God’s plan is predetermined",
   "position": "against",
   "messagesCount": 3,
   "currentScores": {
-    "user": 35,
-    "opponent": 65
+    "user": 55,
+    "opponent": 45
   },
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T10:51:12.481Z] Evaluating argument:
+[2024-12-02T11:53:55.943Z] Evaluating argument:
 Data: {
   "topic": "We have no free will because God’s plan is predetermined",
   "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "I disagree with the statement that we have no free will because God's plan is predetermined. While some believe in a predetermined plan by God, it does not negate our ability to make choices and decisions. Our free will allows us to act independently of a predetermined plan.",
+      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
       "id": 1,
       "score": {
-        "score": 65,
+        "score": 45,
         "previousScore": 50
       }
     },
     {
       "role": "assistant",
-      "content": "maybe",
+      "content": "sometimes",
       "id": 2
     },
     {
       "role": "user",
-      "content": "Our ability to make choices and decisions is evident in our daily lives. We choose what to eat, what to wear, and how to spend our time, demonstrating our free will in action. This autonomy in decision-making indicates that we are not solely bound by a predetermined plan.",
+      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
       "id": 3
     }
   ],
   "currentScores": {
-    "user": 35,
-    "opponent": 65
+    "user": 55,
+    "opponent": 45
   },
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T10:51:12.481Z] Generating completion with request:
+[2024-12-02T11:53:55.943Z] Generating completion with request:
 Data: {
   "model": "google/gemini-flash-1.5",
   "messages": [
     {
       "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 55, opponent: 45\n\nEvaluate the latest argument and return ONLY a number between 0-100."
     },
     {
       "role": "user",
-      "content": "Evaluate this against argument: \"Our ability to make choices and decisions is evident in our daily lives. We choose what to eat, what to wear, and how to spend our time, demonstrating our free will in action. This autonomy in decision-making indicates that we are not solely bound by a predetermined plan.\""
+      "content": "Evaluate this against argument: \"Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.\""
     }
   ],
   "temperature": 0.7,
   "max_tokens": 500
 }
-[2024-12-02T10:51:13.541Z] Received API response:
+[2024-12-02T11:53:57.024Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733136672-dj46oElVQ1DO2SDXlxQo",
+    "id": "gen-1733140435-sfevbAM3a5yOJgiomQGU",
     "provider": "Google",
     "model": "google/gemini-flash-1.5",
     "object": "chat.completion",
-    "created": 1733136672,
+    "created": 1733140435,
     "choices": [
       {
         "logprobs": null,
@@ -488,19 +1602,19 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "45\n",
+          "content": "65\n",
           "refusal": ""
         }
       }
     ],
     "usage": {
-      "prompt_tokens": 244,
+      "prompt_tokens": 237,
       "completion_tokens": 3,
-      "total_tokens": 247
+      "total_tokens": 240
     }
   }
 }
-[2024-12-02T10:51:13.542Z] [DebateRoutes] Evaluation result:
+[2024-12-02T11:53:57.025Z] [DebateRoutes] Evaluation result:
 Data: {
-  "score": 45
+  "score": 65
 }

@@ -1,0 +1,694 @@
+[
+  {
+    "timestamp": "2024-12-02T11:06:53.150Z",
+    "requestId": "90080b32-d0b1-487b-bd1e-c76c44fd58dc",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"Artificial intelligence should be strictly regulated\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+        },
+        {
+          "role": "user",
+          "content": "The topic is: \"Artificial intelligence should be strictly regulated\". Start with a clear opening argument against the topic."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:06:54.540Z",
+    "requestId": "90080b32-d0b1-487b-bd1e-c76c44fd58dc",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas.",
+      "usage": {
+        "prompt_tokens": 234,
+        "completion_tokens": 45,
+        "total_tokens": 279
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:06:54.557Z",
+    "requestId": "8ddc3283-9720-4e19-a868-b4cb576a01c3",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Artificial intelligence should be strictly regulated\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"Artificial intelligence should not be strictly regulated because it has the potential to bring significant benefits to various industries such as healthcare, transportation, and finance. Overregulation could stifle innovation and slow down progress in these critical areas.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:06:55.639Z",
+    "requestId": "8ddc3283-9720-4e19-a868-b4cb576a01c3",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "65\n",
+      "usage": {
+        "prompt_tokens": 224,
+        "completion_tokens": 3,
+        "total_tokens": 227
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:17:49.057Z",
+    "requestId": "a6dad8b4-b051-471e-9f21-97efaabada03",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"Governments should implement universal basic income\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+        },
+        {
+          "role": "user",
+          "content": "The topic is: \"Governments should implement universal basic income\". Start with a clear opening argument against the topic."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:17:50.327Z",
+    "requestId": "a6dad8b4-b051-471e-9f21-97efaabada03",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.",
+      "usage": {
+        "prompt_tokens": 235,
+        "completion_tokens": 45,
+        "total_tokens": 280
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:17:50.337Z",
+    "requestId": "5cb3d38b-287a-4006-a266-52d7289b3553",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Governments should implement universal basic income\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:17:51.474Z",
+    "requestId": "5cb3d38b-287a-4006-a266-52d7289b3553",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "65\n",
+      "usage": {
+        "prompt_tokens": 228,
+        "completion_tokens": 3,
+        "total_tokens": 231
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:18:38.234Z",
+    "requestId": "3e2582e6-3d97-487c-b71c-b7b1edc47494",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Governments should implement universal basic income\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this for argument: \"Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:18:39.397Z",
+    "requestId": "3e2582e6-3d97-487c-b71c-b7b1edc47494",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "68\n",
+      "usage": {
+        "prompt_tokens": 241,
+        "completion_tokens": 3,
+        "total_tokens": 244
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:18:39.409Z",
+    "requestId": "0ae78a2d-16d1-4392-9ec6-e6ee38323eaf",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"Governments should implement universal basic income\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+        },
+        {
+          "role": "assistant",
+          "content": "Governments should not implement universal basic income as it can disincentivize work and productivity. Research from the OECD suggests that unconditional cash transfers could lead to reduced work effort, which could harm economic growth in the long run."
+        },
+        {
+          "role": "user",
+          "content": "Studies from pilot UBI programs in Finland and Canada have shown positive effects on mental health and job seeking behavior. The Finnish experiment demonstrated that basic income recipients had better mental wellbeing and slightly higher employment levels than the control group. This evidence suggests UBI can actually enhance work readiness and social participation."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:18:40.637Z",
+    "requestId": "0ae78a2d-16d1-4392-9ec6-e6ee38323eaf",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending.",
+      "usage": {
+        "prompt_tokens": 286,
+        "completion_tokens": 56,
+        "total_tokens": 342
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:18:40.644Z",
+    "requestId": "a019ab7c-165a-461b-b419-cc62d0591872",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Governments should implement universal basic income\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"While the positive effects on mental health and job seeking behavior are notable, the long-term consequences of implementing universal basic income on a larger scale need to be carefully considered. There are concerns that widespread adoption of UBI could lead to inflation, increased taxes, and potentially unsustainable government spending.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:18:41.748Z",
+    "requestId": "a019ab7c-165a-461b-b419-cc62d0591872",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "45\n",
+      "usage": {
+        "prompt_tokens": 240,
+        "completion_tokens": 3,
+        "total_tokens": 243
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:52:10.891Z",
+    "requestId": "15a922a5-b660-4a92-8ebd-4be12f515a02",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"Consciousness is a fundamental aspect of reality\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+        },
+        {
+          "role": "user",
+          "content": "The topic is: \"Consciousness is a fundamental aspect of reality\". Start with a clear opening argument against the topic."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:52:13.693Z",
+    "requestId": "15a922a5-b660-4a92-8ebd-4be12f515a02",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.",
+      "usage": {
+        "prompt_tokens": 238,
+        "completion_tokens": 39,
+        "total_tokens": 277
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:52:13.705Z",
+    "requestId": "d12561d5-d846-4492-8d92-d494789f6ca1",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Consciousness is a fundamental aspect of reality\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:52:14.788Z",
+    "requestId": "d12561d5-d846-4492-8d92-d494789f6ca1",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "65\n",
+      "usage": {
+        "prompt_tokens": 222,
+        "completion_tokens": 3,
+        "total_tokens": 225
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:52:18.898Z",
+    "requestId": "f4b3254f-8726-472d-a090-e9e21ffef6b6",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Consciousness is a fundamental aspect of reality\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this for argument: \"sometimes\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:52:19.992Z",
+    "requestId": "f4b3254f-8726-472d-a090-e9e21ffef6b6",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "20\n",
+      "usage": {
+        "prompt_tokens": 186,
+        "completion_tokens": 3,
+        "total_tokens": 189
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:52:20.007Z",
+    "requestId": "e0891445-2e7d-41c9-bccd-cfca27982467",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Logical Larry, an expert debater against the topic \"Consciousness is a fundamental aspect of reality\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+        },
+        {
+          "role": "assistant",
+          "content": "Consciousness is not a fundamental aspect of reality because it is a product of brain activity. Studies have shown that alterations in brain function can directly impact consciousness, indicating its dependency on physical processes."
+        },
+        {
+          "role": "user",
+          "content": "sometimes"
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:52:21.062Z",
+    "requestId": "e0891445-2e7d-41c9-bccd-cfca27982467",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality.",
+      "usage": {
+        "prompt_tokens": 224,
+        "completion_tokens": 49,
+        "total_tokens": 273
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:52:21.070Z",
+    "requestId": "f247a378-b2ff-494e-a681-2d5e586b0498",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"Consciousness is a fundamental aspect of reality\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"Even in cases where consciousness seems altered, such as in dreams or altered states of consciousness, it can still be tied back to brain activity. These experiences can be explained through neurobiological mechanisms without requiring consciousness to be a fundamental aspect of reality.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:52:21.637Z",
+    "requestId": "f247a378-b2ff-494e-a681-2d5e586b0498",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "48\n",
+      "usage": {
+        "prompt_tokens": 232,
+        "completion_tokens": 3,
+        "total_tokens": 235
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:53:48.066Z",
+    "requestId": "47d28950-c2ab-4eb9-84c0-dd25b0ca3b74",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+        },
+        {
+          "role": "user",
+          "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:53:49.366Z",
+    "requestId": "47d28950-c2ab-4eb9-84c0-dd25b0ca3b74",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.",
+      "usage": {
+        "prompt_tokens": 243,
+        "completion_tokens": 57,
+        "total_tokens": 300
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:53:49.378Z",
+    "requestId": "d44e7ec2-79b0-499e-863d-3bd6c38c4318",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:53:50.463Z",
+    "requestId": "d44e7ec2-79b0-499e-863d-3bd6c38c4318",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "45\n",
+      "usage": {
+        "prompt_tokens": 243,
+        "completion_tokens": 3,
+        "total_tokens": 246
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:53:53.905Z",
+    "requestId": "4eedd006-cd84-4299-97b6-0a854f5ee211",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 55, opponent: 45\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this for argument: \"sometimes\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:53:54.926Z",
+    "requestId": "4eedd006-cd84-4299-97b6-0a854f5ee211",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "20\n",
+      "usage": {
+        "prompt_tokens": 190,
+        "completion_tokens": 3,
+        "total_tokens": 193
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:53:54.938Z",
+    "requestId": "56d59cb2-f68b-4c11-a079-1b4e35054ed3",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "model": "openai/gpt-3.5-turbo",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Emotional Emma, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: medium\nUse moderate complexity in language and arguments. Balance between basic and advanced concepts.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+        },
+        {
+          "role": "assistant",
+          "content": "As an expert debater, I firmly argue against the notion that we have no free will due to a predetermined plan by God. The belief in free will is deeply ingrained in philosophical and theological discussions, allowing individuals to make choices and shape their destinies based on their own agency."
+        },
+        {
+          "role": "user",
+          "content": "sometimes"
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:53:55.932Z",
+    "requestId": "56d59cb2-f68b-4c11-a079-1b4e35054ed3",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "debate_message",
+    "data": {
+      "status": 200,
+      "content": "Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.",
+      "usage": {
+        "prompt_tokens": 245,
+        "completion_tokens": 50,
+        "total_tokens": 295
+      }
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:53:55.943Z",
+    "requestId": "a1f03d3b-9a9a-45fd-804a-83e36c27c8cb",
+    "type": "request",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "model": "google/gemini-flash-1.5",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 55, opponent: 45\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+        },
+        {
+          "role": "user",
+          "content": "Evaluate this against argument: \"Even in moments of uncertainty or doubt, the concept of free will remains essential for personal responsibility and moral accountability. It empowers individuals to make decisions and take actions that can influence the course of their lives, despite external factors or predestined outcomes.\""
+        }
+      ],
+      "temperature": 0.7,
+      "max_tokens": 500
+    }
+  },
+  {
+    "timestamp": "2024-12-02T11:53:57.024Z",
+    "requestId": "a1f03d3b-9a9a-45fd-804a-83e36c27c8cb",
+    "type": "response",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "functionType": "message_scoring",
+    "data": {
+      "status": 200,
+      "content": "65\n",
+      "usage": {
+        "prompt_tokens": 237,
+        "completion_tokens": 3,
+        "total_tokens": 240
+      }
+    }
+  }
+]
