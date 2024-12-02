@@ -6,10 +6,11 @@ import DiagnosticLogger from '../utils/diagnosticLogger';
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 const API_BASE_URL = env.API_BASE_URL || 'http://localhost:3000/api/debate';
 
+// Update headers to include both possible frontend ports
 const headers = {
   'Content-Type': 'application/json',
   'Authorization': `Bearer ${env.OPENROUTER_API_KEY}`,
-  'HTTP-Referer': env.CORS_ORIGIN,
+  'HTTP-Referer': ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'].join(','),
   'X-Title': 'Debate Master'
 };
 
@@ -33,20 +34,46 @@ interface APIResponse {
 
 type Difficulty = 'easy' | 'medium' | 'hard';
 
+interface DifficultyConfig {
+  temperature: number;
+  maxTokens: number;
+  scoreMultiplier: number;
+}
+
+const DIFFICULTY_CONFIGS: Record<Difficulty, DifficultyConfig> = {
+  easy: {
+    temperature: 0.3,
+    maxTokens: 200,
+    scoreMultiplier: 1.5 // More lenient scoring
+  },
+  medium: {
+    temperature: 0.5,
+    maxTokens: 350,
+    scoreMultiplier: 1.0 // Standard scoring
+  },
+  hard: {
+    temperature: 0.7,
+    maxTokens: 500,
+    scoreMultiplier: 0.8 // Stricter scoring
+  }
+};
+
 export class OpenRouterService {
   private static generatePersonalityPrompt(aiPersonality: any, position: string, topic: string, difficulty: Difficulty) {
-    const difficultyGuide = {
-      easy: "Use simpler language and basic arguments. Focus on clear, straightforward points.",
-      medium: "Use moderate complexity in language and arguments. Balance between basic and advanced concepts.",
-      hard: "Use sophisticated language and complex arguments. Employ advanced debate techniques and deeper analysis."
-    };
-
+    const difficultyMods = aiPersonality.difficultyModifiers[difficulty];
+    
     return `You are ${aiPersonality.name}, ${aiPersonality.description}. You are debating ${position} the topic "${topic}".
+
+DIFFICULTY ADAPTATION (${difficulty}):
+- Vocabulary Level: ${difficultyMods.vocabularyLevel}
+- Argument Complexity: ${difficultyMods.argumentComplexity}
+- Response Length: ${difficultyMods.responseLength}
+- Example Types: ${difficultyMods.exampleTypes.join(', ')}
 
 PERSONALITY TRAITS:
 - Argument Style: ${aiPersonality.traits.argumentStyle}
-- Vocabulary Level: ${aiPersonality.traits.vocabulary}
-- Example Types: ${aiPersonality.traits.exampleTypes}
+- Vocabulary: ${difficultyMods.vocabularyLevel}
+- Example Types: ${difficultyMods.exampleTypes.join(', ')}
 - Debate Strategy: ${aiPersonality.traits.debateStrategy}
 
 BEHAVIORAL GUIDELINES:
@@ -54,7 +81,7 @@ ${aiPersonality.behaviorGuidelines.map((guideline: string) => `- ${guideline}`).
 
 LANGUAGE STYLE:
 - Tone: ${aiPersonality.languageStyle.tone}
-- Complexity: ${aiPersonality.languageStyle.complexity}
+- Complexity: Adapted for ${difficulty} difficulty
 - Preferred Phrases: ${aiPersonality.languageStyle.preferredPhrases.join(', ')}
 - Phrases to Avoid: ${aiPersonality.languageStyle.avoidedPhrases.join(', ')}
 
@@ -64,24 +91,19 @@ DEBATE APPROACH:
 - Evidence Preference: ${aiPersonality.debateApproach.evidencePreference}
 - Persuasion Techniques: ${aiPersonality.debateApproach.persuasionTechniques.join(', ')}
 
-RESPONSE EXAMPLES (for tone reference):
-${aiPersonality.responseExamples.map((example: string) => `- ${example}`).join('\n')}
+RESPONSE FORMAT:
+- Keep responses under ${DIFFICULTY_CONFIGS[difficulty].maxTokens / 2} words
+- Maintain ${difficultyMods.argumentComplexity}
+- Use ${difficultyMods.vocabularyLevel}
+- Focus on ${difficultyMods.exampleTypes.join(' and ')}
 
-DEBATE FORMAT:
-- Keep responses under 3 sentences for clarity and impact
-- Each response must directly address the previous argument
-- Maintain a consistent position throughout the debate
-- Use evidence and logical reasoning to support claims
-
-DIFFICULTY LEVEL: ${difficulty}
-${difficultyGuide[difficulty]}
-
-Your responses should consistently reflect your unique personality traits and debate approach while maintaining focus on the topic and adapting to the specified difficulty level.`;
+Your responses should reflect your personality while adapting to the ${difficulty} difficulty level.`;
   }
 
-  static async generateCompletion(messages: Message[], model: string): Promise<string> {
+  static async generateCompletion(messages: Message[], model: string, difficulty: Difficulty = 'medium'): Promise<string> {
     const maxRetries = 3;
     const retryDelay = 1000;
+    const config = DIFFICULTY_CONFIGS[difficulty];
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
@@ -91,13 +113,17 @@ Your responses should consistently reflect your unique personality traits and de
         })).filter(msg => msg.content.trim() !== '');
 
         const requestData = {
-          model,
+          model: model, // Use the model parameter directly
           messages: cleanedMessages,
-          temperature: 0.7,
-          max_tokens: 500
+          temperature: config.temperature,
+          max_tokens: config.maxTokens
         };
 
-        await DiagnosticLogger.log('Generating completion with request:', requestData);
+        await DiagnosticLogger.log('Generating completion with request:', {
+          ...requestData,
+          difficulty,
+          configUsed: config
+        });
 
         const requestId = await ApiLogger.logRequest(API_URL, 'POST', {
           ...requestData,
@@ -138,17 +164,34 @@ Your responses should consistently reflect your unique personality traits and de
 
         if (attempt < maxRetries) {
           await new Promise(resolve => setTimeout(resolve, retryDelay));
-        } else {
-          throw new Error(`OpenRouter API failed after ${maxRetries} attempts: ${error.message}`);
+          continue;
         }
+        
+        // On final attempt, throw error with more details
+        if (error.response) {
+          await DiagnosticLogger.error('API Error Response:', {
+            status: error.response.status,
+            data: error.response.data,
+            headers: error.response.headers
+          });
+          throw new Error(`OpenRouter API failed with status ${error.response.status}: ${JSON.stringify(error.response.data)}`);
+        }
+        throw new Error(`OpenRouter API failed: ${error.message}`);
       }
     }
 
     throw new Error('Unexpected error in generateCompletion');
   }
 
-  static async generateTopic(category: string, model: string): Promise<string> {
-    await DiagnosticLogger.log('Generating topic:', { category, model });
+  static async generateTopic(category: string, model: string, difficulty: Difficulty = 'medium'): Promise<string> {
+    await DiagnosticLogger.log('Generating topic:', { category, model, difficulty });
+    
+    const difficultyGuidelines = {
+      easy: 'Create topics suitable for young audiences (12 and under), using clear positions and everyday concepts.',
+      medium: 'Balance complexity with accessibility, suitable for teenagers with some debate experience.',
+      hard: 'Create sophisticated topics with multiple valid perspectives, requiring deep analysis.'
+    };
+
     const messages = [
       {
         role: 'system',
@@ -160,8 +203,8 @@ TOPIC REQUIREMENTS:
 3. Clear and concise phrasing
 4. Balanced - allows strong arguments on both sides
 5. Contemporary relevance
-6. Specific enough for focused debate
-7. Broad enough for multiple arguments
+6. Difficulty level: ${difficulty}
+${difficultyGuidelines[difficulty]}
 
 FORMAT:
 - State the topic as a clear proposition
@@ -170,9 +213,9 @@ FORMAT:
 - Keep under 15 words
 
 EXAMPLES:
-- "Social media does more harm than good to society"
-- "Artificial intelligence will benefit humanity more than harm it"
-- "Governments should implement universal basic income"
+- Easy: "Schools should have longer lunch breaks"
+- Medium: "Social media does more harm than good to society"
+- Hard: "Artificial intelligence will fundamentally alter human consciousness"
 
 Return ONLY the topic statement, no additional text.`
       },
@@ -182,11 +225,18 @@ Return ONLY the topic statement, no additional text.`
       }
     ];
 
-    return this.generateCompletion(messages, model);
+    return this.generateCompletion(messages, model, difficulty);
   }
 
-  static async generateHint(topic: string, position: string, model: string): Promise<string> {
-    await DiagnosticLogger.log('Generating hint:', { topic, position, model });
+  static async generateHint(topic: string, position: string, model: string, difficulty: Difficulty = 'medium'): Promise<string> {
+    await DiagnosticLogger.log('Generating hint:', { topic, position, model, difficulty });
+    
+    const difficultyGuidelines = {
+      easy: 'Provide clear, straightforward hints with simple examples and basic strategies.',
+      medium: 'Balance between basic and advanced strategies, with moderate complexity.',
+      hard: 'Offer sophisticated strategic guidance requiring critical thinking and analysis.'
+    };
+
     const messages = [
       {
         role: 'system',
@@ -197,19 +247,13 @@ HINT GUIDELINES:
 2. Suggest specific arguments or evidence
 3. Point out potential counterarguments to address
 4. Highlight strategic opportunities
-5. Keep hints concise and actionable
+5. Adapt to ${difficulty} difficulty level
+${difficultyGuidelines[difficulty]}
 
 HINT STRUCTURE:
 - Start with a clear strategic direction
 - Provide specific supporting details
 - Suggest how to counter opponent's likely responses
-
-HINT TYPES:
-- Evidence suggestions
-- Logical frameworks
-- Rhetorical techniques
-- Counter-argument preparation
-- Position strengthening
 
 Keep the hint under 2 sentences for clarity and impact.`
       },
@@ -219,7 +263,7 @@ Keep the hint under 2 sentences for clarity and impact.`
       }
     ];
 
-    return this.generateCompletion(messages, model);
+    return this.generateCompletion(messages, model, difficulty);
   }
 
   static async evaluateArgument(
@@ -228,16 +272,23 @@ Keep the hint under 2 sentences for clarity and impact.`
     messages: Message[],
     currentScores: { [key: string]: number },
     model: string,
-    roleToScore: string
+    roleToScore: string,
+    difficulty: Difficulty = 'medium'
   ): Promise<number> {
     await DiagnosticLogger.log('Evaluating argument:', { 
-      topic, position, messages, currentScores, model, roleToScore 
+      topic, position, messages, currentScores, model, roleToScore, difficulty 
     });
 
     const lastMessage = messages[messages.length - 1];
     if (!lastMessage || !lastMessage.content) {
       throw new Error('No message to evaluate');
     }
+
+    const difficultyScoring = {
+      easy: 'Be more lenient with scoring. Focus on basic argument structure and clarity.',
+      medium: 'Use balanced scoring criteria. Consider both basic and advanced elements.',
+      hard: 'Apply strict scoring criteria. Expect sophisticated arguments and evidence.'
+    };
 
     const systemPrompt = {
       role: 'system',
@@ -250,6 +301,9 @@ SCORING CRITERIA:
 4. Clarity of expression
 5. Response to counterarguments
 6. Persuasiveness
+
+DIFFICULTY LEVEL: ${difficulty}
+${difficultyScoring[difficulty]}
 
 SCORING SCALE:
 0-20: Poor - Irrelevant, illogical, or unclear
@@ -271,7 +325,8 @@ Evaluate the latest argument and return ONLY a number between 0-100.`
 
     const scoreResponse = await this.generateCompletion(
       [systemPrompt, userPrompt],
-      model
+      model,
+      difficulty
     );
 
     // Parse and normalize score
@@ -282,6 +337,9 @@ Evaluate the latest argument and return ONLY a number between 0-100.`
       await DiagnosticLogger.warn('Invalid score format, defaulting to 50:', scoreResponse);
       score = 50;
     }
+
+    // Apply difficulty multiplier
+    score = Math.round(score * DIFFICULTY_CONFIGS[difficulty].scoreMultiplier);
 
     // Bound score between 0 and 100
     score = Math.max(0, Math.min(100, score));

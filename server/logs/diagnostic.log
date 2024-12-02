@@ -1,72 +1,86 @@
-[2024-12-02T13:52:17.529Z] Diagnostic logging initialized
-[2024-12-02T13:52:17.530Z] Middleware configured
+[2024-12-02T14:28:48.777Z] Middleware configured
 Data: {
   "cors": {
-    "origin": "http://localhost:5173",
+    "origin": [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:5175"
+    ],
     "methods": [
       "GET",
       "POST"
     ]
   }
 }
-[2024-12-02T13:52:17.531Z] Routes configured
+[2024-12-02T14:28:48.778Z] Routes configured
 Data: {
   "endpoints": [
     "/api/debate"
   ]
 }
-[2024-12-02T13:52:17.531Z] Testing diagnostic logger
+[2024-12-02T14:28:48.778Z] Testing diagnostic logger
 Data: {
   "test": "This is a test log entry",
-  "timestamp": "2024-12-02T13:52:17.531Z"
+  "timestamp": "2024-12-02T14:28:48.778Z"
 }
-[2024-12-02T13:52:17.533Z] Server running on port 3000
-[2024-12-02T13:52:17.533Z] Server configuration
+[2024-12-02T14:28:48.780Z] Server running on port 3000
+[2024-12-02T14:28:48.780Z] Server configuration
 Data: {
   "port": 3000,
-  "corsOrigin": "http://localhost:5173",
+  "corsOrigin": [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:5175"
+  ],
   "diagnosticLogging": true
 }
-[2024-12-02T13:52:31.580Z] [DebateRoutes] Generating response:
+[2024-12-02T14:28:56.631Z] [DebateRoutes] Generating response:
 Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "for",
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "against",
   "messages": [
     {
       "role": "system",
-      "content": "You are Emotional Emma, an expert debater for the topic \"Space exploration funding should be increased\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+      "content": "You are Logical Larry, A methodical debater who relies on structured reasoning and empirical evidence. You are debating against the topic \"We have no free will because God’s plan is predetermined\".\n\nDIFFICULTY ADAPTATION (easy):\n- Vocabulary Level: simple technical terms\n- Argument Complexity: basic step-by-step reasoning\n- Response Length: short, focused points\n- Example Types: simple statistics, everyday observations\n\nPERSONALITY TRAITS:\n- Argument Style: systematic and evidence-based\n- Vocabulary: simple technical terms\n- Example Types: simple statistics, everyday observations\n- Debate Strategy: structured logical progression\n\nBEHAVIORAL GUIDELINES:\n- Always cite specific data points or studies\n- Break down complex arguments into logical steps\n- Maintain emotional distance while presenting facts\n- Address counterarguments with empirical evidence\n\nLANGUAGE STYLE:\n- Tone: formal and analytical\n- Complexity: Adapted for easy difficulty\n- Preferred Phrases: empirical evidence suggests, statistical analysis shows, logical conclusion, research indicates\n- Phrases to Avoid: I feel that, maybe, sort of, kind of\n\nDEBATE APPROACH:\n- Opening Style: Begin with a clear thesis supported by data\n- Counter-Argument Style: Methodically deconstruct opposing arguments with evidence\n- Evidence Preference: Peer-reviewed studies and statistical data\n- Persuasion Techniques: Syllogistic reasoning, Statistical analysis, Causal chains, Empirical evidence\n\nRESPONSE FORMAT:\n- Keep responses short, focused points\n- Maintain basic step-by-step reasoning\n- Use simple technical terms\n- Focus on simple statistics and everyday observations\n\nYour responses should reflect your personality while adapting to the easy difficulty level."
     },
     {
       "role": "user",
-      "content": "The topic is: \"Space exploration funding should be increased\". Start with a clear opening argument for the topic."
+      "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
     }
-  ]
+  ],
+  "difficulty": "easy"
 }
-[2024-12-02T13:52:31.580Z] Generating completion with request:
+[2024-12-02T14:28:56.631Z] Generating completion with request:
 Data: {
   "model": "openai/gpt-3.5-turbo",
   "messages": [
     {
       "role": "system",
-      "content": "You are Emotional Emma, an expert debater for the topic \"Space exploration funding should be increased\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications\n\nYour responses will be evaluated based on:\n- Relevance to the topic\n- Logical consistency\n- Evidence quality\n- Argument structure\n- Rhetorical effectiveness"
+      "content": "You are Logical Larry, A methodical debater who relies on structured reasoning and empirical evidence. You are debating against the topic \"We have no free will because God’s plan is predetermined\".\n\nDIFFICULTY ADAPTATION (easy):\n- Vocabulary Level: simple technical terms\n- Argument Complexity: basic step-by-step reasoning\n- Response Length: short, focused points\n- Example Types: simple statistics, everyday observations\n\nPERSONALITY TRAITS:\n- Argument Style: systematic and evidence-based\n- Vocabulary: simple technical terms\n- Example Types: simple statistics, everyday observations\n- Debate Strategy: structured logical progression\n\nBEHAVIORAL GUIDELINES:\n- Always cite specific data points or studies\n- Break down complex arguments into logical steps\n- Maintain emotional distance while presenting facts\n- Address counterarguments with empirical evidence\n\nLANGUAGE STYLE:\n- Tone: formal and analytical\n- Complexity: Adapted for easy difficulty\n- Preferred Phrases: empirical evidence suggests, statistical analysis shows, logical conclusion, research indicates\n- Phrases to Avoid: I feel that, maybe, sort of, kind of\n\nDEBATE APPROACH:\n- Opening Style: Begin with a clear thesis supported by data\n- Counter-Argument Style: Methodically deconstruct opposing arguments with evidence\n- Evidence Preference: Peer-reviewed studies and statistical data\n- Persuasion Techniques: Syllogistic reasoning, Statistical analysis, Causal chains, Empirical evidence\n\nRESPONSE FORMAT:\n- Keep responses short, focused points\n- Maintain basic step-by-step reasoning\n- Use simple technical terms\n- Focus on simple statistics and everyday observations\n\nYour responses should reflect your personality while adapting to the easy difficulty level."
     },
     {
       "role": "user",
-      "content": "The topic is: \"Space exploration funding should be increased\". Start with a clear opening argument for the topic."
+      "content": "The topic is: \"We have no free will because God’s plan is predetermined\". Start with a clear opening argument against the topic."
     }
   ],
-  "temperature": 0.7,
-  "max_tokens": 500
+  "temperature": 0.3,
+  "max_tokens": 200,
+  "difficulty": "easy",
+  "configUsed": {
+    "temperature": 0.3,
+    "maxTokens": 200,
+    "scoreMultiplier": 1.5
+  }
 }
-[2024-12-02T13:52:35.480Z] Received API response:
+[2024-12-02T14:29:00.271Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733147552-OXFJ08Uzmv1JrHMqx2my",
+    "id": "gen-1733149737-8Ly9P9zePuM1b8KwBTRJ",
     "provider": "OpenAI",
     "model": "openai/gpt-3.5-turbo",
     "object": "chat.completion",
-    "created": 1733147552,
+    "created": 1733149737,
     "choices": [
       {
         "logprobs": null,
@@ -74,31 +88,31 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
+          "content": "The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence.",
           "refusal": ""
         }
       }
     ],
     "system_fingerprint": null,
     "usage": {
-      "prompt_tokens": 232,
-      "completion_tokens": 26,
-      "total_tokens": 258
+      "prompt_tokens": 379,
+      "completion_tokens": 78,
+      "total_tokens": 457
     }
   }
 }
-[2024-12-02T13:52:35.481Z] [DebateRoutes] Generated response:
+[2024-12-02T14:29:00.273Z] [DebateRoutes] Generated response:
 Data: {
-  "response": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields."
+  "response": "The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence."
 }
-[2024-12-02T13:52:35.495Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T14:29:00.288Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "for",
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
+      "content": "The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence.",
       "id": 1
     }
   ],
@@ -109,10 +123,10 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T13:52:35.496Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T14:29:00.288Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "for",
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "against",
   "messagesCount": 1,
   "currentScores": {
     "user": 50,
@@ -121,14 +135,14 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T13:52:35.496Z] Evaluating argument:
+[2024-12-02T14:29:00.289Z] Evaluating argument:
 Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "for",
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
+      "content": "The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence.",
       "id": 1
     }
   ],
@@ -137,33 +151,40 @@ Data: {
     "opponent": 50
   },
   "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
+  "roleToScore": "opponent",
+  "difficulty": "medium"
 }
-[2024-12-02T13:52:35.496Z] Generating completion with request:
+[2024-12-02T14:29:00.289Z] Generating completion with request:
 Data: {
   "model": "google/gemini-flash-1.5",
   "messages": [
     {
       "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Space exploration funding should be increased\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
     },
     {
       "role": "user",
-      "content": "Evaluate this for argument: \"Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.\""
+      "content": "Evaluate this against argument: \"The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence.\""
     }
   ],
-  "temperature": 0.7,
-  "max_tokens": 500
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
 }
-[2024-12-02T13:52:36.183Z] Received API response:
+[2024-12-02T14:29:01.390Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733147555-KPVKgmtbV1Mwxg84pUg8",
+    "id": "gen-1733149740-K4dK3Fh0wVYSrXUN2AMi",
     "provider": "Google",
     "model": "google/gemini-flash-1.5",
     "object": "chat.completion",
-    "created": 1733147555,
+    "created": 1733149740,
     "choices": [
       {
         "logprobs": null,
@@ -177,24 +198,24 @@ Data: {
       }
     ],
     "usage": {
-      "prompt_tokens": 208,
+      "prompt_tokens": 287,
       "completion_tokens": 3,
-      "total_tokens": 211
+      "total_tokens": 290
     }
   }
 }
-[2024-12-02T13:52:36.184Z] [DebateRoutes] Evaluation result:
+[2024-12-02T14:29:01.392Z] [DebateRoutes] Evaluation result:
 Data: {
   "score": 65
 }
-[2024-12-02T13:54:24.933Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T14:29:05.690Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "against",
+  "topic": "We have no free will because God’s plan is predetermined",
+  "position": "for",
   "messages": [
     {
       "role": "assistant",
-      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
+      "content": "The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence.",
       "id": 1,
       "score": {
         "score": 65,
@@ -203,7 +224,7 @@ Data: {
     },
     {
       "role": "user",
-      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind",
+      "content": "sometimes",
       "id": 2
     }
   ],
@@ -214,486 +235,9 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "user"
 }
-[2024-12-02T13:54:24.933Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T14:29:05.691Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "against",
-  "messagesCount": 2,
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T13:54:24.933Z] Evaluating argument:
-Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "against",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind",
-      "id": 2
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T13:54:24.933Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Space exploration funding should be increased\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this against argument: \"on a cost benefit analysis there are better ways to spend the money to help more of human kind\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T13:54:26.253Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733147665-QPi3WPTD6WwrhryJZ2Cg",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733147665,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "45\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 202,
-      "completion_tokens": 3,
-      "total_tokens": 205
-    }
-  }
-}
-[2024-12-02T13:54:26.254Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 45
-}
-[2024-12-02T13:54:26.266Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "for",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Emotional Emma, an expert debater for the topic \"Space exploration funding should be increased\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
-      "id": 0
-    },
-    {
-      "role": "assistant",
-      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind",
-      "id": 2
-    }
-  ]
-}
-[2024-12-02T13:54:26.266Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Emotional Emma, an expert debater for the topic \"Space exploration funding should be increased\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
-    },
-    {
-      "role": "assistant",
-      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields."
-    },
-    {
-      "role": "user",
-      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind"
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T13:54:27.446Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733147666-J4ByompFp05p8bMbVtyO",
-    "provider": "OpenAI",
-    "model": "openai/gpt-3.5-turbo",
-    "object": "chat.completion",
-    "created": 1733147666,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "While there are other important causes, investing in space exploration can lead to long-term benefits such as new technologies, job creation, and potential solutions to global challenges like climate change.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": null,
-    "usage": {
-      "prompt_tokens": 226,
-      "completion_tokens": 35,
-      "total_tokens": 261
-    }
-  }
-}
-[2024-12-02T13:54:27.447Z] [DebateRoutes] Generated response:
-Data: {
-  "response": "While there are other important causes, investing in space exploration can lead to long-term benefits such as new technologies, job creation, and potential solutions to global challenges like climate change."
-}
-[2024-12-02T13:54:27.454Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "for",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind",
-      "id": 2
-    },
-    {
-      "role": "user",
-      "content": "While there are other important causes, investing in space exploration can lead to long-term benefits such as new technologies, job creation, and potential solutions to global challenges like climate change.",
-      "id": 3
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T13:54:27.454Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "for",
-  "messagesCount": 3,
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T13:54:27.454Z] Evaluating argument:
-Data: {
-  "topic": "Space exploration funding should be increased",
-  "position": "for",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Space exploration funding should be increased because it drives scientific discovery, technological advancement, and inspires future generations to pursue careers in STEM fields.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "assistant",
-      "content": "on a cost benefit analysis there are better ways to spend the money to help more of human kind",
-      "id": 2
-    },
-    {
-      "role": "user",
-      "content": "While there are other important causes, investing in space exploration can lead to long-term benefits such as new technologies, job creation, and potential solutions to global challenges like climate change.",
-      "id": 3
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T13:54:27.455Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Space exploration funding should be increased\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this for argument: \"While there are other important causes, investing in space exploration can lead to long-term benefits such as new technologies, job creation, and potential solutions to global challenges like climate change.\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T13:54:28.062Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733147667-iliJP8cwjRibMXJiprIx",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733147667,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "60\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 218,
-      "completion_tokens": 3,
-      "total_tokens": 221
-    }
-  }
-}
-[2024-12-02T13:54:28.064Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 60
-}
-[2024-12-02T14:02:54.920Z] [DebateRoutes] Generating response:
-Data: {
-  "topic": "Life has an inherent, objective meaning",
-  "position": "against",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Logical Larry, A methodical debater who relies on structured reasoning and empirical evidence. You are debating against the topic \"Life has an inherent, objective meaning\".\n\nPERSONALITY TRAITS:\n- Argument Style: systematic and evidence-based\n- Vocabulary Level: precise technical and academic terms\n- Example Types: statistical data and peer-reviewed research\n- Debate Strategy: structured logical progression\n\nBEHAVIORAL GUIDELINES:\n- Always cite specific data points or studies\n- Break down complex arguments into logical steps\n- Maintain emotional distance while presenting facts\n- Address counterarguments with empirical evidence\n\nLANGUAGE STYLE:\n- Tone: formal and analytical\n- Complexity: high\n- Preferred Phrases: Use these frequently: empirical evidence suggests, statistical analysis shows, logical conclusion, research indicates\n- Phrases to Avoid: Do not use: I feel that, maybe, sort of, kind of\n\nDEBATE APPROACH:\n- Opening Style: Begin with a clear thesis supported by data\n- Counter-Argument Style: Methodically deconstruct opposing arguments with evidence\n- Evidence Preference: Peer-reviewed studies and statistical data\n- Persuasion Techniques: Syllogistic reasoning, Statistical analysis, Causal chains, Empirical evidence\n\nRESPONSE EXAMPLES (emulate this style):\n- Research from MIT (2023) demonstrates that 73% of cases support this position.\n- This argument fails to account for three critical factors: firstly...\n- The logical conclusion, based on the available evidence, indicates...\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nYour responses should consistently reflect your unique personality traits and debate approach while maintaining focus on the topic and adapting to the specified difficulty level."
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"Life has an inherent, objective meaning\". Start with a clear opening argument against the topic."
-    }
-  ]
-}
-[2024-12-02T14:02:54.920Z] Generating completion with request:
-Data: {
-  "model": "openai/gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are Logical Larry, A methodical debater who relies on structured reasoning and empirical evidence. You are debating against the topic \"Life has an inherent, objective meaning\".\n\nPERSONALITY TRAITS:\n- Argument Style: systematic and evidence-based\n- Vocabulary Level: precise technical and academic terms\n- Example Types: statistical data and peer-reviewed research\n- Debate Strategy: structured logical progression\n\nBEHAVIORAL GUIDELINES:\n- Always cite specific data points or studies\n- Break down complex arguments into logical steps\n- Maintain emotional distance while presenting facts\n- Address counterarguments with empirical evidence\n\nLANGUAGE STYLE:\n- Tone: formal and analytical\n- Complexity: high\n- Preferred Phrases: Use these frequently: empirical evidence suggests, statistical analysis shows, logical conclusion, research indicates\n- Phrases to Avoid: Do not use: I feel that, maybe, sort of, kind of\n\nDEBATE APPROACH:\n- Opening Style: Begin with a clear thesis supported by data\n- Counter-Argument Style: Methodically deconstruct opposing arguments with evidence\n- Evidence Preference: Peer-reviewed studies and statistical data\n- Persuasion Techniques: Syllogistic reasoning, Statistical analysis, Causal chains, Empirical evidence\n\nRESPONSE EXAMPLES (emulate this style):\n- Research from MIT (2023) demonstrates that 73% of cases support this position.\n- This argument fails to account for three critical factors: firstly...\n- The logical conclusion, based on the available evidence, indicates...\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nYour responses should consistently reflect your unique personality traits and debate approach while maintaining focus on the topic and adapting to the specified difficulty level."
-    },
-    {
-      "role": "user",
-      "content": "The topic is: \"Life has an inherent, objective meaning\". Start with a clear opening argument against the topic."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T14:02:56.334Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733148174-Wi7EpmNHUaBC75lx4grp",
-    "provider": "OpenAI",
-    "model": "openai/gpt-3.5-turbo",
-    "object": "chat.completion",
-    "created": 1733148174,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "stop",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
-          "refusal": ""
-        }
-      }
-    ],
-    "system_fingerprint": null,
-    "usage": {
-      "prompt_tokens": 432,
-      "completion_tokens": 53,
-      "total_tokens": 485
-    }
-  }
-}
-[2024-12-02T14:02:56.335Z] [DebateRoutes] Generated response:
-Data: {
-  "response": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life."
-}
-[2024-12-02T14:02:56.348Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Life has an inherent, objective meaning",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
-      "id": 1
-    }
-  ],
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T14:02:56.348Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "Life has an inherent, objective meaning",
-  "position": "against",
-  "messagesCount": 1,
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T14:02:56.348Z] Evaluating argument:
-Data: {
-  "topic": "Life has an inherent, objective meaning",
-  "position": "against",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
-      "id": 1
-    }
-  ],
-  "currentScores": {
-    "user": 50,
-    "opponent": 50
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
-}
-[2024-12-02T14:02:56.348Z] Generating completion with request:
-Data: {
-  "model": "google/gemini-flash-1.5",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Life has an inherent, objective meaning\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 50, opponent: 50\n\nEvaluate the latest argument and return ONLY a number between 0-100."
-    },
-    {
-      "role": "user",
-      "content": "Evaluate this against argument: \"Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.\""
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 500
-}
-[2024-12-02T14:02:57.571Z] Received API response:
-Data: {
-  "status": 200,
-  "data": {
-    "id": "gen-1733148175-5jZie7SxZUwpDzyUbJvf",
-    "provider": "Google",
-    "model": "google/gemini-flash-1.5",
-    "object": "chat.completion",
-    "created": 1733148175,
-    "choices": [
-      {
-        "logprobs": null,
-        "finish_reason": "STOP",
-        "index": 0,
-        "message": {
-          "role": "assistant",
-          "content": "65\n",
-          "refusal": ""
-        }
-      }
-    ],
-    "usage": {
-      "prompt_tokens": 234,
-      "completion_tokens": 3,
-      "total_tokens": 237
-    }
-  }
-}
-[2024-12-02T14:02:57.572Z] [DebateRoutes] Evaluation result:
-Data: {
-  "score": 65
-}
-[2024-12-02T14:04:06.594Z] [DebateRoutes] Evaluating argument request:
-Data: {
-  "topic": "Life has an inherent, objective meaning",
-  "position": "for",
-  "messages": [
-    {
-      "role": "assistant",
-      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
-      "id": 1,
-      "score": {
-        "score": 65,
-        "previousScore": 50
-      }
-    },
-    {
-      "role": "user",
-      "content": "but how does that aurgument make you feel?",
-      "id": 2
-    }
-  ],
-  "currentScores": {
-    "user": 35,
-    "opponent": 65
-  },
-  "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
-}
-[2024-12-02T14:04:06.594Z] [DebateRoutes] Starting evaluation with:
-Data: {
-  "topic": "Life has an inherent, objective meaning",
+  "topic": "We have no free will because God’s plan is predetermined",
   "position": "for",
   "messagesCount": 2,
   "currentScores": {
@@ -703,14 +247,14 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "user"
 }
-[2024-12-02T14:04:06.594Z] Evaluating argument:
+[2024-12-02T14:29:05.691Z] Evaluating argument:
 Data: {
-  "topic": "Life has an inherent, objective meaning",
+  "topic": "We have no free will because God’s plan is predetermined",
   "position": "for",
   "messages": [
     {
       "role": "assistant",
-      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
+      "content": "The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence.",
       "id": 1,
       "score": {
         "score": 65,
@@ -719,7 +263,7 @@ Data: {
     },
     {
       "role": "user",
-      "content": "but how does that aurgument make you feel?",
+      "content": "sometimes",
       "id": 2
     }
   ],
@@ -728,33 +272,40 @@ Data: {
     "opponent": 65
   },
   "model": "google/gemini-flash-1.5",
-  "roleToScore": "user"
+  "roleToScore": "user",
+  "difficulty": "medium"
 }
-[2024-12-02T14:04:06.594Z] Generating completion with request:
+[2024-12-02T14:29:05.691Z] Generating completion with request:
 Data: {
   "model": "google/gemini-flash-1.5",
   "messages": [
     {
       "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Life has an inherent, objective meaning\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
     },
     {
       "role": "user",
-      "content": "Evaluate this for argument: \"but how does that aurgument make you feel?\""
+      "content": "Evaluate this for argument: \"sometimes\""
     }
   ],
-  "temperature": 0.7,
-  "max_tokens": 500
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
 }
-[2024-12-02T14:04:07.364Z] Received API response:
+[2024-12-02T14:29:06.754Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733148246-JqTDb2B1ICi1ansxavtz",
+    "id": "gen-1733149745-ZABExJbDSYY3I0ExL8XP",
     "provider": "Google",
     "model": "google/gemini-flash-1.5",
     "object": "chat.completion",
-    "created": 1733148246,
+    "created": 1733149745,
     "choices": [
       {
         "logprobs": null,
@@ -768,29 +319,29 @@ Data: {
       }
     ],
     "usage": {
-      "prompt_tokens": 194,
+      "prompt_tokens": 210,
       "completion_tokens": 3,
-      "total_tokens": 197
+      "total_tokens": 213
     }
   }
 }
-[2024-12-02T14:04:07.365Z] [DebateRoutes] Evaluation result:
+[2024-12-02T14:29:06.755Z] [DebateRoutes] Evaluation result:
 Data: {
   "score": 20
 }
-[2024-12-02T14:04:07.377Z] [DebateRoutes] Generating response:
+[2024-12-02T14:29:06.769Z] [DebateRoutes] Generating response:
 Data: {
-  "topic": "Life has an inherent, objective meaning",
+  "topic": "We have no free will because God’s plan is predetermined",
   "position": "against",
   "messages": [
     {
       "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Life has an inherent, objective meaning\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
+      "content": "You are Logical Larry, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications",
       "id": 0
     },
     {
       "role": "assistant",
-      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
+      "content": "The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence.",
       "id": 1,
       "score": {
         "score": 65,
@@ -799,40 +350,46 @@ Data: {
     },
     {
       "role": "user",
-      "content": "but how does that aurgument make you feel?",
+      "content": "sometimes",
       "id": 2
     }
   ]
 }
-[2024-12-02T14:04:07.377Z] Generating completion with request:
+[2024-12-02T14:29:06.769Z] Generating completion with request:
 Data: {
   "model": "openai/gpt-3.5-turbo",
   "messages": [
     {
       "role": "system",
-      "content": "You are Logical Larry, an expert debater against the topic \"Life has an inherent, objective meaning\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
+      "content": "You are Logical Larry, an expert debater against the topic \"We have no free will because God’s plan is predetermined\".\n\nDEBATE FORMAT:\n- Keep responses under 3 sentences for clarity and impact\n- Each response must directly address the previous argument\n- Maintain a consistent position throughout the debate\n- Use evidence and logical reasoning to support claims\n\nARGUMENT STRUCTURE:\n- Start with a clear position statement\n- Support with relevant evidence or reasoning\n- Address counterarguments when applicable\n\nDIFFICULTY LEVEL: easy\nUse simpler language and basic arguments. Focus on clear, straightforward points.\n\nDEBATE PRINCIPLES:\n1. Stay focused on the core topic\n2. Build upon previous arguments\n3. Use appropriate evidence and examples\n4. Maintain logical consistency\n5. Avoid logical fallacies\n6. Consider ethical implications"
     },
     {
       "role": "assistant",
-      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life."
+      "content": "The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence."
     },
     {
       "role": "user",
-      "content": "but how does that aurgument make you feel?"
+      "content": "sometimes"
     }
   ],
-  "temperature": 0.7,
-  "max_tokens": 500
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
 }
-[2024-12-02T14:04:08.582Z] Received API response:
+[2024-12-02T14:29:08.015Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733148247-W7izSXg1apuJQZjMJmBW",
+    "id": "gen-1733149746-3WVkiOv5QDyJPcZznVme",
     "provider": "OpenAI",
     "model": "openai/gpt-3.5-turbo",
     "object": "chat.completion",
-    "created": 1733148247,
+    "created": 1733149746,
     "choices": [
       {
         "logprobs": null,
@@ -840,31 +397,31 @@ Data: {
         "index": 0,
         "message": {
           "role": "assistant",
-          "content": "Feelings are subjective and personal, but in a logical debate, we focus on evidence and reasoning rather than emotions. The lack of universal agreement on the meaning of life supports the idea that it is not inherently objective.",
+          "content": "Even if some religious beliefs suggest a predetermined plan, the concept of free will is still valid. Philosophically, free will allows individuals to make choices and decisions independently. While theological beliefs may influence personal perspectives, the existence of free will remains a fundamental aspect of human agency.",
           "refusal": ""
         }
       }
     ],
     "system_fingerprint": null,
     "usage": {
-      "prompt_tokens": 246,
-      "completion_tokens": 43,
-      "total_tokens": 289
+      "prompt_tokens": 265,
+      "completion_tokens": 54,
+      "total_tokens": 319
     }
   }
 }
-[2024-12-02T14:04:08.584Z] [DebateRoutes] Generated response:
+[2024-12-02T14:29:08.017Z] [DebateRoutes] Generated response:
 Data: {
-  "response": "Feelings are subjective and personal, but in a logical debate, we focus on evidence and reasoning rather than emotions. The lack of universal agreement on the meaning of life supports the idea that it is not inherently objective."
+  "response": "Even if some religious beliefs suggest a predetermined plan, the concept of free will is still valid. Philosophically, free will allows individuals to make choices and decisions independently. While theological beliefs may influence personal perspectives, the existence of free will remains a fundamental aspect of human agency."
 }
-[2024-12-02T14:04:08.591Z] [DebateRoutes] Evaluating argument request:
+[2024-12-02T14:29:08.024Z] [DebateRoutes] Evaluating argument request:
 Data: {
-  "topic": "Life has an inherent, objective meaning",
+  "topic": "We have no free will because God’s plan is predetermined",
   "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
+      "content": "The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence.",
       "id": 1,
       "score": {
         "score": 65,
@@ -873,12 +430,12 @@ Data: {
     },
     {
       "role": "assistant",
-      "content": "but how does that aurgument make you feel?",
+      "content": "sometimes",
       "id": 2
     },
     {
       "role": "user",
-      "content": "Feelings are subjective and personal, but in a logical debate, we focus on evidence and reasoning rather than emotions. The lack of universal agreement on the meaning of life supports the idea that it is not inherently objective.",
+      "content": "Even if some religious beliefs suggest a predetermined plan, the concept of free will is still valid. Philosophically, free will allows individuals to make choices and decisions independently. While theological beliefs may influence personal perspectives, the existence of free will remains a fundamental aspect of human agency.",
       "id": 3
     }
   ],
@@ -889,9 +446,9 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T14:04:08.591Z] [DebateRoutes] Starting evaluation with:
+[2024-12-02T14:29:08.024Z] [DebateRoutes] Starting evaluation with:
 Data: {
-  "topic": "Life has an inherent, objective meaning",
+  "topic": "We have no free will because God’s plan is predetermined",
   "position": "against",
   "messagesCount": 3,
   "currentScores": {
@@ -901,14 +458,14 @@ Data: {
   "model": "google/gemini-flash-1.5",
   "roleToScore": "opponent"
 }
-[2024-12-02T14:04:08.591Z] Evaluating argument:
+[2024-12-02T14:29:08.024Z] Evaluating argument:
 Data: {
-  "topic": "Life has an inherent, objective meaning",
+  "topic": "We have no free will because God’s plan is predetermined",
   "position": "against",
   "messages": [
     {
       "role": "user",
-      "content": "Empirical evidence suggests that the concept of inherent, objective meaning in life is highly subjective and varies greatly among individuals and cultures. Research indicates that what one person may consider as meaningful, another may not, indicating a lack of universal objectivity in the meaning of life.",
+      "content": "The assertion that we have no free will because God's plan is predetermined lacks empirical evidence to support it. Free will is a complex philosophical concept that involves the ability to make choices without constraints. While some religious beliefs may suggest a predetermined plan by a higher power, the existence of free will is a topic that extends beyond theological interpretations. Let us explore this further through logical reasoning and empirical evidence.",
       "id": 1,
       "score": {
         "score": 65,
@@ -917,12 +474,12 @@ Data: {
     },
     {
       "role": "assistant",
-      "content": "but how does that aurgument make you feel?",
+      "content": "sometimes",
       "id": 2
     },
     {
       "role": "user",
-      "content": "Feelings are subjective and personal, but in a logical debate, we focus on evidence and reasoning rather than emotions. The lack of universal agreement on the meaning of life supports the idea that it is not inherently objective.",
+      "content": "Even if some religious beliefs suggest a predetermined plan, the concept of free will is still valid. Philosophically, free will allows individuals to make choices and decisions independently. While theological beliefs may influence personal perspectives, the existence of free will remains a fundamental aspect of human agency.",
       "id": 3
     }
   ],
@@ -931,33 +488,40 @@ Data: {
     "opponent": 65
   },
   "model": "google/gemini-flash-1.5",
-  "roleToScore": "opponent"
+  "roleToScore": "opponent",
+  "difficulty": "medium"
 }
-[2024-12-02T14:04:08.591Z] Generating completion with request:
+[2024-12-02T14:29:08.024Z] Generating completion with request:
 Data: {
   "model": "google/gemini-flash-1.5",
   "messages": [
     {
       "role": "system",
-      "content": "You are an expert debate judge evaluating arguments on the topic: \"Life has an inherent, objective meaning\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
+      "content": "You are an expert debate judge evaluating arguments on the topic: \"We have no free will because God’s plan is predetermined\".\n      \nSCORING CRITERIA:\n1. Relevance to topic\n2. Logical reasoning\n3. Evidence/examples used\n4. Clarity of expression\n5. Response to counterarguments\n6. Persuasiveness\n\nDIFFICULTY LEVEL: medium\nUse balanced scoring criteria. Consider both basic and advanced elements.\n\nSCORING SCALE:\n0-20: Poor - Irrelevant, illogical, or unclear\n21-40: Fair - Basic argument with significant flaws\n41-60: Good - Clear argument with some supporting evidence\n61-80: Very Good - Strong argument with solid evidence\n81-100: Excellent - Exceptional argument with compelling evidence\n\nCurrent scores: user: 35, opponent: 65\n\nEvaluate the latest argument and return ONLY a number between 0-100."
     },
     {
       "role": "user",
-      "content": "Evaluate this against argument: \"Feelings are subjective and personal, but in a logical debate, we focus on evidence and reasoning rather than emotions. The lack of universal agreement on the meaning of life supports the idea that it is not inherently objective.\""
+      "content": "Evaluate this against argument: \"Even if some religious beliefs suggest a predetermined plan, the concept of free will is still valid. Philosophically, free will allows individuals to make choices and decisions independently. While theological beliefs may influence personal perspectives, the existence of free will remains a fundamental aspect of human agency.\""
     }
   ],
-  "temperature": 0.7,
-  "max_tokens": 500
+  "temperature": 0.5,
+  "max_tokens": 350,
+  "difficulty": "medium",
+  "configUsed": {
+    "temperature": 0.5,
+    "maxTokens": 350,
+    "scoreMultiplier": 1
+  }
 }
-[2024-12-02T14:04:09.171Z] Received API response:
+[2024-12-02T14:29:09.043Z] Received API response:
 Data: {
   "status": 200,
   "data": {
-    "id": "gen-1733148248-rGaCPyLNljvKbtgvf8yL",
+    "id": "gen-1733149747-EUbyId0C8WLbpIPVhnUc",
     "provider": "Google",
     "model": "google/gemini-flash-1.5",
     "object": "chat.completion",
-    "created": 1733148248,
+    "created": 1733149747,
     "choices": [
       {
         "logprobs": null,
@@ -971,13 +535,13 @@ Data: {
       }
     ],
     "usage": {
-      "prompt_tokens": 226,
+      "prompt_tokens": 263,
       "completion_tokens": 3,
-      "total_tokens": 229
+      "total_tokens": 266
     }
   }
 }
-[2024-12-02T14:04:09.172Z] [DebateRoutes] Evaluation result:
+[2024-12-02T14:29:09.044Z] [DebateRoutes] Evaluation result:
 Data: {
   "score": 45
 }

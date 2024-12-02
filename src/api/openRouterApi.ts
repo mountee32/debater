@@ -25,6 +25,8 @@ type Message = {
   };
 }
 
+type Difficulty = 'easy' | 'medium' | 'hard';
+
 // Map internal messages to API format
 const mapToApiMessages = (messages: Message[]): ApiMessage[] => {
   return messages.map(msg => {
@@ -39,20 +41,22 @@ const generatePersonalityPrompt = (
   aiPersonality: AIPersonality,
   topic: string,
   position: 'for' | 'against',
-  difficulty: 'easy' | 'medium' | 'hard'
+  difficulty: Difficulty
 ) => {
-  const difficultyGuide = {
-    easy: "Use simpler language and basic arguments. Focus on clear, straightforward points.",
-    medium: "Use moderate complexity in language and arguments. Balance between basic and advanced concepts.",
-    hard: "Use sophisticated language and complex arguments. Employ advanced debate techniques and deeper analysis."
-  };
+  const difficultyMods = aiPersonality.difficultyModifiers[difficulty];
 
   return `You are ${aiPersonality.name}, ${aiPersonality.description}. You are debating ${position} the topic "${topic}".
 
+DIFFICULTY ADAPTATION (${difficulty}):
+- Vocabulary Level: ${difficultyMods.vocabularyLevel}
+- Argument Complexity: ${difficultyMods.argumentComplexity}
+- Response Length: ${difficultyMods.responseLength}
+- Example Types: ${difficultyMods.exampleTypes.join(', ')}
+
 PERSONALITY TRAITS:
 - Argument Style: ${aiPersonality.traits.argumentStyle}
-- Vocabulary Level: ${aiPersonality.traits.vocabulary}
-- Example Types: ${aiPersonality.traits.exampleTypes}
+- Vocabulary: ${difficultyMods.vocabularyLevel}
+- Example Types: ${difficultyMods.exampleTypes.join(', ')}
 - Debate Strategy: ${aiPersonality.traits.debateStrategy}
 
 BEHAVIORAL GUIDELINES:
@@ -60,9 +64,9 @@ ${aiPersonality.behaviorGuidelines.map(guideline => `- ${guideline}`).join('\n')
 
 LANGUAGE STYLE:
 - Tone: ${aiPersonality.languageStyle.tone}
-- Complexity: ${aiPersonality.languageStyle.complexity}
-- Preferred Phrases: Use these frequently: ${aiPersonality.languageStyle.preferredPhrases.join(', ')}
-- Phrases to Avoid: Do not use: ${aiPersonality.languageStyle.avoidedPhrases.join(', ')}
+- Complexity: Adapted for ${difficulty} difficulty
+- Preferred Phrases: ${aiPersonality.languageStyle.preferredPhrases.join(', ')}
+- Phrases to Avoid: ${aiPersonality.languageStyle.avoidedPhrases.join(', ')}
 
 DEBATE APPROACH:
 - Opening Style: ${aiPersonality.debateApproach.openingStyle}
@@ -70,24 +74,18 @@ DEBATE APPROACH:
 - Evidence Preference: ${aiPersonality.debateApproach.evidencePreference}
 - Persuasion Techniques: ${aiPersonality.debateApproach.persuasionTechniques.join(', ')}
 
-RESPONSE EXAMPLES (emulate this style):
-${aiPersonality.responseExamples.map(example => `- ${example}`).join('\n')}
+RESPONSE FORMAT:
+- Keep responses ${difficultyMods.responseLength}
+- Maintain ${difficultyMods.argumentComplexity}
+- Use ${difficultyMods.vocabularyLevel}
+- Focus on ${difficultyMods.exampleTypes.join(' and ')}
 
-DEBATE FORMAT:
-- Keep responses under 3 sentences for clarity and impact
-- Each response must directly address the previous argument
-- Maintain a consistent position throughout the debate
-- Use evidence and logical reasoning to support claims
-
-DIFFICULTY LEVEL: ${difficulty}
-${difficultyGuide[difficulty]}
-
-Your responses should consistently reflect your unique personality traits and debate approach while maintaining focus on the topic and adapting to the specified difficulty level.`;
+Your responses should reflect your personality while adapting to the ${difficulty} difficulty level.`;
 };
 
 export const startDebate = async (
   topic: string,
-  difficulty: 'easy' | 'medium' | 'hard',
+  difficulty: Difficulty,
   userPosition: 'for' | 'against',
   aiPersonality: AIPersonality
 ): Promise<string> => {
@@ -109,6 +107,7 @@ export const startDebate = async (
     topic,
     position: aiPosition,
     messages,
+    difficulty
   });
 
   return response.data.response;
@@ -117,31 +116,24 @@ export const startDebate = async (
 export const continueDebate = async (
   topic: string,
   messages: Message[],
-  aiPosition: 'for' | 'against'
+  aiPosition: 'for' | 'against',
+  difficulty: Difficulty
 ): Promise<string> => {
   // Find the original system message to maintain personality
   const originalSystemMessage = messages.find(m => m.role === 'system');
   
   // Map all messages to API format, preserving the correct roles
-  const apiMessages = messages.map(msg => {
-    const { content, id, score } = msg;
-    // Keep system messages as is
-    if (msg.role === 'system') return { role: 'system', content, id, score };
-    // Map opponent messages to assistant
-    if (msg.role === 'opponent') return { role: 'assistant', content, id, score };
-    // Map hint messages to assistant
-    if (msg.role === 'hint') return { role: 'assistant', content, id, score };
-    // Map user messages to user
-    return { role: 'user', content, id, score };
-  });
+  const apiMessages = mapToApiMessages(messages);
 
   // Default system message if original not found
   const defaultSystemMessage: ApiMessage = {
     role: 'system',
     content: `You are continuing a debate on the topic "${topic}", taking the ${aiPosition} position.
 
+DIFFICULTY LEVEL: ${difficulty}
+
 RESPONSE GUIDELINES:
-1. Keep responses under 3 sentences
+1. Keep responses appropriate for ${difficulty} difficulty
 2. Directly address the previous argument
 3. Maintain consistent position and logic
 4. Use evidence when possible
@@ -166,6 +158,7 @@ EVALUATION CRITERIA:
     topic,
     position: aiPosition,
     messages: messagesWithSystem,
+    difficulty
   });
 
   return response.data.response;
@@ -177,7 +170,8 @@ export const evaluateArgument = async (
   messages: Message[],
   currentScores: { user: number; opponent: number },
   model: string,
-  roleToScore: 'user' | 'opponent'
+  roleToScore: 'user' | 'opponent',
+  difficulty: Difficulty
 ): Promise<number> => {
   // Map messages to API format, ensuring correct role mapping
   const apiMessages = messages.map(msg => {
@@ -209,7 +203,8 @@ export const evaluateArgument = async (
     messages: apiMessages,
     currentScores,
     model,
-    roleToScore
+    roleToScore,
+    difficulty
   });
 
   return response.data.score;
@@ -218,7 +213,7 @@ export const evaluateArgument = async (
 export const generateHint = async (
   topic: string,
   messages: Message[],
-  difficulty: 'easy' | 'medium' | 'hard',
+  difficulty: Difficulty,
   userPosition: 'for' | 'against'
 ): Promise<string> => {
   // Map messages to API format
@@ -227,7 +222,8 @@ export const generateHint = async (
   const response = await axios.post(`${API_BASE_URL}/hint`, {
     topic,
     position: userPosition,
-    messages: apiMessages
+    messages: apiMessages,
+    difficulty
   });
 
   return response.data.hint;

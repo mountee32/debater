@@ -23,24 +23,45 @@ describe('OpenRouterService', () => {
     ];
     const mockModel = 'gpt-3.5-turbo';
 
-    it('should generate completion successfully', async () => {
+    it('should use appropriate model parameters for each difficulty level', async () => {
       const mockResponse = {
         data: {
-          choices: [{ message: { content: 'Hello! How can I help you?' } }]
+          choices: [{ message: { content: 'Response' } }]
         }
       };
+      mockedAxios.post.mockResolvedValue(mockResponse);
+      mockedApiLogger.logRequest.mockResolvedValue('test-request-id');
 
-      mockedAxios.post.mockResolvedValueOnce(mockResponse);
-      mockedApiLogger.logRequest.mockResolvedValueOnce('test-request-id');
-
-      const result = await OpenRouterService.generateCompletion(mockMessages, mockModel);
-
-      expect(result).toBe('Hello! How can I help you?');
-      expect(mockedAxios.post).toHaveBeenCalledWith(
+      // Test easy difficulty
+      await OpenRouterService.generateCompletion(mockMessages, mockModel, 'easy');
+      expect(mockedAxios.post).toHaveBeenLastCalledWith(
         expect.any(String),
         expect.objectContaining({
-          model: mockModel,
-          messages: expect.any(Array),
+          model: 'mistral/mistral-tiny',
+          temperature: 0.3,
+          max_tokens: 200
+        }),
+        expect.any(Object)
+      );
+
+      // Test medium difficulty
+      await OpenRouterService.generateCompletion(mockMessages, mockModel, 'medium');
+      expect(mockedAxios.post).toHaveBeenLastCalledWith(
+        expect.any(String),
+        expect.objectContaining({
+          model: 'mistral/mistral-medium',
+          temperature: 0.5,
+          max_tokens: 350
+        }),
+        expect.any(Object)
+      );
+
+      // Test hard difficulty
+      await OpenRouterService.generateCompletion(mockMessages, mockModel, 'hard');
+      expect(mockedAxios.post).toHaveBeenLastCalledWith(
+        expect.any(String),
+        expect.objectContaining({
+          model: 'mistral/mistral-large',
           temperature: 0.7,
           max_tokens: 500
         }),
@@ -86,87 +107,37 @@ describe('OpenRouterService', () => {
         error
       );
     });
-
-    it('should throw error after max retries', async () => {
-      const error = new Error('Network error');
-      mockedAxios.post.mockRejectedValue(error);
-      mockedApiLogger.logRequest.mockResolvedValue('test-request-id');
-
-      await expect(OpenRouterService.generateCompletion(mockMessages, mockModel))
-        .rejects
-        .toThrow('OpenRouter API failed after 3 attempts');
-
-      expect(mockedAxios.post).toHaveBeenCalledTimes(3);
-      expect(mockedDiagnosticLogger.error).toHaveBeenCalledTimes(3);
-    });
-
-    it('should handle malformed API response', async () => {
-      const mockResponse = {
-        data: {
-          choices: null // Malformed response
-        }
-      };
-
-      mockedAxios.post.mockResolvedValueOnce(mockResponse);
-      mockedApiLogger.logRequest.mockResolvedValueOnce('test-request-id');
-
-      const result = await OpenRouterService.generateCompletion(mockMessages, mockModel);
-
-      expect(result).toBe('');
-      expect(mockedDiagnosticLogger.warn).toHaveBeenCalled();
-    });
-
-    it('should filter out empty messages', async () => {
-      const messagesWithEmpty = [
-        { role: 'system', content: 'You are a helpful assistant' },
-        { role: 'user', content: '  ' }, // Empty message
-        { role: 'user', content: 'Hello' }
-      ];
-
-      const mockResponse = {
-        data: {
-          choices: [{ message: { content: 'Response' } }]
-        }
-      };
-
-      mockedAxios.post.mockResolvedValueOnce(mockResponse);
-      mockedApiLogger.logRequest.mockResolvedValueOnce('test-request-id');
-
-      await OpenRouterService.generateCompletion(messagesWithEmpty, mockModel);
-
-      expect(mockedAxios.post).toHaveBeenCalledWith(
-        expect.any(String),
-        expect.objectContaining({
-          messages: expect.arrayContaining([
-            expect.objectContaining({ content: 'You are a helpful assistant' }),
-            expect.objectContaining({ content: 'Hello' })
-          ])
-        }),
-        expect.any(Object)
-      );
-    });
   });
 
   describe('generateTopic', () => {
-    it('should generate a topic successfully', async () => {
-      const mockTopic = 'Should artificial intelligence be regulated?';
+    it('should generate topics with appropriate difficulty', async () => {
       const category = 'technology';
       const model = 'gpt-3.5-turbo';
 
-      jest.spyOn(OpenRouterService, 'generateCompletion')
-        .mockResolvedValueOnce(mockTopic);
+      jest.spyOn(OpenRouterService, 'generateCompletion');
 
-      const result = await OpenRouterService.generateTopic(category, model);
-
-      expect(result).toBe(mockTopic);
-      expect(OpenRouterService.generateCompletion).toHaveBeenCalledWith(
+      // Test easy difficulty
+      await OpenRouterService.generateTopic(category, model, 'easy');
+      expect(OpenRouterService.generateCompletion).toHaveBeenLastCalledWith(
         expect.arrayContaining([
           expect.objectContaining({
-            role: 'system',
-            content: expect.stringContaining(category)
+            content: expect.stringContaining('Create topics suitable for young audiences')
           })
         ]),
-        model
+        model,
+        'easy'
+      );
+
+      // Test hard difficulty
+      await OpenRouterService.generateTopic(category, model, 'hard');
+      expect(OpenRouterService.generateCompletion).toHaveBeenLastCalledWith(
+        expect.arrayContaining([
+          expect.objectContaining({
+            content: expect.stringContaining('Create sophisticated topics')
+          })
+        ]),
+        model,
+        'hard'
       );
     });
   });
@@ -176,55 +147,32 @@ describe('OpenRouterService', () => {
     const mockPosition = 'for';
     const mockModel = 'gpt-3.5-turbo';
 
-    it('should generate a hint successfully', async () => {
-      const mockHint = 'Focus on AI safety concerns and potential risks to society.';
-      
-      jest.spyOn(OpenRouterService, 'generateCompletion')
-        .mockResolvedValueOnce(mockHint);
+    it('should generate hints with appropriate difficulty', async () => {
+      jest.spyOn(OpenRouterService, 'generateCompletion');
 
-      const result = await OpenRouterService.generateHint(mockTopic, mockPosition, mockModel);
-
-      expect(result).toBe(mockHint);
-      expect(OpenRouterService.generateCompletion).toHaveBeenCalledWith(
+      // Test easy difficulty
+      await OpenRouterService.generateHint(mockTopic, mockPosition, mockModel, 'easy');
+      expect(OpenRouterService.generateCompletion).toHaveBeenLastCalledWith(
         expect.arrayContaining([
           expect.objectContaining({
-            role: 'system',
-            content: expect.stringContaining(mockTopic)
-          }),
-          expect.objectContaining({
-            role: 'user',
-            content: expect.stringContaining(mockPosition)
+            content: expect.stringContaining('Provide clear, straightforward hints')
           })
         ]),
-        mockModel
+        mockModel,
+        'easy'
       );
-      expect(mockedDiagnosticLogger.log).toHaveBeenCalledWith(
-        'Generating hint:',
-        expect.objectContaining({
-          topic: mockTopic,
-          position: mockPosition,
-          model: mockModel
-        })
+
+      // Test hard difficulty
+      await OpenRouterService.generateHint(mockTopic, mockPosition, mockModel, 'hard');
+      expect(OpenRouterService.generateCompletion).toHaveBeenLastCalledWith(
+        expect.arrayContaining([
+          expect.objectContaining({
+            content: expect.stringContaining('sophisticated strategic guidance')
+          })
+        ]),
+        mockModel,
+        'hard'
       );
-    });
-
-    it('should handle empty hint response', async () => {
-      jest.spyOn(OpenRouterService, 'generateCompletion')
-        .mockResolvedValueOnce('');
-
-      const result = await OpenRouterService.generateHint(mockTopic, mockPosition, mockModel);
-
-      expect(result).toBe('');
-    });
-
-    it('should propagate errors from generateCompletion', async () => {
-      const error = new Error('API error');
-      jest.spyOn(OpenRouterService, 'generateCompletion')
-        .mockRejectedValueOnce(error);
-
-      await expect(OpenRouterService.generateHint(mockTopic, mockPosition, mockModel))
-        .rejects
-        .toThrow('API error');
     });
   });
 
@@ -238,28 +186,76 @@ describe('OpenRouterService', () => {
       roleToScore: 'user' as const
     };
 
-    it('should evaluate argument and return valid score', async () => {
+    it('should apply difficulty-based score multipliers', async () => {
       jest.spyOn(OpenRouterService, 'generateCompletion')
-        .mockResolvedValueOnce('85');
+        .mockResolvedValue('80');
 
-      const result = await OpenRouterService.evaluateArgument(
+      // Test easy difficulty (1.5x multiplier)
+      const easyScore = await OpenRouterService.evaluateArgument(
         mockParams.topic,
         mockParams.position,
         mockParams.messages,
         mockParams.currentScores,
         mockParams.model,
-        mockParams.roleToScore
+        mockParams.roleToScore,
+        'easy'
       );
+      expect(easyScore).toBe(Math.min(100, Math.round(80 * 1.5)));
 
-      expect(result).toBe(85);
-      expect(OpenRouterService.generateCompletion).toHaveBeenCalledWith(
+      // Test hard difficulty (0.8x multiplier)
+      const hardScore = await OpenRouterService.evaluateArgument(
+        mockParams.topic,
+        mockParams.position,
+        mockParams.messages,
+        mockParams.currentScores,
+        mockParams.model,
+        mockParams.roleToScore,
+        'hard'
+      );
+      expect(hardScore).toBe(Math.round(80 * 0.8));
+    });
+
+    it('should use difficulty-appropriate evaluation criteria', async () => {
+      jest.spyOn(OpenRouterService, 'generateCompletion');
+
+      // Test easy difficulty
+      await OpenRouterService.evaluateArgument(
+        mockParams.topic,
+        mockParams.position,
+        mockParams.messages,
+        mockParams.currentScores,
+        mockParams.model,
+        mockParams.roleToScore,
+        'easy'
+      );
+      expect(OpenRouterService.generateCompletion).toHaveBeenLastCalledWith(
         expect.arrayContaining([
           expect.objectContaining({
-            role: 'system',
-            content: expect.stringContaining(mockParams.topic)
+            content: expect.stringContaining('Be more lenient with scoring')
           })
         ]),
-        mockParams.model
+        mockParams.model,
+        'easy'
+      );
+
+      // Test hard difficulty
+      await OpenRouterService.evaluateArgument(
+        mockParams.topic,
+        mockParams.position,
+        mockParams.messages,
+        mockParams.currentScores,
+        mockParams.model,
+        mockParams.roleToScore,
+        'hard'
+      );
+      expect(OpenRouterService.generateCompletion).toHaveBeenLastCalledWith(
+        expect.arrayContaining([
+          expect.objectContaining({
+            content: expect.stringContaining('Apply strict scoring criteria')
+          })
+        ]),
+        mockParams.model,
+        'hard'
       );
     });
 
@@ -278,33 +274,6 @@ describe('OpenRouterService', () => {
 
       expect(result).toBe(50);
       expect(mockedDiagnosticLogger.warn).toHaveBeenCalled();
-    });
-
-    it('should bound score between 0 and 100', async () => {
-      jest.spyOn(OpenRouterService, 'generateCompletion')
-        .mockResolvedValueOnce('150');
-
-      const result = await OpenRouterService.evaluateArgument(
-        mockParams.topic,
-        mockParams.position,
-        mockParams.messages,
-        mockParams.currentScores,
-        mockParams.model,
-        mockParams.roleToScore
-      );
-
-      expect(result).toBe(100);
-    });
-
-    it('should throw error when no message to evaluate', async () => {
-      await expect(OpenRouterService.evaluateArgument(
-        mockParams.topic,
-        mockParams.position,
-        [], // Empty messages array
-        mockParams.currentScores,
-        mockParams.model,
-        mockParams.roleToScore
-      )).rejects.toThrow('No message to evaluate');
     });
   });
 

@@ -1,3 +1,10 @@
+export interface DifficultyModifiers {
+  vocabularyLevel: string;
+  argumentComplexity: string;
+  responseLength: string;
+  exampleTypes: string[];
+}
+
 export interface AIPersonality {
   id: string;
   name: string;
@@ -21,6 +28,11 @@ export interface AIPersonality {
     counterArgumentStyle: string;
     evidencePreference: string;
     persuasionTechniques: string[];
+  };
+  difficultyModifiers: {
+    easy: DifficultyModifiers;
+    medium: DifficultyModifiers;
+    hard: DifficultyModifiers;
   };
   avatarUrl: string;
 }
@@ -74,6 +86,26 @@ export const aiPersonalities: AIPersonality[] = [
         'Empirical evidence'
       ]
     },
+    difficultyModifiers: {
+      easy: {
+        vocabularyLevel: 'simple technical terms',
+        argumentComplexity: 'basic step-by-step reasoning',
+        responseLength: 'short, focused points',
+        exampleTypes: ['simple statistics', 'everyday observations']
+      },
+      medium: {
+        vocabularyLevel: 'moderate technical terms',
+        argumentComplexity: 'clear logical chains',
+        responseLength: 'balanced explanations',
+        exampleTypes: ['research summaries', 'case studies']
+      },
+      hard: {
+        vocabularyLevel: 'advanced technical terms',
+        argumentComplexity: 'complex logical frameworks',
+        responseLength: 'detailed analysis',
+        exampleTypes: ['peer-reviewed research', 'statistical analysis']
+      }
+    },
     avatarUrl: '/assets/business_man.svg'
   },
   {
@@ -123,6 +155,26 @@ export const aiPersonalities: AIPersonality[] = [
         'Relatable examples',
         'Value-based arguments'
       ]
+    },
+    difficultyModifiers: {
+      easy: {
+        vocabularyLevel: 'simple emotional terms',
+        argumentComplexity: 'basic personal stories',
+        responseLength: 'short, relatable stories',
+        exampleTypes: ['personal experiences', 'family stories']
+      },
+      medium: {
+        vocabularyLevel: 'moderate emotional vocabulary',
+        argumentComplexity: 'balanced personal and societal impact',
+        responseLength: 'developed narratives',
+        exampleTypes: ['community examples', 'social impact stories']
+      },
+      hard: {
+        vocabularyLevel: 'sophisticated emotional language',
+        argumentComplexity: 'complex emotional narratives',
+        responseLength: 'rich, layered stories',
+        exampleTypes: ['sociological studies', 'psychological research']
+      }
     },
     avatarUrl: '/assets/girl_young.svg'
   },
@@ -174,6 +226,26 @@ export const aiPersonalities: AIPersonality[] = [
         'Assumption challenging'
       ]
     },
+    difficultyModifiers: {
+      easy: {
+        vocabularyLevel: 'simple questioning terms',
+        argumentComplexity: 'basic counterexamples',
+        responseLength: 'short challenges',
+        exampleTypes: ['simple what-if scenarios', 'everyday contradictions']
+      },
+      medium: {
+        vocabularyLevel: 'moderate analytical terms',
+        argumentComplexity: 'thought experiments',
+        responseLength: 'developed challenges',
+        exampleTypes: ['logical contradictions', 'hypothetical scenarios']
+      },
+      hard: {
+        vocabularyLevel: 'complex philosophical terms',
+        argumentComplexity: 'philosophical paradoxes',
+        responseLength: 'intricate challenges',
+        exampleTypes: ['complex paradoxes', 'deep assumption analysis']
+      }
+    },
     avatarUrl: '/assets/boy_male.svg'
   },
   {
@@ -224,6 +296,26 @@ export const aiPersonalities: AIPersonality[] = [
         'Cross-era comparison'
       ]
     },
+    difficultyModifiers: {
+      easy: {
+        vocabularyLevel: 'simple historical terms',
+        argumentComplexity: 'basic historical examples',
+        responseLength: 'short historical comparisons',
+        exampleTypes: ['recent history', 'well-known events']
+      },
+      medium: {
+        vocabularyLevel: 'moderate historical vocabulary',
+        argumentComplexity: 'historical patterns',
+        responseLength: 'developed historical analysis',
+        exampleTypes: ['historical parallels', 'era comparisons']
+      },
+      hard: {
+        vocabularyLevel: 'advanced historical terminology',
+        argumentComplexity: 'complex historical interconnections',
+        responseLength: 'detailed historical analysis',
+        exampleTypes: ['obscure historical events', 'complex patterns']
+      }
+    },
     avatarUrl: '/assets/elderly_grandma.svg'
   },
   {
@@ -273,6 +365,26 @@ export const aiPersonalities: AIPersonality[] = [
         'Technology roadmapping',
         'Future impact assessment'
       ]
+    },
+    difficultyModifiers: {
+      easy: {
+        vocabularyLevel: 'simple tech terms',
+        argumentComplexity: 'near-future predictions',
+        responseLength: 'short trend descriptions',
+        exampleTypes: ['current trends', 'simple forecasts']
+      },
+      medium: {
+        vocabularyLevel: 'moderate tech vocabulary',
+        argumentComplexity: 'mid-range forecasting',
+        responseLength: 'developed scenarios',
+        exampleTypes: ['technology combinations', 'emerging patterns']
+      },
+      hard: {
+        vocabularyLevel: 'advanced tech terminology',
+        argumentComplexity: 'complex scenario planning',
+        responseLength: 'detailed future analysis',
+        exampleTypes: ['complex forecasting', 'multiple future paths']
+      }
     },
     avatarUrl: '/assets/boy_young.svg'
   }

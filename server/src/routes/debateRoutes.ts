@@ -72,10 +72,11 @@ router.post('/topic', async (req, res) => {
 router.post('/response', async (req, res) => {
   try {
     await DiagnosticLogger.log('[DebateRoutes] Generating response:', req.body);
-    const { topic, position, messages, model } = req.body;
+    const { topic, position, messages, model, difficulty } = req.body;
     const response = await OpenRouterService.generateCompletion(
       messages,
-      model || 'openai/gpt-3.5-turbo'
+      model || 'openai/gpt-3.5-turbo',
+      difficulty || 'medium'  // Pass difficulty parameter
     );
     await DiagnosticLogger.log('[DebateRoutes] Generated response:', { response });
     res.json({ response });
@@ -92,7 +93,7 @@ router.post('/response', async (req, res) => {
 router.post('/evaluate', async (req, res) => {
   try {
     await DiagnosticLogger.log('[DebateRoutes] Evaluating argument request:', req.body);
-    const { topic, position, messages, currentScores, model, roleToScore } = req.body;
+    const { topic, position, messages, currentScores, model, roleToScore, difficulty } = req.body;
     
     if (!topic || !position || !messages || !currentScores || !model || !roleToScore) {
       const error = 'Missing required fields';
@@ -108,7 +109,8 @@ router.post('/evaluate', async (req, res) => {
       messagesCount: messages.length,
       currentScores,
       model,
-      roleToScore
+      roleToScore,
+      difficulty
     });
 
     const score = await OpenRouterService.evaluateArgument(
@@ -117,7 +119,8 @@ router.post('/evaluate', async (req, res) => {
       messages,
       currentScores,
       model,
-      roleToScore
+      roleToScore,
+      difficulty || 'medium'  // Pass difficulty parameter
     );
 
     await DiagnosticLogger.log('[DebateRoutes] Evaluation result:', { score });
@@ -135,8 +138,13 @@ router.post('/evaluate', async (req, res) => {
 router.post('/hint', async (req, res) => {
   try {
     await DiagnosticLogger.log('[DebateRoutes] Generating hint:', req.body);
-    const { topic, position, model } = req.body;
-    const hint = await OpenRouterService.generateHint(topic, position, model || 'openai/gpt-3.5-turbo');
+    const { topic, position, model, difficulty } = req.body;
+    const hint = await OpenRouterService.generateHint(
+      topic, 
+      position, 
+      model || 'openai/gpt-3.5-turbo',
+      difficulty || 'medium'  // Pass difficulty parameter
+    );
     await DiagnosticLogger.log('[DebateRoutes] Generated hint:', { hint });
     res.json({ hint });
   } catch (error) {
