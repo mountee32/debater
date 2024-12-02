@@ -1,0 +1,26 @@
+{
+  "id": "6c9243c6",
+  "startTime": "2024-12-02T23:36:30.917Z",
+  "gameSetup": {
+    "topic": "We have no free will because God’s plan is predetermined",
+    "difficulty": 1,
+    "participants": [
+      {
+        "id": "user",
+        "name": "User",
+        "avatar": "user.svg",
+        "role": "debater"
+      },
+      {
+        "id": "opponent",
+        "name": "Logical Larry",
+        "avatar": "/assets/business_man.svg",
+        "role": "debater"
+      }
+    ],
+    "subjectId": "REL002",
+    "position": "against",
+    "skill": "easy"
+  },
+  "events": []
+}

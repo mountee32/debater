@@ -77,17 +77,17 @@ describe('ConversationRecorder', () => {
     jest.clearAllMocks();
     // Mock Date.now() and toISOString
     jest.spyOn(Date.prototype, 'toISOString').mockReturnValue(mockDate.toISOString());
-    mockedUuidV4.mockReturnValue(mockConversationId);
     // Mock console methods
     jest.spyOn(console, 'log').mockImplementation(() => {});
     jest.spyOn(console, 'error').mockImplementation(() => {});
-    // Mock fs.existsSync to return true
-    (mockedFs.existsSync as jest.Mock).mockReturnValue(true);
+    // Mock fs.existsSync to return false by default
+    (mockedFs.existsSync as jest.Mock).mockReturnValue(false);
+    // Mock UUID to return default ID
+    mockedUuidV4.mockReturnValue(mockConversationId);
     // Mock HighScoreManager
     (HighScoreManager.checkAndUpdateHighScore as jest.Mock).mockResolvedValue(false);
     // Mock fs.promises methods with default success responses
     mockedFs.promises.writeFile.mockResolvedValue(undefined);
-    mockedFs.promises.unlink.mockResolvedValue(undefined);
     mockedFs.promises.mkdir.mockResolvedValue(undefined);
   });
 
@@ -111,22 +111,6 @@ describe('ConversationRecorder', () => {
       await expect(ConversationRecorder.startNewConversation(mockGameSetup))
         .rejects.toThrow('Permission denied');
     });
-
-    it('should handle write permission test error', async () => {
-      const error = new Error('Write permission denied');
-      mockedFs.promises.writeFile.mockRejectedValueOnce(error);
-
-      await expect(ConversationRecorder.startNewConversation(mockGameSetup))
-        .rejects.toThrow('Write permission denied');
-    });
-
-    it('should handle unlink error during permission test', async () => {
-      const error = new Error('Unlink failed');
-      mockedFs.promises.unlink.mockRejectedValueOnce(error);
-
-      await expect(ConversationRecorder.startNewConversation(mockGameSetup))
-        .rejects.toThrow('Unlink failed');
-    });
   });
 
   describe('startNewConversation', () => {
@@ -146,27 +130,99 @@ describe('ConversationRecorder', () => {
       });
     });
 
+    it('should generate new ID if file already exists', async () => {
+      const existingId = 'existing123';
+      const newId = 'new456';
+      
+      // First set up UUID mock sequence
+      mockedUuidV4
+        .mockReturnValueOnce(existingId)
+        .mockReturnValueOnce(newId);
+      
+      // Then set up existsSync mock to check file paths
+      (mockedFs.existsSync as jest.Mock).mockImplementation((filePath: string) => {
+        if (filePath === logDir) return true;
+        return filePath.includes(`conversation-${existingId}`);
+      });
+
+      // Start conversation and verify results
+      const conversationId = await ConversationRecorder.startNewConversation(mockGameSetup);
+
+      // Verify the correct ID was used
+      expect(conversationId).toBe(newId);
+      expect(mockedUuidV4).toHaveBeenCalledTimes(2);
+      
+      // Verify file existence was checked
+      const existsSyncCalls = (mockedFs.existsSync as jest.Mock).mock.calls;
+      expect(existsSyncCalls.some(call => call[0].includes(existingId))).toBe(true);
+      expect(existsSyncCalls.some(call => call[0].includes(newId))).toBe(true);
+      
+      // Verify the file was written with the new ID
+      const writeFileCalls = mockedFs.promises.writeFile.mock.calls;
+      const lastWriteCall = writeFileCalls[writeFileCalls.length - 1];
+      const savedData = JSON.parse(lastWriteCall[1]);
+      expect(savedData.id).toBe(newId);
+    });
+
     it('should handle file write error', async () => {
       const error = new Error('Write failed');
-      // First call succeeds (permission test)
-      mockedFs.promises.writeFile
-        .mockResolvedValueOnce(undefined)
-        // Second call fails (actual write)
-        .mockRejectedValueOnce(error);
+      mockedFs.promises.writeFile.mockRejectedValueOnce(error);
 
       await expect(ConversationRecorder.startNewConversation(mockGameSetup))
         .rejects.toThrow('Write failed');
     });
   });
 
+  describe('concurrent operations', () => {
+    it('should handle concurrent writes correctly', async () => {
+      // Start conversation
+      await ConversationRecorder.startNewConversation(mockGameSetup);
+      
+      // Simulate concurrent message recordings
+      const message1Promise = ConversationRecorder.recordMessage('player1', 'First message');
+      const message2Promise = ConversationRecorder.recordMessage('player2', 'Second message');
+      
+      await Promise.all([message1Promise, message2Promise]);
+
+      // Verify both messages were recorded in order
+      const lastCall = mockedFs.promises.writeFile.mock.calls.slice(-1)[0];
+      const savedData = JSON.parse(lastCall[1]);
+      expect(savedData.events).toHaveLength(2);
+      expect(savedData.events[0].content).toBe('First message');
+      expect(savedData.events[1].content).toBe('Second message');
+    });
+
+    it('should handle concurrent read/write operations', async () => {
+      // Start conversation
+      await ConversationRecorder.startNewConversation(mockGameSetup);
+      
+      // Mock readdir and readFile for getConversation
+      mockedFs.promises.readdir.mockResolvedValue([`2024-01-01-conversation-${mockConversationId}.json`]);
+      mockedFs.promises.readFile.mockImplementation(() => {
+        return Promise.resolve(JSON.stringify({
+          id: mockConversationId,
+          startTime: mockDate.toISOString(),
+          gameSetup: mockGameSetup,
+          events: []
+        }));
+      });
+
+      // Simulate concurrent read and write
+      const writePromise = ConversationRecorder.recordMessage('player1', 'Test message');
+      const readPromise = ConversationRecorder.getConversation(mockConversationId);
+      
+      await Promise.all([writePromise, readPromise]);
+
+      // Verify both operations completed successfully
+      expect(mockedFs.promises.writeFile).toHaveBeenCalled();
+      expect(mockedFs.promises.readFile).toHaveBeenCalled();
+    });
+  });
+
   describe('recordMessage and recordScore', () => {
     beforeEach(async () => {
-      // Reset mocks and ensure first conversation write succeeds
-      mockedFs.promises.writeFile
-        .mockResolvedValueOnce(undefined) // permission test
-        .mockResolvedValueOnce(undefined); // initial conversation save
       await ConversationRecorder.startNewConversation(mockGameSetup);
-      mockedFs.promises.writeFile.mockClear(); // Clear previous calls
+      mockedFs.promises.writeFile.mockClear();
     });
 
     it('should record multiple events in order', async () => {
@@ -229,12 +285,8 @@ describe('ConversationRecorder', () => {
 
   describe('endConversation', () => {
     beforeEach(async () => {
-      // Reset mocks and ensure first conversation write succeeds
-      mockedFs.promises.writeFile
-        .mockResolvedValueOnce(undefined) // permission test
-        .mockResolvedValueOnce(undefined); // initial conversation save
       await ConversationRecorder.startNewConversation(mockGameSetup);
-      mockedFs.promises.writeFile.mockClear(); // Clear previous calls
+      mockedFs.promises.writeFile.mockClear();
     });
 
     it('should end conversation with final score and check for high score', async () => {
