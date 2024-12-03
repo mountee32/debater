@@ -19,7 +19,8 @@ interface EnvConfig {
   CORS_ORIGIN: string;
   OPENROUTER_API_KEY: string;
   ENABLE_DIAGNOSTIC_LOGGING: boolean;
-  API_BASE_URL: string; // Added API_BASE_URL
+  API_BASE_URL: string;
+  BASE_PATH: string;
 }
 
 // Default values
@@ -28,7 +29,8 @@ const defaults: EnvConfig = {
   CORS_ORIGIN: 'http://localhost:5173',
   OPENROUTER_API_KEY: '',
   ENABLE_DIAGNOSTIC_LOGGING: false,
-  API_BASE_URL: 'http://localhost:3000/api/debate' // Set default for API_BASE_URL
+  API_BASE_URL: 'http://localhost:3000/api/debate',
+  BASE_PATH: '/data/debater'
 };
 
 // Log raw environment variables
@@ -36,6 +38,7 @@ console.log('Raw environment variables:', {
   PORT: process.env.PORT,
   CORS_ORIGIN: process.env.CORS_ORIGIN,
   ENABLE_DIAGNOSTIC_LOGGING: process.env.ENABLE_DIAGNOSTIC_LOGGING,
+  BASE_PATH: process.env.BASE_PATH
   // Exclude OPENROUTER_API_KEY and API_BASE_URL for security
 });
 
@@ -45,7 +48,8 @@ export const env: EnvConfig = {
   CORS_ORIGIN: process.env.CORS_ORIGIN || defaults.CORS_ORIGIN,
   OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY || defaults.OPENROUTER_API_KEY,
   ENABLE_DIAGNOSTIC_LOGGING: process.env.ENABLE_DIAGNOSTIC_LOGGING === 'true' || defaults.ENABLE_DIAGNOSTIC_LOGGING,
-  API_BASE_URL: process.env.API_BASE_URL || defaults.API_BASE_URL // Added API_BASE_URL
+  API_BASE_URL: process.env.API_BASE_URL || defaults.API_BASE_URL,
+  BASE_PATH: process.env.BASE_PATH || defaults.BASE_PATH
 };
 
 // Log processed environment configuration
@@ -53,11 +57,12 @@ console.log('Processed environment configuration:', {
   PORT: env.PORT,
   CORS_ORIGIN: env.CORS_ORIGIN,
   ENABLE_DIAGNOSTIC_LOGGING: env.ENABLE_DIAGNOSTIC_LOGGING,
+  BASE_PATH: env.BASE_PATH
   // Exclude OPENROUTER_API_KEY and API_BASE_URL for security
 });
 
 // Validate required environment variables
-const requiredVars: (keyof EnvConfig)[] = ['OPENROUTER_API_KEY'];
+const requiredVars: (keyof EnvConfig)[] = ['OPENROUTER_API_KEY', 'BASE_PATH'];
 const missingVars = requiredVars.filter(key => !env[key]);
 
 if (missingVars.length > 0) {

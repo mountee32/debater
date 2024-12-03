@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import DiagnosticLogger from '../utils/diagnosticLogger';
+import { env } from '../config/env';
 
 interface LeaderboardEntry {
   id: number;
@@ -17,7 +18,7 @@ interface Leaderboard {
 }
 
 export class HighScoreManager {
-  private static readonly LEADERBOARD_PATH = path.resolve('/home/vscode/debater/src/data/leaderboard.json');
+  private static readonly LEADERBOARD_PATH = path.join(env.BASE_PATH, 'src/data/leaderboard.json');
   private static readonly MAX_ENTRIES_PER_SUBJECT_SKILL = 5;
 
   private static async readLeaderboard(): Promise<Leaderboard> {
@@ -44,7 +45,7 @@ export class HighScoreManager {
 
   private static async deleteConversationFile(conversationId: string): Promise<void> {
     try {
-      const conversationsDir = path.resolve('/home/vscode/debater/server/logs/conversations');
+      const conversationsDir = path.join(env.BASE_PATH, 'server/logs/conversations');
       const files = await fs.promises.readdir(conversationsDir);
       const conversationFile = files.find(file => file.includes(`conversation-${conversationId}`));
       

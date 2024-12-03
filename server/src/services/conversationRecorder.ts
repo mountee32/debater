@@ -3,6 +3,7 @@ import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import DiagnosticLogger from '../utils/diagnosticLogger';
 import { HighScoreManager } from './highScoreManager';
+import { env } from '../config/env';
 
 interface Participant {
   id: string;
@@ -50,7 +51,7 @@ interface Conversation {
 }
 
 export class ConversationRecorder {
-  private static logDir = path.resolve('/home/vscode/debater/server/logs/conversations');
+  private static logDir = path.join(env.BASE_PATH, 'server/logs/conversations');
   private static currentConversation: Conversation | null = null;
   private static saveLock: { [key: string]: boolean } = {};
 

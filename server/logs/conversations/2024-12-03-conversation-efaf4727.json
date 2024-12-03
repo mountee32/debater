@@ -1,8 +1,8 @@
 {
-  "id": "9870b277",
-  "startTime": "2024-12-02T21:58:10.829Z",
+  "id": "efaf4727",
+  "startTime": "2024-12-03T21:28:44.330Z",
   "gameSetup": {
-    "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+    "topic": "We have no free will because God’s plan is predetermined",
     "difficulty": 1,
     "participants": [
       {
@@ -13,12 +13,12 @@
       },
       {
         "id": "opponent",
-        "name": "Emotional Emma",
-        "avatar": "/assets/girl_young.svg",
+        "name": "Logical Larry",
+        "avatar": "/assets/business_man.svg",
         "role": "debater"
       }
     ],
-    "subjectId": "REL001",
+    "subjectId": "REL002",
     "position": "for",
     "skill": "easy"
   },
