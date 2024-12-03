@@ -2,7 +2,7 @@ Model Comparison Results
 =======================
 Date: 2024-11-29 07:48:54
 
-Models Tested:
+Models Tested: 
 - claude-3-sonnet
 - mythomax-l2-13b
 - gemini-flash-1.5
