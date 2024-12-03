@@ -1,0 +1,94 @@
+{
+  "id": "48d8350a",
+  "startTime": "2024-12-03T22:02:30.563Z",
+  "gameSetup": {
+    "topic": "We have no free will because God’s plan is predetermined",
+    "difficulty": 1,
+    "participants": [
+      {
+        "id": "user",
+        "name": "User",
+        "avatar": "user.svg",
+        "role": "debater"
+      },
+      {
+        "id": "opponent",
+        "name": "Logical Larry",
+        "avatar": "/assets/business_man.svg",
+        "role": "debater"
+      }
+    ],
+    "subjectId": "REL002",
+    "position": "for",
+    "skill": "easy"
+  },
+  "events": [
+    {
+      "type": "message",
+      "timestamp": "2024-12-03T22:02:34.963Z",
+      "speakerId": "opponent",
+      "content": "The assertion that \"We have no free will because God’s plan is predetermined\" can be challenged on several grounds. \n\n1. **Definition of Free Will**: Free will is the ability to make choices that are not determined by prior causes. Many philosophical and psychological studies suggest that humans often make decisions based on personal experiences and reasoning, indicating the presence of free will.\n\n2. **Empirical Evidence**: Research in neuroscience shows that individuals can change their behaviors and decisions based on new information. For instance, a study published in the journal *Nature* found that brain activity can predict decisions before individuals are consciously aware of them, but this does not negate the ability to change those decisions based on new insights.\n\n3. **Statistical Analysis of Human Behavior**: Surveys indicate that a significant majority of people believe they have control over their actions. According to a Pew Research study, 70% of respondents feel they have free will in their lives, suggesting a widespread belief in personal agency.\n\n4."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-03T22:02:36.047Z",
+      "participantId": "opponent",
+      "newScore": 98
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-03T22:02:45.055Z",
+      "speakerId": "system",
+      "content": "Emphasize that if God is omniscient and has a divine plan, then every action we take is already known and thus predetermined, which undermines the concept of free will. To counter potential arguments about human choice, highlight that choices can still exist within the framework of God's plan, but they are ultimately guided by it, making true free will an illusion."
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-03T22:02:45.062Z",
+      "speakerId": "system",
+      "content": "Emphasize that if God is omniscient and has a divine plan, then every action we take is already known and thus predetermined, which undermines the concept of free will. To counter potential arguments about human choice, highlight that choices can still exist within the framework of God's plan, but they are ultimately guided by it, making true free will an illusion."
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-03T22:02:53.353Z",
+      "speakerId": "user",
+      "content": "Emphasize that if God is omniscient and has a divine plan, then every action we take is already known and thus predetermined, which undermines the concept of free will. To counter potential arguments about human choice, highlight that choices can still exist within the framework of God's plan, but they are ultimately guided by it, making true free will an illusion."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-03T22:02:54.452Z",
+      "participantId": "user",
+      "newScore": 68
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-03T22:02:54.460Z",
+      "participantId": "user",
+      "newScore": 68
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-03T22:02:59.974Z",
+      "speakerId": "opponent",
+      "content": "While it is true that if God is omniscient, He knows all actions, this does not mean those actions are predetermined. Knowledge of an event does not cause that event; for example, knowing the outcome of a game does not change how the players play.\n\nMoreover, the concept of free will can coexist with divine knowledge. Just as a parent can foresee their child's choices without controlling them, God can know our decisions while allowing us to make them freely.\n\nLastly, if choices exist within God's plan, then individuals still have the capacity to make genuine decisions. This suggests that free will is not an illusion, but rather a meaningful part of human experience, even within a divine framework."
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-03T22:02:59.985Z",
+      "speakerId": "opponent",
+      "content": "While it is true that if God is omniscient, He knows all actions, this does not mean those actions are predetermined. Knowledge of an event does not cause that event; for example, knowing the outcome of a game does not change how the players play.\n\nMoreover, the concept of free will can coexist with divine knowledge. Just as a parent can foresee their child's choices without controlling them, God can know our decisions while allowing us to make them freely.\n\nLastly, if choices exist within God's plan, then individuals still have the capacity to make genuine decisions. This suggests that free will is not an illusion, but rather a meaningful part of human experience, even within a divine framework."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-03T22:03:00.664Z",
+      "participantId": "opponent",
+      "newScore": 68
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-03T22:03:00.670Z",
+      "participantId": "opponent",
+      "newScore": 68
+    }
+  ],
+  "endTime": "2024-12-03T22:03:01.862Z"
+}

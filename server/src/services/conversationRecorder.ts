@@ -53,20 +53,15 @@ interface Conversation {
 export class ConversationRecorder {
   private static logDir = path.join(env.BASE_PATH, 'server/logs/conversations');
   private static currentConversation: Conversation | null = null;
-  private static saveLock: { [key: string]: boolean } = {};
 
   private static async ensureLogDir() {
     try {
-      await DiagnosticLogger.log(`[ConversationRecorder] Current directory: ${process.cwd()}`);
-      await DiagnosticLogger.log(`[ConversationRecorder] Log directory path: ${this.logDir}`);
-
       if (!fs.existsSync(this.logDir)) {
-        await DiagnosticLogger.log(`[ConversationRecorder] Creating conversations directory: ${this.logDir}`);
         await fs.promises.mkdir(this.logDir, { recursive: true });
         await DiagnosticLogger.log('[ConversationRecorder] Conversations directory created successfully');
       }
     } catch (error) {
-      await DiagnosticLogger.error('[ConversationRecorder] Error in ensureLogDir:', error);
+      await DiagnosticLogger.log('[ConversationRecorder] Error in ensureLogDir:', error);
       throw error;
     }
   }
@@ -76,64 +71,28 @@ export class ConversationRecorder {
     return path.join(this.logDir, `${date}-conversation-${conversationId}.json`);
   }
 
-  private static async acquireLock(filePath: string): Promise<void> {
-    while (this.saveLock[filePath]) {
-      await new Promise(resolve => setTimeout(resolve, 50));
-    }
-    this.saveLock[filePath] = true;
-  }
-
-  private static releaseLock(filePath: string): void {
-    this.saveLock[filePath] = false;
-  }
-
-  private static async generateUniqueId(): Promise<string> {
-    let id = uuidv4().slice(0, 8);
-    let filePath = this.getConversationFilePath(id);
-    
-    if (fs.existsSync(filePath)) {
-      await DiagnosticLogger.log(`[ConversationRecorder] File exists for ID ${id}, generating new ID`);
-      // Get a new UUID and try again
-      id = uuidv4().slice(0, 8);
-      filePath = this.getConversationFilePath(id);
-      
-      if (fs.existsSync(filePath)) {
-        throw new Error('Failed to generate unique conversation ID after retry');
-      }
-    }
-    
-    await DiagnosticLogger.log(`[ConversationRecorder] Generated unique ID: ${id}`);
-    return id;
-  }
-
-  private static async saveConversation() {
+  private static async saveConversationToDisk(): Promise<void> {
     if (!this.currentConversation) {
       throw new Error('No active conversation');
     }
 
-    const filePath = this.getConversationFilePath(this.currentConversation.id);
-    await this.acquireLock(filePath);
-
     try {
       await this.ensureLogDir();
+      const filePath = this.getConversationFilePath(this.currentConversation.id);
       await DiagnosticLogger.log(`[ConversationRecorder] Saving conversation to ${filePath}`);
       
       const content = JSON.stringify(this.currentConversation, null, 2);
       await fs.promises.writeFile(filePath, content, 'utf8');
       await DiagnosticLogger.log(`[ConversationRecorder] Successfully saved conversation to ${filePath}`);
     } catch (error) {
-      await DiagnosticLogger.error('[ConversationRecorder] Error saving conversation:', error);
+      await DiagnosticLogger.log('[ConversationRecorder] Error saving conversation:', error);
       throw error;
-    } finally {
-      this.releaseLock(filePath);
     }
   }
 
   static async startNewConversation(gameSetup: GameSetup): Promise<string> {
     try {
-      await this.ensureLogDir();
-      
-      const conversationId = await this.generateUniqueId();
+      const conversationId = uuidv4().slice(0, 8);
       await DiagnosticLogger.log(`[ConversationRecorder] Starting new conversation with ID: ${conversationId}`);
 
       this.currentConversation = {
@@ -143,10 +102,9 @@ export class ConversationRecorder {
         events: []
       };
 
-      await this.saveConversation();
       return conversationId;
     } catch (error) {
-      await DiagnosticLogger.error('[ConversationRecorder] Error starting new conversation:', error);
+      await DiagnosticLogger.log('[ConversationRecorder] Error starting new conversation:', error);
       throw error;
     }
   }
@@ -165,10 +123,9 @@ export class ConversationRecorder {
       };
 
       this.currentConversation.events.push(messageEvent);
-      await this.saveConversation();
       await DiagnosticLogger.log(`[ConversationRecorder] Recorded message from ${speakerId}`);
     } catch (error) {
-      await DiagnosticLogger.error('[ConversationRecorder] Error recording message:', error);
+      await DiagnosticLogger.log('[ConversationRecorder] Error recording message:', error);
       throw error;
     }
   }
@@ -187,10 +144,9 @@ export class ConversationRecorder {
       };
 
       this.currentConversation.events.push(scoreEvent);
-      await this.saveConversation();
       await DiagnosticLogger.log(`[ConversationRecorder] Recorded score for ${participantId}: ${newScore}`);
     } catch (error) {
-      await DiagnosticLogger.error('[ConversationRecorder] Error recording score:', error);
+      await DiagnosticLogger.log('[ConversationRecorder] Error recording score:', error);
       throw error;
     }
   }
@@ -210,11 +166,10 @@ export class ConversationRecorder {
         ? scoreEvents[scoreEvents.length - 1].newScore 
         : 0;
       
-      await this.saveConversation();
-      
-      const conversationId = this.currentConversation.id;
       const { subjectId, position, skill } = this.currentConversation.gameSetup;
+      const conversationId = this.currentConversation.id;
 
+      // Check if this is a high score before saving to disk
       const isHighScore = await HighScoreManager.checkAndUpdateHighScore(
         finalScore,
         subjectId,
@@ -223,21 +178,29 @@ export class ConversationRecorder {
         conversationId
       );
 
+      // Only save to disk if it's a high score
+      if (isHighScore) {
+        await this.saveConversationToDisk();
+      }
+
+      // Clear the conversation from memory
+      const result = { conversationId, isHighScore };
       this.currentConversation = null;
-      
-      return { conversationId, isHighScore };
+      return result;
     } catch (error) {
-      await DiagnosticLogger.error('[ConversationRecorder] Error ending conversation:', error);
+      await DiagnosticLogger.log('[ConversationRecorder] Error ending conversation:', error);
       throw error;
     }
   }
 
   static async getConversation(conversationId: string): Promise<Conversation | null> {
-    const startTime = process.hrtime();
-    
     try {
-      await DiagnosticLogger.log(`[ConversationRecorder] Beginning conversation retrieval for ID: ${conversationId}`);
-      
+      // If this is the current conversation in memory, return it
+      if (this.currentConversation?.id === conversationId) {
+        return this.currentConversation;
+      }
+
+      // Otherwise, look for it on disk
       const files = await fs.promises.readdir(this.logDir);
       const conversationFile = files.find(file => file.includes(`conversation-${conversationId}`));
       
@@ -247,27 +210,13 @@ export class ConversationRecorder {
       }
 
       const filePath = path.join(this.logDir, conversationFile);
-      await this.acquireLock(filePath);
+      const content = await fs.promises.readFile(filePath, 'utf8');
+      const conversation: Conversation = JSON.parse(content);
 
-      try {
-        const content = await fs.promises.readFile(filePath, 'utf8');
-        const conversation = JSON.parse(content);
-
-        const [seconds, nanoseconds] = process.hrtime(startTime);
-        const totalTime = seconds * 1000 + nanoseconds / 1000000;
-        
-        await DiagnosticLogger.log(`[ConversationRecorder] Successfully retrieved conversation:`, {
-          conversationId,
-          retrievalTimeMs: totalTime,
-          eventCount: conversation.events?.length || 0
-        });
-
-        return conversation;
-      } finally {
-        this.releaseLock(filePath);
-      }
+      await DiagnosticLogger.log(`[ConversationRecorder] Successfully retrieved conversation: ${conversationId}`);
+      return conversation;
     } catch (error) {
-      await DiagnosticLogger.error('[ConversationRecorder] Error reading conversation:', error);
+      await DiagnosticLogger.log('[ConversationRecorder] Error reading conversation:', error);
       throw error;
     }
   }
