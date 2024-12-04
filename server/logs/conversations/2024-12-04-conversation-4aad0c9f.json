@@ -1,0 +1,136 @@
+{
+  "id": "4aad0c9f",
+  "startTime": "2024-12-04T15:45:30.374Z",
+  "gameSetup": {
+    "topic": "Jesus Christ's resurrection is a historical fact that cannot be denied",
+    "difficulty": 1,
+    "participants": [
+      {
+        "id": "user",
+        "name": "User",
+        "avatar": "user.svg",
+        "role": "debater"
+      },
+      {
+        "id": "opponent",
+        "name": "Historical Helen",
+        "avatar": "/assets/elderly_grandma.svg",
+        "role": "debater"
+      }
+    ],
+    "subjectId": "REL002",
+    "position": "for",
+    "skill": "easy"
+  },
+  "events": [
+    {
+      "type": "message",
+      "timestamp": "2024-12-04T15:45:33.816Z",
+      "speakerId": "opponent",
+      "content": "Historically speaking, we can draw parallels with other significant figures who were claimed to have miraculous events surrounding their deaths. For instance, the myth of Osiris in ancient Egypt involved his resurrection after being killed. This story was widely accepted in its time, yet it is understood today as a myth rather than a historical fact. \n\nSimilarly, while many believe in the resurrection of Jesus Christ, the evidence is largely based on religious texts rather than contemporary historical records. Just as with Osiris, the acceptance of such events often reflects the beliefs and cultural contexts of the time rather than undeniable historical proof. Thus, the resurrection of Jesus, while significant to many, can be viewed through the lens of historical skepticism."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-04T15:45:35.012Z",
+      "participantId": "opponent",
+      "newScore": 98
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-04T15:45:41.935Z",
+      "speakerId": "user",
+      "content": "sometimes"
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-04T15:45:44.504Z",
+      "participantId": "user",
+      "newScore": 3
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-04T15:45:44.509Z",
+      "participantId": "user",
+      "newScore": 3
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-04T15:45:46.134Z",
+      "speakerId": "opponent",
+      "content": "While some may argue that personal beliefs or experiences validate the resurrection, these are subjective and not reliable historical evidence. Historical facts require consistent documentation and corroboration from multiple sources. In the case of Jesus' resurrection, the primary accounts come from religious texts, which are not considered objective historical records."
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-04T15:45:46.141Z",
+      "speakerId": "opponent",
+      "content": "While some may argue that personal beliefs or experiences validate the resurrection, these are subjective and not reliable historical evidence. Historical facts require consistent documentation and corroboration from multiple sources. In the case of Jesus' resurrection, the primary accounts come from religious texts, which are not considered objective historical records."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-04T15:45:47.296Z",
+      "participantId": "opponent",
+      "newScore": 38
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-04T15:45:47.301Z",
+      "participantId": "opponent",
+      "newScore": 38
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-04T15:45:50.448Z",
+      "speakerId": "system",
+      "content": "Emphasize the historical reliability of the New Testament accounts, noting that multiple sources, including non-Christian historians like Josephus, reference Jesus' resurrection. Be prepared to counter claims of myth or legend by highlighting the early dating of these texts and the willingness of early Christians to face persecution for their beliefs, suggesting they truly believed in the resurrection."
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-04T15:45:50.455Z",
+      "speakerId": "system",
+      "content": "Emphasize the historical reliability of the New Testament accounts, noting that multiple sources, including non-Christian historians like Josephus, reference Jesus' resurrection. Be prepared to counter claims of myth or legend by highlighting the early dating of these texts and the willingness of early Christians to face persecution for their beliefs, suggesting they truly believed in the resurrection."
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-04T15:45:52.121Z",
+      "speakerId": "user",
+      "content": "Emphasize the historical reliability of the New Testament accounts, noting that multiple sources, including non-Christian historians like Josephus, reference Jesus' resurrection. Be prepared to counter claims of myth or legend by highlighting the early dating of these texts and the willingness of early Christians to face persecution for their beliefs, suggesting they truly believed in the resurrection."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-04T15:45:55.375Z",
+      "participantId": "user",
+      "newScore": 100
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-04T15:45:55.381Z",
+      "participantId": "user",
+      "newScore": 100
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-04T15:46:00.003Z",
+      "speakerId": "opponent",
+      "content": "While the New Testament accounts are important, they are still religious texts written with a specific agenda, which raises questions about their objectivity. The references from non-Christian historians like Josephus are often debated and do not provide direct evidence of the resurrection itself; they merely acknowledge Jesus as a historical figure. Furthermore, the willingness of early Christians to face persecution does not prove the resurrection occurred; people can hold strong beliefs in myths or legends, especially when those beliefs are tied to their identity and community."
+    },
+    {
+      "type": "message",
+      "timestamp": "2024-12-04T15:46:00.010Z",
+      "speakerId": "opponent",
+      "content": "While the New Testament accounts are important, they are still religious texts written with a specific agenda, which raises questions about their objectivity. The references from non-Christian historians like Josephus are often debated and do not provide direct evidence of the resurrection itself; they merely acknowledge Jesus as a historical figure. Furthermore, the willingness of early Christians to face persecution does not prove the resurrection occurred; people can hold strong beliefs in myths or legends, especially when those beliefs are tied to their identity and community."
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-04T15:46:01.203Z",
+      "participantId": "opponent",
+      "newScore": 100
+    },
+    {
+      "type": "score",
+      "timestamp": "2024-12-04T15:46:01.209Z",
+      "participantId": "opponent",
+      "newScore": 100
+    }
+  ],
+  "endTime": "2024-12-04T15:46:02.606Z"
+}

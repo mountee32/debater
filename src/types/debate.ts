@@ -50,4 +50,5 @@ export interface DebateHookResult {
   initializeDebate: () => Promise<void>;
   generateDebateSummary: () => Promise<void>;
   gameSetup?: GameSetup | null;
+  endReplay?: () => void; // Added for replay mode navigation
 }

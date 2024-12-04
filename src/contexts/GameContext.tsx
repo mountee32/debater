@@ -3,9 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { AIPersonality, aiPersonalities } from '../data/aiPersonalities';
 import debateSubjectsData from '../data/debateSubjects.json';
 
-type Difficulty = 'easy' | 'medium' | 'hard';
-type GameState = 'home' | 'select-category' | 'select-topic' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'select-pregenerated' | 'replaying';
-type Position = 'for' | 'against';
+export type Difficulty = 'easy' | 'medium' | 'hard';
+export type GameState = 'home' | 'select-category' | 'select-topic' | 'select-personality' | 'select-difficulty' | 'select-position' | 'playing' | 'select-pregenerated' | 'replaying';
+export type Position = 'for' | 'against';
 
 interface DebateSubject {
   id: string;

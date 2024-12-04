@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AIPersonality } from '../data/aiPersonalities';
 import { DebateState, Message, GameSetup, DebateHookResult } from '../types/debate';
+import { GameState } from '../contexts/GameContext';
 
 interface ConversationEvent {
   type: 'message' | 'score';
@@ -35,8 +37,10 @@ const getMessageRole = (speakerId: string): 'user' | 'opponent' | 'system' | 'hi
 
 export const useDebateReplay = (
   conversationId: string,
-  aiPersonality: AIPersonality
+  aiPersonality: AIPersonality,
+  setGameState: React.Dispatch<React.SetStateAction<GameState>>
 ): DebateHookResult => {
+  const navigate = useNavigate();
   const [state, setState] = useState<DebateState>({
     isLoading: true,
     isGeneratingHint: false,
@@ -57,6 +61,13 @@ export const useDebateReplay = (
   const cleanup = () => {
     timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
     timeoutsRef.current = [];
+  };
+
+  // End replay and navigate to home
+  const endReplay = () => {
+    cleanup();
+    setGameState('home');
+    navigate('/');
   };
 
   // Fetch replay data
@@ -184,6 +195,7 @@ export const useDebateReplay = (
     handleHintRequest,
     initializeDebate,
     generateDebateSummary,
-    gameSetup: conversation?.gameSetup || null
+    gameSetup: conversation?.gameSetup || null,
+    endReplay
   };
 };

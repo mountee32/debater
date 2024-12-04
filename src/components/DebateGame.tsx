@@ -9,6 +9,7 @@ import { DebateControls } from './debate/DebateControls';
 import { DebateHeader } from './debate/DebateHeader';
 import { GameSummary } from './GameSummary';
 import { DebateHookResult } from '../types/debate';
+import { useGameContext } from '../hooks/useGameContext';
 
 interface BaseDebateGameProps {
   isDarkMode: boolean;
@@ -43,13 +44,14 @@ interface DisplayMessage {
 
 const DebateGame: React.FC<DebateGameProps> = (props) => {
   const { isDarkMode, onToggleDarkMode, aiPersonality } = props;
+  const { setGameState } = useGameContext();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const debateInitializedRef = useRef(false);
   const [currentArgument, setCurrentArgument] = useState('');
 
   // Use either live debate logic or replay logic based on mode
   const debateHook = props.isReplayMode
-    ? useDebateReplay(props.conversationId, aiPersonality)
+    ? useDebateReplay(props.conversationId, aiPersonality, setGameState)
     : useDebateLogic(
         props.topic,
         props.difficulty,
@@ -65,7 +67,8 @@ const DebateGame: React.FC<DebateGameProps> = (props) => {
     handleHintRequest,
     initializeDebate,
     generateDebateSummary,
-    gameSetup
+    gameSetup,
+    endReplay
   } = debateHook;
 
   const { timeLeft } = useTimer(300, async () => {
@@ -97,7 +100,11 @@ const DebateGame: React.FC<DebateGameProps> = (props) => {
   };
 
   const onEndDebateClick = async () => {
-    await generateDebateSummary();
+    if (props.isReplayMode && endReplay) {
+      endReplay();
+    } else {
+      await generateDebateSummary();
+    }
   };
 
   const onPlayAgain = () => {
@@ -109,7 +116,7 @@ const DebateGame: React.FC<DebateGameProps> = (props) => {
     .filter(message => message.role === 'user' || message.role === 'opponent') as DisplayMessage[];
 
   // Determine if controls should be disabled
-  const isControlsDisabled = state.isLoading || state.isGeneratingSummary || props.isReplayMode;
+  const isControlsDisabled = props.isReplayMode ? false : (state.isLoading || state.isGeneratingSummary);
 
   // Get game parameters based on mode
   const getGameParams = () => {

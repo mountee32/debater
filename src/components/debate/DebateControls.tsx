@@ -95,7 +95,7 @@ export const DebateControls: React.FC<DebateControlsProps> = ({
           <button
             data-testid="end-button"
             onClick={onEndDebate}
-            disabled={isDisabled}
+            disabled={isDisabled && !isReplayMode} // Enable during replay mode
             className="flex-1 py-2.5 px-5 bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 text-white rounded-xl text-base font-semibold shadow-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
           >
             <div className="flex items-center justify-center space-x-2">
