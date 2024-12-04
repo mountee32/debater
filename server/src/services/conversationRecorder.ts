@@ -211,7 +211,14 @@ export class ConversationRecorder {
 
       const filePath = path.join(this.logDir, conversationFile);
       const content = await fs.promises.readFile(filePath, 'utf8');
-      const conversation: Conversation = JSON.parse(content);
+      
+      let conversation: Conversation;
+      try {
+        conversation = JSON.parse(content);
+      } catch (error) {
+        await DiagnosticLogger.log(`[ConversationRecorder] Error parsing conversation JSON: ${error}`);
+        throw new SyntaxError(`Invalid JSON in conversation file: ${error instanceof Error ? error.message : String(error)}`);
+      }
 
       await DiagnosticLogger.log(`[ConversationRecorder] Successfully retrieved conversation: ${conversationId}`);
       return conversation;

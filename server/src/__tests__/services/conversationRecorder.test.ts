@@ -123,6 +123,14 @@ describe('ConversationRecorder', () => {
       // Still no file write
       expect(mockedFs.promises.writeFile).not.toHaveBeenCalled();
     });
+
+    it('should handle errors during conversation start', async () => {
+      const error = new Error('Failed to start conversation');
+      mockedUuidV4.mockImplementationOnce(() => { throw error; });
+
+      await expect(ConversationRecorder.startNewConversation(mockGameSetup))
+        .rejects.toThrow('Failed to start conversation');
+    });
   });
 
   describe('recordMessage and recordScore', () => {
@@ -155,6 +163,18 @@ describe('ConversationRecorder', () => {
       expect(scoreEvents[0].newScore).toBe(5);
       expect(messageEvents[1].content).toBe('Second message');
     });
+
+    it('should throw error when recording message without active conversation', async () => {
+      await ConversationRecorder.endConversation();
+      await expect(ConversationRecorder.recordMessage('player1', 'Test message'))
+        .rejects.toThrow('No active conversation');
+    });
+
+    it('should throw error when recording score without active conversation', async () => {
+      await ConversationRecorder.endConversation();
+      await expect(ConversationRecorder.recordScore('player1', 10))
+        .rejects.toThrow('No active conversation');
+    });
   });
 
   describe('endConversation', () => {
@@ -186,6 +206,27 @@ describe('ConversationRecorder', () => {
         isHighScore: false
       });
       expect(mockedFs.promises.writeFile).not.toHaveBeenCalled();
+    });
+
+    it('should handle case with no score events', async () => {
+      const result = await ConversationRecorder.endConversation();
+      expect(result.isHighScore).toBe(false);
+      expect(mockedFs.promises.writeFile).not.toHaveBeenCalled();
+    });
+
+    it('should throw error when ending without active conversation', async () => {
+      await ConversationRecorder.endConversation(); // End the conversation
+      await expect(ConversationRecorder.endConversation())
+        .rejects.toThrow('No active conversation');
+    });
+
+    it('should handle file system errors during save', async () => {
+      await ConversationRecorder.recordScore('player1', 100);
+      (HighScoreManager.checkAndUpdateHighScore as jest.Mock).mockResolvedValueOnce(true);
+      mockedFs.promises.writeFile.mockRejectedValueOnce(new Error('File system error'));
+
+      await expect(ConversationRecorder.endConversation())
+        .rejects.toThrow('File system error');
     });
   });
 
@@ -243,6 +284,34 @@ describe('ConversationRecorder', () => {
       expect(mockedFs.promises.readFile).toHaveBeenCalled();
       const readFilePath = mockedFs.promises.readFile.mock.calls[0][0];
       expect(readFilePath).toContain(completedConversationId);
+    });
+
+    it('should return null for non-existent conversation', async () => {
+      mockedFs.promises.readdir.mockResolvedValueOnce([]);
+      const conversation = await ConversationRecorder.getConversation('nonexistent');
+      expect(conversation).toBeNull();
+    });
+
+    it('should handle file system errors during read', async () => {
+      mockedFs.promises.readdir.mockRejectedValueOnce(new Error('File system error'));
+      await expect(ConversationRecorder.getConversation('test'))
+        .rejects.toThrow('File system error');
+    });
+
+    it('should handle invalid JSON in conversation file', async () => {
+      // Clear any existing conversation from memory
+      await ConversationRecorder.startNewConversation(mockGameSetup);
+      await ConversationRecorder.endConversation();
+
+      mockedFs.promises.readdir.mockResolvedValueOnce([
+        `2024-01-01-conversation-${mockConversationId}.json`
+      ]);
+      
+      // Mock readFile to return invalid JSON that will cause JSON.parse to throw
+      mockedFs.promises.readFile.mockResolvedValueOnce('{"broken":true,,,}');
+
+      await expect(ConversationRecorder.getConversation(mockConversationId))
+        .rejects.toThrow(SyntaxError);
     });
   });
 });
